@@ -188,6 +188,7 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
 
                 ParseResult PR = new ParseResult(response);
                 PR.print_response();
+                final Result result = response.getResult();
                 /*Log.d(TAG, "onResult");
 
                 resultTextView.setText(gson.toJson(response));

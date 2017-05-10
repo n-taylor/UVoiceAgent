@@ -6,7 +6,7 @@ import com.google.gson.Gson;
 
 import ai.api.android.GsonFactory;
 import ai.api.model.AIResponse;
-
+import ai.api.model.Result;
 /**
  * Created by u1076070 on 5/10/2017.
  */
@@ -15,6 +15,7 @@ public class ParseResult {
     class response{
 
     }
+    private String speech;
     private Gson gson = GsonFactory.getGson();
     private final AIResponse response;
     private TextView resultTextView;
@@ -28,6 +29,7 @@ public class ParseResult {
     }
     private void parse_response(){
         /* get string item from response */
-
+        Result result = response.getResult();
+        this.speech = result.getFulfillment().getSpeech();
     }
 }
