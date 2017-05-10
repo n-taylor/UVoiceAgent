@@ -1,0 +1,7 @@
+#Wed May 10 07:51:45 MDT 2017
+base.0=C\:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_b3e114edaed29483770eee994d463c9c2478b78b
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=C\:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_0e818d7de5f380bf52ebd8f4bcddb31ff39e44c3\\classes.dex
+base.1=C\:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_0e818d7de5f380bf52ebd8f4bcddb31ff39e44c3
+file.0=C\:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_b3e114edaed29483770eee994d463c9c2478b78b\\classes.dex

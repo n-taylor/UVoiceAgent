@@ -1,0 +1,133 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:2:1-66:12
+	package
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:3:5-28
+		INJECTED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:5:22-64
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:6:5-71
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:6:22-68
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:7:5-81
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:7:22-78
+uses-permission#android.permission.BLUETOOTH
+ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:8:5-68
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:8:22-65
+uses-permission#android.permission.BROADCAST_STICKY
+ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:9:5-75
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:9:22-72
+uses-permission#android.permission.MODIFY_AUDIO_SETTINGS
+ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:10:5-80
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:10:22-77
+application
+ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:12:5-64:19
+MERGED from [com.android.support:appcompat-v7:23.2.1] C:\Users\u1076070\.android\build-cache\88b3116682835e120fc9bede96579300ef939744\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:23.2.1] C:\Users\u1076070\.android\build-cache\528402a889c0c8d36ec5f5135d152d13cc5cfa6a\output\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-vector-drawable:23.2.1] C:\Users\u1076070\.android\build-cache\9e29d8faf0cd4c57f93ac85084dea5e0f813f51f\output\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.2.1] C:\Users\u1076070\.android\build-cache\726e59a992aa6d2bd9380abfaa581c2cdf6eff74\output\AndroidManifest.xml:22:5-20
+MERGED from [ai.api:sdk:2.0.1] C:\Users\u1076070\.android\build-cache\68c97420a514f06aa4221266328738501e0036a3\output\AndroidManifest.xml:11:5-20
+	android:label
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:16:9-41
+	android:allowBackup
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:14:9-35
+	android:icon
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:15:9-45
+	android:theme
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:17:9-40
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:13:9-38
+activity#ai.api.sample.MainActivity
+ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:18:9-26:20
+	android:label
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:20:13-45
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:19:13-54
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:21:13-25:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:22:17-69
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:22:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:24:17-77
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:24:27-74
+activity#ai.api.sample.AIButtonSampleActivity
+ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:28:9-35:20
+	android:label
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:30:13-67
+	android:parentActivityName
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:31:13-68
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:29:13-64
+meta-data#android.support.PARENT_ACTIVITY
+ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:32:13-34:62
+	android:value
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:34:17-59
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:33:17-63
+activity#ai.api.sample.AISettingsActivity
+ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:38:9-45:20
+	android:label
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:40:13-52
+	android:parentActivityName
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:41:13-55
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:39:13-47
+activity#ai.api.sample.AIWidgetActivity
+ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:47:9-52:20
+	android:label
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:49:13-45
+	android:theme
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:50:13-63
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:48:13-45
+receiver#ai.api.sample.AISampleAppWidget
+ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:54:9-62:20
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:54:19-52
+intent-filter#android.appwidget.action.APPWIDGET_UPDATE
+ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:55:13-57:29
+action#android.appwidget.action.APPWIDGET_UPDATE
+ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:56:17-84
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:56:25-81
+meta-data#android.appwidget.provider
+ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:59:13-61:62
+	android:resource
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:61:17-59
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:60:17-58
+uses-sdk
+INJECTED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:23.2.1] C:\Users\u1076070\.android\build-cache\88b3116682835e120fc9bede96579300ef939744\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:23.2.1] C:\Users\u1076070\.android\build-cache\528402a889c0c8d36ec5f5135d152d13cc5cfa6a\output\AndroidManifest.xml:5:5-44
+MERGED from [com.android.support:support-vector-drawable:23.2.1] C:\Users\u1076070\.android\build-cache\9e29d8faf0cd4c57f93ac85084dea5e0f813f51f\output\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.2.1] C:\Users\u1076070\.android\build-cache\726e59a992aa6d2bd9380abfaa581c2cdf6eff74\output\AndroidManifest.xml:20:5-43
+MERGED from [ai.api:sdk:2.0.1] C:\Users\u1076070\.android\build-cache\68c97420a514f06aa4221266328738501e0036a3\output\AndroidManifest.xml:7:5-9:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:23.2.1] C:\Users\u1076070\.android\build-cache\88b3116682835e120fc9bede96579300ef939744\output\AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml
