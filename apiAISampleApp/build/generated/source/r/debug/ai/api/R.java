@@ -8,62 +8,62 @@ package ai.api;
 
 public final class R {
     public static final class attr {
-        public static final int centerColor = 0x7f0100bb;
-        public static final int circleCenterX = 0x7f0100b9;
-        public static final int circleCenterY = 0x7f0100ba;
-        public static final int haloColor = 0x7f0100bc;
-        public static final int mainColor = 0x7f0100a2;
-        public static final int maxRadius = 0x7f0100b8;
-        public static final int minRadius = 0x7f0100b7;
-        public static final int state_initializing_tts = 0x7f0100c0;
-        public static final int state_listening = 0x7f0100bd;
-        public static final int state_speaking = 0x7f0100bf;
-        public static final int state_waiting = 0x7f0100be;
+        public static final int centerColor = 0x7f010100;
+        public static final int circleCenterX = 0x7f0100fe;
+        public static final int circleCenterY = 0x7f0100ff;
+        public static final int haloColor = 0x7f010101;
+        public static final int mainColor = 0x7f0100d7;
+        public static final int maxRadius = 0x7f0100fd;
+        public static final int minRadius = 0x7f0100fc;
+        public static final int state_initializing_tts = 0x7f010105;
+        public static final int state_listening = 0x7f010102;
+        public static final int state_speaking = 0x7f010104;
+        public static final int state_waiting = 0x7f010103;
     }
     public static final class color {
-        public static final int aidialog_background = 0x7f0c0006;
-        public static final int icon_orange_color = 0x7f0c001e;
-        public static final int main_bg_color = 0x7f0c001f;
-        public static final int mic_button_halo = 0x7f0c002c;
-        public static final int mic_colors = 0x7f0c004a;
+        public static final int aidialog_background = 0x7f0d0007;
+        public static final int icon_orange_color = 0x7f0d0028;
+        public static final int main_bg_color = 0x7f0d0029;
+        public static final int mic_button_halo = 0x7f0d0036;
+        public static final int mic_colors = 0x7f0d0063;
     }
     public static final class dimen {
-        public static final int mic_button_halo_radius_max = 0x7f09004a;
-        public static final int mic_button_halo_radius_min = 0x7f09004b;
-        public static final int mic_button_size = 0x7f09004c;
+        public static final int mic_button_halo_radius_max = 0x7f090082;
+        public static final int mic_button_halo_radius_min = 0x7f090083;
+        public static final int mic_button_size = 0x7f090084;
     }
     public static final class drawable {
-        public static final int cube = 0x7f02004b;
-        public static final int mic_control = 0x7f02004d;
-        public static final int microphone_control = 0x7f02004e;
-        public static final int speaker = 0x7f020050;
-        public static final int speaker_silent = 0x7f020051;
+        public static final int cube = 0x7f020055;
+        public static final int mic_control = 0x7f02005d;
+        public static final int microphone_control = 0x7f02005e;
+        public static final int speaker = 0x7f02006b;
+        public static final int speaker_silent = 0x7f02006c;
     }
     public static final class id {
-        public static final int micButton = 0x7f0d0052;
-        public static final int micContainer = 0x7f0d0065;
-        public static final int partialResultsTextView = 0x7f0d0067;
-        public static final int titleTextView = 0x7f0d0066;
+        public static final int micButton = 0x7f0e0076;
+        public static final int micContainer = 0x7f0e008d;
+        public static final int partialResultsTextView = 0x7f0e008f;
+        public static final int titleTextView = 0x7f0e008e;
     }
     public static final class layout {
-        public static final int aidialog = 0x7f030021;
+        public static final int aidialog = 0x7f030023;
     }
     public static final class raw {
-        public static final int version_config = 0x7f060003;
+        public static final int version_config = 0x7f070003;
     }
     public static final class string {
-        public static final int app_name = 0x7f070016;
-        public static final int default_aidialog_title = 0x7f070017;
+        public static final int app_name = 0x7f080023;
+        public static final int default_aidialog_title = 0x7f080027;
     }
     public static final class style {
-        public static final int ApiAi = 0x7f0a008a;
-        public static final int ApiAi_FullScreenDialog = 0x7f0a008b;
-        public static final int ApiAi_Microphone = 0x7f0a008c;
+        public static final int ApiAi = 0x7f0a00a6;
+        public static final int ApiAi_FullScreenDialog = 0x7f0a00a7;
+        public static final int ApiAi_Microphone = 0x7f0a00a8;
     }
     public static final class styleable {
-        public static final int[] MaskedColorView = { 0x7f0100a2 };
+        public static final int[] MaskedColorView = { 0x7f0100d7 };
         public static final int MaskedColorView_mainColor = 0;
-        public static final int[] SoundLevelButton = { 0x7f0100b7, 0x7f0100b8, 0x7f0100b9, 0x7f0100ba, 0x7f0100bb, 0x7f0100bc, 0x7f0100bd, 0x7f0100be, 0x7f0100bf, 0x7f0100c0 };
+        public static final int[] SoundLevelButton = { 0x7f0100fc, 0x7f0100fd, 0x7f0100fe, 0x7f0100ff, 0x7f010100, 0x7f010101, 0x7f010102, 0x7f010103, 0x7f010104, 0x7f010105 };
         public static final int SoundLevelButton_centerColor = 4;
         public static final int SoundLevelButton_circleCenterX = 2;
         public static final int SoundLevelButton_circleCenterY = 3;

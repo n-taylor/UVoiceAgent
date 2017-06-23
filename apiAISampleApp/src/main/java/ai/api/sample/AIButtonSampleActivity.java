@@ -36,7 +36,6 @@ import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.StatusLine;
 import org.apache.http.client.entity.UrlEncodedFormEntityHC4;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPostHC4;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -45,8 +44,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 
-import java.io.IOException;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,13 +51,11 @@ import java.util.Map;
 
 import ai.api.android.AIConfiguration;
 import ai.api.android.GsonFactory;
-import ai.api.http.HttpClient;
 import ai.api.model.AIError;
 import ai.api.model.AIResponse;
-import ai.api.model.Metadata;
-import ai.api.model.Result;
-import ai.api.model.Status;
 import ai.api.ui.AIButton;
+
+import ai.api.model.Result;
 
 public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIButtonListener {
 
@@ -68,8 +63,10 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
 
     private AIButton aiButton;
     private TextView resultTextView;
+    private TextView queryTextView;
 
     private Gson gson = GsonFactory.getGson();
+    private DataAsked dataasked;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -77,6 +74,7 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
         setContentView(R.layout.activity_aibutton_sample);
 
         resultTextView = (TextView) findViewById(R.id.resultTextView);
+        queryTextView = (TextView) findViewById(R.id.querytextView);
         aiButton = (AIButton) findViewById(R.id.micButton);
 
         final AIConfiguration config = new AIConfiguration(Config.ACCESS_TOKEN,
@@ -89,6 +87,9 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
 
         aiButton.initialize(config);
         aiButton.setResultsListener(this);
+
+        //Save asked query
+        dataasked = new DataAsked();
     }
 
     @Override
@@ -187,12 +188,47 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
             public void run() {
 
                 ParseResult PR = new ParseResult(response);
-                PR.print_response();
-                final Result result = response.getResult();
-                /*Log.d(TAG, "onResult");
 
-                resultTextView.setText(gson.toJson(response));
+                String query = PR.get_ResolvedQuery();
+                queryTextView.setText(query);
 
+                if(PR.reply_yes()==true) {
+                    if(dataasked.isParameter_Enough()==true)
+                    {
+                        String speech = PR.get_reply();
+                        resultTextView.setText(speech+"\n"+dataasked.get_info());
+                        TTS.speak(speech);
+
+                        //clear parameters
+                        dataasked.clear_params();
+                    }
+                }
+                else
+                {
+                    if(PR.reply_sq()==true) {
+                        /*
+                        final Result result = response.getResult();
+                        final HashMap<String, JsonElement> params = result.getParameters();
+                        if (params != null && !params.isEmpty()) {
+                            Log.i(TAG, "Parameters: ");
+                            for (final Map.Entry<String, JsonElement> entry : params.entrySet()) {
+                                Log.i(TAG, String.format("%s: %s", entry.getKey(), entry.getValue().toString()));
+                            }
+                        }
+                        */
+
+                        Log.i(TAG, "get_param_q_type: " + PR.get_param_q_type());
+                        Log.i(TAG, "get_param_Surgery: " + PR.get_param_Surgery());
+                        dataasked.assign_params(PR.get_param_q_type(), PR.get_param_Surgery());
+                    }
+                        String speech = PR.get_reply();
+                        //resultTextView.setText(gson.toJson(response));
+                        resultTextView.setText(speech);
+                        TTS.speak(speech);
+
+                }
+
+                /*
                 Log.i(TAG, "Received success response");
 
                 System.out.println("where is system.out.print");
@@ -208,22 +244,12 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
                 final String speech = result.getFulfillment().getSpeech();;
                 Log.i(TAG, "Speech: " + speech);
 
-                TTS.speak(speech);
-               // TTS.speak(" And Karthi Programmed to me to say");
-
                 final Metadata metadata = result.getMetadata();
                 if (metadata != null) {
                     Log.i(TAG, "Intent id: " + metadata.getIntentId());
                     Log.i(TAG, "Intent name: " + metadata.getIntentName());
                 }
-
-                final HashMap<String, JsonElement> params = result.getParameters();
-                if (params != null && !params.isEmpty()) {
-                    Log.i(TAG, "Parameters: ");
-                    for (final Map.Entry<String, JsonElement> entry : params.entrySet()) {
-                        Log.i(TAG, String.format("%s: %s", entry.getKey(), entry.getValue().toString()));
-                    }
-                }*/
+                */
             }
 
         });

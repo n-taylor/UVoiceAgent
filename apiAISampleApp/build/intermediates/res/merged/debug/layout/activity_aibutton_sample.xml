@@ -7,12 +7,29 @@
     tools:context="ai.api.sample.AIButtonSampleActivity">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/resultTextView"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
 
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_above="@+id/bottom_container" />
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="24sp"
+        android:layout_above="@+id/bottom_container"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/querytextView"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="right"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="?android:attr/colorControlActivated"
+        android:textSize="24sp" />
 
     <RelativeLayout
         android:id="@+id/bottom_container"
