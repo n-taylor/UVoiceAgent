@@ -22,6 +22,7 @@ package ai.api.sample;
  ***********************************************************************************************************************/
 
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -68,6 +69,9 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
     private Gson gson = GsonFactory.getGson();
     private DataAsked dataasked;
 
+    SharedData sessiondata;
+    private String accountID;
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +80,9 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
         resultTextView = (TextView) findViewById(R.id.resultTextView);
         queryTextView = (TextView) findViewById(R.id.querytextView);
         aiButton = (AIButton) findViewById(R.id.micButton);
+
+        sessiondata = new SharedData(getApplicationContext());
+        accountID = sessiondata.getKeyAccount();
 
         final AIConfiguration config = new AIConfiguration(Config.ACCESS_TOKEN,
                 AIConfiguration.SupportedLanguages.English,
@@ -90,6 +97,9 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
 
         //Save asked query
         dataasked = new DataAsked();
+
+        //Welcome message
+        resultTextView.setText(Html.fromHtml("<b>Welcome, "+accountID+"!</b>"));
     }
 
     @Override

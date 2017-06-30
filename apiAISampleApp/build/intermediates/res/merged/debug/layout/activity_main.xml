@@ -52,6 +52,7 @@
         android:id="@+id/textInputLayout">
 
         <EditText
+            android:id="@+id/inputAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Account ID"
@@ -72,9 +73,11 @@
         android:layout_alignStart="@+id/textInputLayout">
 
         <EditText
+            android:id="@+id/inputPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="password"
+            android:inputType="textPassword"
             tools:layout_height="wrap_content"
             tools:layout_width="match_parent" />
     </android.support.design.widget.TextInputLayout>

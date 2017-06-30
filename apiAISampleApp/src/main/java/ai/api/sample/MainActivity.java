@@ -23,11 +23,19 @@ package ai.api.sample;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+
+import ai.api.model.AIError;
 
 public class MainActivity extends BaseActivity {
+
+    private EditText idEditText;
+    private EditText passwordEditText;
+    SharedData sessiondata;
 
     public static final String TAG = MainActivity.class.getName();
 
@@ -36,6 +44,9 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        sessiondata = new SharedData(getApplicationContext());
+        idEditText = (EditText) findViewById(R.id.inputAccount);
+        passwordEditText = (EditText) findViewById(R.id.inputPassword);
         TTS.init(getApplicationContext());
     }
 
@@ -71,7 +82,23 @@ public class MainActivity extends BaseActivity {
     }
 
     public void buttonSampleClick(final View view) {
-        startActivity(AIButtonSampleActivity.class);
+        final String idString = String.valueOf(idEditText.getText());
+        final String pwString = String.valueOf(passwordEditText.getText());
+
+        AccountCheck acnt= new AccountCheck();
+        if (TextUtils.isEmpty(idString) || TextUtils.isEmpty(pwString)) {
+            LoginAlertDialog alertd= new LoginAlertDialog();
+            alertd.showAlertDialog(MainActivity.this,"Login fail","Please enter your username and password.",null);
+        }
+
+        if(acnt.isAccountCorrect(idString,pwString)==true){
+            sessiondata.createLoginSession(idString,acnt.getAccessLevel());
+            startActivity(AIButtonSampleActivity.class);
+        }
+        else{
+            LoginAlertDialog alertd= new LoginAlertDialog();
+            alertd.showAlertDialog(MainActivity.this,"Login fail","Account does not exist or password is incorrect.",null);
+        }
     }
 
     public void dialogSampleClick(final View view) {
@@ -85,5 +112,10 @@ public class MainActivity extends BaseActivity {
     private void startActivity(Class<?> cls) {
         final Intent intent = new Intent(this, cls);
         startActivity(intent);
+    }
+
+    private void clearEditText() {
+        idEditText.setText("");
+        passwordEditText.setText("");
     }
 }

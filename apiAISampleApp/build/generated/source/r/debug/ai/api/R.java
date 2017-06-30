@@ -41,9 +41,9 @@ public final class R {
     }
     public static final class id {
         public static final int micButton = 0x7f0e0076;
-        public static final int micContainer = 0x7f0e008d;
-        public static final int partialResultsTextView = 0x7f0e008f;
-        public static final int titleTextView = 0x7f0e008e;
+        public static final int micContainer = 0x7f0e008f;
+        public static final int partialResultsTextView = 0x7f0e0091;
+        public static final int titleTextView = 0x7f0e0090;
     }
     public static final class layout {
         public static final int aidialog = 0x7f030023;
