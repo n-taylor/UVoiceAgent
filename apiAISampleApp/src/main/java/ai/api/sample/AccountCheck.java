@@ -10,10 +10,10 @@ import java.util.HashMap;
 
 public class AccountCheck {
     //TODO: Connect to account database
-
-    final static int  ACCESS_LEVEL_HIGH=1;
-    final static int  ACCESS_LEVEL_LOW=2;
-    final static int  ACCESS_LEVEL_ADMIN=0;
+    private Constants const_value;
+    //final static int  ACCESS_LEVEL_HIGH=1;
+    //final static int  ACCESS_LEVEL_LOW=2;
+    //final static int  ACCESS_LEVEL_ADMIN=0;
 
     private HashMap<String,String> account_map = new HashMap<String, String>();
     private HashMap<String,Integer> admin_map = new HashMap<String, Integer>();
@@ -21,13 +21,16 @@ public class AccountCheck {
     private String accountID;
 
     public AccountCheck(){
+
+        const_value=new Constants();
+
         account_map.put("account02","abcd");
         account_map.put("account01","1234");
         account_map.put("admin","admin");
 
-        admin_map.put("admin",ACCESS_LEVEL_ADMIN);
-        admin_map.put("account01",ACCESS_LEVEL_HIGH);
-        admin_map.put("account02",ACCESS_LEVEL_LOW);
+        admin_map.put("admin",const_value.ACCESS_LEVEL_ADMIN);
+        admin_map.put("account01",const_value.ACCESS_LEVEL_HIGH);
+        admin_map.put("account02",const_value.ACCESS_LEVEL_LOW);
     }
     public String getAccountID() {
         return accountID;

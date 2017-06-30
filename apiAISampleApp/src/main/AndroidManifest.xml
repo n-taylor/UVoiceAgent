@@ -13,11 +13,11 @@
         android:name=".AIApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:label="@string/app_name">
         <activity
             android:name="ai.api.sample.MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,7 +28,8 @@
         <activity
             android:name="ai.api.sample.AIButtonSampleActivity"
             android:label="@string/title_activity_aibutton_sample"
-            android:parentActivityName="ai.api.sample.MainActivity">
+            android:parentActivityName="ai.api.sample.MainActivity"
+            android:theme="@style/My_theme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ai.api.sample.MainActivity" />
@@ -38,7 +39,8 @@
         <activity
             android:name=".AISettingsActivity"
             android:label="@string/action_settings"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ai.api.sample.MainActivity" />

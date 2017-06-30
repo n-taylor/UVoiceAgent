@@ -27,6 +27,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.support.v7.widget.Toolbar;
+//import android.widget.Toolbar;
+
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -77,12 +80,18 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aibutton_sample);
 
+        //TextView
         resultTextView = (TextView) findViewById(R.id.resultTextView);
         queryTextView = (TextView) findViewById(R.id.querytextView);
         aiButton = (AIButton) findViewById(R.id.micButton);
 
+        //Open shared data
         sessiondata = new SharedData(getApplicationContext());
         accountID = sessiondata.getKeyAccount();
+
+        //Set up action bar by toolbar
+        Toolbar settintTB= (Toolbar) findViewById(R.id.setting_toolbar);
+        setSupportActionBar(settintTB);
 
         final AIConfiguration config = new AIConfiguration(Config.ACCESS_TOKEN,
                 AIConfiguration.SupportedLanguages.English,

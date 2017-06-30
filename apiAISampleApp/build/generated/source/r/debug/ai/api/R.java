@@ -21,11 +21,11 @@ public final class R {
         public static final int state_waiting = 0x7f010103;
     }
     public static final class color {
-        public static final int aidialog_background = 0x7f0d0007;
-        public static final int icon_orange_color = 0x7f0d0028;
-        public static final int main_bg_color = 0x7f0d0029;
-        public static final int mic_button_halo = 0x7f0d0036;
-        public static final int mic_colors = 0x7f0d0063;
+        public static final int aidialog_background = 0x7f0d0008;
+        public static final int icon_orange_color = 0x7f0d002a;
+        public static final int main_bg_color = 0x7f0d002b;
+        public static final int mic_button_halo = 0x7f0d0038;
+        public static final int mic_colors = 0x7f0d0065;
     }
     public static final class dimen {
         public static final int mic_button_halo_radius_max = 0x7f090082;
@@ -40,10 +40,10 @@ public final class R {
         public static final int speaker_silent = 0x7f02006c;
     }
     public static final class id {
-        public static final int micButton = 0x7f0e0076;
-        public static final int micContainer = 0x7f0e008f;
-        public static final int partialResultsTextView = 0x7f0e0091;
-        public static final int titleTextView = 0x7f0e0090;
+        public static final int micButton = 0x7f0e0077;
+        public static final int micContainer = 0x7f0e0090;
+        public static final int partialResultsTextView = 0x7f0e0092;
+        public static final int titleTextView = 0x7f0e0091;
     }
     public static final class layout {
         public static final int aidialog = 0x7f030023;
@@ -56,9 +56,9 @@ public final class R {
         public static final int default_aidialog_title = 0x7f080027;
     }
     public static final class style {
-        public static final int ApiAi = 0x7f0a00a6;
-        public static final int ApiAi_FullScreenDialog = 0x7f0a00a7;
-        public static final int ApiAi_Microphone = 0x7f0a00a8;
+        public static final int ApiAi = 0x7f0a00a8;
+        public static final int ApiAi_FullScreenDialog = 0x7f0a00a9;
+        public static final int ApiAi_Microphone = 0x7f0a00aa;
     }
     public static final class styleable {
         public static final int[] MaskedColorView = { 0x7f0100d7 };

@@ -89,6 +89,8 @@ public class MainActivity extends BaseActivity {
         if (TextUtils.isEmpty(idString) || TextUtils.isEmpty(pwString)) {
             LoginAlertDialog alertd= new LoginAlertDialog();
             alertd.showAlertDialog(MainActivity.this,"Login fail","Please enter your username and password.",null);
+            clearEditText();
+            return ;
         }
 
         if(acnt.isAccountCorrect(idString,pwString)==true){
@@ -98,7 +100,9 @@ public class MainActivity extends BaseActivity {
         else{
             LoginAlertDialog alertd= new LoginAlertDialog();
             alertd.showAlertDialog(MainActivity.this,"Login fail","Account does not exist or password is incorrect.",null);
+            clearEditText();
         }
+        return ;
     }
 
     public void dialogSampleClick(final View view) {

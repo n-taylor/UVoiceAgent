@@ -1,6 +1,8 @@
 package ai.api.sample;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -16,16 +18,24 @@ public class DataAsked {
 
     }
 
+    private Constants const_value;
+
     //TODO: load data from files
     private HashMap<String,HashMap<String,String>> Map_Sugery = new HashMap<String,HashMap<String,String>>();
     private HashMap<String,String> Hernia = new HashMap<String,String>();
     private HashMap<String,String> Bypass = new HashMap<String,String>();
-    //private List<>
+
     private String Question_type="";
     private String Surgery_type="";
 
+    private HashMap<Integer,HashSet<String>> Admin_group = new HashMap<Integer,HashSet<String>>();
+
+    /**
+     * Initialize surgery database and administration with HashMap
+     */
     DataAsked()
     {
+        const_value=new Constants();
         //Test: initialize Hashmap by program
         //TODO initialize HashMap by loading file
         Hernia.put("price","6000");
@@ -36,8 +46,14 @@ public class DataAsked {
         Bypass.put("success rate","90%");
         Bypass.put("recovery time","30");
 
-        Map_Sugery.put("hernia repair surgery",Hernia);
-        Map_Sugery.put("coronary artery bypass",Bypass);
+        Map_Sugery.put(const_value.SURGERY_HERNIA,Hernia);
+        Map_Sugery.put(const_value.SURGERY_BYPASS,Bypass);
+
+        //Initialize administration group
+        Admin_group.put(const_value.ACCESS_LEVEL_ADMIN,new HashSet<>(Arrays.asList(const_value.SURGERY_HERNIA,const_value.SURGERY_BYPASS)));
+        Admin_group.put(const_value.ACCESS_LEVEL_HIGH,new HashSet<>(Arrays.asList(const_value.SURGERY_BYPASS)));
+        Admin_group.put(const_value.ACCESS_LEVEL_LOW,new HashSet<>(Arrays.asList(const_value.SURGERY_HERNIA)));
+
     }
 
     public boolean isParameter_Enough(){
@@ -54,6 +70,12 @@ public class DataAsked {
     public void assign_params(String question_t, String surgery_t){
         this.Question_type = question_t;
         this.Surgery_type = surgery_t;
+    }
+
+    public boolean IsAccessable(int access_level){
+        if(Admin_group.containsKey(access_level)&&Admin_group.get(access_level).contains(this.Surgery_type))
+            return true;
+        return false;
     }
 
     public String get_info(){

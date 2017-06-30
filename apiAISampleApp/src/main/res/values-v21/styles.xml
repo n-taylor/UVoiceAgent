@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/color_softgreen</item>
+        <item name="android:statusBarColor">?attr/colorControlActivated</item>
+        <item name="android:navigationBarColor">@color/color_softgreen</item>
+    </style>
+
+    <style name="My_theme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/color_softgreen</item>
+        <item name="android:statusBarColor">?attr/colorControlActivated</item>
+        <item name="android:navigationBarColor">@color/color_softgreen</item>
+    </style>
+</resources>
