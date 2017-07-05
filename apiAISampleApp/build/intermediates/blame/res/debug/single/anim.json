@@ -16,10 +16,6 @@
         "source": "C:\\Users\\u1076070\\.android\\build-cache\\f9c3d23ca675999f1f89bc5264ee83dd0f90b523\\output\\res\\anim\\abc_slide_out_top.xml"
     },
     {
-        "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_in.xml",
-        "source": "C:\\Users\\u1076070\\.android\\build-cache\\029afaf59b60ab119c6b324df2ab061a1443b17c\\output\\res\\anim\\design_bottom_sheet_slide_in.xml"
-    },
-    {
         "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\anim\\design_snackbar_in.xml",
         "source": "C:\\Users\\u1076070\\.android\\build-cache\\029afaf59b60ab119c6b324df2ab061a1443b17c\\output\\res\\anim\\design_snackbar_in.xml"
     },
@@ -38,10 +34,6 @@
     {
         "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
         "source": "C:\\Users\\u1076070\\.android\\build-cache\\f9c3d23ca675999f1f89bc5264ee83dd0f90b523\\output\\res\\anim\\abc_fade_out.xml"
-    },
-    {
-        "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_out.xml",
-        "source": "C:\\Users\\u1076070\\.android\\build-cache\\029afaf59b60ab119c6b324df2ab061a1443b17c\\output\\res\\anim\\design_bottom_sheet_slide_out.xml"
     },
     {
         "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\anim\\design_fab_in.xml",

@@ -24,6 +24,7 @@ package ai.api.sample;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -74,6 +75,7 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
 
     SharedData sessiondata;
     private String accountID;
+    private int account_access;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -82,12 +84,14 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
 
         //TextView
         resultTextView = (TextView) findViewById(R.id.resultTextView);
+        resultTextView.setGravity(Gravity.RIGHT);
         queryTextView = (TextView) findViewById(R.id.querytextView);
         aiButton = (AIButton) findViewById(R.id.micButton);
 
         //Open shared data
         sessiondata = new SharedData(getApplicationContext());
         accountID = sessiondata.getKeyAccount();
+        account_access = sessiondata.getKeyAccess();
 
         //Set up action bar by toolbar
         Toolbar settintTB= (Toolbar) findViewById(R.id.setting_toolbar);
@@ -214,10 +218,16 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
                 if(PR.reply_yes()==true) {
                     if(dataasked.isParameter_Enough()==true)
                     {
+                        if(dataasked.IsAccessable(account_access)){
                         String speech = PR.get_reply();
                         resultTextView.setText(speech+"\n"+dataasked.get_info());
                         TTS.speak(speech);
-
+                        }
+                        else{
+                            String speech = "Sorry, you are not permitted to access these information.";
+                            resultTextView.setText(speech);
+                            TTS.speak(speech);
+                        }
                         //clear parameters
                         dataasked.clear_params();
                     }

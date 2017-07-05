@@ -54,7 +54,7 @@ public class SharedData {
     }
 
     public int getKeyAccess(){
-        return sPref.getInt(KEY_ACCESS_LEVEL, 1);
+        return sPref.getInt(KEY_ACCESS_LEVEL, -1);
     }
 
     /**

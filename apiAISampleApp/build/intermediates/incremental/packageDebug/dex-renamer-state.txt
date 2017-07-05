@@ -1,4 +1,4 @@
-#Fri Jun 30 16:37:55 MDT 2017
+#Wed Jul 05 14:26:23 MDT 2017
 base.0=C\:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_0e818d7de5f380bf52ebd8f4bcddb31ff39e44c3
 renamed.1=classes.dex
 renamed.0=classes2.dex

@@ -72,6 +72,11 @@ public class DataAsked {
         this.Surgery_type = surgery_t;
     }
 
+    /**
+     * Check if the current user can access data related to his/her question
+     * @param access_level
+     * @return accessable, return true.
+     */
     public boolean IsAccessable(int access_level){
         if(Admin_group.containsKey(access_level)&&Admin_group.get(access_level).contains(this.Surgery_type))
             return true;

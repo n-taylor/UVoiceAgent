@@ -6,56 +6,23 @@
     density="420dpi"
     format="10"
     plugin-version="2.3.1"
-    timestamp="1498862260887"
+    timestamp="1499286381131"
     token="-1223958193067372049"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="748" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="921" />
+        duration="0" />
     <task
         name="verifier"
-        duration="28" />
+        duration="0" />
 
-    <artifact
-        location="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\split-apk\debug\dep\dependencies.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\split-apk\debug\slices\slice_0.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\split-apk\debug\slices\slice_1.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\split-apk\debug\slices\slice_3.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\split-apk\debug\slices\slice_2.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\split-apk\debug\slices\slice_4.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\split-apk\debug\slices\slice_5.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\split-apk\debug\slices\slice_6.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\split-apk\debug\slices\slice_7.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\split-apk\debug\slices\slice_8.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\split-apk\debug\slices\slice_9.apk"
-        type="SPLIT" />
     <artifact
         location="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\outputs\apk\apiAISampleApp-debug.apk"
         type="SPLIT_MAIN" />
@@ -133,11 +100,21 @@
             location="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\split-apk\debug\slices\slice_7.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\split-apk\debug\slices\slice_8.apk"
-            type="SPLIT" />
-        <artifact
             location="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1499285934519"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1499286381131"
+        verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\outputs\apk\apiAISampleApp-debug.apk"
             type="SPLIT_MAIN" />
