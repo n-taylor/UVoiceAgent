@@ -16,12 +16,12 @@
         "source": "C:\\Users\\u1076070\\.android\\build-cache\\f9c3d23ca675999f1f89bc5264ee83dd0f90b523\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
     },
     {
-        "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
-        "source": "C:\\Users\\u1076070\\.android\\build-cache\\f9c3d23ca675999f1f89bc5264ee83dd0f90b523\\output\\res\\color\\switch_thumb_material_dark.xml"
-    },
-    {
         "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
         "source": "C:\\Users\\u1076070\\.android\\build-cache\\f9c3d23ca675999f1f89bc5264ee83dd0f90b523\\output\\res\\color\\abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
+        "source": "C:\\Users\\u1076070\\.android\\build-cache\\f9c3d23ca675999f1f89bc5264ee83dd0f90b523\\output\\res\\color\\switch_thumb_material_dark.xml"
     },
     {
         "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\color\\design_tint_password_toggle.xml",

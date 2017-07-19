@@ -3,60 +3,6 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\u1076070\.android\build-cache\5a711b5eff2047678f8a652cd3450a0beec6195a\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a64026daf4819a589aea776f5deb19b257a104d1">
-        <dex dex="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\transforms\dex\debug\folders\1000\10\classes_097995ee849e6279a7cbd4c5e127bb81b282d7ad\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\u1076070\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpclient-android\4.3.5.1\eecbb0b998e77629862a13d957d552b3be58fc4e\httpclient-android-4.3.5.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="eecbb0b998e77629862a13d957d552b3be58fc4e">
-        <dex dex="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\transforms\dex\debug\folders\1000\10\httpclient-android-4.3.5.1_d15732c30ce0df7cbc6fc9470e999d7501303dd9\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\u1076070\.android\build-cache\5f1c87c8094dc1ddf20eb5df270fffe240189a54\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="e04f28ac2dd9bbe48ced6fc87fedf46c2586f5d6">
-        <dex dex="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\transforms\dex\debug\folders\1000\10\classes_049d6682a5ff557c8fcf4bf3a03a66de23cfcdbc\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
-        <dex dex="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_0e818d7de5f380bf52ebd8f4bcddb31ff39e44c3\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\u1076070\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
-        <dex dex="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.3.1_71e3b17753babfb264de0a1445ff79a8df9f7f2f\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\u1076070\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-api\2.2\d7ef6ad7ff0711dd12fe409d62d72d6ed14516e0\log4j-api-2.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d7ef6ad7ff0711dd12fe409d62d72d6ed14516e0">
-        <dex dex="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\transforms\dex\debug\folders\1000\10\log4j-api-2.2_2c086e2779d2df914612a295c107540eeff4abe4\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Program Files\Android\Android Studio\gradle\m2repository\commons-io\commons-io\2.4\commons-io-2.4.jar"
         jumboMode="true"
         optimize="true"
@@ -79,8 +25,35 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="13f6467cf51c2e5dd1e02f56e8d1656af7d6fb55">
+        sha1="97d3caaa781d8b312011f739c9704cd5e9c1b9e9">
         <dex dex="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_b3e114edaed29483770eee994d463c9c2478b78b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\u1076070\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpclient-android\4.3.5.1\eecbb0b998e77629862a13d957d552b3be58fc4e\httpclient-android-4.3.5.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="eecbb0b998e77629862a13d957d552b3be58fc4e">
+        <dex dex="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\transforms\dex\debug\folders\1000\10\httpclient-android-4.3.5.1_d15732c30ce0df7cbc6fc9470e999d7501303dd9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_0e818d7de5f380bf52ebd8f4bcddb31ff39e44c3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\u1076070\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.3.1_71e3b17753babfb264de0a1445ff79a8df9f7f2f\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -93,12 +66,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\u1076070\.gradle\caches\modules-2\files-2.1\com.android.support\support-annotations\25.4.0\f6a2fc748ae3769633dea050563e1613e93c135e\support-annotations-25.4.0.jar"
+        jar="C:\Users\u1076070\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-api\2.2\d7ef6ad7ff0711dd12fe409d62d72d6ed14516e0\log4j-api-2.2.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="f6a2fc748ae3769633dea050563e1613e93c135e">
-        <dex dex="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.4.0_503c08236fa1d7da6fd88fe135d910ec704508ce\classes.dex" />
+        sha1="d7ef6ad7ff0711dd12fe409d62d72d6ed14516e0">
+        <dex dex="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\transforms\dex\debug\folders\1000\10\log4j-api-2.2_2c086e2779d2df914612a295c107540eeff4abe4\classes.dex" />
     </item>
 
 </items>

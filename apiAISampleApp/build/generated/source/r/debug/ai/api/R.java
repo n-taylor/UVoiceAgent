@@ -34,10 +34,10 @@ public final class R {
     }
     public static final class drawable {
         public static final int cube = 0x7f020055;
-        public static final int mic_control = 0x7f02005d;
-        public static final int microphone_control = 0x7f02005e;
-        public static final int speaker = 0x7f02006b;
-        public static final int speaker_silent = 0x7f02006c;
+        public static final int mic_control = 0x7f02005e;
+        public static final int microphone_control = 0x7f02005f;
+        public static final int speaker = 0x7f02006c;
+        public static final int speaker_silent = 0x7f02006d;
     }
     public static final class id {
         public static final int micButton = 0x7f0e0077;
@@ -46,14 +46,14 @@ public final class R {
         public static final int titleTextView = 0x7f0e0091;
     }
     public static final class layout {
-        public static final int aidialog = 0x7f030023;
+        public static final int aidialog = 0x7f030024;
     }
     public static final class raw {
         public static final int version_config = 0x7f070003;
     }
     public static final class string {
-        public static final int app_name = 0x7f080023;
-        public static final int default_aidialog_title = 0x7f080027;
+        public static final int app_name = 0x7f080024;
+        public static final int default_aidialog_title = 0x7f080028;
     }
     public static final class style {
         public static final int ApiAi = 0x7f0a00a8;

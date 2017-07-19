@@ -21,8 +21,11 @@ package ai.api.sample;
  *
  ***********************************************************************************************************************/
 
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -49,14 +52,22 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import ai.api.AIServiceException;
+import ai.api.RequestExtras;
 import ai.api.android.AIConfiguration;
+import ai.api.android.AIDataService;
 import ai.api.android.GsonFactory;
+import ai.api.model.AIContext;
 import ai.api.model.AIError;
+import ai.api.model.AIEvent;
+import ai.api.model.AIRequest;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
 
@@ -76,6 +87,12 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
     SharedData sessiondata;
     private String accountID;
     private int account_access;
+
+    //Progress bar
+    private ProgressDialog progress;
+
+    //
+    private AIDataService aiDataService;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -111,8 +128,93 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
         //Save asked query
         dataasked = new DataAsked();
 
+        //Build connection to server
+        //apiConnect();
+
+        //RetrieveFeedTask httpTask = new RetrieveFeedTask();
+        //httpTask.execute();
+
         //Welcome message
         resultTextView.setText(Html.fromHtml("<b>Welcome, "+accountID+"!</b>"));
+
+
+    }
+
+    private void apiConnect(){
+        progress = new ProgressDialog(this);
+        progress.setMessage("Connecting...");
+        progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progress.setIndeterminate(true);
+        progress.setProgress(0);
+        progress.show();
+
+        final int totalProgressTime = 100;
+        final Thread t = new Thread() {
+            @Override
+            public void run() {
+                int jumpTime = 0;
+
+                while(jumpTime < totalProgressTime) {
+                    try {
+                        sendRequest();
+                        sleep(200);
+                        jumpTime += 5;
+                        progress.setProgress(jumpTime);
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        t.start();
+    }
+
+
+    private void sendRequest() {
+
+        final String queryString = "Hello";
+
+        final AsyncTask<String, Void, AIResponse> task = new AsyncTask<String, Void, AIResponse>() {
+
+            private AIError aiError;
+
+            @Override
+            protected AIResponse doInBackground(final String... params) {
+                final AIRequest request = new AIRequest();
+                String query = params[0];
+                //String event = params[1];
+
+                if (!TextUtils.isEmpty(query))
+                    request.setQuery(query);
+                //if (!TextUtils.isEmpty(event))
+                //    request.setEvent(new AIEvent(event));
+                final String contextString = params[1];
+                RequestExtras requestExtras = null;
+                if (!TextUtils.isEmpty(contextString)) {
+                    final List<AIContext> contexts = Collections.singletonList(new AIContext(contextString));
+                    requestExtras = new RequestExtras(contexts, null);
+                }
+
+                try {
+                    return aiDataService.request(request, requestExtras);
+                } catch (final AIServiceException e) {
+                    aiError = new AIError(e);
+                    return null;
+                }
+            }
+
+            @Override
+            protected void onPostExecute(final AIResponse response) {
+                if (response != null) {
+                    onResult(response);
+                } else {
+                    onError(aiError);
+                }
+            }
+        };
+
+        task.execute(queryString);
     }
 
     @Override
@@ -204,6 +306,11 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
         return phoneNumber;
     }
 
+    /**
+     * Show response from the API.AI server,
+     * If parameters are enough and user said "Yes", try to get data from webservice.
+     * @param response
+     */
     @Override
     public void onResult(final AIResponse response) {
         runOnUiThread(new Runnable() {
@@ -220,8 +327,11 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
                     {
                         if(dataasked.IsAccessable(account_access)){
                         String speech = PR.get_reply();
-                        resultTextView.setText(speech+"\n"+dataasked.get_info());
-                        TTS.speak(speech);
+                        //resultTextView.setText(speech+"\n"+dataasked.get_info());
+                        //    resultTextView.setText(speech+"\n"+dataasked.get_info());
+                            RetrieveFeedTask httpTask = new RetrieveFeedTask();
+                            httpTask.execute();
+                        //TTS.speak(speech);
                         }
                         else{
                             String speech = "Sorry, you are not permitted to access these information.";
@@ -229,7 +339,7 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
                             TTS.speak(speech);
                         }
                         //clear parameters
-                        dataasked.clear_params();
+                        //dataasked.clear_params();
                     }
                 }
                 else
@@ -254,6 +364,10 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
                         //resultTextView.setText(gson.toJson(response));
                         resultTextView.setText(speech);
                         TTS.speak(speech);
+
+                    //RetrieveFeedTask httpTask = new RetrieveFeedTask();
+                    //httpTask.execute();
+
 
                 }
 
@@ -304,5 +418,34 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
                 resultTextView.setText("");
             }
         });
+    }
+
+    class RetrieveFeedTask extends AsyncTask<Void,Integer,String> {
+
+        private Exception exception;
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            String data=null;
+            try {
+                 data = dataasked.getHttpClientReply();
+                //String data = dataasked.get_info_html("");
+                //return data;
+            } catch (Exception e) {
+                this.exception = e;
+            }
+            return data;
+        }
+
+        @Override
+        protected void onPostExecute(String str){
+            //super.onPostExecute(str);
+            TextView resultTV_insync = (TextView) findViewById(R.id.resultTextView);
+            Log.d(TAG,str);
+            if(str!=null)
+                resultTV_insync.setText(str);
+
+        }
+
     }
 }
