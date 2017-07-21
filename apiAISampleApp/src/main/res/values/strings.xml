@@ -12,7 +12,7 @@
     <string name="button_sample_text">Button Voice Assistant</string>
     <string name="dialog_sample_text">Dialog Voice Assistant</string>
     <string name="text_sample_text">Text Voice Assistant</string>-->
-    <string name="title_app_widget">Voice Voice Assistant</string>
+    <string name="title_app_widget">Voice Assistant</string>
     <string name="non_empty_query">Query should not be empty</string>
 
     <string name="use_bluetooth_headset">Use Bluetooth headset</string>
