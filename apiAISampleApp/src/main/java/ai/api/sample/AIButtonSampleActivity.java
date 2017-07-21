@@ -442,9 +442,10 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
             //super.onPostExecute(str);
             TextView resultTV_insync = (TextView) findViewById(R.id.resultTextView);
             Log.d(TAG,str);
-            if(str!=null)
+            if(str!=null){
                 resultTV_insync.setText(str);
-
+                TTS.speak(str);
+            }
         }
 
     }

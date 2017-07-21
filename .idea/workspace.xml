@@ -941,238 +941,49 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apiAISampleApp/src/main/res/values/strings.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apiAISampleApp/src/main/res/values/styles.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apiAISampleApp/src/main/res/xml/ai_app_widget_info.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/animated_vector_drawable_23_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_23_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_25_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_compat_25_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_core_utils_25_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_vector_drawable_23_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/multi/values-h320dp-v13.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/multi/values-w360dp-v13.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/multi/values-w480dp-v13.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/multi/values-w500dp-v13.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/multi/values-w600dp-v13.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/multi/values-w720dp-v13.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/multi/values-xlarge-land-v4.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_3/buildId.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_7/buildId.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apiAISampleApp/build/outputs/apk/apiAISampleApp-debug_v2.apk" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ailib/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/ailib/build/intermediates/res/resources-debug-androidTest.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ailib/build/outputs/aar/ailib-debug.aar" afterPath="$PROJECT_DIR$/ailib/build/outputs/aar/ailib-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/R$drawable.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/R$layout.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/R$string.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/AIButtonSampleActivity$1.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/AIButtonSampleActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/AIButtonSampleActivity$2.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/AIButtonSampleActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/AIButtonSampleActivity$3.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/AIButtonSampleActivity$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/AIButtonSampleActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/AIButtonSampleActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/AISampleAppWidget.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/AISampleAppWidget.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/AISettingsActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/AISettingsActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/AITextSampleActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/AITextSampleActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/AIWidgetActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/AIWidgetActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/Constants.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/Constants.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/DataAsked$type_enum.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/DataAsked$type_enum.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/DataAsked.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/DataAsked.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/MainActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/MainActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/ParseResult$response.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/ParseResult$response.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/ParseResult.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/ParseResult.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/R$drawable.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/R$id.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/R$integer.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/R$integer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/R$layout.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/R$menu.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/R$menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/R$raw.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/R$raw.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/R$string.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/R$style.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/R$styleable.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/R$styleable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/R$xml.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/R$xml.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/android/support/design/R$drawable.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/android/support/design/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/android/support/design/R$layout.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/android/support/design/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/android/support/design/R$string.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/android/support/design/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/android/support/v7/appcompat/R$drawable.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/android/support/v7/appcompat/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/android/support/v7/appcompat/R$layout.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/android/support/v7/appcompat/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/R$drawable.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/R$layout.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/R$string.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/AIButtonSampleActivity$1.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/AIButtonSampleActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/AIButtonSampleActivity$2.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/AIButtonSampleActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/AIButtonSampleActivity$3.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/AIButtonSampleActivity$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/AIButtonSampleActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/AIButtonSampleActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/AISampleAppWidget.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/AISampleAppWidget.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/AISettingsActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/AISettingsActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/AITextSampleActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/AITextSampleActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/AIWidgetActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/AIWidgetActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/Constants.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/Constants.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/DataAsked$type_enum.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/DataAsked$type_enum.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/DataAsked.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/DataAsked.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/MainActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/MainActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/ParseResult$response.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/ParseResult$response.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/ParseResult.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/ParseResult.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/R$drawable.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/R$id.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/R$integer.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/R$integer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/R$layout.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/R$menu.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/R$menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/R$raw.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/R$raw.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/R$string.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/R$style.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/R$styleable.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/R$styleable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/R$xml.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/R$xml.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/android/support/design/R$drawable.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/android/support/design/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/android/support/design/R$layout.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/android/support/design/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/android/support/design/R$string.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/android/support/design/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/android/support/v7/appcompat/R$drawable.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/android/support/v7/appcompat/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/android/support/v7/appcompat/R$layout.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/android/support/v7/appcompat/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental/packageDebug/zip-cache/nB6VVIYRHghaqRrEOuC8WpxuUd4=" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental/packageDebug/zip-cache/nB6VVIYRHghaqRrEOuC8WpxuUd4=" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental/packageInstantRunResourcesDebug/zip-cache/nB6VVIYRHghaqRrEOuC8WpxuUd4=" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental/packageInstantRunResourcesDebug/zip-cache/nB6VVIYRHghaqRrEOuC8WpxuUd4=" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/AIButtonSampleActivity$RetrieveFeedTask.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/classes/debug/ai/api/sample/AIButtonSampleActivity$RetrieveFeedTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/AIButtonSampleActivity$RetrieveFeedTask.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental-verifier/debug/ai/api/sample/AIButtonSampleActivity$RetrieveFeedTask.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-resources/resources-debug.ir.ap_" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-resources/resources-debug.ir.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/res/resources-debug-androidTest.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/res/resources-debug.ap_" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/res/resources-debug.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/split-apk/debug/dep/dependencies.apk" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/split-apk/debug/dep/dependencies.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/split-apk/debug/slices/slice_0.apk" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/split-apk/debug/slices/slice_0.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/split-apk/debug/slices/slice_2.apk" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/split-apk/debug/slices/slice_2.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/split-apk/debug/slices/slice_6.apk" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/split-apk/debug/slices/slice_6.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/split-apk/debug/slices/slice_8.apk" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/split-apk/debug/slices/slice_8.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_0/classes.dex" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_0/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_2/classes.dex" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_2/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_8/classes.dex" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_8/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/R$drawable.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/R$layout.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/R$string.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/R$string.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AIApplication.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AIApplication.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AIButtonSampleActivity$1.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AIButtonSampleActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AIButtonSampleActivity$2.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AIButtonSampleActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AIButtonSampleActivity$3.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AIButtonSampleActivity$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AIButtonSampleActivity$RetrieveFeedTask.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AIButtonSampleActivity$RetrieveFeedTask.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AIButtonSampleActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AIButtonSampleActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AISampleAppWidget.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AISampleAppWidget.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AIDialogSampleActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AIDialogSampleActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AIServiceSampleActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AIServiceSampleActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AISettingsActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AISettingsActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AITextSampleActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AITextSampleActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AIWidgetActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/AIWidgetActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/Constants.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/Constants.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/DataAsked$type_enum.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/DataAsked$type_enum.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/DataAsked.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/DataAsked.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/BaseActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/BaseActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/MainActivity$1.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/MainActivity$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/MainActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/MainActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/ParseResult$response.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/ParseResult$response.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/ParseResult.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/ParseResult.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/R$drawable.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/R$id.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/R$integer.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/R$integer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/R$layout.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/R$menu.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/R$menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/R$raw.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/R$raw.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/R$string.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/R$style.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/R$styleable.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/R$styleable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/R$xml.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/sample/R$xml.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/design/R$drawable.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/design/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/design/R$layout.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/design/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/design/R$string.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/design/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$drawable.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$layout.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_0/android/support/design/R$drawable.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_0/android/support/design/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_0/android/support/design/R$layout.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_0/android/support/design/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_0/android/support/design/R$string.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_0/android/support/design/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_2/android/support/v7/appcompat/R$drawable.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_2/android/support/v7/appcompat/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_2/android/support/v7/appcompat/R$layout.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_2/android/support/v7/appcompat/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/ai/api/R$drawable.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/ai/api/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/ai/api/R$layout.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/ai/api/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/ai/api/R$string.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/ai/api/R$string.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AIApplication.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AIApplication.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AIButtonSampleActivity$1.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AIButtonSampleActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AIButtonSampleActivity$2.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AIButtonSampleActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AIButtonSampleActivity$3.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AIButtonSampleActivity$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AIButtonSampleActivity$RetrieveFeedTask.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AIButtonSampleActivity$RetrieveFeedTask.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AIButtonSampleActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AIButtonSampleActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AISampleAppWidget.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AISampleAppWidget.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AIDialogSampleActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AIDialogSampleActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AIServiceSampleActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AIServiceSampleActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AISettingsActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AISettingsActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AITextSampleActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AITextSampleActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AIWidgetActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/AIWidgetActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/Constants.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/Constants.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/DataAsked$type_enum.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/DataAsked$type_enum.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/DataAsked.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/DataAsked.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/BaseActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/BaseActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/MainActivity$1.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/MainActivity$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/MainActivity.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/MainActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/ParseResult$response.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/ParseResult$response.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/ParseResult.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/ParseResult.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/R$drawable.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/R$id.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/R$integer.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/R$integer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/R$layout.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/R$menu.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/R$menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/R$raw.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/R$raw.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/R$string.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/R$style.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/R$styleable.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/R$styleable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/R$xml.class" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/ai/api/sample/R$xml.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/outputs/apk/apiAISampleApp-debug.apk" afterPath="$PROJECT_DIR$/apiAISampleApp/build/outputs/apk/apiAISampleApp-debug.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ailib/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/ailib/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ailib/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/ailib/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ailib/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/ailib/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ailib/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/ailib/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/generated/source/r/debug/ai/api/R.java" afterPath="$PROJECT_DIR$/apiAISampleApp/build/generated/source/r/debug/ai/api/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/generated/source/r/debug/ai/api/sample/R.java" afterPath="$PROJECT_DIR$/apiAISampleApp/build/generated/source/r/debug/ai/api/sample/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/generated/source/r/debug/android/support/design/R.java" afterPath="$PROJECT_DIR$/apiAISampleApp/build/generated/source/r/debug/android/support/design/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/generated/source/r/debug/android/support/v7/appcompat/R.java" afterPath="$PROJECT_DIR$/apiAISampleApp/build/generated/source/r/debug/android/support/v7/appcompat/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/multi/values.json" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/multi/values.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/anim.json" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/anim.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/color.json" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/color.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable-hdpi-v4.json" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable-hdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable-ldrtl-hdpi-v17.json" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable-ldrtl-hdpi-v17.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable-ldrtl-mdpi-v17.json" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable-ldrtl-mdpi-v17.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable-ldrtl-xhdpi-v17.json" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable-ldrtl-xhdpi-v17.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable-ldrtl-xxhdpi-v17.json" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable-ldrtl-xxhdpi-v17.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable-ldrtl-xxxhdpi-v17.json" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable-ldrtl-xxxhdpi-v17.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable-mdpi-v4.json" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable-mdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable-xhdpi-v4.json" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable-xhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable-xxhdpi-v4.json" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable-xxhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable-xxxhdpi-v4.json" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable-xxxhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable.json" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/drawable.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/layout.json" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/blame/res/debug/single/layout.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental/mergeDebugResources/merger.xml" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental/mergeDebugResources/merger.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental/packageDebug/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental/packageDebug/dex-renamer-state.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental/packageDebug/file-input-save-data.txt" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental/packageDebug/file-input-save-data.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental/packageInstantRunResourcesDebug/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental/packageInstantRunResourcesDebug/dex-renamer-state.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental/packageInstantRunResourcesDebug/file-input-save-data.txt" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/incremental/packageInstantRunResourcesDebug/file-input-save-data.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/manifest.crc" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/manifest.crc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/manifest.xml" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/manifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_dependencies/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_dependencies/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_slice_0/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_slice_0/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_slice_1/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_slice_1/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_slice_2/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_slice_2/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_slice_3/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_slice_3/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_slice_4/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_slice_4/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_slice_5/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_slice_5/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_slice_6/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_slice_6/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_slice_7/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_slice_7/dex-renamer-state.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_slice_8/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_slice_8/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_slice_9/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/instant-run-support/debug/package_slice_9/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/manifests/full/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/manifests/instant-run/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/manifests/instant-run/debug/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/res/merged/debug/menu/menu_aibutton_sample.xml" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/res/merged/debug/menu/menu_aibutton_sample.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/res/merged/debug/values/values.xml" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/res/merged/debug/values/values.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/restart-dex/debug/build-info.xml" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/restart-dex/debug/build-info.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/symbols/debug/R.txt" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/symbols/debug/R.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_0/buildId.txt" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_0/buildId.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_2/buildId.txt" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_2/buildId.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/buildId.txt" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/buildId.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/buildId.txt" afterPath="$PROJECT_DIR$/apiAISampleApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/buildId.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="$PROJECT_DIR$/apiAISampleApp/build/outputs/logs/manifest-merger-debug-report.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/apiAISampleApp/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/AIButtonSampleActivity.java" afterPath="$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/AIButtonSampleActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/Constants.java" afterPath="$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/DataAsked.java" afterPath="$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/DataAsked.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/MainActivity.java" afterPath="$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/ParseResult.java" afterPath="$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/ParseResult.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/src/main/res/layout/activity_aibutton_sample.xml" afterPath="$PROJECT_DIR$/apiAISampleApp/src/main/res/layout/activity_aibutton_sample.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/src/main/res/menu/menu_aibutton_sample.xml" afterPath="$PROJECT_DIR$/apiAISampleApp/src/main/res/menu/menu_aibutton_sample.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiAISampleApp/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/apiAISampleApp/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
     </list>
     <ignored path="app.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1212,10 +1023,13 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2700">
+            <state relative-caret-position="2943">
               <caret line="109" column="9" selection-start-line="109" selection-start-column="9" selection-end-line="109" selection-end-column="9" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#4431#4432#0" expanded="false" />
+                <element signature="e#4490#4491#0" expanded="false" />
+                <element signature="e#4542#4543#0" expanded="false" />
+                <element signature="e#4599#4600#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -1224,33 +1038,41 @@
       <file leaf-file-name="ParseResult.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/ParseResult.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
+            <state relative-caret-position="2781">
               <caret line="122" column="7" selection-start-line="122" selection-start-column="7" selection-end-line="122" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AIButtonSampleActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/AIButtonSampleActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="444" column="0" selection-start-line="444" selection-start-column="0" selection-end-line="444" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#sendRequest#0;class#AIButtonSampleActivity#0" expanded="false" />
-                <element signature="e#11001#14654#0" expanded="true" />
-                <element signature="e#14653#14654#0" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#1941#1942#0" expanded="false" />
+                <element signature="e#1989#1990#0" expanded="false" />
+                <element signature="e#2124#2125#0" expanded="false" />
+                <element signature="e#2165#2166#0" expanded="false" />
+                <element signature="e#2321#2322#0" expanded="false" />
+                <element signature="e#2371#2372#0" expanded="false" />
+                <element signature="e#2510#2511#0" expanded="false" />
+                <element signature="e#2562#2563#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataAsked.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AIButtonSampleActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/AIButtonSampleActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="500">
+              <caret line="448" column="9" selection-start-line="448" selection-start-column="9" selection-end-line="448" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#sendRequest#0;class#AIButtonSampleActivity#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataAsked.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/DataAsked.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-42">
-              <caret line="191" column="0" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
+            <state relative-caret-position="436">
+              <caret line="78" column="58" selection-start-line="78" selection-start-column="58" selection-end-line="78" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1261,7 +1083,7 @@
       <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
+            <state relative-caret-position="383">
               <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
               <folding />
             </state>
@@ -3981,10 +3803,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1050" />
+    <option name="x" value="31" />
+    <option name="y" value="2" />
+    <option name="width" value="1867" />
+    <option name="height" value="1027" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -4022,7 +3844,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="device.picker.selection" value="Nexus_5X_API_23_2" />
+    <property name="device.picker.selection" value="Nexus_5X_API_24" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
@@ -4366,7 +4188,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
+    <frame x="31" y="2" width="1867" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31648615" sideWeight="0.49785176" order="6" side_tool="false" content_ui="tabs" />
@@ -4376,20 +4198,19 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4227545" sideWeight="0.50345623" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38407496" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24384525" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3261131" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24384525" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3261131" sideWeight="0.49785176" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11278196" sideWeight="0.7139423" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11707841" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.116694584" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2974239" sideWeight="0.49654377" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15572916" sideWeight="0.28605768" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29723224" sideWeight="0.49654377" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -4398,6 +4219,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46266967" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -4491,7 +4313,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4499,7 +4320,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4507,7 +4327,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4694,7 +4513,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="5" column="32" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4810,10 +4628,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2700">
+        <state relative-caret-position="2943">
           <caret line="109" column="9" selection-start-line="109" selection-start-column="9" selection-end-line="109" selection-end-column="9" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#4431#4432#0" expanded="false" />
+            <element signature="e#4490#4491#0" expanded="false" />
+            <element signature="e#4542#4543#0" expanded="false" />
+            <element signature="e#4599#4600#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -4827,15 +4648,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/ParseResult.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
+        <state relative-caret-position="2781">
           <caret line="122" column="7" selection-start-line="122" selection-start-column="7" selection-end-line="122" selection-end-column="7" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1941#1942#0" expanded="false" />
+            <element signature="e#1989#1990#0" expanded="false" />
+            <element signature="e#2124#2125#0" expanded="false" />
+            <element signature="e#2165#2166#0" expanded="false" />
+            <element signature="e#2321#2322#0" expanded="false" />
+            <element signature="e#2371#2372#0" expanded="false" />
+            <element signature="e#2510#2511#0" expanded="false" />
+            <element signature="e#2562#2563#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/AIButtonSampleActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="448" column="9" selection-start-line="448" selection-start-column="9" selection-end-line="448" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#sendRequest#0;class#AIButtonSampleActivity#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
+        <state relative-caret-position="383">
           <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
           <folding />
         </state>
@@ -4843,23 +4685,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/DataAsked.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-42">
-          <caret line="191" column="0" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
+        <state relative-caret-position="436">
+          <caret line="78" column="58" selection-start-line="78" selection-start-column="58" selection-end-line="78" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/AIButtonSampleActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="444" column="0" selection-start-line="444" selection-start-column="0" selection-end-line="444" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#sendRequest#0;class#AIButtonSampleActivity#0" expanded="false" />
-            <element signature="e#11001#14654#0" expanded="true" />
-            <element signature="e#14653#14654#0" expanded="true" />
           </folding>
         </state>
       </provider>
