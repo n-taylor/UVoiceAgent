@@ -38,16 +38,19 @@ repositories {
 
 dependencies {
     compile fileTree(include: '*.jar', dir: 'libs')
-    compile 'com.android.support:support-v4:25.3.+'
-    compile 'com.android.support:appcompat-v7:25.3.+'
-    //compile 'com.android.support:support-core-utils:25.4.0'//added 20170614
 
+    compile 'com.android.support:appcompat-v7:25.3.+'
+
+    //compile 'com.android.support:support-v4:25.3.+'
+    //compile 'com.android.support:support-core-utils:25.4.0'//added 20170614
     compile 'com.google.code.gson:gson:2.3.1'
     compile 'commons-io:commons-io:2.4'
     compile 'ai.api:libai:1.2.2'
-    compile 'ai.api:sdk:2.0.1@aar'
+    //compile 'ai.api:sdk:2.0.1@aar'
     // this line left for testing purposes
     // compile project(':ailib')
     compile 'org.apache.httpcomponents:httpclient-android:4.3.5.1'
     compile 'com.android.support:design:25.3.1'
+    compile 'ai.api:sdk:2.0.7@aar'
+
 }
