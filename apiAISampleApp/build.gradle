@@ -54,3 +54,18 @@ dependencies {
     compile 'ai.api:sdk:2.0.7@aar'
 
 }
+//Jar creation
+/*
+task deleteJar(type: Delete) {
+    delete 'libs/voiceagent.jar'
+}
+
+task createJar(type: Copy) {
+    from('build/intermediates/bundles/release/')
+    into('libs/jars/')
+    include('classes.jar')
+    rename('classes.jar', 'voiceagent.jar')
+}
+
+createJar.dependsOn(deleteJar, build)
+*/

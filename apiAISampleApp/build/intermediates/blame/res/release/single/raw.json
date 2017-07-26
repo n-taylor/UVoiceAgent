@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\release\\raw\\test_start.wav",
+        "source": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\src\\main\\res\\raw\\test_start.wav"
+    },
+    {
+        "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\release\\raw\\test_cancel.wav",
+        "source": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\src\\main\\res\\raw\\test_cancel.wav"
+    },
+    {
+        "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\release\\raw\\test_stop.mp3",
+        "source": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\src\\main\\res\\raw\\test_stop.mp3"
+    },
+    {
+        "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\release\\raw\\version_config.json",
+        "source": "C:\\Users\\u1076070\\.android\\build-cache\\63cf6937066709919edf8496758dabbf2cf3bc23\\output\\res\\raw\\version_config.json"
+    }
+]
