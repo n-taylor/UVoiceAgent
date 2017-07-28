@@ -45,7 +45,7 @@ The API.AI Android SDK comes with a simple sample that illustrates how voice com
 2. Open [Android Studio](https://developer.android.com/sdk/installing/studio.html).
 3. Import the **api-ai-android-master** directory.
 4. Open the SDK Manager and be sure that you have installed Android Build Tools 19.1.
-5. In the Project browser, open **apiAISampleApp/src/main/java/ai.api.sample/Config**.
+5. In the Project browser, open **apiAISampleApp/src/main/java/voiceagent/Config**.
 6. Towards the top of the file, you will see a declaration of a static final string called *ACCESS_TOKEN*. Set its value to be the client access token of your agent.
 7. Attach an Android device, or have the emulator set up with an emulated device.
 8. From the **Run** menu, choose **Debug** (or click the Debug symbol). Choose your device.

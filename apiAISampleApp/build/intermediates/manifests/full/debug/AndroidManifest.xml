@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ai.api.sample"
+    package="ai.api.voiceagent"
     android:versionCode="52"
     android:versionName="2.0.1" >
 
@@ -21,12 +21,12 @@
         android:value="25.3.1" />
 
     <application
-        android:name="ai.api.sample.AIApplication"
+        android:name="ai.api.voiceagent.AIApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name="ai.api.sample.MainActivity"
+            android:name="ai.api.voiceagent.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme" >
             <intent-filter>
@@ -36,22 +36,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="ai.api.sample.AIButtonSampleActivity"
+            android:name="ai.api.voiceagent.AIButtonSampleActivity"
             android:label="@string/title_activity_aibutton_sample"
-            android:parentActivityName="ai.api.sample.MainActivity"
+            android:parentActivityName="ai.api.voiceagent.MainActivity"
             android:theme="@style/My_theme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ai.api.sample.MainActivity" />
+                android:value="ai.api.voiceagent.MainActivity" />
         </activity>
         <activity
-            android:name="ai.api.sample.AISettingsActivity"
+            android:name="ai.api.voiceagent.AISettingsActivity"
             android:label="@string/action_settings"
-            android:parentActivityName="ai.api.sample.MainActivity"
+            android:parentActivityName="ai.api.voiceagent.MainActivity"
             android:theme="@style/AppTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ai.api.sample.MainActivity" />
+                android:value="ai.api.voiceagent.MainActivity" />
         </activity>
     </application>
 
