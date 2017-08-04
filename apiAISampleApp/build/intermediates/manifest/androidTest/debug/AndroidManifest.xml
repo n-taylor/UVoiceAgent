@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ai.api.voiceagent.test">
+    package="ai.webservice.voiceagent.test">
 
     <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="24" />
 
@@ -9,8 +9,8 @@
     </application>
 
     <instrumentation android:name="android.test.InstrumentationTestRunner"
-                     android:targetPackage="ai.api.voiceagent"
+                     android:targetPackage="ai.webservice.voiceagent"
                      android:handleProfiling="false"
                      android:functionalTest="false"
-                     android:label="Tests for ai.api.voiceagent"/>
+                     android:label="Tests for ai.webservice.voiceagent"/>
 </manifest>

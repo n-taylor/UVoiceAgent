@@ -192,10 +192,6 @@
         "source": "C:\\Users\\u1076070\\.android\\build-cache\\f9c3d23ca675999f1f89bc5264ee83dd0f90b523\\output\\res\\layout\\abc_alert_dialog_title_material.xml"
     },
     {
-        "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\layout\\activity_aiservice_sample.xml",
-        "source": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\src\\main\\res\\layout\\activity_aiservice_sample.xml"
-    },
-    {
         "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
         "source": "C:\\Users\\u1076070\\.android\\build-cache\\f9c3d23ca675999f1f89bc5264ee83dd0f90b523\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
@@ -222,9 +218,5 @@
     {
         "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
         "source": "C:\\Users\\u1076070\\.android\\build-cache\\f9c3d23ca675999f1f89bc5264ee83dd0f90b523\\output\\res\\layout\\select_dialog_singlechoice_material.xml"
-    },
-    {
-        "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\layout\\activity_aidialog_sample.xml",
-        "source": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\src\\main\\res\\layout\\activity_aidialog_sample.xml"
     }
 ]

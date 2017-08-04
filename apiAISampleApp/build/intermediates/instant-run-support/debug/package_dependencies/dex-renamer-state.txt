@@ -1,4 +1,4 @@
-#Fri Jul 28 13:51:14 MDT 2017
+#Fri Aug 04 00:50:30 MDT 2017
 file.2=C\:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\httpclient-android-4.3.5.1_d15732c30ce0df7cbc6fc9470e999d7501303dd9\\classes.dex
 base.2=C\:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\httpclient-android-4.3.5.1_d15732c30ce0df7cbc6fc9470e999d7501303dd9
 file.1=C\:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_fa5860e4602d28b9a19e195fca826da085972f35\\classes.dex

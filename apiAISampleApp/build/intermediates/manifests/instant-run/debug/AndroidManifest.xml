@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ai.api.voiceagent"
+    package="ai.webservice.voiceagent"
     android:versionCode="52"
     android:versionName="2.0.1" >
 
@@ -21,12 +21,12 @@
         android:value="25.3.1" />
 
     <application
-        android:name="ai.api.voiceagent.AIApplication"
+        android:name="ai.webservice.voiceagent.AIApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name="ai.api.voiceagent.MainActivity"
+            android:name="ai.webservice.voiceagent.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme" >
             <intent-filter>
@@ -36,27 +36,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="ai.api.voiceagent.AIButtonSampleActivity"
+            android:name="ai.webservice.voiceagent.AIButtonActivity"
             android:label="@string/title_activity_aibutton_sample"
-            android:parentActivityName="ai.api.voiceagent.MainActivity"
+            android:parentActivityName="ai.webservice.voiceagent.MainActivity"
             android:theme="@style/My_theme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ai.api.voiceagent.MainActivity" />
+                android:value="ai.webservice.voiceagent.MainActivity" />
         </activity>
         <activity
-            android:name="ai.api.voiceagent.AISettingsActivity"
+            android:name="ai.webservice.voiceagent.AISettingsActivity"
             android:label="@string/action_settings"
-            android:parentActivityName="ai.api.voiceagent.MainActivity"
+            android:parentActivityName="ai.webservice.voiceagent.MainActivity"
             android:theme="@style/AppTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ai.api.voiceagent.MainActivity" />
+                android:value="ai.webservice.voiceagent.MainActivity" />
         </activity>
 
         <provider
             android:name="com.android.tools.fd.runtime.InstantRunContentProvider"
-            android:authorities="ai.api.voiceagent.com.android.tools.fd.runtime.InstantRunContentProvider"
+            android:authorities="ai.webservice.voiceagent.com.android.tools.fd.runtime.InstantRunContentProvider"
             android:multiprocess="true" />
     </application>
 
