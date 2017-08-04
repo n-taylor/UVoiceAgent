@@ -4,12 +4,12 @@
         "source": "C:\\Users\\u1076070\\.android\\build-cache\\f9c3d23ca675999f1f89bc5264ee83dd0f90b523\\output\\res\\drawable\\abc_item_background_holo_light.xml"
     },
     {
-        "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
-        "source": "C:\\Users\\u1076070\\.android\\build-cache\\f9c3d23ca675999f1f89bc5264ee83dd0f90b523\\output\\res\\drawable\\abc_switch_thumb_material.xml"
-    },
-    {
         "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_indicator_material.xml",
         "source": "C:\\Users\\u1076070\\.android\\build-cache\\f9c3d23ca675999f1f89bc5264ee83dd0f90b523\\output\\res\\drawable\\abc_ratingbar_indicator_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
+        "source": "C:\\Users\\u1076070\\.android\\build-cache\\f9c3d23ca675999f1f89bc5264ee83dd0f90b523\\output\\res\\drawable\\abc_switch_thumb_material.xml"
     },
     {
         "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_small_material.xml",

@@ -2,7 +2,7 @@
 manifest
 ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:2:1-52:12
 	package
-		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:3:5-39
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:3:5-40
 		INJECTED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml
 	android:versionName
@@ -62,15 +62,15 @@ MERGED from [ai.api:sdk:2.0.7] C:\Users\u1076070\.android\build-cache\63cf693706
 	android:icon
 		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:16:9-45
 	android:name
-		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:14:9-62
-activity#ai.webservice.voiceagent.MainActivity
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:14:9-63
+activity#ute.webservice.voiceagent.MainActivity
 ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:18:9-27:20
 	android:label
 		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:20:13-45
 	android:theme
 		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:21:13-44
 	android:name
-		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:19:13-65
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:19:13-66
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
 ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:22:13-26:29
 action#android.intent.action.MAIN
@@ -81,32 +81,32 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:25:17-77
 	android:name
 		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:25:27-74
-activity#ai.webservice.voiceagent.AIButtonActivity
+activity#ute.webservice.voiceagent.AIButtonActivity
 ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:29:9-37:20
 	android:label
 		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:31:13-67
 	android:parentActivityName
-		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:32:13-79
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:32:13-80
 	android:theme
 		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:33:13-44
 	android:name
-		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:30:13-69
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:30:13-70
 meta-data#android.support.PARENT_ACTIVITY
-ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:34:13-36:73
+ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:34:13-36:74
 	android:value
-		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:36:17-70
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:36:17-71
 	android:name
 		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:35:17-63
-activity#ai.webservice.voiceagent.AISettingsActivity
+activity#ute.webservice.voiceagent.AISettingsActivity
 ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:40:9-48:20
 	android:label
 		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:42:13-52
 	android:parentActivityName
-		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:43:13-79
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:43:13-80
 	android:theme
 		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:44:13-44
 	android:name
-		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:41:13-71
+		ADDED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml:41:13-72
 uses-sdk
 INJECTED from C:\Users\u1076070\Downloads\app\apiAISampleApp\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:design:25.3.1] C:\Users\u1076070\.android\build-cache\029afaf59b60ab119c6b324df2ab061a1443b17c\output\AndroidManifest.xml:21:5-23:62

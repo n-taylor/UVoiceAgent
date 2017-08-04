@@ -48,16 +48,16 @@
         "source": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
-        "source": "C:\\Users\\u1076070\\.android\\build-cache\\f9c3d23ca675999f1f89bc5264ee83dd0f90b523\\output\\res\\layout\\notification_template_part_chronometer.xml"
+        "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
+        "source": "C:\\Users\\u1076070\\.android\\build-cache\\f9c3d23ca675999f1f89bc5264ee83dd0f90b523\\output\\res\\layout\\notification_template_media.xml"
     },
     {
         "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
         "source": "C:\\Users\\u1076070\\.android\\build-cache\\f9c3d23ca675999f1f89bc5264ee83dd0f90b523\\output\\res\\layout\\notification_template_part_time.xml"
     },
     {
-        "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
-        "source": "C:\\Users\\u1076070\\.android\\build-cache\\f9c3d23ca675999f1f89bc5264ee83dd0f90b523\\output\\res\\layout\\notification_template_media.xml"
+        "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\u1076070\\.android\\build-cache\\f9c3d23ca675999f1f89bc5264ee83dd0f90b523\\output\\res\\layout\\notification_template_part_chronometer.xml"
     },
     {
         "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
@@ -76,12 +76,12 @@
         "source": "C:\\Users\\u1076070\\.android\\build-cache\\029afaf59b60ab119c6b324df2ab061a1443b17c\\output\\res\\layout\\design_navigation_item_subheader.xml"
     },
     {
-        "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
-        "source": "C:\\Users\\u1076070\\.android\\build-cache\\029afaf59b60ab119c6b324df2ab061a1443b17c\\output\\res\\layout\\design_navigation_item.xml"
-    },
-    {
         "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
         "source": "C:\\Users\\u1076070\\.android\\build-cache\\029afaf59b60ab119c6b324df2ab061a1443b17c\\output\\res\\layout\\design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
+        "source": "C:\\Users\\u1076070\\.android\\build-cache\\029afaf59b60ab119c6b324df2ab061a1443b17c\\output\\res\\layout\\design_navigation_item.xml"
     },
     {
         "merged": "C:\\Users\\u1076070\\Downloads\\app\\apiAISampleApp\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",

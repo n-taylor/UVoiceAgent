@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ai.webservice.voiceagent"
+    package="ute.webservice.voiceagent"
     android:versionCode="52"
     android:versionName="2.0.1" >
 
@@ -21,12 +21,12 @@
         android:value="25.3.1" />
 
     <application
-        android:name="ai.webservice.voiceagent.AIApplication"
+        android:name="ute.webservice.voiceagent.AIApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name="ai.webservice.voiceagent.MainActivity"
+            android:name="ute.webservice.voiceagent.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme" >
             <intent-filter>
@@ -36,27 +36,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="ai.webservice.voiceagent.AIButtonActivity"
+            android:name="ute.webservice.voiceagent.AIButtonActivity"
             android:label="@string/title_activity_aibutton_sample"
-            android:parentActivityName="ai.webservice.voiceagent.MainActivity"
+            android:parentActivityName="ute.webservice.voiceagent.MainActivity"
             android:theme="@style/My_theme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ai.webservice.voiceagent.MainActivity" />
+                android:value="ute.webservice.voiceagent.MainActivity" />
         </activity>
         <activity
-            android:name="ai.webservice.voiceagent.AISettingsActivity"
+            android:name="ute.webservice.voiceagent.AISettingsActivity"
             android:label="@string/action_settings"
-            android:parentActivityName="ai.webservice.voiceagent.MainActivity"
+            android:parentActivityName="ute.webservice.voiceagent.MainActivity"
             android:theme="@style/AppTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ai.webservice.voiceagent.MainActivity" />
+                android:value="ute.webservice.voiceagent.MainActivity" />
         </activity>
 
         <provider
             android:name="com.android.tools.fd.runtime.InstantRunContentProvider"
-            android:authorities="ai.webservice.voiceagent.com.android.tools.fd.runtime.InstantRunContentProvider"
+            android:authorities="ute.webservice.voiceagent.com.android.tools.fd.runtime.InstantRunContentProvider"
             android:multiprocess="true" />
     </application>
 
