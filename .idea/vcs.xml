@@ -3,6 +3,5 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/api-ai-android-sdk-master" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/apiAISampleApp" vcs="Git" />
   </component>
 </project>

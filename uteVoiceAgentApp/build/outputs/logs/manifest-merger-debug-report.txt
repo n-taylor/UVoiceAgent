@@ -1,0 +1,149 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:2:1-52:12
+	package
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:3:5-40
+		INJECTED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:5:5-79
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:5:22-76
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:6:5-71
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:6:22-68
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:7:5-81
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:7:22-78
+uses-permission#android.permission.BLUETOOTH
+ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:8:5-68
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:8:22-65
+uses-permission#android.permission.BROADCAST_STICKY
+ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:9:5-75
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:9:22-72
+uses-permission#android.permission.MODIFY_AUDIO_SETTINGS
+ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:10:5-80
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:10:22-77
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:11:5-66
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:11:22-64
+application
+ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:13:5-50:19
+MERGED from [com.android.support:design:25.3.1] C:\Users\u1076070\.android\build-cache\029afaf59b60ab119c6b324df2ab061a1443b17c\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\u1076070\.android\build-cache\f9c3d23ca675999f1f89bc5264ee83dd0f90b523\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\u1076070\.android\build-cache\3485bd4cfebabb390190b92601fe601c659b2ca0\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\u1076070\.android\build-cache\17200555e59f2e6d36bc66612b2bcad5e1f07322\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:transition:25.3.1] C:\Users\u1076070\.android\build-cache\1e5661ad86159c00b3fbfce1a05f0fc3c44922c4\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\u1076070\.android\build-cache\f80e093aa1b2fde2d3d3a3faf0b0acc1b23a77b3\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\u1076070\.android\build-cache\167e7ec55cf7ee985f05bc33347325a798005abb\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\u1076070\.android\build-cache\6698deb53a58b232b447e831710a98407a725736\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\u1076070\.android\build-cache\82670046e80efca69abe6e11affbbb2fb2f9a1ff\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\u1076070\.android\build-cache\ce412a40251fdc38d8fbcfcde5fd8020caf41295\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\u1076070\.android\build-cache\0db8e2bf97c84b943ec5b3a1568d693c132e0ef3\output\AndroidManifest.xml:29:5-20
+MERGED from [ai.api:sdk:2.0.7] C:\Users\u1076070\.android\build-cache\63cf6937066709919edf8496758dabbf2cf3bc23\output\AndroidManifest.xml:11:5-20
+	android:label
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:17:9-41
+	android:allowBackup
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:15:9-35
+	android:icon
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:16:9-45
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:14:9-63
+activity#ute.webservice.voiceagent.MainActivity
+ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:18:9-27:20
+	android:label
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:20:13-45
+	android:theme
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:21:13-44
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:19:13-66
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:22:13-26:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:23:17-69
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:23:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:25:17-77
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:25:27-74
+activity#ute.webservice.voiceagent.AIButtonActivity
+ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:29:9-37:20
+	android:label
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:31:13-67
+	android:parentActivityName
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:32:13-80
+	android:theme
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:33:13-44
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:30:13-70
+meta-data#android.support.PARENT_ACTIVITY
+ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:34:13-36:74
+	android:value
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:36:17-71
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:35:17-63
+activity#ute.webservice.voiceagent.AISettingsActivity
+ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:40:9-48:20
+	android:label
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:42:13-52
+	android:parentActivityName
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:43:13-80
+	android:theme
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:44:13-44
+	android:name
+		ADDED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml:41:13-72
+uses-sdk
+INJECTED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:design:25.3.1] C:\Users\u1076070\.android\build-cache\029afaf59b60ab119c6b324df2ab061a1443b17c\output\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\u1076070\.android\build-cache\f9c3d23ca675999f1f89bc5264ee83dd0f90b523\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\u1076070\.android\build-cache\3485bd4cfebabb390190b92601fe601c659b2ca0\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\u1076070\.android\build-cache\17200555e59f2e6d36bc66612b2bcad5e1f07322\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\u1076070\.android\build-cache\30354b32bb9eb3ea0ba4ca15813f1ab843892c4e\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:transition:25.3.1] C:\Users\u1076070\.android\build-cache\1e5661ad86159c00b3fbfce1a05f0fc3c44922c4\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\u1076070\.android\build-cache\f80e093aa1b2fde2d3d3a3faf0b0acc1b23a77b3\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\u1076070\.android\build-cache\167e7ec55cf7ee985f05bc33347325a798005abb\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\u1076070\.android\build-cache\6698deb53a58b232b447e831710a98407a725736\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\u1076070\.android\build-cache\82670046e80efca69abe6e11affbbb2fb2f9a1ff\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\u1076070\.android\build-cache\ce412a40251fdc38d8fbcfcde5fd8020caf41295\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\u1076070\.android\build-cache\0db8e2bf97c84b943ec5b3a1568d693c132e0ef3\output\AndroidManifest.xml:21:5-23:58
+MERGED from [ai.api:sdk:2.0.7] C:\Users\u1076070\.android\build-cache\63cf6937066709919edf8496758dabbf2cf3bc23\output\AndroidManifest.xml:7:5-9:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:25.3.1] C:\Users\u1076070\.android\build-cache\029afaf59b60ab119c6b324df2ab061a1443b17c\output\AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\src\main\AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:25.3.1] C:\Users\u1076070\.android\build-cache\029afaf59b60ab119c6b324df2ab061a1443b17c\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\u1076070\.android\build-cache\f9c3d23ca675999f1f89bc5264ee83dd0f90b523\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\u1076070\.android\build-cache\3485bd4cfebabb390190b92601fe601c659b2ca0\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\u1076070\.android\build-cache\17200555e59f2e6d36bc66612b2bcad5e1f07322\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\u1076070\.android\build-cache\30354b32bb9eb3ea0ba4ca15813f1ab843892c4e\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:transition:25.3.1] C:\Users\u1076070\.android\build-cache\1e5661ad86159c00b3fbfce1a05f0fc3c44922c4\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\u1076070\.android\build-cache\f80e093aa1b2fde2d3d3a3faf0b0acc1b23a77b3\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\u1076070\.android\build-cache\167e7ec55cf7ee985f05bc33347325a798005abb\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\u1076070\.android\build-cache\6698deb53a58b232b447e831710a98407a725736\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\u1076070\.android\build-cache\82670046e80efca69abe6e11affbbb2fb2f9a1ff\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\u1076070\.android\build-cache\ce412a40251fdc38d8fbcfcde5fd8020caf41295\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\u1076070\.android\build-cache\0db8e2bf97c84b943ec5b3a1568d693c132e0ef3\output\AndroidManifest.xml:25:5-27:34
+	android:value
+		ADDED from [com.android.support:design:25.3.1] C:\Users\u1076070\.android\build-cache\029afaf59b60ab119c6b324df2ab061a1443b17c\output\AndroidManifest.xml:27:9-31
+	android:name
+		ADDED from [com.android.support:design:25.3.1] C:\Users\u1076070\.android\build-cache\029afaf59b60ab119c6b324df2ab061a1443b17c\output\AndroidManifest.xml:26:9-47

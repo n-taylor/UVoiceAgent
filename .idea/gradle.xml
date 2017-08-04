@@ -9,7 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/ailib" />
-            <option value="$PROJECT_DIR$/apiAISampleApp" />
+            <option value="$PROJECT_DIR$/uteVoiceAgentApp" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

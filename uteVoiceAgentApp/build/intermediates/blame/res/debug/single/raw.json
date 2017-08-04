@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\u1076070\\Downloads\\app\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\raw\\version_config.json",
+        "source": "C:\\Users\\u1076070\\.android\\build-cache\\63cf6937066709919edf8496758dabbf2cf3bc23\\output\\res\\raw\\version_config.json"
+    },
+    {
+        "merged": "C:\\Users\\u1076070\\Downloads\\app\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\raw\\test_start.wav",
+        "source": "C:\\Users\\u1076070\\Downloads\\app\\uteVoiceAgentApp\\src\\main\\res\\raw\\test_start.wav"
+    },
+    {
+        "merged": "C:\\Users\\u1076070\\Downloads\\app\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\raw\\test_cancel.wav",
+        "source": "C:\\Users\\u1076070\\Downloads\\app\\uteVoiceAgentApp\\src\\main\\res\\raw\\test_cancel.wav"
+    },
+    {
+        "merged": "C:\\Users\\u1076070\\Downloads\\app\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\raw\\test_stop.mp3",
+        "source": "C:\\Users\\u1076070\\Downloads\\app\\uteVoiceAgentApp\\src\\main\\res\\raw\\test_stop.mp3"
+    }
+]

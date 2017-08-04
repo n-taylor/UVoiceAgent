@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ailib/ailib.iml" filepath="$PROJECT_DIR$/ailib/ailib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/apiAISampleApp/apiAISampleApp.iml" filepath="$PROJECT_DIR$/apiAISampleApp/apiAISampleApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uteVoiceAgentApp/uteVoiceAgentApp.iml" filepath="$PROJECT_DIR$/uteVoiceAgentApp/uteVoiceAgentApp.iml" />
     </modules>
   </component>
 </project>

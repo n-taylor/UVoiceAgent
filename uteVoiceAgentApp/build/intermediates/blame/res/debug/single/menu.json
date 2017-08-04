@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\u1076070\\Downloads\\app\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\menu\\menu_aibutton_sample.xml",
+        "source": "C:\\Users\\u1076070\\Downloads\\app\\uteVoiceAgentApp\\src\\main\\res\\menu\\menu_aibutton_sample.xml"
+    },
+    {
+        "merged": "C:\\Users\\u1076070\\Downloads\\app\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\menu\\menu_aiservice_sample.xml",
+        "source": "C:\\Users\\u1076070\\Downloads\\app\\uteVoiceAgentApp\\src\\main\\res\\menu\\menu_aiservice_sample.xml"
+    },
+    {
+        "merged": "C:\\Users\\u1076070\\Downloads\\app\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
+        "source": "C:\\Users\\u1076070\\Downloads\\app\\uteVoiceAgentApp\\src\\main\\res\\menu\\main.xml"
+    }
+]

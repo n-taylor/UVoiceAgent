@@ -3,30 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\u1076070\.android\build-cache\63cf6937066709919edf8496758dabbf2cf3bc23\output\jars\classes.jar"
+        jar="C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="606ef0d18ef792bcf35cc520fb4a1a25ea24c0e7">
-        <dex dex="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\transforms\dex\debug\folders\1000\10\classes_fa5860e4602d28b9a19e195fca826da085972f35\classes.dex" />
+        sha1="36378a0a38a4431480af14a36f75828a8ba4b81b">
+        <dex dex="C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_eaa0779a05119ef71c1a7401fd302863dc88d885\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
-        <dex dex="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_0e818d7de5f380bf52ebd8f4bcddb31ff39e44c3\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="42a00cddc1ca1c30bcb5a988c957d9e7cb125ada">
-        <dex dex="C:\Users\u1076070\Downloads\app\apiAISampleApp\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_b3e114edaed29483770eee994d463c9c2478b78b\classes.dex" />
+        <dex dex="C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_21f2d1cbb283b687c4a1c6ae3068e5dace8e9fdf\classes.dex" />
     </item>
 
 </items>
