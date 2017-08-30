@@ -28,7 +28,7 @@ public class AccountCheck {
 
     /**
      * Return current user ID, it may be null.
-     * @return
+     * @return user ID
      */
     public String getAccountID() {
         return accountID;
@@ -44,7 +44,7 @@ public class AccountCheck {
 
     /**
      * Return authorization level
-     * @return
+     * @return user's authorization
      */
     public int getAccessLevel(){
         if(accountID!=null && !accountID.isEmpty())
@@ -65,6 +65,21 @@ public class AccountCheck {
             return false;
 
         setAccountID(ID);
+        return true;
+    }
+
+    /**
+     * Connect to account database, and then check if account exist and password is correct.
+     * @param param
+     * @return
+     */
+    public boolean isAccountCorrect(String[] param){
+        if(param.length!=2 || !account_map.containsKey(param[0]))
+            return false;
+        if(!account_map.get(param[0]).equals(param[1]))
+            return false;
+
+        setAccountID(param[0]);
         return true;
     }
 

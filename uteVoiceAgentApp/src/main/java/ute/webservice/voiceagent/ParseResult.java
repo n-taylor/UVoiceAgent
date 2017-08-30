@@ -10,6 +10,7 @@ import ai.api.model.Result;
 import ai.api.model.Status;
 
 import java.util.HashMap;
+
 /**
  * Handle response from API.AI, and save parameters temporarily.
  * Created by u1076070 on 5/10/2017.
@@ -90,7 +91,7 @@ public class ParseResult {
 
     /**
      * If the input query can not be recognized.
-     * @return
+     * @return True if speech input cant be recognized.
      */
     public boolean reply_unknown(){
         return this.get_IntentName().equals(intent_unknown);

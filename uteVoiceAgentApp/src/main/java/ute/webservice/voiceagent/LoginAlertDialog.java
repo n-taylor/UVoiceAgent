@@ -1,12 +1,13 @@
 package ute.webservice.voiceagent;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+
 /**
  * This class is used to display dialog when login fail.
  * Created by u1076070 on 6/30/2017.
  */
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 
 public class LoginAlertDialog {
 

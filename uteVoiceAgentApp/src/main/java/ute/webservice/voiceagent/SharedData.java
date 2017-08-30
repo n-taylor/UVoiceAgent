@@ -1,13 +1,13 @@
 package ute.webservice.voiceagent;
 
-/**
- * Session data used in package ute.webservice.voiceagent.
- * Created by u1076070 on 6/29/2017.
- */
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+/**
+ * Session data used in package ute.webservice.voiceagent.
+ * Created by u1076070 on 6/29/2017.
+ */
 
 public class SharedData {
 

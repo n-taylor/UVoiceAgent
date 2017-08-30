@@ -2,17 +2,24 @@ package ute.webservice.voiceagent;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.ProgressBar;
 
+/**
+ * Login screen, after click login button, it will verify authentication.
+ */
 public class MainActivity extends BaseActivity {
 
     //Progress bar
-    private ProgressDialog progress;
+    //private ProgressDialog progress;
     private boolean connectionInComplete = true;
 
     private EditText idEditText;
@@ -67,7 +74,7 @@ public class MainActivity extends BaseActivity {
         final String idString = String.valueOf(idEditText.getText());
         final String pwString = String.valueOf(passwordEditText.getText());
 
-        AccountCheck acnt= new AccountCheck();
+        //AccountCheck acnt= new AccountCheck();
         if (TextUtils.isEmpty(idString) || TextUtils.isEmpty(pwString)) {
             LoginAlertDialog alertd= new LoginAlertDialog();
             alertd.showAlertDialog(MainActivity.this,"Login fail","Please enter your username and password.",null);
@@ -75,6 +82,15 @@ public class MainActivity extends BaseActivity {
             return ;
         }
 
+        AuthenticationTask httpTask = new AuthenticationTask();
+        try{
+            httpTask.execute(idString,pwString);
+        }
+        catch (IllegalStateException e){
+            e.printStackTrace();
+        }
+
+        /*
         if(acnt.isAccountCorrect(idString, pwString)){
             sessiondata.createLoginSession(idString,acnt.getAccessLevel());
             //apiConnect();
@@ -86,12 +102,14 @@ public class MainActivity extends BaseActivity {
             alertd.showAlertDialog(MainActivity.this,"Login fail","Account does not exist or password is incorrect.",null);
             clearEditText();
         }
+        */
         return ;
     }
 
     /**
      * Create progress dialog and until get respond from webservice server.
      */
+    /*
     private void apiConnect(){
         progress = new ProgressDialog(this);
         progress.setMessage("Connecting...");
@@ -122,6 +140,12 @@ public class MainActivity extends BaseActivity {
         };
         t.start();
     }
+    */
+
+    /**
+     * Enter another activity.
+     * @param cls
+     */
     private void startActivity(Class<?> cls) {
         final Intent intent = new Intent(this, cls);
         startActivity(intent);
@@ -130,5 +154,57 @@ public class MainActivity extends BaseActivity {
     private void clearEditText() {
         idEditText.setText("");
         passwordEditText.setText("");
+    }
+
+    class AuthenticationTask extends AsyncTask<String,Integer,Boolean> {
+
+        private Exception exception;
+        private AccountCheck acnt;
+        private String idString;
+        private ProgressDialog progress;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progress = new ProgressDialog(MainActivity.this);
+            progress.setMessagecd ("Connecting...");
+            progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            progress.setIndeterminate(false);
+            //progress.setProgress(0);
+            progress.show();
+        }
+
+        @Override
+        protected Boolean doInBackground(String... strings) {
+            acnt= new AccountCheck();
+            idString = strings[0];
+            //pwString = strings[0][1];
+            boolean authentication;
+            authentication = acnt.isAccountCorrect(strings);
+            for (int i=0; i<5; i++){
+                    publishProgress(i);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            return authentication;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+            progress.setProgress(values[0]*10);
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+            progress.dismiss();
+            if(aBoolean){
+                MainActivity.this.sessiondata.createLoginSession(idString,acnt.getAccessLevel());
+                startActivity(AIButtonActivity.class);
+            }
+        }
     }
 }

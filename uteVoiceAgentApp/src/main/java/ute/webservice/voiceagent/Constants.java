@@ -5,9 +5,6 @@ package ute.webservice.voiceagent;
  * Created by u1076070 on 6/30/2017.
  */
 
-/**
- * Save sharable constants
- */
 final class Constants {
     //TODO: load string variable from file
     //Define ACCESS LEVEL
