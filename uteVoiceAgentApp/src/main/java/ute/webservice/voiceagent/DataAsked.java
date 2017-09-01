@@ -244,7 +244,7 @@ public class DataAsked {
         System.out.println("set SSL ");
         String responseString="";
         try {
-            HttpPostHC4 httpPost = new HttpPostHC4(test_url_retrieve);
+            HttpPostHC4 httpPost = new HttpPostHC4(const_value.CLINWEB_QUERY);
             //Prepare Parameters
             String  JSON_STRING = "{";
             JSON_STRING+=const_value.QUESTION_TYPE+":"+this.Question_type+",";
@@ -267,12 +267,18 @@ public class DataAsked {
                         Log.d(TAG, lineSrch);
                         responseString+=lineSrch;
                     }
-                    if(this.Question_type.equals("\"price\""))
-                        responseString = "The average cost of "+this.Surgery_type.substring(1,this.Surgery_type.length()-1)+
-                            " is $"+responseString+".";
-                    if(this.Question_type.equals("\"risk\""))
-                        responseString = "The average risk of "+this.Surgery_type.substring(1,this.Surgery_type.length()-1)+
-                                " is "+responseString+"%.";
+                    if(responseString.equals(const_value.ACCESS_DENIED)){
+                        responseString = "You are not allowed to access.";
+                    }
+                    else{
+                        if(this.Question_type.equals("\"price\""))
+                            responseString = "The average cost of "+this.Surgery_type.substring(1,this.Surgery_type.length()-1)+
+                                    " is $"+responseString+".";
+                        if(this.Question_type.equals("\"risk\""))
+                            responseString = "The average risk of "+this.Surgery_type.substring(1,this.Surgery_type.length()-1)+
+                                    " is "+responseString+"%.";
+                    }
+
                 }
 
             } catch(Exception e){

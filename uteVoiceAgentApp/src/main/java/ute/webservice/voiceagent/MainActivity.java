@@ -97,12 +97,12 @@ public class MainActivity extends BaseActivity {
             //while(connectionInComplete);
             startActivity(AIButtonActivity.class);
         }
-        else{
+        //else{
             LoginAlertDialog alertd= new LoginAlertDialog();
             alertd.showAlertDialog(MainActivity.this,"Login fail","Account does not exist or password is incorrect.",null);
             clearEditText();
-        }
-        */
+        //}
+        //*/
         return ;
     }
 
@@ -166,7 +166,7 @@ public class MainActivity extends BaseActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             progress = new ProgressDialog(MainActivity.this);
-            progress.setMessagecd ("Connecting...");
+            progress.setMessage("Connecting...");
             progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
             progress.setIndeterminate(false);
             //progress.setProgress(0);
@@ -178,8 +178,14 @@ public class MainActivity extends BaseActivity {
             acnt= new AccountCheck();
             idString = strings[0];
             //pwString = strings[0][1];
-            boolean authentication;
-            authentication = acnt.isAccountCorrect(strings);
+            boolean authentication=false;
+            //authentication = acnt.isAccountCorrect(strings);
+            try {
+                authentication = acnt.isAuthenticated(strings);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
             for (int i=0; i<5; i++){
                     publishProgress(i);
                     try {
@@ -194,7 +200,7 @@ public class MainActivity extends BaseActivity {
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
-            progress.setProgress(values[0]*10);
+            progress.setProgress(values[0]*20);
         }
 
         @Override
@@ -204,6 +210,11 @@ public class MainActivity extends BaseActivity {
             if(aBoolean){
                 MainActivity.this.sessiondata.createLoginSession(idString,acnt.getAccessLevel());
                 startActivity(AIButtonActivity.class);
+            }
+            else{
+                LoginAlertDialog alertd= new LoginAlertDialog();
+                alertd.showAlertDialog(MainActivity.this,"Login fail","Account does not exist or password is incorrect.",null);
+                clearEditText();
             }
         }
     }

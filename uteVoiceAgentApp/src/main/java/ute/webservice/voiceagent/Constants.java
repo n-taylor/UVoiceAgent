@@ -18,6 +18,13 @@ final class Constants {
     public final static String QUESTION_TYPE="\"questionType\"";
     public final static String SURGERY_TYPE = "\"surgery\"";
 
+    public final static String USER="\"username\"";
+    public final static String PASSWORD = "\"password\"";
+    public final static String ACCESS_DENIED = "Access Denied";
+    public final static String AUTHENTIC_LINK = "https://clinweb.med.utah.edu/pricing-transparency-api/auth/login";
+
+    public final static String CLINWEB_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/pricing/query";
+
 
 
 }
