@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.util.Log;
+
 /**
  * Session data used in package ute.webservice.voiceagent.
  * Created by u1076070 on 6/29/2017.
@@ -19,6 +21,7 @@ public class SharedData {
 
     private static final String FILE_NAME="AILOGINFILE";
     private static final String KEY_ACCOUNT="Account";
+    private static final String KEY_COOKIES="Cookies";
     private static final String KEY_ACCESS_LEVEL="Administration";
 
     public SharedData(Context context){
@@ -44,6 +47,16 @@ public class SharedData {
         editor.commit();
     }
 
+    public void saveCookies(String cookies){
+
+        // Storing name in pref
+        editor.putString(KEY_COOKIES, cookies);
+
+        // commit changes
+        editor.commit();
+        Log.d("SharedData",cookies);
+    }
+
     /**
      * Get stored user account
      * @return user account
@@ -58,6 +71,9 @@ public class SharedData {
         return sPref.getInt(KEY_ACCESS_LEVEL, -1);
     }
 
+    public String getCookies(){
+        return sPref.getString(KEY_COOKIES, null);
+    }
     /**
      * Clear User info
      */
@@ -65,7 +81,8 @@ public class SharedData {
         // Clearing all data from Shared Preferences
         editor.clear();
         editor.commit();
-
+        Log.d("SharedData","clean editor");
+        /*
         // After logout redirect user to Loing Activity
         Intent i = new Intent(_context, MainActivity.class);
         // Closing all the Activities
@@ -76,5 +93,6 @@ public class SharedData {
 
         // Staring Login Activity
         _context.startActivity(i);
+        */
     }
 }

@@ -4,8 +4,10 @@ import android.util.Log;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGetHC4;
 import org.apache.http.client.methods.HttpPostHC4;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.cookie.Cookie;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -20,8 +22,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+import java.util.List;
 
-import static ai.api.android.AIDataService.TAG;
+//import static ai.api.android.AIDataService.TAG;
 
 /**
  * Connect to server and verify login authentication.
@@ -30,6 +33,9 @@ import static ai.api.android.AIDataService.TAG;
 
 public class AccountCheck {
     //TODO: Connect to account database
+    //SharedData sessiondata = new SharedData(getApplicationContext());
+    public static CloseableHttpClient httpclient = null;
+    private static final String TAG = "AccountCheck";
 
     private HashMap<String,String> account_map = new HashMap<String, String>();
     private HashMap<String,Integer> admin_map = new HashMap<String, Integer>();
@@ -112,7 +118,8 @@ public class AccountCheck {
     public boolean isAuthenticated(String[] param) throws Exception {
         //SSLConnectionSocketFactory factory = new SSLConnectionSocketFactory(sslContext);
         BasicCookieStore cookieStore = new BasicCookieStore();
-        CloseableHttpClient httpclient = HttpClients.custom()
+        //CloseableHttpClient httpclient = HttpClients.custom()
+         httpclient = HttpClients.custom()
                 .setDefaultCookieStore(cookieStore)
                 .build();
         //System.out.println("set SSL ");
@@ -138,23 +145,77 @@ public class AccountCheck {
                 String s = myObject.get("authenticated").toString();
 
                     if(s.equals("true")){
-                    //if(myObject.getBoolean("authenticated")){
+
                         loginSucceed = true;
                         setAccountID(param[0]);
+
+                        List<Cookie> cookies = cookieStore.getCookies();
+                        if (cookies.isEmpty()) {
+                            Log.d(TAG,"None");
+                        } else {
+                            for (int i = 0; i < cookies.size(); i++) {
+                                Log.d(TAG,"- " + cookies.get(i).toString());
+                            }
+                        }
+                        //save cookies
+                        //sessiondata.saveCookies(cookies.get(0).toString());
+                        //Header[] mCookies = response3.getHeaders("cookie");
+
                     }
 
             } catch(Exception e){
                 e.printStackTrace();
             }
         } finally {
+            /*
             try {
                 httpclient.close();
             }catch (IOException e) {
                 e.printStackTrace();
             }
+            */
         }
 
         return loginSucceed;
+    }
+
+    public boolean logout() throws Exception {
+        BasicCookieStore cookieStore = new BasicCookieStore();
+        //CloseableHttpClient httpclient = HttpClients.custom()
+        /*
+        CloseableHttpClient httpclient = HttpClients.custom()
+                .setDefaultCookieStore(cookieStore)
+                .build();
+        */
+        boolean logoutSucceed = false;
+        try {
+            HttpGetHC4 httpGet = new HttpGetHC4(const_value.AUTHENTIC_LINK_LOGOUT);
+
+            try {
+                CloseableHttpResponse response3 = httpclient.execute(httpGet);
+                HttpEntity entity = response3.getEntity();
+                String json = EntityUtils.toString(entity, "UTF-8");
+                //JSONObject myObject = new JSONObject(json);
+                //String s = myObject.get("authenticated").toString();
+
+                if(json.equals("logout")){
+                    logoutSucceed = true;
+                }
+
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+        } finally {
+
+            try {
+                httpclient.close();
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        return logoutSucceed;
     }
 
 }

@@ -1,6 +1,7 @@
 package ute.webservice.voiceagent;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
@@ -43,6 +44,7 @@ import ai.api.model.AIError;
 import ai.api.model.AIRequest;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
+import ai.api.ui.SoundLevelCircleDrawable;
 
 /**
  * Show mic button and interact with api.ai.
@@ -304,11 +306,17 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
     @Override
     public boolean onOptionsItemSelected(final MenuItem item) {
         final int id = item.getItemId();
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                return true;
 
-        if (id == R.id.action_settings) {
-            return true;
+            case R.id.action_logout:
+                // User chose the "Favorite" action, mark the current item
+                // as a favorite...
+                return true;
+            default:
+            return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -327,6 +335,11 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
                 String query = PR.get_ResolvedQuery();
                 queryTextView.setText(query);
 
+                //test
+                RetrieveFeedTask httpTask = new RetrieveFeedTask();
+                httpTask.execute();
+
+                /*
                 if(PR.reply_yes()) {
                     if(dataasked.isParameter_Enough())
                     {
@@ -355,6 +368,7 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
                         TTS.speak(speech);
 
                 }
+                */
             }
 
         });
@@ -382,6 +396,12 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
         });
     }
 
+    @Override
+    public void onBackPressed(){
+        AuthenticationTask httpTask = new AuthenticationTask();
+        httpTask.execute();
+    }
+
     /**
      * Create one thread to connect to server.
      */
@@ -393,7 +413,8 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
         protected String doInBackground(Void... voids) {
             String data=null;
             try {
-                 data = dataasked.getHttpClientReply(sslContext);
+                data = dataasked.getTestReply();
+                 //data = dataasked.getHttpClientReply(sslContext);
             } catch (Exception e) {
                 this.exception = e;
             }
@@ -410,5 +431,52 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
             }
         }
 
+    }
+
+    class AuthenticationTask extends AsyncTask<Void,Void,Boolean> {
+
+        private Exception exception;
+        private AccountCheck acnt;
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            acnt= new AccountCheck();
+            boolean authentication=false;
+
+            try {
+                authentication = acnt.logout();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+            /*
+            for (int i=0; i<2; i++){
+                //publishProgress(i);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            */
+            return authentication;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+            //progress.dismiss();
+            if(aBoolean){
+                sessiondata.logoutUser();
+                final Intent intent = new Intent(AIButtonActivity.this, MainActivity.class);
+                startActivity(intent);
+                //startActivity(MainActivity.class);
+            }
+            else{
+                LoginAlertDialog alertd= new LoginAlertDialog();
+                alertd.showAlertDialog(AIButtonActivity.this,"Log out fail","time out",null);
+                //clearEditText();
+            }
+        }
     }
 }

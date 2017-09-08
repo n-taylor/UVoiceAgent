@@ -22,6 +22,7 @@ final class Constants {
     public final static String PASSWORD = "\"password\"";
     public final static String ACCESS_DENIED = "Access Denied";
     public final static String AUTHENTIC_LINK = "https://clinweb.med.utah.edu/pricing-transparency-api/auth/login";
+    public final static String AUTHENTIC_LINK_LOGOUT = "https://clinweb.med.utah.edu/pricing-transparency-api/auth/logout";
 
     public final static String CLINWEB_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/pricing/query";
 

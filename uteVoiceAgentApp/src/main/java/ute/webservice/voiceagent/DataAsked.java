@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import org.apache.http.HttpEntity;
+import org.apache.http.client.CookieStore;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPostHC4;
 import org.apache.http.conn.socket.LayeredConnectionSocketFactory;
@@ -22,6 +23,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.CookieHandler;
+import java.net.CookieManager;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -44,6 +47,7 @@ import javax.net.ssl.SSLContext;
 
 public class DataAsked {
 
+    SharedData sessiondata;
     private static final String TAG = "DataAsked";
     private static final String test_url ="https://drcapptest.ad.utah.edu:7443/pricing-transparency-api/pricing/query";
     private static final String test_url_query = "http://drcapptest.ad.utah.edu:7003/pricing-transparency-api/pricing/query";
@@ -233,9 +237,9 @@ public class DataAsked {
     public String getHttpClientReply(SSLContext sslContext) throws IOException {
         SSLConnectionSocketFactory factory = new SSLConnectionSocketFactory(sslContext);
                 //SSLConnectionSocketFactory.BROWSER_COMPATIBLE_HOSTNAME_VERIFIER);
-        BasicCookieStore cookieStore = new BasicCookieStore();
+        //BasicCookieStore cookieStore = new BasicCookieStore();
         CloseableHttpClient httpclient = HttpClients.custom()
-                .setDefaultCookieStore(cookieStore)
+                //.setDefaultCookieStore(cookieStore)
                 //.setSSLSocketFactory(factory)
                 .build();
         //HttpParams httpParams = httpclient.getParams();
@@ -290,6 +294,66 @@ public class DataAsked {
             }catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+        this.clear_params();
+        return responseString;
+    }
+
+    public String getTestReply() throws IOException {
+        //String cookies = sessiondata.getCookies();
+        //Log.d(TAG,cookies);
+        /*
+        BasicCookieStore cookieStore = new BasicCookieStore();
+        //cookieStore.addCookie(cookies);
+        CloseableHttpClient httpclient = HttpClients.custom()
+                .setDefaultCookieStore(cookieStore)
+                //.setSSLSocketFactory(factory)
+                .build();
+        */
+
+        String responseString="";
+        try {
+            HttpPostHC4 httpPost = new HttpPostHC4(const_value.CLINWEB_QUERY);
+            //Prepare Parameters
+            String  JSON_STRING = "{\"questionType\":\"price\",\"surgery\":\"hernia repair surgery\"}";
+            StringEntity params= new StringEntity(JSON_STRING);
+            Log.d(TAG,JSON_STRING);
+
+            httpPost.setEntity(params);
+            httpPost.setHeader("Accept", "application/json");
+            httpPost.setHeader("Content-Type", "application/json;charset=UTF-8");
+            try {
+                CloseableHttpResponse response3 = AccountCheck.httpclient.execute(httpPost);
+                HttpEntity entity = response3.getEntity();
+                if (entity != null) {
+                    BufferedReader rdSrch = new BufferedReader(
+                            new InputStreamReader(response3.getEntity().getContent()));
+
+                    String  lineSrch;
+                    while ((lineSrch = rdSrch.readLine()) != null) {
+                        Log.d(TAG, lineSrch);
+                        responseString+=lineSrch;
+                    }
+                    if(responseString.equals(const_value.ACCESS_DENIED)){
+                        responseString = "You are not allowed to access.";
+                    }
+                    else{
+                        responseString = "The average cost of hernia repair surgery is $"+responseString+".";
+                    }
+
+                }
+
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+        } finally {
+            /*
+            try {
+                AccountCheck.httpclient.close();
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+            */
         }
         this.clear_params();
         return responseString;

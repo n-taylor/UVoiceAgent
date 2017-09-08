@@ -180,13 +180,15 @@ public class MainActivity extends BaseActivity {
             //pwString = strings[0][1];
             boolean authentication=false;
             //authentication = acnt.isAccountCorrect(strings);
+
             try {
                 authentication = acnt.isAuthenticated(strings);
             }
             catch (Exception e){
                 e.printStackTrace();
             }
-            for (int i=0; i<5; i++){
+
+            for (int i=0; i<2; i++){
                     publishProgress(i);
                     try {
                         Thread.sleep(1000);
@@ -208,7 +210,8 @@ public class MainActivity extends BaseActivity {
             super.onPostExecute(aBoolean);
             progress.dismiss();
             if(aBoolean){
-                MainActivity.this.sessiondata.createLoginSession(idString,acnt.getAccessLevel());
+                //MainActivity.this.sessiondata.createLoginSession(acnt.getAccountID(),acnt.getAccessLevel());
+                MainActivity.this.sessiondata.createLoginSession(acnt.getAccountID(),2);
                 startActivity(AIButtonActivity.class);
             }
             else{
