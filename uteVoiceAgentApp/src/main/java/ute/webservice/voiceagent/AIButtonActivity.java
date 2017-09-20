@@ -403,7 +403,7 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
     }
 
     /**
-     * Create one thread to connect to server.
+     * Create AsyncTask thread to send query to serve and display response.
      */
     class RetrieveFeedTask extends AsyncTask<Void,Integer,String> {
 
@@ -413,6 +413,7 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
         protected String doInBackground(Void... voids) {
             String data=null;
             try {
+                //TODO :getTestReply is used for test, getHttpClientReply is the complete one.
                 data = dataasked.getTestReply();
                  //data = dataasked.getHttpClientReply(sslContext);
             } catch (Exception e) {
@@ -433,6 +434,9 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
 
     }
 
+    /**
+     * Build one thread to log out.
+     */
     class AuthenticationTask extends AsyncTask<Void,Void,Boolean> {
 
         private Exception exception;

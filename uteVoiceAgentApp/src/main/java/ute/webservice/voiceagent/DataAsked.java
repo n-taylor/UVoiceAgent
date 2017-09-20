@@ -235,6 +235,7 @@ public class DataAsked {
      * @throws IOException
      */
     public String getHttpClientReply(SSLContext sslContext) throws IOException {
+        /*
         SSLConnectionSocketFactory factory = new SSLConnectionSocketFactory(sslContext);
                 //SSLConnectionSocketFactory.BROWSER_COMPATIBLE_HOSTNAME_VERIFIER);
         //BasicCookieStore cookieStore = new BasicCookieStore();
@@ -242,10 +243,11 @@ public class DataAsked {
                 //.setDefaultCookieStore(cookieStore)
                 //.setSSLSocketFactory(factory)
                 .build();
-        //HttpParams httpParams = httpclient.getParams();
-        //HttpConnectionParams.setConnectionTimeout(httpParams,6000);
-        //HttpConnectionParams.setSoTimeout(httpParams,6000);
+        HttpParams httpParams = httpclient.getParams();
+        HttpConnectionParams.setConnectionTimeout(httpParams,6000);
+        HttpConnectionParams.setSoTimeout(httpParams,6000);
         System.out.println("set SSL ");
+        */
         String responseString="";
         try {
             HttpPostHC4 httpPost = new HttpPostHC4(const_value.CLINWEB_QUERY);
@@ -260,7 +262,7 @@ public class DataAsked {
             httpPost.setHeader("Accept", "application/json");
             httpPost.setHeader("Content-Type", "application/json;charset=UTF-8");
             try {
-                CloseableHttpResponse response3 = httpclient.execute(httpPost);
+                CloseableHttpResponse response3 = AccountCheck.httpclient.execute(httpPost);
                 HttpEntity entity = response3.getEntity();
                 if (entity != null) {
                     BufferedReader rdSrch = new BufferedReader(
@@ -288,17 +290,27 @@ public class DataAsked {
             } catch(Exception e){
                 e.printStackTrace();
             }
-        } finally {
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        /*finally {
             try {
                 httpclient.close();
             }catch (IOException e) {
                 e.printStackTrace();
             }
         }
+        */
         this.clear_params();
         return responseString;
     }
 
+    /**
+     * Create query (Surgery, hernia) for test
+     * @return
+     * @throws IOException
+     */
     public String getTestReply() throws IOException {
         //String cookies = sessiondata.getCookies();
         //Log.d(TAG,cookies);

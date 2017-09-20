@@ -6,22 +6,22 @@
     density="420dpi"
     format="10"
     plugin-version="2.3.1"
-    timestamp="1504909723803"
+    timestamp="1505931954491"
     token="7434608550382682540"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="587" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="14" />
+        duration="84" />
     <task
         name="verifier"
-        duration="5" />
+        duration="19" />
 
     <artifact
         location="C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_4.apk"
@@ -32,8 +32,14 @@
 
     <build
         build-mode="FULL"
-        timestamp="1504903170661"
+        timestamp="1505927446028"
         verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\build\outputs\apk\uteVoiceAgentApp-debug.apk"
+            type="SPLIT_MAIN" />
         <artifact
             location="C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_1.apk"
             type="SPLIT" />
@@ -56,9 +62,6 @@
             location="C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_4.apk"
-            type="SPLIT" />
-        <artifact
             location="C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_3.apk"
             type="SPLIT" />
         <artifact
@@ -67,21 +70,10 @@
         <artifact
             location="C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\build\intermediates\split-apk\debug\dep\dependencies.apk"
             type="SPLIT" />
-        <artifact
-            location="C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\build\outputs\apk\uteVoiceAgentApp-debug.apk"
-            type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
-        timestamp="1504909405227"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\build\outputs\apk\uteVoiceAgentApp-debug.apk"
-            type="SPLIT_MAIN" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1504909723803"
+        timestamp="1505931954491"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\u1076070\Downloads\app\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_4.apk"
