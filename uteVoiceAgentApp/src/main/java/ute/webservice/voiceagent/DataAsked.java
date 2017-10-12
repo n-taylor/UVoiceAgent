@@ -7,14 +7,10 @@ import org.apache.http.HttpEntity;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPostHC4;
+import org.apache.http.client.methods.HttpGetHC4;
 import org.apache.http.conn.socket.LayeredConnectionSocketFactory;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.BasicCookieStore;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -23,8 +19,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.CookieHandler;
-import java.net.CookieManager;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -55,9 +49,13 @@ public class DataAsked {
     private Constants const_value;
 
     //TODO: load data from files
+    //private static final Hash
     private HashMap<String,HashMap<String,String>> Map_Sugery = new HashMap<String,HashMap<String,String>>();
     private HashMap<String,String> Hernia = new HashMap<String,String>();
     private HashMap<String,String> Bypass = new HashMap<String,String>();
+
+    private HashMap<String,String>  biopsy = new HashMap<String,String>();
+    private HashMap<String,String>  endoscopy = new HashMap<String,String>();
 
     private String Question_type="";
     private String Surgery_type="";
@@ -65,8 +63,8 @@ public class DataAsked {
     private HashMap<Integer,HashSet<String>> Admin_group = new HashMap<Integer,HashSet<String>>();
 
     // Create a KeyStore containing our trusted CAs
-    private String keyStoreType = KeyStore.getDefaultType();
-    private KeyStore keyStore;
+    //private String keyStoreType = KeyStore.getDefaultType();
+    //private KeyStore keyStore;
 
     /**
      * Initialize surgery database and administration with HashMap
@@ -83,6 +81,13 @@ public class DataAsked {
         Bypass.put("price","70000");
         Bypass.put("success rate","90%");
         Bypass.put("recovery time","30");
+
+
+       // UPGI ENDOSCOPY W/US FN BX	43238
+        //UPPER GI ENDOSCOPY,BIOPSY
+        biopsy.put("UPPER GI BIOPSY" , "43239");
+        endoscopy.put("UPPER GI ENDOSCOPY" , "43239");
+
 
         Map_Sugery.put(const_value.SURGERY_HERNIA,Hernia);
         Map_Sugery.put(const_value.SURGERY_BYPASS,Bypass);
@@ -325,9 +330,11 @@ public class DataAsked {
 
         String responseString="";
         try {
-            HttpPostHC4 httpPost = new HttpPostHC4(const_value.CLINWEB_QUERY);
+            HttpPostHC4 httpPost = new HttpPostHC4(const_value.CLINWEB_CENSUS_QUERY);
             //Prepare Parameters
-            String  JSON_STRING = "{\"questionType\":\"price\",\"surgery\":\"hernia repair surgery\"}";
+            //String  JSON_STRING = "{\"questionType\":\"price\",\"surgery\":\"hernia repair surgery\"}";
+            String  JSON_STRING = "{\"unit\":\"2EAST\",\"surgery\":\"hernia repair surgery\"}";
+
             StringEntity params= new StringEntity(JSON_STRING);
             Log.d(TAG,JSON_STRING);
 
@@ -371,4 +378,40 @@ public class DataAsked {
         return responseString;
     }
 
+
+    public String  getAllBedCensus() throws IOException {
+
+        String responseString = "";
+
+        try {
+
+            HttpGetHC4 getRequest = new HttpGetHC4(const_value.CLINWEB_CENSUS_QUERY);
+            CloseableHttpResponse response3 = AccountCheck.httpclient.execute(getRequest);
+            HttpEntity entity = response3.getEntity();
+            if (entity != null) {
+                BufferedReader rdSrch = new BufferedReader(
+                        new InputStreamReader(response3.getEntity().getContent()));
+
+                String lineSrch;
+                while ((lineSrch = rdSrch.readLine()) != null) {
+                    Log.d(TAG, lineSrch);
+                    responseString += lineSrch;
+                }
+                if (responseString.equals(const_value.ACCESS_DENIED)) {
+                    responseString = "You are not allowed to access.";
+                } else {
+                    responseString = "All the Census" + responseString + ".";
+
+                }
+
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return responseString;
+
+    }
 }
