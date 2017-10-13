@@ -46,6 +46,7 @@ public class ParseResult {
         this.status = this.response.getStatus();
         this.metadata = this.result.getMetadata();
         this.params = this.result.getParameters();
+
     }
 
     /**

@@ -26,6 +26,7 @@ final class Constants {
 
     public final static String CLINWEB_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/pricing/query";
 
+    public final static String CLINWEB_CENSUS_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/census/getCensus";
 
 
 }
