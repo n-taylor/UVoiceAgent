@@ -19,6 +19,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -30,9 +31,11 @@ import java.security.cert.X509Certificate;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.ArrayList;
 
 import javax.net.ssl.SSLContext;
 
+import java.io.*;
 
 /**
  * A Hashmap to save queries and answers which are already asked.
@@ -253,62 +256,96 @@ public class DataAsked {
         HttpConnectionParams.setSoTimeout(httpParams,6000);
         System.out.println("set SSL ");
         */
-        String responseString="";
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+        String responseString = "";
+        int currCPTCODE = 64721;//TODO
         try {
-            HttpPostHC4 httpPost = new HttpPostHC4(const_value.CLINWEB_QUERY);
-            //Prepare Parameters
-            String  JSON_STRING = "{";
-            JSON_STRING+=const_value.QUESTION_TYPE+":"+this.Question_type+",";
-            JSON_STRING+=const_value.SURGERY_TYPE+":"+this.Surgery_type+"}";
-            StringEntity params= new StringEntity(JSON_STRING);
-            Log.d(TAG,JSON_STRING);
+            String newUrlWithCPT = const_value.CLINWEB_QUERY + "" +currCPTCODE;
+            HttpGetHC4 getRequest = new HttpGetHC4(newUrlWithCPT);
+            CloseableHttpResponse response3 = AccountCheck.httpclient.execute(getRequest);
+            HttpEntity entity = response3.getEntity();
+            if (entity != null) {
+                BufferedReader rdSrch = new BufferedReader(
+                        new InputStreamReader(response3.getEntity().getContent()));
 
-            httpPost.setEntity(params);
-            httpPost.setHeader("Accept", "application/json");
-            httpPost.setHeader("Content-Type", "application/json;charset=UTF-8");
-            try {
-                CloseableHttpResponse response3 = AccountCheck.httpclient.execute(httpPost);
-                HttpEntity entity = response3.getEntity();
-                if (entity != null) {
-                    BufferedReader rdSrch = new BufferedReader(
-                            new InputStreamReader(response3.getEntity().getContent()));
+                String lineSrch;
+                while ((lineSrch = rdSrch.readLine()) != null) {
+                    Log.d(TAG, lineSrch);
+                    responseString += lineSrch;
+                }
+                if (responseString.equals(const_value.ACCESS_DENIED)) {
+                    responseString = "You are not allowed to access.";
+                } else {
+                    SurgeryInfo si = ParseResult.parseSurgery(responseString);
 
-                    String  lineSrch;
-                    while ((lineSrch = rdSrch.readLine()) != null) {
-                        Log.d(TAG, lineSrch);
-                        responseString+=lineSrch;
-                    }
-                    if(responseString.equals(const_value.ACCESS_DENIED)){
-                        responseString = "You are not allowed to access.";
-                    }
-                    else{
-                        if(this.Question_type.equals("\"price\""))
-                            responseString = "The average cost of "+this.Surgery_type.substring(1,this.Surgery_type.length()-1)+
-                                    " is $"+responseString+".";
-                        if(this.Question_type.equals("\"risk\""))
-                            responseString = "The average risk of "+this.Surgery_type.substring(1,this.Surgery_type.length()-1)+
-                                    " is "+responseString+"%.";
-                    }
+                    responseString = "The average cost of " + si.getName() + " is $" + si.getCost();
 
                 }
 
-            } catch(Exception e){
-                e.printStackTrace();
             }
-        }
-        catch (IOException e) {
+
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        /*finally {
-            try {
-                httpclient.close();
-            }catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        */
-        this.clear_params();
+
         return responseString;
+
+//        try {
+//            HttpPostHC4 httpPost = new HttpPostHC4(const_value.CLINWEB_QUERY);
+//            //Prepare Parameters
+//            String  JSON_STRING = "{";
+//            JSON_STRING+=const_value.QUESTION_TYPE+":"+this.Question_type+",";
+//            JSON_STRING+=const_value.SURGERY_TYPE+":"+this.Surgery_type+"}";
+//            StringEntity params= new StringEntity(JSON_STRING);
+//            Log.d(TAG,JSON_STRING);
+//
+//            httpPost.setEntity(params);
+//            httpPost.setHeader("Accept", "application/json");
+//            httpPost.setHeader("Content-Type", "application/json;charset=UTF-8");
+//            try {
+//                CloseableHttpResponse response3 = AccountCheck.httpclient.execute(httpPost);
+//                HttpEntity entity = response3.getEntity();
+//                if (entity != null) {
+//                    BufferedReader rdSrch = new BufferedReader(
+//                            new InputStreamReader(response3.getEntity().getContent()));
+//
+//                    String  lineSrch;
+//                    while ((lineSrch = rdSrch.readLine()) != null) {
+//                        Log.d(TAG, lineSrch);
+//                        responseString+=lineSrch;
+//                    }
+//                    if(responseString.equals(const_value.ACCESS_DENIED)){
+//                        responseString = "You are not allowed to access.";
+//                    }
+//                    else{
+//                        if(this.Question_type.equals("\"price\""))
+//                            responseString = "The average cost of "+this.Surgery_type.substring(1,this.Surgery_type.length()-1)+
+//                                    " is $"+responseString+".";
+//                        if(this.Question_type.equals("\"risk\""))
+//                            responseString = "The average risk of "+this.Surgery_type.substring(1,this.Surgery_type.length()-1)+
+//                                    " is "+responseString+"%.";
+//                    }
+//
+//                }
+//
+//            } catch(Exception e){
+//                e.printStackTrace();
+//            }
+//        }
+//        catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        /*finally {
+//            try {
+//                httpclient.close();
+//            }catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        */
+//        this.clear_params();
     }
 
     /**
@@ -400,8 +437,14 @@ public class DataAsked {
                 if (responseString.equals(const_value.ACCESS_DENIED)) {
                     responseString = "You are not allowed to access.";
                 } else {
-                    responseString = "All the Census" + responseString + ".";
+                    ArrayList<RoomStatus> formattedBeds = ParseResult.parseRooms(responseString);
 
+                    responseString = "";
+                    for (RoomStatus r: formattedBeds) {
+                        responseString = responseString + r.toString() + "\n";
+                    }
+
+                    responseString = "All the Census:\n" + responseString + ".";
                 }
 
             }

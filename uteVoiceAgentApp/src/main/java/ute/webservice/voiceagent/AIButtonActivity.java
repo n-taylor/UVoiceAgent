@@ -414,10 +414,12 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
             String data=null;
             try {
                 //TODO :getTestReply is used for test, getHttpClientReply is the complete one.
-                ///data = dataasked.getTestReply();
-                 //data = dataasked.getHttpClientReply(sslContext);
-                
-                 data = dataasked.getAllBedCensus();
+//                data = dataasked.getTestReply();
+                 data = dataasked.getHttpClientReply(sslContext);
+
+                 //data = dataasked.getAllBedCensus();
+
+                TTS.speak(data);
             } catch (Exception e) {
                 this.exception = e;
             }

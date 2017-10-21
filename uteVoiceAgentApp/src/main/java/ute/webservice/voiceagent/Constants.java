@@ -24,7 +24,7 @@ final class Constants {
     public final static String AUTHENTIC_LINK = "https://clinweb.med.utah.edu/pricing-transparency-api/auth/login";
     public final static String AUTHENTIC_LINK_LOGOUT = "https://clinweb.med.utah.edu/pricing-transparency-api/auth/logout";
 
-    public final static String CLINWEB_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/pricing/query";
+    public final static String CLINWEB_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/pricing/get/";
 
     public final static String CLINWEB_CENSUS_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/census/getCensus";
 

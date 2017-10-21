@@ -1,11 +1,16 @@
 package ute.webservice.voiceagent;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
 
 import ai.api.android.GsonFactory;
 import ai.api.model.AIResponse;
@@ -13,7 +18,10 @@ import ai.api.model.Metadata;
 import ai.api.model.Result;
 import ai.api.model.Status;
 
+import java.io.StringReader;
+import java.lang.reflect.Array;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -33,7 +41,7 @@ public class ParseResult {
     static final String param_surgery = "surgery";
     static final String param_question_type = "questionType";
 
-    private Gson gson = GsonFactory.getGson();
+    private static Gson gson;
     private AIResponse response = null;
 
     private Result result = null;
@@ -51,6 +59,11 @@ public class ParseResult {
         this.status = this.response.getStatus();
         this.metadata = this.result.getMetadata();
         this.params = this.result.getParameters();
+
+        GsonBuilder gBuilder = new GsonBuilder();
+        gBuilder.registerTypeAdapter(RoomStatus.class, new RoomStatusDeserializer());
+        gBuilder.registerTypeAdapter(SurgeryInfo.class, new SurgeryInfoDeserializer());
+        gson = gBuilder.create();
 
     }
 
@@ -144,23 +157,65 @@ public class ParseResult {
         }
         return "";
     }
+    /**
+     *
+     * @return all rooms in an ArrayList
+     */
+    public static ArrayList<RoomStatus> parseRooms(String jsonRooms) {
+        ArrayList<RoomStatus> rooms = new ArrayList<RoomStatus>();
+        Type arrayType = new TypeToken<ArrayList<RoomStatus>>(){}.getType();
 
 
-
-
-    class bedDeserializer implements JsonDeserializer<RoomStatus> {
-        @Override
-        public RoomStatus deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-
-            JsonObject jobj = json.getAsJsonObject();
-
-            RoomStatus currRoom = new RoomStatus(
-                    jobj.get("unit").getAsString(),
-                    jobj.get("occupied").getAsInt()
-            );
-
-            return currRoom;
-        }
+        rooms = gson.fromJson(jsonRooms, arrayType);
+        return rooms;
     }
 
+
+    public static RoomStatus getSpecificRoom(String unit) {
+        return null;
+        //TODO
+    }
+
+    public static SurgeryInfo parseSurgery(String jsonSurgery) {
+        SurgeryInfo si = gson.fromJson(jsonSurgery, SurgeryInfo.class);
+
+        return si;
+    }
+
+
+
+
+}
+
+class RoomStatusDeserializer implements JsonDeserializer<RoomStatus> {
+    @Override
+    public RoomStatus deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+
+
+        JsonObject jobj = json.getAsJsonObject();
+
+        RoomStatus currRoom = new RoomStatus(
+                jobj.get("unit").getAsString(),
+                jobj.get("available").getAsInt()
+        );
+
+        return currRoom;
+    }
+}
+
+class SurgeryInfoDeserializer implements JsonDeserializer<SurgeryInfo>{
+
+
+    @Override
+    public SurgeryInfo deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+
+        JsonObject jobj = json.getAsJsonObject();
+
+        SurgeryInfo currSurgery = new SurgeryInfo(
+                jobj.get("description").getAsString().toLowerCase(),
+                Integer.parseInt(jobj.get("totalAvgCharges").getAsString())
+        );
+
+        return currSurgery;
+    }
 }

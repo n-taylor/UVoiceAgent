@@ -6,17 +6,23 @@ package ute.webservice.voiceagent;
 
 public class RoomStatus{
 
-    private String name;
-    private int occupiedBeds;
+    private String unit;
+    private int availableBeds;
 
-    RoomStatus(String _name, int _occupiedBeds) {
-        this.name = _name;
-        this.occupiedBeds = _occupiedBeds;
+    RoomStatus(String _name, int _availableBeds) {
+        this.unit = _name;
+        this.availableBeds = _availableBeds;
     }
 
 
     @Override
     public String toString() {
-        return "Unit " + this.name + " has " + this.occupiedBeds + " occupied beds ";
+        return "Unit " + this.unit + " has " + this.availableBeds + " available beds ";
     }
+
+    public String getUnit(){return this.unit;}
+
+    public int getAvailableBeds(){return this.availableBeds;}
+
+
 }
