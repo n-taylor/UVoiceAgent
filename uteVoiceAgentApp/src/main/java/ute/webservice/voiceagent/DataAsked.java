@@ -87,7 +87,11 @@ public class DataAsked {
         biopsy.put("UPPER GI BIOPSY" , "43239");
         endoscopy.put("UPPER GI ENDOSCOPY" , "43239");
 
-        
+
+        //TODO Find out all the possible values for fields we need to test for
+        surgeries.put("BIOPSY OF SKIN LESION".toLowerCase(),"11100");
+        surgeries.put("UPPER GI ENDOSCOPY,DIAGNOSIS".toLowerCase(),"43235");
+
 
         Map_Sugery.put(const_value.SURGERY_HERNIA,Hernia);
         Map_Sugery.put(const_value.SURGERY_BYPASS,Bypass);
