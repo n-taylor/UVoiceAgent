@@ -44,7 +44,6 @@ import ai.api.model.AIError;
 import ai.api.model.AIRequest;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
-import ai.api.ui.SoundLevelCircleDrawable;
 
 /**
  * Show mic button and interact with api.ai.
@@ -60,6 +59,7 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
 
     private Gson gson = GsonFactory.getGson();
     private DataAsked dataasked;
+    private ParseResult PR;
 
     SharedData sessiondata;
     private String accountID;
@@ -330,7 +330,7 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
             @Override
             public void run() {
 
-                ParseResult PR = new ParseResult(response);
+                PR = new ParseResult(response);
 
                 String query = PR.get_ResolvedQuery();
                 queryTextView.setText(query);
@@ -338,6 +338,11 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
                 //test
                 RetrieveFeedTask httpTask = new RetrieveFeedTask();
                 httpTask.execute();
+//                String s = PR.getComplete();
+//                dataasked.setQuestionIncomplete(PR.getComplete());
+                dataasked.setCurrentReply(PR.get_reply());
+
+
 
                 /*
                 if(PR.reply_yes()) {

@@ -1,15 +1,11 @@
 package ute.webservice.voiceagent;
 
-import android.content.Context;
 import android.util.Log;
 
 import org.apache.http.HttpEntity;
-import org.apache.http.client.CookieStore;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPostHC4;
 import org.apache.http.client.methods.HttpGetHC4;
-import org.apache.http.conn.socket.LayeredConnectionSocketFactory;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.entity.StringEntity;
 
 import java.io.BufferedInputStream;
@@ -19,11 +15,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.security.KeyStore;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
@@ -34,8 +28,6 @@ import java.util.HashSet;
 import java.util.ArrayList;
 
 import javax.net.ssl.SSLContext;
-
-import java.io.*;
 
 /**
  * A Hashmap to save queries and answers which are already asked.
@@ -60,8 +52,12 @@ public class DataAsked {
     private HashMap<String,String>  biopsy = new HashMap<String,String>();
     private HashMap<String,String>  endoscopy = new HashMap<String,String>();
 
+    private HashMap<String, String> surgeries = new HashMap<String, String>();
+
     private String Question_type="";
     private String Surgery_type="";
+    private String questionIncomplete = "false";
+    private String currentReply;
 
     private HashMap<Integer,HashSet<String>> Admin_group = new HashMap<Integer,HashSet<String>>();
 
@@ -91,6 +87,7 @@ public class DataAsked {
         biopsy.put("UPPER GI BIOPSY" , "43239");
         endoscopy.put("UPPER GI ENDOSCOPY" , "43239");
 
+        
 
         Map_Sugery.put(const_value.SURGERY_HERNIA,Hernia);
         Map_Sugery.put(const_value.SURGERY_BYPASS,Bypass);
@@ -257,11 +254,21 @@ public class DataAsked {
         System.out.println("set SSL ");
         */
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//        if(this.questionIncomplete.equals("false")) {
+//            return this.currentReply;
+//        }
+//
+
+        boolean modifyReply = this.currentReply.contains("Here is the price"); //|| this.currentReply.contains("here is what I found");
+
+        if (!modifyReply) {
+            return this.currentReply;
+        }
 
         String responseString = "";
         int currCPTCODE = 64721;//TODO
         try {
-            String newUrlWithCPT = const_value.CLINWEB_QUERY + "" +currCPTCODE;
+            String newUrlWithCPT = const_value.CLINWEB_QUERY + "" + currCPTCODE;
             HttpGetHC4 getRequest = new HttpGetHC4(newUrlWithCPT);
             CloseableHttpResponse response3 = AccountCheck.httpclient.execute(getRequest);
             HttpEntity entity = response3.getEntity();
@@ -279,7 +286,7 @@ public class DataAsked {
                 } else {
                     SurgeryInfo si = ParseResult.parseSurgery(responseString);
 
-                    responseString = "The average cost of " + si.getName() + " is $" + si.getCost();
+                    responseString = "\n$" + si.getCost();
 
                 }
 
@@ -290,8 +297,9 @@ public class DataAsked {
             e.printStackTrace();
         }
 
-        return responseString;
-
+        return this.currentReply + responseString;
+    }
+//-------------------------Hsun's old code -----------------------------------------------------------------------------//
 //        try {
 //            HttpPostHC4 httpPost = new HttpPostHC4(const_value.CLINWEB_QUERY);
 //            //Prepare Parameters
@@ -346,7 +354,7 @@ public class DataAsked {
 //        }
 //        */
 //        this.clear_params();
-    }
+
 
     /**
      * Create query (Surgery, hernia) for test
@@ -457,4 +465,13 @@ public class DataAsked {
         return responseString;
 
     }
+
+    public void setQuestionIncomplete(String b) {
+        this.questionIncomplete = b;
+    }
+
+    public void setCurrentReply(String s) {
+        this.currentReply = s;
+    }
 }
+

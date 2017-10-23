@@ -96,7 +96,7 @@ public class ParseResult {
      * Get status of action.
      * @return if all parameters are saved, return true, else false.
      */
-    public boolean get_ActionComplete(){
+    public boolean get_ActionIncomplete(){
         return result.isActionIncomplete();
     }
 
@@ -157,6 +157,11 @@ public class ParseResult {
         }
         return "";
     }
+
+    public String getComplete(){
+        return this.params.get("complete").getAsString();
+    }
+
     /**
      *
      * @return all rooms in an ArrayList
