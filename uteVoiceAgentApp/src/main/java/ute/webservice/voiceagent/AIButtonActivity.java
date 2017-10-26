@@ -341,6 +341,8 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
 //                String s = PR.getComplete();
 //                dataasked.setQuestionIncomplete(PR.getComplete());
                 dataasked.setCurrentReply(PR.get_reply());
+                dataasked.setCurrentCategory(PR.get_param_Surgery());
+               // dataasked.setQuestionComplete(PR.getComplete());
 
 
 
@@ -422,7 +424,7 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
 //                data = dataasked.getTestReply();
                  data = dataasked.getHttpClientReply(sslContext);
 
-                 //data = dataasked.getAllBedCensus();
+//                 data = dataasked.getAllBedCensus();
 
                 TTS.speak(data);
             } catch (Exception e) {

@@ -38,7 +38,7 @@ public class ParseResult {
     static final String intent_sq = "surgery question";
 
     //parameters
-    static final String param_surgery = "surgery";
+    static final String param_surgery = "SurgeryCategory";
     static final String param_question_type = "questionType";
 
     private static Gson gson;
@@ -139,7 +139,7 @@ public class ParseResult {
     public String get_param_Surgery(){
         if (params != null && params.containsKey(param_surgery))
         {
-            String param_json = params.get(param_surgery).toString();
+            String param_json = params.get(param_surgery).getAsString();
             return param_json;
         }
         return "";
@@ -158,8 +158,17 @@ public class ParseResult {
         return "";
     }
 
+    /**
+     * Return saved compelete param.
+     * @return complete.
+     */
     public String getComplete(){
-        return this.params.get("complete").getAsString();
+        if (params != null && params.containsKey("complete"))
+        {
+            String param_json = params.get(param_surgery).getAsString();
+            return param_json;
+        }
+        return "false";
     }
 
     /**
@@ -182,7 +191,12 @@ public class ParseResult {
     }
 
     public static SurgeryInfo parseSurgery(String jsonSurgery) {
-        SurgeryInfo si = gson.fromJson(jsonSurgery, SurgeryInfo.class);
+        SurgeryInfo si = null;
+        try {
+             si = gson.fromJson(jsonSurgery, SurgeryInfo.class);
+        } catch (Exception e ) {
+            System.out.print("D");
+        }
 
         return si;
     }
@@ -218,7 +232,7 @@ class SurgeryInfoDeserializer implements JsonDeserializer<SurgeryInfo>{
 
         SurgeryInfo currSurgery = new SurgeryInfo(
                 jobj.get("description").getAsString().toLowerCase(),
-                Integer.parseInt(jobj.get("totalAvgCharges").getAsString())
+                jobj.get("totalAvgCharges").getAsString()
         );
 
         return currSurgery;

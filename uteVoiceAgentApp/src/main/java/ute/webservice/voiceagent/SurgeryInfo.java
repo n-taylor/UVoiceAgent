@@ -6,15 +6,15 @@ package ute.webservice.voiceagent;
 
 public class SurgeryInfo {
     private String name;
-    private int cost;
+    private String cost;
 
-    SurgeryInfo(String _name, int _cost) {
+    SurgeryInfo(String _name, String _cost) {
         this.name = _name;
         this.cost = _cost;
     }
 
     public String getName(){return this.name;}
 
-    public int getCost(){return this.cost;}
+    public String getCost(){return this.cost;}
 
 }

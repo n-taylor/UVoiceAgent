@@ -56,8 +56,9 @@ public class DataAsked {
 
     private String Question_type="";
     private String Surgery_type="";
-    private String questionIncomplete = "false";
+    private String questionComplete = "false";
     private String currentReply;
+
 
     private HashMap<Integer,HashSet<String>> Admin_group = new HashMap<Integer,HashSet<String>>();
 
@@ -90,7 +91,7 @@ public class DataAsked {
 
         //TODO Find out all the possible values for fields we need to test for
         surgeries.put("BIOPSY OF SKIN LESION".toLowerCase(),"11100");
-        surgeries.put("UPPER GI ENDOSCOPY,DIAGNOSIS".toLowerCase(),"43235");
+        surgeries.put("UPPER GI ENDOSCOPY,BIOPSY".toLowerCase().replace(",", " "),"43239");
 
 
         Map_Sugery.put(const_value.SURGERY_HERNIA,Hernia);
@@ -263,14 +264,20 @@ public class DataAsked {
 //        }
 //
 
-        boolean modifyReply = this.currentReply.contains("Here is the price"); //|| this.currentReply.contains("here is what I found");
+        boolean modifyReply = this.currentReply.contains("Here is the price");//|| this.currentReply.contains("here is what I found");
 
         if (!modifyReply) {
             return this.currentReply;
         }
 
         String responseString = "";
-        int currCPTCODE = 64721;//TODO
+        String currCPTCODE = "";
+//        if (this.surgeries.containsKey(this.Surgery_type)) {
+            currCPTCODE = this.surgeries.get(this.Surgery_type);
+//        }
+//        else{
+//            currCPTCODE = "";
+//        }
         try {
             String newUrlWithCPT = const_value.CLINWEB_QUERY + "" + currCPTCODE;
             HttpGetHC4 getRequest = new HttpGetHC4(newUrlWithCPT);
@@ -470,8 +477,12 @@ public class DataAsked {
 
     }
 
-    public void setQuestionIncomplete(String b) {
-        this.questionIncomplete = b;
+    public void setCurrentCategory(String s) {
+        this.Surgery_type = s;
+    }
+
+    public void setQuestionComplete(String b) {
+        this.questionComplete = b;
     }
 
     public void setCurrentReply(String s) {
