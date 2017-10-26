@@ -162,13 +162,13 @@ public class ParseResult {
      * Return saved compelete param.
      * @return complete.
      */
-    public String getComplete(){
-        if (params != null && params.containsKey("complete"))
+    public String getCensusUnit(){
+        if (params != null && params.containsKey("censusUnit"))
         {
-            String param_json = params.get(param_surgery).getAsString();
+            String param_json = params.get("censusUnit").getAsString();
             return param_json;
         }
-        return "false";
+        return "";
     }
 
     /**

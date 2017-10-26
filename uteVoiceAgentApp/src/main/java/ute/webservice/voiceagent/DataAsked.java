@@ -58,7 +58,7 @@ public class DataAsked {
     private String Surgery_type="";
     private String questionComplete = "false";
     private String currentReply;
-
+    private String censusUnit ="";
 
     private HashMap<Integer,HashSet<String>> Admin_group = new HashMap<Integer,HashSet<String>>();
 
@@ -264,7 +264,7 @@ public class DataAsked {
 //        }
 //
 
-        boolean modifyReply = this.currentReply.contains("Here is the price");//|| this.currentReply.contains("here is what I found");
+        boolean modifyReply = this.currentReply.contains("Here is the price") || this.currentReply.contains("Here's what I found");
 
         if (!modifyReply) {
             return this.currentReply;
@@ -272,14 +272,25 @@ public class DataAsked {
 
         String responseString = "";
         String currCPTCODE = "";
-//        if (this.surgeries.containsKey(this.Surgery_type)) {
+        String newUrlWithCPT = "";
+        boolean surgery = false;
+        if (this.surgeries.containsKey(this.Surgery_type)) {
             currCPTCODE = this.surgeries.get(this.Surgery_type);
-//        }
-//        else{
-//            currCPTCODE = "";
-//        }
+            newUrlWithCPT = const_value.CLINWEB_QUERY + "" + currCPTCODE;
+            surgery = true;
+        }
+        else {
+            if (this.censusUnit.equals("All")) {
+                return this.getAllBedCensus();
+            }
+            else{
+                currCPTCODE = this.censusUnit;
+                newUrlWithCPT = const_value.CLINWEB_CENSUS_SPECFIC_QUERY+ "" + currCPTCODE;
+                surgery = false;
+            }
+        }
+
         try {
-            String newUrlWithCPT = const_value.CLINWEB_QUERY + "" + currCPTCODE;
             HttpGetHC4 getRequest = new HttpGetHC4(newUrlWithCPT);
             CloseableHttpResponse response3 = AccountCheck.httpclient.execute(getRequest);
             HttpEntity entity = response3.getEntity();
@@ -295,9 +306,21 @@ public class DataAsked {
                 if (responseString.equals(const_value.ACCESS_DENIED)) {
                     responseString = "You are not allowed to access.";
                 } else {
-                    SurgeryInfo si = ParseResult.parseSurgery(responseString);
+                    if (surgery) {
+                        SurgeryInfo si = ParseResult.parseSurgery(responseString);
 
-                    responseString = "\n$" + si.getCost();
+                        responseString = "\n$" + si.getCost();
+                    }
+                    else {
+                        ArrayList<RoomStatus> rooms = ParseResult.parseRooms(responseString);
+
+                        responseString ="";
+
+                        for(RoomStatus r : rooms) {
+                            responseString = "\n" + r.getUnit() + " has " + r.getAvailableBeds() + " beds available";
+                        }
+
+                    }
 
                 }
 
@@ -488,5 +511,7 @@ public class DataAsked {
     public void setCurrentReply(String s) {
         this.currentReply = s;
     }
+
+    public void setCensusUnit(String s) {this.censusUnit = s;}
 }
 
