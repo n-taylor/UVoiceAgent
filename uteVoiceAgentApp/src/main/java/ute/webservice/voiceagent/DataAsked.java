@@ -266,9 +266,9 @@ public class DataAsked {
 
         boolean modifyReply = this.currentReply.contains("Here is the price") || this.currentReply.contains("Here's what I found");
 
-        if (!modifyReply) {
-            return this.currentReply;
-        }
+//        if (this.questionComplete.equals("false")){ //!modifyReply) {
+//            return this.currentReply;
+//        }
 
         String responseString = "";
         String currCPTCODE = "";
@@ -276,7 +276,7 @@ public class DataAsked {
         boolean surgery = false;
         if (this.surgeries.containsKey(this.Surgery_type)) {
             currCPTCODE = this.surgeries.get(this.Surgery_type);
-            newUrlWithCPT = const_value.CLINWEB_QUERY + "" + currCPTCODE;
+            newUrlWithCPT = const_value.CLINWEB_CENSUS_SPECFIC_QUERY+ "" + currCPTCODE.toUpperCase().replace(" ", "");
             surgery = true;
         }
         else {
@@ -284,7 +284,7 @@ public class DataAsked {
                 return this.getAllBedCensus();
             }
             else{
-                currCPTCODE = this.censusUnit;
+                currCPTCODE = this.censusUnit.toUpperCase().replace(" ", "");
                 newUrlWithCPT = const_value.CLINWEB_CENSUS_SPECFIC_QUERY+ "" + currCPTCODE;
                 surgery = false;
             }
@@ -317,7 +317,7 @@ public class DataAsked {
                         responseString ="";
 
                         for(RoomStatus r : rooms) {
-                            responseString = "\n" + r.getUnit() + " has " + r.getAvailableBeds() + " beds available";
+                            responseString = "\n" + this.censusUnit + " has " + r.getAvailableBeds() + " beds available";
                         }
 
                     }

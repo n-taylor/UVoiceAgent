@@ -344,6 +344,7 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
                 dataasked.setCurrentCategory(PR.get_param_Surgery());
                // dataasked.setQuestionComplete(PR.getComplete());
                 dataasked.setCensusUnit(PR.getCensusUnit());
+                dataasked.setQuestionComplete(PR.getComplete());
 
 
 
