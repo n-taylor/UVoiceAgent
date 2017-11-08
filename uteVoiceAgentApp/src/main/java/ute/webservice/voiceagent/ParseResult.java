@@ -89,7 +89,12 @@ public class ParseResult {
      * @return action name
      */
     public String get_Action(){
-        return result.getAction();
+        if (result.getAction() != null) {
+            return result.getAction();
+        }
+        else {
+            return "";
+        }
     }
 
     /**
@@ -195,12 +200,6 @@ public class ParseResult {
 
         rooms = gson.fromJson(jsonRooms, arrayType);
         return rooms;
-    }
-
-
-    public static RoomStatus getSpecificRoom(String unit) {
-        return null;
-        //TODO
     }
 
     public static SurgeryInfo parseSurgery(String jsonSurgery) {

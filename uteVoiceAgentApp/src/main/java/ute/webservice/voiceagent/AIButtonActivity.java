@@ -338,14 +338,12 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
                 //test
                 RetrieveFeedTask httpTask = new RetrieveFeedTask();
                 httpTask.execute();
-//                String s = PR.getComplete();
-//                dataasked.setQuestionIncomplete(PR.getComplete());
-                dataasked.setCurrentReply(PR.get_reply());
-                dataasked.setCurrentCategory(PR.get_param_Surgery());
-               // dataasked.setQuestionComplete(PR.getComplete());
-                dataasked.setCensusUnit(PR.getCensusUnit());
-                dataasked.setQuestionComplete(PR.getComplete());
 
+                dataasked.setIncomplete(PR.get_ActionIncomplete());
+                dataasked.setCurrentReply(PR.get_reply());
+                dataasked.setCensusUnit(PR.getCensusUnit());
+                dataasked.setCurrentSurgeryCategory(PR.get_param_Surgery());
+                dataasked.setCurrentAction(PR.get_Action());
 
 
                 /*
@@ -422,13 +420,7 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
         protected String doInBackground(Void... voids) {
             String data=null;
             try {
-                //TODO :getTestReply is used for test, getHttpClientReply is the complete one.
-//                data = dataasked.getTestReply();
-                 data = dataasked.getHttpClientReply(sslContext);
-
-//                 data = dataasked.getAllBedCensus();
-
-                TTS.speak(data);
+                data = dataasked.getHttpClientReply(sslContext);
             } catch (Exception e) {
                 this.exception = e;
             }
@@ -441,7 +433,7 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
             Log.d(TAG,str);
             if(str!=null){
                 resultTV_insync.setText(str);
-                TTS.speak(str);
+                TTS.speak(dataasked.getVoiceMessageFormat(str));
             }
         }
 

@@ -59,6 +59,8 @@ public class DataAsked {
     private String questionComplete = "false";
     private String currentReply;
     private String censusUnit ="";
+    private boolean isIncomplete = true;
+    private String currentAction="";
 
     private HashMap<Integer,HashSet<String>> Admin_group = new HashMap<Integer,HashSet<String>>();
 
@@ -91,7 +93,7 @@ public class DataAsked {
 
         //TODO Find out all the possible values for fields we need to test for
         surgeries.put("BIOPSY OF SKIN LESION".toLowerCase(),"11100");
-        surgeries.put("UPPER GI ENDOSCOPY,BIOPSY".toLowerCase().replace(",", " "),"43239");
+        surgeries.put("UPPER GI ENDOSCOPY,BIOPSY".toLowerCase().replace(",", " ").replace("gi", "GI"),"43239");
 
 
         Map_Sugery.put(const_value.SURGERY_HERNIA,Hernia);
@@ -259,16 +261,10 @@ public class DataAsked {
         System.out.println("set SSL ");
         */
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//        if(this.questionIncomplete.equals("false")) {
-//            return this.currentReply;
-//        }
-//
 
-        boolean modifyReply = this.currentReply.contains("Here is the price") || this.currentReply.contains("Here's what I found");
-
-//        if (this.questionComplete.equals("false")){ //!modifyReply) {
-//            return this.currentReply;
-//        }
+        if (this.isIncomplete) {
+                return this.currentReply;
+        }
 
         String responseString = "";
         String currCPTCODE = "";
@@ -276,10 +272,10 @@ public class DataAsked {
         boolean surgery = false;
         if (this.surgeries.containsKey(this.Surgery_type)) {
             currCPTCODE = this.surgeries.get(this.Surgery_type);
-            newUrlWithCPT = const_value.CLINWEB_CENSUS_SPECFIC_QUERY+ "" + currCPTCODE.toUpperCase().replace(" ", "");
+            newUrlWithCPT = const_value.CLINWEB_QUERY+ "" + currCPTCODE;//.toUpperCase().replace(" ", "");
             surgery = true;
         }
-        else {
+        else if(this.censusUnit.length() > 0) {
             if (this.censusUnit.equals("All")) {
                 return this.getAllBedCensus();
             }
@@ -288,6 +284,9 @@ public class DataAsked {
                 newUrlWithCPT = const_value.CLINWEB_CENSUS_SPECFIC_QUERY+ "" + currCPTCODE;
                 surgery = false;
             }
+        }
+        else {
+            return this.currentReply;
         }
 
         try {
@@ -500,12 +499,16 @@ public class DataAsked {
 
     }
 
-    public void setCurrentCategory(String s) {
+    public void setCurrentSurgeryCategory(String s) {
         this.Surgery_type = s;
     }
 
-    public void setQuestionComplete(String b) {
-        this.questionComplete = b;
+//    public void setQuestionComplete(String b) {
+//        this.questionComplete = b;
+//    }
+
+    public void setIncomplete(boolean b) {
+        this.isIncomplete = b;
     }
 
     public void setCurrentReply(String s) {
@@ -513,5 +516,17 @@ public class DataAsked {
     }
 
     public void setCensusUnit(String s) {this.censusUnit = s;}
+
+    public void setCurrentAction(String s) {this.currentAction = s;}
+
+    public String getVoiceMessageFormat(String str) {
+        for(String s: const_value.units.keySet()) {
+            if(str.contains(s)) {
+                str = str.replace(s, const_value.units.get(s));
+            }
+        }
+
+        return str;
+    }
 }
 
