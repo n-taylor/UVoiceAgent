@@ -36,21 +36,13 @@ import javax.net.ssl.SSLContext;
 
 public class DataAsked {
 
-    SharedData sessiondata;
     private static final String TAG = "DataAsked";
-    private static final String test_url ="https://drcapptest.ad.utah.edu:7443/pricing-transparency-api/pricing/query";
     private static final String test_url_query = "http://drcapptest.ad.utah.edu:7003/pricing-transparency-api/pricing/query";
-    private static final String test_url_retrieve = "https://clinweb.med.utah.edu/orscheduling-api/user/retrieve";
     private Constants const_value;
 
     //TODO: load data from files
     //private static final Hash
     private HashMap<String,HashMap<String,String>> Map_Sugery = new HashMap<String,HashMap<String,String>>();
-    private HashMap<String,String> Hernia = new HashMap<String,String>();
-    private HashMap<String,String> Bypass = new HashMap<String,String>();
-
-    private HashMap<String,String>  biopsy = new HashMap<String,String>();
-    private HashMap<String,String>  endoscopy = new HashMap<String,String>();
 
     private HashMap<String, String> surgeries = new HashMap<String, String>();
 
@@ -74,30 +66,10 @@ public class DataAsked {
     DataAsked()
     {
         const_value=new Constants();
-        //Test: initialize Hashmap by program
         //TODO initialize HashMap by loading file
-        Hernia.put("price","6000");
-        Hernia.put("success rate","98%");
-        Hernia.put("recovery time","18");
-
-        Bypass.put("price","70000");
-        Bypass.put("success rate","90%");
-        Bypass.put("recovery time","30");
-
-
-       // UPGI ENDOSCOPY W/US FN BX	43238
-        //UPPER GI ENDOSCOPY,BIOPSY
-        biopsy.put("UPPER GI BIOPSY" , "43239");
-        endoscopy.put("UPPER GI ENDOSCOPY" , "43239");
-
-
         //TODO Find out all the possible values for fields we need to test for
         surgeries.put("BIOPSY OF SKIN LESION".toLowerCase(),"11100");
         surgeries.put("UPPER GI ENDOSCOPY,BIOPSY".toLowerCase().replace(",", " ").replace("gi", "GI"),"43239");
-
-
-        Map_Sugery.put(const_value.SURGERY_HERNIA,Hernia);
-        Map_Sugery.put(const_value.SURGERY_BYPASS,Bypass);
 
         //Initialize administration group
         Admin_group.put(Constants.ACCESS_LEVEL_ADMIN,new HashSet<>(Arrays.asList(const_value.SURGERY_HERNIA,const_value.SURGERY_BYPASS)));
@@ -247,20 +219,6 @@ public class DataAsked {
      * @throws IOException
      */
     public String getHttpClientReply(SSLContext sslContext) throws IOException {
-        /*
-        SSLConnectionSocketFactory factory = new SSLConnectionSocketFactory(sslContext);
-                //SSLConnectionSocketFactory.BROWSER_COMPATIBLE_HOSTNAME_VERIFIER);
-        //BasicCookieStore cookieStore = new BasicCookieStore();
-        CloseableHttpClient httpclient = HttpClients.custom()
-                //.setDefaultCookieStore(cookieStore)
-                //.setSSLSocketFactory(factory)
-                .build();
-        HttpParams httpParams = httpclient.getParams();
-        HttpConnectionParams.setConnectionTimeout(httpParams,6000);
-        HttpConnectionParams.setSoTimeout(httpParams,6000);
-        System.out.println("set SSL ");
-        */
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
         if (this.isIncomplete) {
                 return this.currentReply;
@@ -332,61 +290,6 @@ public class DataAsked {
 
         return this.currentReply + responseString;
     }
-//-------------------------Hsun's old code -----------------------------------------------------------------------------//
-//        try {
-//            HttpPostHC4 httpPost = new HttpPostHC4(const_value.CLINWEB_QUERY);
-//            //Prepare Parameters
-//            String  JSON_STRING = "{";
-//            JSON_STRING+=const_value.QUESTION_TYPE+":"+this.Question_type+",";
-//            JSON_STRING+=const_value.SURGERY_TYPE+":"+this.Surgery_type+"}";
-//            StringEntity params= new StringEntity(JSON_STRING);
-//            Log.d(TAG,JSON_STRING);
-//
-//            httpPost.setEntity(params);
-//            httpPost.setHeader("Accept", "application/json");
-//            httpPost.setHeader("Content-Type", "application/json;charset=UTF-8");
-//            try {
-//                CloseableHttpResponse response3 = AccountCheck.httpclient.execute(httpPost);
-//                HttpEntity entity = response3.getEntity();
-//                if (entity != null) {
-//                    BufferedReader rdSrch = new BufferedReader(
-//                            new InputStreamReader(response3.getEntity().getContent()));
-//
-//                    String  lineSrch;
-//                    while ((lineSrch = rdSrch.readLine()) != null) {
-//                        Log.d(TAG, lineSrch);
-//                        responseString+=lineSrch;
-//                    }
-//                    if(responseString.equals(const_value.ACCESS_DENIED)){
-//                        responseString = "You are not allowed to access.";
-//                    }
-//                    else{
-//                        if(this.Question_type.equals("\"price\""))
-//                            responseString = "The average cost of "+this.Surgery_type.substring(1,this.Surgery_type.length()-1)+
-//                                    " is $"+responseString+".";
-//                        if(this.Question_type.equals("\"risk\""))
-//                            responseString = "The average risk of "+this.Surgery_type.substring(1,this.Surgery_type.length()-1)+
-//                                    " is "+responseString+"%.";
-//                    }
-//
-//                }
-//
-//            } catch(Exception e){
-//                e.printStackTrace();
-//            }
-//        }
-//        catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        /*finally {
-//            try {
-//                httpclient.close();
-//            }catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        */
-//        this.clear_params();
 
 
     /**
@@ -395,16 +298,6 @@ public class DataAsked {
      * @throws IOException
      */
     public String getTestReply() throws IOException {
-        //String cookies = sessiondata.getCookies();
-        //Log.d(TAG,cookies);
-        /*
-        BasicCookieStore cookieStore = new BasicCookieStore();
-        //cookieStore.addCookie(cookies);
-        CloseableHttpClient httpclient = HttpClients.custom()
-                .setDefaultCookieStore(cookieStore)
-                //.setSSLSocketFactory(factory)
-                .build();
-        */
 
         String responseString="";
         try {
@@ -502,10 +395,6 @@ public class DataAsked {
     public void setCurrentSurgeryCategory(String s) {
         this.Surgery_type = s;
     }
-
-//    public void setQuestionComplete(String b) {
-//        this.questionComplete = b;
-//    }
 
     public void setIncomplete(boolean b) {
         this.isIncomplete = b;

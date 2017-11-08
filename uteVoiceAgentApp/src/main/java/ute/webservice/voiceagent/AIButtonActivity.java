@@ -344,38 +344,6 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
                 dataasked.setCensusUnit(PR.getCensusUnit());
                 dataasked.setCurrentSurgeryCategory(PR.get_param_Surgery());
                 dataasked.setCurrentAction(PR.get_Action());
-
-
-                /*
-                if(PR.reply_yes()) {
-                    if(dataasked.isParameter_Enough())
-                    {
-                        if(dataasked.IsAccessable(account_access)){
-                        String speech = PR.get_reply();
-                            RetrieveFeedTask httpTask = new RetrieveFeedTask();
-                            httpTask.execute();
-                        }
-                        else{
-                            String speech = "Sorry, you are not permitted to access these information.";
-                            resultTextView.setText(speech);
-                            TTS.speak(speech);
-                        }
-                    }
-                }
-                else
-                {
-                    if(PR.reply_sq()) {
-
-                        Log.i(TAG, "get_param_q_type: " + PR.get_param_q_type());
-                        Log.i(TAG, "get_param_Surgery: " + PR.get_param_Surgery());
-                        dataasked.assign_params(PR.get_param_q_type(), PR.get_param_Surgery());
-                    }
-                        String speech = PR.get_reply();
-                        resultTextView.setText(speech);
-                        TTS.speak(speech);
-
-                }
-                */
             }
 
         });
