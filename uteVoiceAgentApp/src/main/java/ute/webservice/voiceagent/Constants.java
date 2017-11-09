@@ -59,6 +59,7 @@ final class Constants {
         units.put("SSTU","S S T U");
         units.put("UUOC","U U O C");
         units.put("GI", "G I");
+        units.put("5 W", "Five West");
     }
 
 }

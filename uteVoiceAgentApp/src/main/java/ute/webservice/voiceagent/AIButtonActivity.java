@@ -111,7 +111,7 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
         dataasked = new DataAsked();
 
         //Welcome message
-        resultTextView.setText(Html.fromHtml("<b>Welcome, "+accountID+"!</b>"));
+        resultTextView.setText(Html.fromHtml("<b>Welcome, "+accountID+"! <br/> For a list of things I can do, say \"What can you do?\"</b>"));
 
         this.loadCA();
 

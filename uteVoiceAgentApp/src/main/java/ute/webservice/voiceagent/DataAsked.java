@@ -267,6 +267,8 @@ public class DataAsked {
                         SurgeryInfo si = ParseResult.parseSurgery(responseString);
 
                         responseString = "\n$" + si.getCost();
+
+                        return "The patient cost of " + this.Surgery_type + " is $" + si.getCost();
                     }
                     else {
                         ArrayList<RoomStatus> rooms = ParseResult.parseRooms(responseString);
@@ -276,6 +278,7 @@ public class DataAsked {
                         for(RoomStatus r : rooms) {
                             responseString = "\n" + this.censusUnit + " has " + r.getAvailableBeds() + " beds available";
                         }
+                        return responseString;
 
                     }
 
