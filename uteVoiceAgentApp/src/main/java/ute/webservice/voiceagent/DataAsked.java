@@ -276,7 +276,7 @@ public class DataAsked {
                         responseString ="";
 
                         for(RoomStatus r : rooms) {
-                            responseString = "\n" + this.censusUnit + " has " + r.getAvailableBeds() + " beds available";
+                            return "\n" + this.censusUnit + " has " + r.getAvailableBeds() + " beds available";
                         }
                         return responseString;
 
