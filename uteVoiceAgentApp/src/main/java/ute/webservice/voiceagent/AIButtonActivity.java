@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.speech.tts.Voice;
 import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
@@ -111,8 +112,8 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
         dataasked = new DataAsked();
 
         //Welcome message
-        resultTextView.setText(Html.fromHtml("<b>Welcome, "+accountID+"! <br/> For a list of things I can do, say \"What can you do?\"</b>"));
-
+        resultTextView.setText(Html.fromHtml("<b>Welcome, "+accountID+"! <br/> I can give you the cost of a procedure or I can give you the census of a hospital room.</b>"));
+        //TTS.setVoice(new Voice("Voice", Voice.QUALITY_VERY_HIGH, Voice.LATENCY_NORMAL, false, ));
         this.loadCA();
 
     }
