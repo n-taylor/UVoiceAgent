@@ -1,7 +1,7 @@
-#Tue Aug 15 14:59:02 MDT 2017
-base.0=C\:\\Users\\u1076070\\Downloads\\app\\uteVoiceAgentApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_21f2d1cbb283b687c4a1c6ae3068e5dace8e9fdf
-renamed.1=classes.dex
-renamed.0=classes2.dex
-file.1=C\:\\Users\\u1076070\\Downloads\\app\\uteVoiceAgentApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_eaa0779a05119ef71c1a7401fd302863dc88d885\\classes.dex
-base.1=C\:\\Users\\u1076070\\Downloads\\app\\uteVoiceAgentApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_eaa0779a05119ef71c1a7401fd302863dc88d885
-file.0=C\:\\Users\\u1076070\\Downloads\\app\\uteVoiceAgentApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_21f2d1cbb283b687c4a1c6ae3068e5dace8e9fdf\\classes.dex
+#Wed Mar 07 13:10:03 MST 2018
+base.0=C\:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_6c3122553e29f60cc987c591ace95252d7893b44
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=C\:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_c6133fcef74eedd62c3fcbc1bbd1622b30ef3f3f\\classes.dex
+base.1=C\:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_c6133fcef74eedd62c3fcbc1bbd1622b30ef3f3f
+file.0=C\:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_6c3122553e29f60cc987c591ace95252d7893b44\\classes.dex
