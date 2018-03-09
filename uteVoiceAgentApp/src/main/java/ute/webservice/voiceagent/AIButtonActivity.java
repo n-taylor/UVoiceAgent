@@ -312,11 +312,12 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
                 return true;
 
             case R.id.action_logout:
-                // User chose the "Favorite" action, mark the current item
-                // as a favorite...
+                // Create an AuthenticationTask and execute it to logout
+                AuthenticationTask httpTask = new AuthenticationTask();
+                httpTask.execute();
                 return true;
             default:
-            return super.onOptionsItemSelected(item);
+                return super.onOptionsItemSelected(item);
         }
     }
 
@@ -375,8 +376,7 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
 
     @Override
     public void onBackPressed(){
-        AuthenticationTask httpTask = new AuthenticationTask();
-        httpTask.execute();
+        super.onBackPressed();
     }
 
     /**
