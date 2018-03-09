@@ -376,7 +376,8 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
 
     @Override
     public void onBackPressed(){
-        super.onBackPressed();
+        AuthenticationTask httpTask = new AuthenticationTask();
+        httpTask.execute();
     }
 
     /**
