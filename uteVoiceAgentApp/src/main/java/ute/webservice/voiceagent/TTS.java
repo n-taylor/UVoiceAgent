@@ -47,6 +47,11 @@ public class TTS {
      * Stops playing the speech
      */
     public static void stop(){
-        textToSpeech.stop();
+        if (textToSpeech.isSpeaking())
+            textToSpeech.stop();
+    }
+
+    public static boolean isSpeaking(){
+        return textToSpeech.isSpeaking();
     }
 }

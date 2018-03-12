@@ -53,7 +53,6 @@ public class DataAsked {
     private String censusUnit ="";
     private boolean isIncomplete = true;
     private String currentAction="";
-    private static boolean cancel = false; // used to cancel data requests to the server
 
     private HashMap<Integer,HashSet<String>> Admin_group = new HashMap<Integer,HashSet<String>>();
 
@@ -226,8 +225,6 @@ public class DataAsked {
                 return this.currentReply;
         }
 
-        cancel = false; // reset cancel
-
         String responseString = "";
         String currCPTCODE = "";
         String newUrlWithCPT = "";
@@ -260,15 +257,12 @@ public class DataAsked {
                         new InputStreamReader(response3.getEntity().getContent()));
 
                 String lineSrch;
-                while ((lineSrch = rdSrch.readLine()) != null && !cancel) {
+                while ((lineSrch = rdSrch.readLine()) != null) {
                     Log.d(TAG, lineSrch);
                     responseString += lineSrch;
                 }
 
-                if (cancel){
-
-                }
-                else if (responseString.equals(const_value.ACCESS_DENIED)) {
+                if (responseString.equals(const_value.ACCESS_DENIED)) {
                     responseString = "You are not allowed to access.";
                 } else {
                     if (surgery) {
@@ -295,18 +289,7 @@ public class DataAsked {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (cancel) {
-            cancel = false;
-            return "The data retrieval was cancelled.";
-        }
         return this.currentReply + responseString;
-    }
-
-    /**
-     * When called, sets cancel equal to true
-     */
-    public void cancelRequest(){
-        cancel = true;
     }
 
 
