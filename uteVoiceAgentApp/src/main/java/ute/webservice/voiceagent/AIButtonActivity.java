@@ -53,6 +53,7 @@ import ai.api.ui.AIButton;
 public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonListener {
 
     public static final String TAG = AIButtonActivity.class.getName();
+    private final String openingMessage = "I can give you the cost of a procedure or I can give you the census of a hospital room.";
 
     private AIButton aiButton;
     private TextView resultTextView;
@@ -114,7 +115,7 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
         dataasked = new DataAsked();
 
         //Welcome message
-        resultTextView.setText(Html.fromHtml("<b>Welcome, "+accountID+"! <br/> I can give you the cost of a procedure or I can give you the census of a hospital room.</b>"));
+        resultTextView.setText(Html.fromHtml("<b>Welcome, "+accountID+"! <br/>" + openingMessage + "</b>"));
         //TTS.setVoice(new Voice("Voice", Voice.QUALITY_VERY_HIGH, Voice.LATENCY_NORMAL, false, ));
         this.loadCA();
 
@@ -387,7 +388,9 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
             task.execute();
         }
         else{
-            // do nothing here
+            // display the opening message and hide the last query
+            this.resultTextView.setText(Html.fromHtml("<b>" + openingMessage + "</b>"));
+            this.queryTextView.setText("");
         }
     }
 
