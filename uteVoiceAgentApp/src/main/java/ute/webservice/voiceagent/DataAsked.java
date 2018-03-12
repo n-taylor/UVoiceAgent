@@ -53,6 +53,7 @@ public class DataAsked {
     private String censusUnit ="";
     private boolean isIncomplete = true;
     private String currentAction="";
+    private static boolean cancel = false; // used to cancel data requests to the server
 
     private HashMap<Integer,HashSet<String>> Admin_group = new HashMap<Integer,HashSet<String>>();
 
@@ -215,6 +216,7 @@ public class DataAsked {
 
     /**
      * Get data from webservice by CloseableHttpClient.
+     * If cancel is equal to true, stop retrieving data; display that the retrieval was cancelled.
      * @return Response to user's query.
      * @throws IOException
      */
@@ -223,6 +225,8 @@ public class DataAsked {
         if (this.isIncomplete) {
                 return this.currentReply;
         }
+
+        cancel = false; // reset cancel
 
         String responseString = "";
         String currCPTCODE = "";
@@ -256,11 +260,15 @@ public class DataAsked {
                         new InputStreamReader(response3.getEntity().getContent()));
 
                 String lineSrch;
-                while ((lineSrch = rdSrch.readLine()) != null) {
+                while ((lineSrch = rdSrch.readLine()) != null && !cancel) {
                     Log.d(TAG, lineSrch);
                     responseString += lineSrch;
                 }
-                if (responseString.equals(const_value.ACCESS_DENIED)) {
+
+                if (cancel){
+
+                }
+                else if (responseString.equals(const_value.ACCESS_DENIED)) {
                     responseString = "You are not allowed to access.";
                 } else {
                     if (surgery) {
@@ -279,19 +287,26 @@ public class DataAsked {
                             responseString = "\n" + this.censusUnit + " has " + r.getAvailableBeds() + " beds available";
                         }
                         return responseString;
-
                     }
-
                 }
-
             }
 
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        if (cancel) {
+            cancel = false;
+            return "The data retrieval was cancelled.";
+        }
         return this.currentReply + responseString;
+    }
+
+    /**
+     * When called, sets cancel equal to true
+     */
+    public void cancelRequest(){
+        cancel = true;
     }
 
 

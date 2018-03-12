@@ -42,4 +42,11 @@ public class TTS {
     public static void speak(final String text) {
         textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
     }
+
+    /**
+     * Stops playing the speech
+     */
+    public static void stop(){
+        textToSpeech.stop();
+    }
 }

@@ -118,7 +118,10 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
         // set up the cancel button
         cancelButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                cancel = true;
+                // signal data asked to cancel the current operation
+                dataasked.cancelRequest();
+                // stop any speech that is being played currently
+                TTS.stop();
             }
         });
 
