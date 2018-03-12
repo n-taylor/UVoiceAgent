@@ -1104,15 +1104,7 @@
                     "endOffset": 17121
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\src\\main\\res\\values-v21\\styles.xml",
-                    "position": {
-                        "startLine": 10,
-                        "startColumn": 4,
-                        "startOffset": 404,
-                        "endLine": 14,
-                        "endColumn": 12,
-                        "endOffset": 708
-                    }
+                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\src\\main\\res\\values-v21\\styles.xml"
                 }
             },
             {

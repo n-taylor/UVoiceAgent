@@ -48,7 +48,7 @@
             android:name="ute.webservice.voiceagent.AISettingsActivity"
             android:label="@string/action_settings"
             android:parentActivityName="ute.webservice.voiceagent.MainActivity"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/My_theme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ute.webservice.voiceagent.MainActivity" />

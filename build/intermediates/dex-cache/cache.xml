@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
+        jar="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="63bc59ebcd39e5daf1915d3497f03940754c8fd2">
+        <dex dex="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_c6133fcef74eedd62c3fcbc1bbd1622b30ef3f3f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
         <dex dex="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_6c3122553e29f60cc987c591ace95252d7893b44\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3e2c5754a01f1a61ae9a03475c46b1f52daf083f">
-        <dex dex="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_c6133fcef74eedd62c3fcbc1bbd1622b30ef3f3f\classes.dex" />
     </item>
 
 </items>

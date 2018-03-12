@@ -6,9 +6,9 @@
     <dimen name="notification_media_narrow_margin">12dp</dimen>
     <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/color_softgreen</item>
+        <item name="colorPrimary">@color/color_slategrey</item>
         <item name="android:statusBarColor">?attr/colorControlActivated</item>
-        <item name="android:navigationBarColor">@color/color_softgreen</item>
+        <item name="android:navigationBarColor">@color/color_slategrey</item>
     </style>
     <style name="Base.TextAppearance.AppCompat" parent="android:TextAppearance.Material"/>
     <style name="Base.TextAppearance.AppCompat.Body1" parent="android:TextAppearance.Material.Body1"/>
@@ -230,7 +230,7 @@
     <style name="Base.Widget.AppCompat.Toolbar.Button.Navigation" parent="android:Widget.Material.Toolbar.Button.Navigation">
     </style>
     <style name="My_theme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/color_softgreen</item>
+        <item name="colorPrimary">@color/color_slategrey</item>
         <item name="android:statusBarColor">?attr/colorControlActivated</item>
         <item name="android:navigationBarColor">@color/color_slategrey</item>
     </style>

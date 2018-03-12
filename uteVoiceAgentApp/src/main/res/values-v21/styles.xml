@@ -3,14 +3,14 @@
 
     <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/color_softgreen</item>
+        <item name="colorPrimary">@color/color_slategrey</item>
         <item name="android:statusBarColor">?attr/colorControlActivated</item>
-        <item name="android:navigationBarColor">@color/color_softgreen</item>
+        <item name="android:navigationBarColor">@color/color_slategrey</item>
     </style>
 
     <style name="My_theme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/color_softgreen</item>
+        <item name="colorPrimary">@color/color_slategrey</item>
         <item name="android:statusBarColor">?attr/colorControlActivated</item>
-        <item name="android:navigationBarColor">@color/color_softgreen</item>
+        <item name="android:navigationBarColor">@color/color_slategrey</item>
     </style>
 </resources>

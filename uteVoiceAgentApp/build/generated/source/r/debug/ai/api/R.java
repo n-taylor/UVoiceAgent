@@ -21,11 +21,11 @@ public final class R {
         public static final int state_waiting = 0x7f010103;
     }
     public static final class color {
-        public static final int aidialog_background = 0x7f0c0008;
-        public static final int icon_orange_color = 0x7f0c002b;
-        public static final int main_bg_color = 0x7f0c002c;
-        public static final int mic_button_halo = 0x7f0c0039;
-        public static final int mic_colors = 0x7f0c0066;
+        public static final int aidialog_background = 0x7f0c0009;
+        public static final int icon_orange_color = 0x7f0c002c;
+        public static final int main_bg_color = 0x7f0c002d;
+        public static final int mic_button_halo = 0x7f0c003a;
+        public static final int mic_colors = 0x7f0c0067;
     }
     public static final class dimen {
         public static final int mic_button_halo_radius_max = 0x7f080082;
@@ -52,8 +52,8 @@ public final class R {
         public static final int version_config = 0x7f060003;
     }
     public static final class string {
-        public static final int app_name = 0x7f070024;
-        public static final int default_aidialog_title = 0x7f070028;
+        public static final int app_name = 0x7f070025;
+        public static final int default_aidialog_title = 0x7f070029;
     }
     public static final class style {
         public static final int ApiAi = 0x7f0900a8;
