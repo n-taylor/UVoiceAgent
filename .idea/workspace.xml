@@ -130,8 +130,8 @@
       <file leaf-file-name="AIButtonActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/AIButtonActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="391" column="88" lean-forward="false" selection-start-line="391" selection-start-column="88" selection-end-line="391" selection-end-column="88" />
+            <state relative-caret-position="332">
+              <caret line="383" column="39" lean-forward="false" selection-start-line="383" selection-start-column="39" selection-end-line="383" selection-end-column="39" />
               <folding>
                 <element signature="method#onError#0;class#AIButtonActivity#0" expanded="false" />
               </folding>
@@ -171,8 +171,8 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-693">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="344">
+              <caret line="66" column="45" lean-forward="false" selection-start-line="66" selection-start-column="45" selection-end-line="66" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -222,6 +222,7 @@
       <find>sslContext</find>
       <find>queryTextView</find>
       <find>setText</find>
+      <find>aiButton</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -2879,7 +2880,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/api/sample/AccountCheck.java" />
         <option value="$PROJECT_DIR$/apiAISampleApp/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/apiAISampleApp/build/intermediates/res/merged/debug/layout-v21/activity_aibutton_sample.xml" />
         <option value="$PROJECT_DIR$/gradle.properties" />
@@ -2929,6 +2929,7 @@
         <option value="C:/Android/SDK/platforms/android-24/android.jar!/android/app/Activity.class" />
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/AccountCheck.java" />
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/DataAsked.java" />
+        <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_aibutton_sample.xml" />
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/AIButtonActivity.java" />
       </list>
     </option>
@@ -3229,7 +3230,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520875479321" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520876869434" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -3276,7 +3277,7 @@
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
       </Profilers>
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520875479321" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520876869434" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -3592,7 +3593,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Code Iris" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7883996" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.2946524" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="91" y="91" width="1738" height="850" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.2946524" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="91" y="91" width="1738" height="850" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -4015,17 +4016,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="27" column="44" lean-forward="false" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout-v21/activity_aibutton_sample.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -4037,13 +4027,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="27" column="44" lean-forward="false" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_aibutton_sample.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-693">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="344">
+          <caret line="66" column="45" lean-forward="false" selection-start-line="66" selection-start-column="45" selection-end-line="66" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -4061,8 +4062,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/AIButtonActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="391" column="88" lean-forward="false" selection-start-line="391" selection-start-column="88" selection-end-line="391" selection-end-column="88" />
+        <state relative-caret-position="332">
+          <caret line="383" column="39" lean-forward="false" selection-start-line="383" selection-start-column="39" selection-end-line="383" selection-end-column="39" />
           <folding>
             <element signature="method#onError#0;class#AIButtonActivity#0" expanded="false" />
           </folding>

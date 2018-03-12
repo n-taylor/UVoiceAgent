@@ -67,8 +67,6 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
     private String accountID;
     private int account_access;
 
-    private boolean allowBack = false;
-
     //Progress bar
     private ProgressDialog progress;
 
@@ -378,20 +376,12 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
     }
 
     /**
-     * If allowBack is equal to true, logout when the back button is pressed.
-     * Otherwise, do nothing.
+     * When the back button is pressed, display the opening message and hide the last query
      */
     @Override
     public void onBackPressed(){
-        if (allowBack){
-            AuthenticationTask task = new AuthenticationTask();
-            task.execute();
-        }
-        else{
-            // display the opening message and hide the last query
-            this.resultTextView.setText(Html.fromHtml("<b>" + openingMessage + "</b>"));
-            this.queryTextView.setText("");
-        }
+        this.resultTextView.setText(Html.fromHtml("<b>" + openingMessage + "</b>"));
+        this.queryTextView.setText("");
     }
 
     /**
