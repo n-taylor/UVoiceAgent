@@ -22,10 +22,10 @@ public final class R {
     }
     public static final class color {
         public static final int aidialog_background = 0x7f0c0008;
-        public static final int icon_orange_color = 0x7f0c002a;
-        public static final int main_bg_color = 0x7f0c002b;
-        public static final int mic_button_halo = 0x7f0c0038;
-        public static final int mic_colors = 0x7f0c0065;
+        public static final int icon_orange_color = 0x7f0c002b;
+        public static final int main_bg_color = 0x7f0c002c;
+        public static final int mic_button_halo = 0x7f0c0039;
+        public static final int mic_colors = 0x7f0c0066;
     }
     public static final class dimen {
         public static final int mic_button_halo_radius_max = 0x7f080082;
