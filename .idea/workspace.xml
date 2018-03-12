@@ -16,30 +16,7 @@
     <option name="LOGCAT_FORMAT_STRING" value="%1$s %3$s %4$c/%5$s: %6$s" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e27233d9-b878-4421-a66b-7fedf0d2161c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity$AuthenticationTask.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity$AuthenticationTask.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity$RetrieveFeedTask.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity$RetrieveFeedTask.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity$AuthenticationTask.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity$AuthenticationTask.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity$RetrieveFeedTask.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity$RetrieveFeedTask.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/split-apk/debug/slices/slice_4.apk" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/split-apk/debug/slices/slice_4.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity$AuthenticationTask.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity$AuthenticationTask.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity$RetrieveFeedTask.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity$RetrieveFeedTask.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity$AuthenticationTask.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity$AuthenticationTask.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity$RetrieveFeedTask.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity$RetrieveFeedTask.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/package_slice_4/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/package_slice_4/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/restart-dex/debug/build-info.xml" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/restart-dex/debug/build-info.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/AIButtonActivity.java" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/AIButtonActivity.java" />
-    </list>
+    <list default="true" id="e27233d9-b878-4421-a66b-7fedf0d2161c" name="Default" comment="" />
     <ignored path="app.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -110,21 +87,96 @@
       <file leaf-file-name="AIButtonActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/AIButtonActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="381" column="0" lean-forward="true" selection-start-line="381" selection-start-column="0" selection-end-line="381" selection-end-column="0" />
+            <state relative-caret-position="605">
+              <caret line="378" column="63" lean-forward="false" selection-start-line="378" selection-start-column="63" selection-end-line="378" selection-end-column="63" />
               <folding>
-                <element signature="method#onError#0;class#AIButtonActivity#0" expanded="false" />
+                <element signature="e#7071#7647#0" expanded="true" />
+                <element signature="e#7646#7647#0" expanded="true" />
+                <element signature="e#10837#11595#0" expanded="true" />
+                <element signature="e#11594#11595#0" expanded="true" />
+                <element signature="e#11688#11879#0" expanded="true" />
+                <element signature="e#11878#11879#0" expanded="true" />
+                <element signature="e#11957#12138#0" expanded="true" />
+                <element signature="e#12137#12138#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccountCheck.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/AccountCheck.java">
+      <file leaf-file-name="ParseResult.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/ParseResult.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2205">
-              <caret line="131" column="63" lean-forward="false" selection-start-line="131" selection-start-column="63" selection-end-line="131" selection-end-column="63" />
+            <state relative-caret-position="287">
+              <caret line="82" column="18" lean-forward="false" selection-start-line="82" selection-start-column="18" selection-end-line="82" selection-end-column="18" />
+              <folding>
+                <element signature="e#2565#2566#0" expanded="true" />
+                <element signature="e#2613#2614#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_main.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="27" column="44" lean-forward="false" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_aibutton_sample.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_aibutton_sample.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="344">
+              <caret line="66" column="45" lean-forward="false" selection-start-line="66" selection-start-column="45" selection-end-line="66" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_aibutton_sample.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout-v21/activity_aibutton_sample.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-874">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataAsked.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/DataAsked.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="174">
+              <caret line="220" column="58" lean-forward="false" selection-start-line="220" selection-start-column="48" selection-end-line="220" selection-end-column="58" />
+              <folding>
+                <marker date="1520876914385" expanded="true" signature="7333:7467" ph="/**...*/" />
+                <marker date="1520876914385" expanded="true" signature="7547:10201" ph="{...}" />
+                <marker date="1520876914385" expanded="true" signature="10208:10308" ph="/**...*/" />
+                <marker date="1520876914385" expanded="true" signature="10361:12319" ph="{...}" />
+                <marker date="1520876914385" expanded="true" signature="10510:10636" ph="//..." />
+                <marker date="1520876914385" expanded="true" signature="12378:13745" ph="{...}" />
+                <marker date="1520876914385" expanded="false" signature="13798:13809" ph=" { " />
+                <marker date="1520876914385" expanded="false" signature="13831:13837" ph=" }" />
+                <marker date="1520876914385" expanded="false" signature="13879:13890" ph=" { " />
+                <marker date="1520876914385" expanded="false" signature="13912:13918" ph=" }" />
+                <marker date="1520876914385" expanded="false" signature="13961:13972" ph=" { " />
+                <marker date="1520876914385" expanded="false" signature="13994:14000" ph=" }" />
+                <marker date="1520876914385" expanded="true" signature="14042:14064" ph="{...}" />
+                <marker date="1520876914385" expanded="true" signature="14109:14134" ph="{...}" />
+                <marker date="1520876914385" expanded="true" signature="14188:14390" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -2878,9 +2930,30 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Voice_Assistant" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uteVoiceAgentApp" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="Voice_Assistant" />
@@ -2940,6 +3013,46 @@
               <option name="myItemId" value="uteVoiceAgentApp" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activity_aibutton_sample.xml" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResGroupNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Voice_Assistant" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uteVoiceAgentApp" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="drawable" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Voice_Assistant" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uteVoiceAgentApp" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -2983,9 +3096,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -3093,8 +3203,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520628229092" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520876961451" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -3141,8 +3250,7 @@
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
       </Profilers>
       <method>
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520628229092" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520876961451" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -3174,27 +3282,6 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <method />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
       <method />
     </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
@@ -3324,8 +3411,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520628229095" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520876961453" />
       </method>
     </configuration>
     <configuration default="false" name="uteVoiceAgentApp" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
@@ -3373,8 +3459,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520628229095" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520876961453" />
       </method>
     </configuration>
     <list size="2">
@@ -3402,6 +3487,9 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -3441,6 +3529,43 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46256685" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32362822" sideWeight="0.49741268" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24384525" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32435596" sideWeight="0.49288487" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32849163" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19144385" sideWeight="0.7139423" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4412094" sideWeight="0.42884865" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15572916" sideWeight="0.28605768" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3919373" sideWeight="0.614726" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37470725" sideWeight="0.49741268" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find Sample Code" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14754099" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.47831184" sideWeight="0.38527396" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14117648" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6819709" sideWeight="0.59703195" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Code Iris" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7883996" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1323185" sideWeight="0.4954722" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34777516" sideWeight="0.42009133" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.2946524" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="91" y="91" width="1738" height="850" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46256685" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24384525" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32362822" sideWeight="0.49741268" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32435596" sideWeight="0.49288487" order="10" side_tool="false" content_ui="tabs" />
@@ -3451,18 +3576,6 @@
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15572916" sideWeight="0.28605768" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37470725" sideWeight="0.49741268" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Find Sample Code" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14754099" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.47831184" sideWeight="0.38527396" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Code Iris" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7883996" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.2946524" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="91" y="91" width="1738" height="850" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -3545,12 +3658,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-162">
           <caret line="13" column="23" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="23" />
-          <folding>
-            <element signature="e#1733#1734#0" expanded="false" />
-            <element signature="e#1790#1791#0" expanded="false" />
-            <element signature="e#1823#1824#0" expanded="false" />
-            <element signature="e#1880#1881#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3570,24 +3677,24 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ailib/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/AndroidManifest.xml">
       <provider editor-type-id="android-manifest">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
@@ -3602,8 +3709,8 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        <state relative-caret-position="344">
+          <caret line="66" column="45" lean-forward="false" selection-start-line="66" selection-start-column="45" selection-end-line="66" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -3618,10 +3725,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/ParseResult.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3381">
-          <caret line="195" column="45" lean-forward="false" selection-start-line="195" selection-start-column="45" selection-end-line="195" selection-end-column="45" />
+        <state relative-caret-position="287">
+          <caret line="82" column="18" lean-forward="false" selection-start-line="82" selection-start-column="18" selection-end-line="82" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="e#2565#2566#0" expanded="true" />
+            <element signature="e#2613#2614#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3630,7 +3738,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3638,7 +3745,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3646,19 +3752,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/DataAsked.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4872">
-          <caret line="295" column="0" lean-forward="false" selection-start-line="295" selection-start-column="0" selection-end-line="295" selection-end-column="0" />
+        <state relative-caret-position="174">
+          <caret line="220" column="58" lean-forward="false" selection-start-line="220" selection-start-column="48" selection-end-line="220" selection-end-column="58" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1433#1464#0" expanded="false" />
-            <element signature="e#1528#1544#0" expanded="false" />
-            <element signature="e#1886#1911#0" expanded="false" />
+            <marker date="1520876914385" expanded="true" signature="7333:7467" ph="/**...*/" />
+            <marker date="1520876914385" expanded="true" signature="7547:10201" ph="{...}" />
+            <marker date="1520876914385" expanded="true" signature="10208:10308" ph="/**...*/" />
+            <marker date="1520876914385" expanded="true" signature="10361:12319" ph="{...}" />
+            <marker date="1520876914385" expanded="true" signature="10510:10636" ph="//..." />
+            <marker date="1520876914385" expanded="true" signature="12378:13745" ph="{...}" />
+            <marker date="1520876914385" expanded="false" signature="13798:13809" ph=" { " />
+            <marker date="1520876914385" expanded="false" signature="13831:13837" ph=" }" />
+            <marker date="1520876914385" expanded="false" signature="13879:13890" ph=" { " />
+            <marker date="1520876914385" expanded="false" signature="13912:13918" ph=" }" />
+            <marker date="1520876914385" expanded="false" signature="13961:13972" ph=" { " />
+            <marker date="1520876914385" expanded="false" signature="13994:14000" ph=" }" />
+            <marker date="1520876914385" expanded="true" signature="14042:14064" ph="{...}" />
+            <marker date="1520876914385" expanded="true" signature="14109:14134" ph="{...}" />
+            <marker date="1520876914385" expanded="true" signature="14188:14390" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -3667,7 +3783,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="382">
           <caret line="21" column="12" lean-forward="false" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3675,7 +3790,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="546">
           <caret line="26" column="44" lean-forward="false" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3683,7 +3797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3691,7 +3804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="121">
           <caret line="32" column="37" lean-forward="false" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3699,7 +3811,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="30" column="13" lean-forward="false" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3707,7 +3818,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
           <caret line="32" column="56" lean-forward="false" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3715,7 +3825,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3739,7 +3848,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="7" column="19" lean-forward="false" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3747,7 +3855,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="29456">
           <caret line="2961" column="30" lean-forward="false" selection-start-line="2961" selection-start-column="30" selection-end-line="2961" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3811,8 +3918,8 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="757">
-          <caret line="55" column="24" lean-forward="false" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="24" />
+        <state relative-caret-position="378">
+          <caret line="27" column="44" lean-forward="false" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
           <folding />
         </state>
       </provider>
@@ -3832,7 +3939,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="470" column="69" lean-forward="false" selection-start-line="470" selection-start-column="69" selection-end-line="470" selection-end-column="69" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3840,7 +3946,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="407" column="0" lean-forward="false" selection-start-line="407" selection-start-column="0" selection-end-line="407" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3848,7 +3953,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="194" column="0" lean-forward="false" selection-start-line="194" selection-start-column="0" selection-end-line="194" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3856,7 +3960,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3864,7 +3967,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3872,7 +3974,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="205" column="0" lean-forward="false" selection-start-line="205" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3880,7 +3981,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="775" column="0" lean-forward="false" selection-start-line="775" selection-start-column="0" selection-end-line="775" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3888,7 +3988,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="74">
           <caret line="968" column="0" lean-forward="false" selection-start-line="968" selection-start-column="0" selection-end-line="968" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3896,7 +3995,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="130" column="0" lean-forward="false" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3904,7 +4002,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="52" column="71" lean-forward="false" selection-start-line="52" selection-start-column="71" selection-end-line="52" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3912,7 +4009,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="53">
           <caret line="655" column="0" lean-forward="false" selection-start-line="655" selection-start-column="0" selection-end-line="655" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3920,9 +4016,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="53">
           <caret line="30" column="46" lean-forward="false" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
-          <folding>
-            <element signature="e#751#752#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3930,9 +4023,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
-          <folding>
-            <element signature="e#612#613#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3940,9 +4030,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="74">
           <caret line="206" column="0" lean-forward="false" selection-start-line="206" selection-start-column="0" selection-end-line="206" selection-end-column="0" />
-          <folding>
-            <element signature="e#6885#6886#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3956,10 +4043,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/AIButtonActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="381" column="0" lean-forward="true" selection-start-line="381" selection-start-column="0" selection-end-line="381" selection-end-column="0" />
+        <state relative-caret-position="605">
+          <caret line="378" column="63" lean-forward="false" selection-start-line="378" selection-start-column="63" selection-end-line="378" selection-end-column="63" />
           <folding>
-            <element signature="method#onError#0;class#AIButtonActivity#0" expanded="false" />
+            <element signature="e#7071#7647#0" expanded="true" />
+            <element signature="e#7646#7647#0" expanded="true" />
+            <element signature="e#10837#11595#0" expanded="true" />
+            <element signature="e#11594#11595#0" expanded="true" />
+            <element signature="e#11688#11879#0" expanded="true" />
+            <element signature="e#11878#11879#0" expanded="true" />
+            <element signature="e#11957#12138#0" expanded="true" />
+            <element signature="e#12137#12138#0" expanded="true" />
           </folding>
         </state>
       </provider>
