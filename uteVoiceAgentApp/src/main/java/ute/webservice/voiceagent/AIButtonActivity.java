@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 
@@ -56,6 +58,7 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
     private final String openingMessage = "I can give you the cost of a procedure or I can give you the census of a hospital room.";
 
     private AIButton aiButton;
+    private Button cancelButton;
     private TextView resultTextView;
     private TextView queryTextView;
 
@@ -66,6 +69,7 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
     SharedData sessiondata;
     private String accountID;
     private int account_access;
+    private boolean cancel = false; // use to cancel the current data retrieval
 
     //Progress bar
     private ProgressDialog progress;
@@ -88,6 +92,7 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
         resultTextView.setGravity(Gravity.RIGHT);
         queryTextView = (TextView) findViewById(R.id.querytextView);
         aiButton = (AIButton) findViewById(R.id.micButton);
+        cancelButton = (Button) findViewById(R.id.cancelButton);
 
         //Open shared data
         sessiondata = new SharedData(getApplicationContext());
@@ -106,8 +111,16 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
         config.setRecognizerStopSound(getResources().openRawResourceFd(R.raw.test_stop));
         config.setRecognizerCancelSound(getResources().openRawResourceFd(R.raw.test_cancel));
 
+        // set up the microphone/AI button
         aiButton.initialize(config);
         aiButton.setResultsListener(this);
+
+        // set up the cancel button
+        cancelButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                cancel = true;
+            }
+        });
 
         //Save asked query
         dataasked = new DataAsked();
@@ -380,6 +393,13 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
      */
     @Override
     public void onBackPressed(){
+        displayOpeningMessage();
+    }
+
+    /**
+     * Displays the opening message in the resultTextView and clears the queryTextView
+     */
+    private void displayOpeningMessage(){
         this.resultTextView.setText(Html.fromHtml("<b>" + openingMessage + "</b>"));
         this.queryTextView.setText("");
     }
