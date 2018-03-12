@@ -66,6 +66,8 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
     private String accountID;
     private int account_access;
 
+    private boolean allowBack = false;
+
     //Progress bar
     private ProgressDialog progress;
 
@@ -374,10 +376,19 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
         });
     }
 
+    /**
+     * If allowBack is equal to true, logout when the back button is pressed.
+     * Otherwise, do nothing.
+     */
     @Override
     public void onBackPressed(){
-        AuthenticationTask httpTask = new AuthenticationTask();
-        httpTask.execute();
+        if (allowBack){
+            AuthenticationTask task = new AuthenticationTask();
+            task.execute();
+        }
+        else{
+            // do nothing here
+        }
     }
 
     /**

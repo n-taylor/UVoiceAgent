@@ -215,7 +215,7 @@ public class DataAsked {
 
     /**
      * Get data from webservice by CloseableHttpClient.
-     * @return Respond to user's query.
+     * @return Response to user's query.
      * @throws IOException
      */
     public String getHttpClientReply(SSLContext sslContext) throws IOException {
