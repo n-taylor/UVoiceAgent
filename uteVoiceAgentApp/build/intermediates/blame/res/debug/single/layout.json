@@ -148,6 +148,10 @@
         "source": "C:\\Users\\Nathan Taylor\\.android\\build-cache\\a88c6bd92777100ef6a087ed6949f8e47a33cb29\\output\\res\\layout\\notification_template_lines_media.xml"
     },
     {
+        "merged": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\layout\\activity_results.xml",
+        "source": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\src\\main\\res\\layout\\activity_results.xml"
+    },
+    {
         "merged": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
         "source": "C:\\Users\\Nathan Taylor\\.android\\build-cache\\a88c6bd92777100ef6a087ed6949f8e47a33cb29\\output\\res\\layout\\abc_screen_simple.xml"
     },

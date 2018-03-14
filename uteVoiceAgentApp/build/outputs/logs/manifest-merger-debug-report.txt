@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:2:1-57:12
+ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:2:1-61:12
 	package
 		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:3:5-40
 		INJECTED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml
@@ -42,7 +42,7 @@ ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main
 	android:name
 		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:11:22-64
 application
-ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:13:5-55:19
+ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:13:5-59:19
 MERGED from [com.android.support:design:25.3.1] C:\Users\Nathan Taylor\.android\build-cache\378e771b28b37edf1e1c5035dbbdc0d5de383ed4\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Nathan Taylor\.android\build-cache\a88c6bd92777100ef6a087ed6949f8e47a33cb29\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\Nathan Taylor\.android\build-cache\e1612ee722f1791c8bea8750cbed10381b2e43f0\output\AndroidManifest.xml:26:5-20
@@ -113,11 +113,19 @@ ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main
 	android:label
 		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:48:13-59
 	android:parentActivityName
-		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:50:13-56
+		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:49:13-56
 	android:theme
-		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:49:13-44
+		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:50:13-44
 	android:name
 		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:47:13-44
+activity#ute.webservice.voiceagent.ResultsActivity
+ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:55:9-58:56
+	android:label
+		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:57:13-59
+	android:theme
+		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:58:13-44
+	android:name
+		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:56:13-44
 uses-sdk
 INJECTED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:design:25.3.1] C:\Users\Nathan Taylor\.android\build-cache\378e771b28b37edf1e1c5035dbbdc0d5de383ed4\output\AndroidManifest.xml:21:5-23:62

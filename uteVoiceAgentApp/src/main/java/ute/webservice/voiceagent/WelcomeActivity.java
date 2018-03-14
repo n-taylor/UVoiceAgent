@@ -1,6 +1,7 @@
 package ute.webservice.voiceagent;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
@@ -34,6 +35,7 @@ import ai.api.android.AIDataService;
 import ai.api.android.GsonFactory;
 import ai.api.model.AIError;
 import ai.api.model.AIResponse;
+import ai.api.model.Result;
 import ai.api.ui.AIButton;
 
 public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener  {
@@ -298,8 +300,11 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
             }
         }
         else {
-            // The query is complete as is, so display the results
-            // TODO: Send to the results activity
+            // open a ResultsActivity with the query and the corresponding result
+            Intent intent = new Intent(this, ResultsActivity.class);
+            intent.putExtra("query", PR.get_ResolvedQuery());
+            intent.putExtra("result", result);
+            startActivity(intent);
         }
     }
 

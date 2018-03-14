@@ -713,6 +713,7 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="surgery_cost_label">Surgery Cost Estimator</string>
     <string name="title_activity_aibutton_sample">Voice Agent</string>
+    <string name="title_activity_results">ResultsActivity</string>
     <string name="title_app_widget">Voice Assistant</string>
     <string name="title_login_activity">Voice Agent Login</string>
     <string name="title_welcome_activity">Voice Agent</string>

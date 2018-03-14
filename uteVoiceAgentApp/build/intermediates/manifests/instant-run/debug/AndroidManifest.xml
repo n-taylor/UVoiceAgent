@@ -62,6 +62,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ute.webservice.voiceagent.LoginActivity" />
         </activity>
+        <activity
+            android:name="ute.webservice.voiceagent.ResultsActivity"
+            android:label="@string/title_welcome_activity"
+            android:theme="@style/My_theme" />
 
         <provider
             android:name="com.android.tools.fd.runtime.InstantRunContentProvider"

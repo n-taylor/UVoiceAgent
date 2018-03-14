@@ -22,5 +22,6 @@
     <string name="on_call_label">On-call Finder</string>
 
     <string name="welcome_message">What do you want to know?</string>
+    <string name="title_activity_results">ResultsActivity</string>
 
 </resources>

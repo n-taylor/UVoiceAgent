@@ -46,12 +46,16 @@
         <activity
             android:name=".WelcomeActivity"
             android:label="@string/title_welcome_activity"
-            android:theme="@style/My_theme"
-            android:parentActivityName=".LoginActivity">
+            android:parentActivityName=".LoginActivity"
+            android:theme="@style/My_theme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ute.webservice.voiceagent.LoginActivity" />
         </activity>
+        <activity
+            android:name=".ResultsActivity"
+            android:label="@string/title_welcome_activity"
+            android:theme="@style/My_theme"></activity>
     </application>
 
 </manifest>
