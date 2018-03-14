@@ -51,7 +51,7 @@ import ai.api.ui.AIButton;
  * Show mic button and interact with api.ai.
  */
 
-public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonListener {
+public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener {
 
     public static final String TAG = AIButtonActivity.class.getName();
     private final String openingMessage = "I can give you the cost of a procedure or I can give you the census of a hospital room.";
@@ -351,9 +351,14 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
                 String query = PR.get_ResolvedQuery();
                 queryTextView.setText(query);
 
-                //test
-                RetrieveFeedTask httpTask = new RetrieveFeedTask();
+//                RetrieveTask httpTask = new RetrieveTask();
+//                httpTask.execute();
+
+                // Retrieve the information and display the results
+                RetrieveTask httpTask = new RetrieveTask(dataasked, sslContext); // the task to retrieve the information
+                httpTask.addListener(AIButtonActivity.this);
                 httpTask.execute();
+
 
                 dataasked.setIncomplete(PR.get_ActionIncomplete());
                 dataasked.setCurrentReply(PR.get_reply());
@@ -364,6 +369,18 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
             }
 
         });
+    }
+
+    /**
+     *
+     * @param result the result of what what retrieved from the server
+     */
+    public void onRetrieval(String result){
+        TextView resultTV_insync = (TextView) findViewById(R.id.resultTextView); // text view to display the results in
+        if(result != null){
+            resultTV_insync.setText(result); // display the results
+            TTS.speak(dataasked.getVoiceMessageFormat(result)); // play the audio
+        }
     }
 
     @Override
@@ -404,35 +421,37 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
         this.queryTextView.setText("");
     }
 
-    /**
-     * Create AsyncTask thread to send query to serve and display response.
-     */
-    class RetrieveFeedTask extends AsyncTask<Void,Integer,String> {
+    // Deprecated way to retrieve information from the server. Use RetrieveTask instead.
 
-        private Exception exception;
-
-        @Override
-        protected String doInBackground(Void... voids) {
-            String data=null;
-            try {
-                data = dataasked.getHttpClientReply(sslContext);
-            } catch (Exception e) {
-                this.exception = e;
-            }
-            return data;
-        }
-
-        @Override
-        protected void onPostExecute(String str){
-            TextView resultTV_insync = (TextView) findViewById(R.id.resultTextView);
-            Log.d(TAG,str);
-            if(str!=null){
-                resultTV_insync.setText(str);
-                TTS.speak(dataasked.getVoiceMessageFormat(str));
-            }
-        }
-
-    }
+//    /**
+//     * Create AsyncTask thread to send query to serve and display response.
+//     */
+//    class RetrieveFeedTask extends AsyncTask<Void,Integer,String> {
+//
+//        private Exception exception;
+//
+//        @Override
+//        protected String doInBackground(Void... voids) {
+//            String data=null;
+//            try {
+//                data = dataasked.getHttpClientReply(sslContext);
+//            } catch (Exception e) {
+//                this.exception = e;
+//            }
+//            return data;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(String str){
+//            TextView resultTV_insync = (TextView) findViewById(R.id.resultTextView);
+//            Log.d(TAG,str);
+//            if(str!=null){
+//                resultTV_insync.setText(str);
+//                TTS.speak(dataasked.getVoiceMessageFormat(str));
+//            }
+//        }
+//
+//    }
 
 
     // Deprecated method of logging out. Access the class LogoutTask in voiceagent to log out

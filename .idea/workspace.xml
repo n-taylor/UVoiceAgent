@@ -17,91 +17,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e27233d9-b878-4421-a66b-7fedf0d2161c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/LogoutTask.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity$AuthenticationTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/MainActivity$AuthenticationTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/MainActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity$AuthenticationTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/MainActivity$AuthenticationTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/MainActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/res/merged/debug/layout/activity_main.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity$AuthenticationTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/MainActivity$AuthenticationTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/MainActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity$AuthenticationTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/MainActivity$AuthenticationTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/MainActivity.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/MainActivity.java" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/LoginActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_login.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/RetrievalListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/RetrieveTask.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity$1.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity$2.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity$3.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity$4.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity$4.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity$5.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity$5.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity$RetrieveFeedTask.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity$RetrieveFeedTask.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/R$layout.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/R$string.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity$1.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity$2.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity$3.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity$4.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity$4.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity$5.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity$5.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity$RetrieveFeedTask.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity$RetrieveFeedTask.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/R$layout.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/R$string.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-resources/resources-debug.ir.ap_" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-resources/resources-debug.ir.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/res/resources-debug.ap_" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/res/resources-debug.ap_" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/split-apk/debug/slices/slice_4.apk" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/split-apk/debug/slices/slice_4.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity$1.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity$2.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity$3.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity$4.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity$4.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity$5.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity$5.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity$RetrieveFeedTask.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity$RetrieveFeedTask.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/R$layout.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/R$string.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity$1.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity$2.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity$3.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity$4.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity$4.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity$5.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity$5.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity$RetrieveFeedTask.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity$RetrieveFeedTask.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/R$layout.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/R$string.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/outputs/apk/uteVoiceAgentApp-debug.apk" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/outputs/apk/uteVoiceAgentApp-debug.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/generated/source/r/debug/ute/webservice/voiceagent/R.java" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/generated/source/r/debug/ute/webservice/voiceagent/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/blame/res/debug/multi/values.json" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/blame/res/debug/multi/values.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/blame/res/debug/single/layout.json" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/blame/res/debug/single/layout.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/mergeDebugResources/merger.xml" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/mergeDebugResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageDebug/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageDebug/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageDebug/file-input-save-data.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageDebug/file-input-save-data.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageInstantRunResourcesDebug/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageInstantRunResourcesDebug/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageInstantRunResourcesDebug/file-input-save-data.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageInstantRunResourcesDebug/file-input-save-data.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/manifest.crc" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/manifest.crc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/manifest.xml" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/manifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/package_slice_4/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/package_slice_4/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/manifests/full/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/manifests/instant-run/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/manifests/instant-run/debug/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/res/merged/debug/values/values.xml" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/res/merged/debug/values/values.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/restart-dex/debug/build-info.xml" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/restart-dex/debug/build-info.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/symbols/debug/R.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/symbols/debug/R.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/outputs/logs/manifest-merger-debug-report.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/AIButtonActivity.java" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/AIButtonActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/SharedData.java" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/SharedData.java" />
     </list>
     <ignored path="app.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -183,61 +126,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_welcome.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_welcome.xml">
-          <provider selected="true" editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="5" column="62" lean-forward="false" selection-start-line="5" selection-start-column="62" selection-end-line="5" selection-end-column="62" />
-              <folding>
-                <element signature="e#1648#1673#0" expanded="true" />
-                <element signature="e#2167#2193#0" expanded="true" />
-                <element signature="e#2480#2508#0" expanded="true" />
-                <element signature="e#2794#2827#0" expanded="true" />
-                <element signature="e#3116#3139#0" expanded="true" />
-                <element signature="e#4037#4053#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="colors.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/values/colors.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="7" column="42" lean-forward="false" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_aibutton_sample.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_aibutton_sample.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="35" column="12" lean-forward="false" selection-start-line="35" selection-start-column="12" selection-end-line="45" selection-end-column="39" />
-              <folding>
-                <element signature="e#3212#3228#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AIButtonActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AIButtonActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/AIButtonActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="896">
-              <caret line="438" column="0" lean-forward="false" selection-start-line="438" selection-start-column="0" selection-end-line="438" selection-end-column="0" />
+            <state relative-caret-position="2940">
+              <caret line="420" column="39" lean-forward="true" selection-start-line="420" selection-start-column="39" selection-end-line="420" selection-end-column="39" />
               <folding>
                 <element signature="method#loadCA#0;class#AIButtonActivity#0" expanded="false" />
                 <element signature="method#apiConnect#0;class#AIButtonActivity#0" expanded="false" />
                 <element signature="method#sendRequest#0;class#AIButtonActivity#0" expanded="false" />
-                <element signature="class#RetrieveFeedTask#0;class#AIButtonActivity#0" expanded="false" />
+                <element signature="e#13914#13998#0" expanded="false" />
+                <element signature="e#14923#15012#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RetrieveTask.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/RetrieveTask.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="23" column="38" lean-forward="false" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1539#1540#0" expanded="true" />
+                <element signature="e#1578#1579#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -249,20 +162,6 @@
             <state relative-caret-position="539">
               <caret line="90" column="45" lean-forward="false" selection-start-line="90" selection-start-column="45" selection-end-line="90" selection-end-column="45" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LogoutTask.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/LogoutTask.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#376#377#0" expanded="true" />
-                <element signature="e#416#417#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -314,13 +213,12 @@
         <option value="valueResourceFile" />
         <option value="layoutResourceFile_vertical" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Voice Assit</find>
-      <find>Voice Assi</find>
       <find>Voice Assis</find>
       <find>Voice Assist</find>
       <find>Voice Assista</find>
@@ -349,6 +247,8 @@
       <find>widget</find>
       <find>sm</find>
       <find>aiButtonActivity</find>
+      <find>SSLContext</find>
+      <find>RetrieveFeedTask</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp</dir>
@@ -3019,9 +2919,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/webservice/voiceagent/AIServiceSampleActivity.java" />
-        <option value="$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/webservice/voiceagent/MainActivity.java" />
-        <option value="$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/webservice/voiceagent/AISettingsActivity.java" />
         <option value="$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/webservice/voiceagent/AIButtonSampleActivity.java" />
         <option value="$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/webservice/voiceagent/AccountCheck.java" />
         <option value="$PROJECT_DIR$/apiAISampleApp/src/main/java/ai/webservice/voiceagent/AIButtonActivity.java" />
@@ -3069,6 +2966,9 @@
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_login.xml" />
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/SharedData.java" />
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/LogoutTask.java" />
+        <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/RetrieveFeedTask.java" />
+        <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/RetrievalListener.java" />
+        <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/RetrieveTask.java" />
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/AIButtonActivity.java" />
       </list>
     </option>
@@ -3208,7 +3108,7 @@
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="device.picker.selection" value="TestPhone_API_24" />
-    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="full.screen.before.presentation.mode" value="false" />
@@ -3320,7 +3220,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521053061473" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521057517730" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -3368,7 +3268,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521053061473" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521057517730" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -3551,7 +3451,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521053061473" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521057517731" />
       </method>
     </configuration>
     <configuration default="false" name="uteVoiceAgentApp" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
@@ -3600,7 +3500,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521053061473" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521057517731" />
       </method>
     </configuration>
     <list size="2">
@@ -3751,7 +3651,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="91" />
+      <option name="time" value="95" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="uteVoiceAgentApp">
@@ -3762,42 +3662,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Android/SDK/platforms/android-24/android.jar!/android/widget/AbsListView.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="655" column="0" lean-forward="false" selection-start-line="655" selection-start-column="0" selection-end-line="655" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Android/SDK/platforms/android-24/android.jar!/android/os/Handler.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="30" column="46" lean-forward="false" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Android/SDK/platforms/android-24/android.jar!/android/os/Looper.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Android/SDK/extras/android/m2repository/com/android/support/appcompat-v7/25.3.1/appcompat-v7-25.3.1-sources.jar!/android/support/v7/view/menu/MenuItemImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="206" column="0" lean-forward="false" selection-start-line="206" selection-start-column="0" selection-end-line="206" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/AccountCheck.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_history.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -4180,27 +4044,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/AIButtonActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="896">
-          <caret line="438" column="0" lean-forward="false" selection-start-line="438" selection-start-column="0" selection-end-line="438" selection-end-column="0" />
-          <folding>
-            <element signature="method#loadCA#0;class#AIButtonActivity#0" expanded="false" />
-            <element signature="method#apiConnect#0;class#AIButtonActivity#0" expanded="false" />
-            <element signature="method#sendRequest#0;class#AIButtonActivity#0" expanded="false" />
-            <element signature="class#RetrieveFeedTask#0;class#AIButtonActivity#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/LogoutTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+        <state relative-caret-position="504">
+          <caret line="24" column="13" lean-forward="true" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#376#377#0" expanded="true" />
             <element signature="e#416#417#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Android/SDK/platforms/android-24/android.jar!/android/os/Looper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+          <folding>
+            <element signature="e#612#613#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Android/SDK/platforms/android-24/android.jar!/android/os/Handler.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="30" column="46" lean-forward="false" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+          <folding>
+            <element signature="e#751#752#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Android/SDK/platforms/android-24/android.jar!/android/os/AsyncTask.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="53">
+          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/RetrievalListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="36" lean-forward="true" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/RetrieveTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="23" column="38" lean-forward="false" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1539#1540#0" expanded="true" />
+            <element signature="e#1578#1579#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/AIButtonActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2940">
+          <caret line="420" column="39" lean-forward="true" selection-start-line="420" selection-start-column="39" selection-end-line="420" selection-end-column="39" />
+          <folding>
+            <element signature="method#loadCA#0;class#AIButtonActivity#0" expanded="false" />
+            <element signature="method#apiConnect#0;class#AIButtonActivity#0" expanded="false" />
+            <element signature="method#sendRequest#0;class#AIButtonActivity#0" expanded="false" />
+            <element signature="e#13914#13998#0" expanded="false" />
+            <element signature="e#14923#15012#0" expanded="false" />
           </folding>
         </state>
       </provider>
