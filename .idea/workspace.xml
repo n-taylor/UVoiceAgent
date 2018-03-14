@@ -21,12 +21,18 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/split-apk/debug/slices/slice_4.apk" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/split-apk/debug/slices/slice_4.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-resources/resources-debug.ir.ap_" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-resources/resources-debug.ir.ap_" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/res/resources-debug.ap_" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/res/resources-debug.ap_" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/outputs/apk/uteVoiceAgentApp-debug.apk" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/outputs/apk/uteVoiceAgentApp-debug.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/package_slice_4/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/package_slice_4/dex-renamer-state.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageDebug/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageDebug/dex-renamer-state.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageDebug/file-input-save-data.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageDebug/file-input-save-data.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageInstantRunResourcesDebug/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageInstantRunResourcesDebug/dex-renamer-state.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageInstantRunResourcesDebug/file-input-save-data.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageInstantRunResourcesDebug/file-input-save-data.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/restart-dex/debug/build-info.xml" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/restart-dex/debug/build-info.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/ResultsActivity.java" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/ResultsActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_results.xml" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_results.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_welcome.xml" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_welcome.xml" />
     </list>
     <ignored path="app.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -163,11 +169,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WelcomeActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WelcomeActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/WelcomeActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="210" column="4" lean-forward="false" selection-start-line="210" selection-start-column="4" selection-end-line="231" selection-end-column="5" />
+            <state relative-caret-position="-902">
+              <caret line="206" column="64" lean-forward="false" selection-start-line="206" selection-start-column="64" selection-end-line="206" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -190,7 +196,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResultsActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ResultsActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/ResultsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="665">
@@ -208,10 +214,10 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-41">
-              <caret line="35" column="17" lean-forward="false" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
+            <state relative-caret-position="1869">
+              <caret line="89" column="44" lean-forward="false" selection-start-line="89" selection-start-column="44" selection-end-line="89" selection-end-column="44" />
               <folding>
-                <element signature="e#3292#3308#0" expanded="true" />
+                <element signature="e#3326#3342#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -223,8 +229,8 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="80" column="51" lean-forward="false" selection-start-line="80" selection-start-column="51" selection-end-line="80" selection-end-column="51" />
+            <state relative-caret-position="295">
+              <caret line="93" column="8" lean-forward="false" selection-start-line="93" selection-start-column="8" selection-end-line="108" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -2981,7 +2987,6 @@
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/values-v21/styles.xml" />
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_aibutton_sample.xml" />
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/content_welcome.xml" />
-        <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_welcome.xml" />
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_login.xml" />
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/SharedData.java" />
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/LogoutTask.java" />
@@ -2992,11 +2997,12 @@
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/AIButtonActivity.java" />
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/DataAsked.java" />
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/Constants.java" />
-        <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_results.xml" />
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/WelcomeActivity.java" />
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/LoginActivity.java" />
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/ResultsActivity.java" />
+        <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_welcome.xml" />
+        <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_results.xml" />
       </list>
     </option>
   </component>
@@ -3251,7 +3257,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521068231129" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521068661314" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -3299,7 +3305,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521068231130" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521068661314" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -3482,7 +3488,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521068231131" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521068661316" />
       </method>
     </configuration>
     <configuration default="false" name="uteVoiceAgentApp" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
@@ -3531,7 +3537,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521068231131" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521068661316" />
       </method>
     </configuration>
     <list size="2">
@@ -3652,8 +3658,8 @@
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.2946524" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" x="91" y="91" width="1738" height="850" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46256685" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24384525" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32362822" sideWeight="0.49741268" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24384525" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32435596" sideWeight="0.49288487" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32849163" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
@@ -4107,17 +4113,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_welcome.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="80" column="51" lean-forward="false" selection-start-line="80" selection-start-column="51" selection-end-line="80" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ailib/src/main/AndroidManifest.xml">
       <provider editor-type-id="android-manifest">
         <state />
@@ -4129,31 +4124,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_results.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-41">
-          <caret line="35" column="17" lean-forward="false" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
-          <folding>
-            <element signature="e#3292#3308#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="211" column="53" lean-forward="false" selection-start-line="211" selection-start-column="53" selection-end-line="211" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/WelcomeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="210" column="4" lean-forward="false" selection-start-line="210" selection-start-column="4" selection-end-line="231" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -4180,6 +4154,38 @@
           <folding>
             <element signature="method#loadCA#0;class#ResultsActivity#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_welcome.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="93" column="8" lean-forward="false" selection-start-line="93" selection-start-column="8" selection-end-line="108" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_results.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1869">
+          <caret line="89" column="44" lean-forward="false" selection-start-line="89" selection-start-column="44" selection-end-line="89" selection-end-column="44" />
+          <folding>
+            <element signature="e#3326#3342#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/WelcomeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-902">
+          <caret line="206" column="64" lean-forward="false" selection-start-line="206" selection-start-column="64" selection-end-line="206" selection-end-column="64" />
+          <folding />
         </state>
       </provider>
     </entry>

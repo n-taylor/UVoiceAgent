@@ -75,16 +75,17 @@
         <ai.api.ui.AIButton
             android:id="@+id/micButton"
             style="@style/ApiAi.Microphone"
-            android:layout_height="152dp"
+            android:layout_height="120dp"
+            android:layout_width="120dp"
 
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true" />
+            android:layout_alignParentTop="true" />
 
         <Button
             android:id="@+id/cancelButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/micButton"
+            android:layout_below="@id/micButton"
             android:layout_centerHorizontal="true"
             android:text="@string/cancel" />
 
