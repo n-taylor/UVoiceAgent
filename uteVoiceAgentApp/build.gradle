@@ -14,7 +14,8 @@ android {
 
     defaultConfig {
         applicationId 'ute.webservice.voiceagent'
-        minSdkVersion Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)   //in gradle.properties
+        minSdkVersion Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
+        //in gradle.properties
         targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
         versionCode Integer.parseInt(project.VERSION_CODE)
         versionName project.VERSION_NAME
@@ -32,7 +33,7 @@ android {
 repositories {
     mavenLocal()
     mavenCentral()
-    maven { url "https://maven.google.com"}
+    maven { url "https://maven.google.com" }
     maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
 }
 
@@ -53,6 +54,7 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     compile 'ai.api:sdk:2.0.7@aar'
 
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }
 //Jar creation
 /*

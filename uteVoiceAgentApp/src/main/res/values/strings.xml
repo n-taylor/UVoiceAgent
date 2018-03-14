@@ -6,7 +6,8 @@
     <string name="action_history">History</string>
     <string name="action_logout">Logout</string>
 
-    <string name="title_activity_aibutton_sample">Voice Assistant</string>
+    <string name="title_activity_aibutton_sample">Voice Agent</string>
+    <string name="title_welcome_activity">Voice Agent</string>
 
     <string name="title_app_widget">Voice Assistant</string>
     <string name="non_empty_query">Query should not be empty</string>
@@ -19,5 +20,7 @@
     <string name="surgery_cost_label">Surgery Cost Estimator</string>
     <string name="equipment_locator_label">Equipment Finder</string>
     <string name="on_call_label">On-call Finder</string>
+
+    <string name="welcome_message">What do you want to know?</string>
 
 </resources>

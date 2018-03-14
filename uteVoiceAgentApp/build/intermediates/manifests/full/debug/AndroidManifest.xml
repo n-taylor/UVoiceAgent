@@ -53,6 +53,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ute.webservice.voiceagent.MainActivity" />
         </activity>
+        <activity
+            android:name="ute.webservice.voiceagent.WelcomeActivity"
+            android:label="@string/title_activity_welcome"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

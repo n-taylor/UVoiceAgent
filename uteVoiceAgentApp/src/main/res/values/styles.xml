@@ -22,8 +22,17 @@
         <item name="android:background">@color/divider_color</item>
     </style>
 
-    <style name="My_theme" parent="Theme.AppCompat.Light.NoActionBar" >
+    <style name="My_theme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/color_softgreen</item>
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

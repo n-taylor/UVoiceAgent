@@ -30,7 +30,14 @@
                     "endOffset": 162
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 111,
+                        "endColumn": 55,
+                        "endOffset": 162
+                    }
                 }
             },
             {
@@ -42,7 +49,14 @@
                     "endOffset": 214
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 167,
+                        "endColumn": 51,
+                        "endOffset": 214
+                    }
                 }
             },
             {
@@ -54,7 +68,14 @@
                     "endOffset": 264
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 219,
+                        "endColumn": 49,
+                        "endOffset": 264
+                    }
                 }
             },
             {
@@ -66,7 +87,14 @@
                     "endOffset": 316
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 269,
+                        "endColumn": 51,
+                        "endOffset": 316
+                    }
                 }
             },
             {
@@ -78,7 +106,14 @@
                     "endOffset": 1010
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 957,
+                        "endColumn": 57,
+                        "endOffset": 1010
+                    }
                 }
             },
             {
@@ -90,7 +125,14 @@
                     "endOffset": 1068
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 1015,
+                        "endColumn": 57,
+                        "endOffset": 1068
+                    }
                 }
             },
             {
@@ -102,7 +144,14 @@
                     "endOffset": 1116
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 1073,
+                        "endColumn": 47,
+                        "endOffset": 1116
+                    }
                 }
             },
             {
@@ -114,7 +163,14 @@
                     "endOffset": 1159
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 1121,
+                        "endColumn": 42,
+                        "endOffset": 1159
+                    }
                 }
             },
             {
@@ -126,7 +182,14 @@
                     "endOffset": 1216
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 1164,
+                        "endColumn": 56,
+                        "endOffset": 1216
+                    }
                 }
             },
             {
@@ -138,7 +201,14 @@
                     "endOffset": 1242
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 1221,
+                        "endColumn": 25,
+                        "endOffset": 1242
+                    }
                 }
             },
             {
@@ -151,7 +221,15 @@
                     "endOffset": 1644
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 1247,
+                        "endLine": 21,
+                        "endColumn": 12,
+                        "endOffset": 1644
+                    }
                 }
             },
             {
@@ -164,7 +242,15 @@
                     "endOffset": 2504
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\ailib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 1649,
+                        "endLine": 37,
+                        "endColumn": 9,
+                        "endOffset": 2504
+                    }
                 }
             },
             {

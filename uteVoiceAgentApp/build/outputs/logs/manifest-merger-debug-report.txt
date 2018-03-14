@@ -38,7 +38,7 @@ ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main
 	android:name
 		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:10:22-77
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:11:5-66
+ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:11:5-67
 	android:name
 		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:11:22-64
 application
@@ -55,6 +55,7 @@ MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\Nathan Taylor\
 MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\Nathan Taylor\.android\build-cache\598a34e771b74a68079501d778b101951f570168\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-compat:25.3.1] C:\Users\Nathan Taylor\.android\build-cache\d64843f9c5b9a40c23acd1d2825ba527f7b8d0da\output\AndroidManifest.xml:29:5-20
 MERGED from [ai.api:sdk:2.0.7] C:\Users\Nathan Taylor\.android\build-cache\62188b73fe200914c7254047b3b272633b364a1b\output\AndroidManifest.xml:11:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Nathan Taylor\.android\build-cache\39c7f4ff6879b8f69dce7bf49a150cda63a6e4c3\output\AndroidManifest.xml:9:5-20
 	android:label
 		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:17:9-41
 	android:allowBackup
@@ -62,7 +63,7 @@ MERGED from [ai.api:sdk:2.0.7] C:\Users\Nathan Taylor\.android\build-cache\62188
 	android:icon
 		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:16:9-45
 	android:name
-		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:14:9-63
+		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:14:9-38
 activity#ute.webservice.voiceagent.MainActivity
 ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:18:9-27:20
 	android:label
@@ -70,7 +71,7 @@ ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main
 	android:theme
 		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:21:13-44
 	android:name
-		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:19:13-66
+		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:19:13-41
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
 ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:22:13-26:29
 action#android.intent.action.MAIN
@@ -82,31 +83,39 @@ ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main
 	android:name
 		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:25:27-74
 activity#ute.webservice.voiceagent.AIButtonActivity
-ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:29:9-37:20
+ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:28:9-36:20
 	android:label
-		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:31:13-67
+		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:30:13-67
 	android:parentActivityName
-		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:32:13-80
+		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:31:13-55
 	android:theme
-		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:33:13-44
+		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:32:13-44
 	android:name
-		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:30:13-70
+		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:29:13-45
 meta-data#android.support.PARENT_ACTIVITY
-ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:34:13-36:74
+ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:33:13-35:74
 	android:value
-		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:36:17-71
+		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:35:17-71
 	android:name
-		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:35:17-63
+		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:34:17-63
 activity#ute.webservice.voiceagent.AISettingsActivity
-ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:40:9-48:20
+ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:37:9-45:20
 	android:label
-		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:42:13-52
+		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:39:13-52
 	android:parentActivityName
-		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:43:13-80
+		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:40:13-55
 	android:theme
-		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:44:13-44
+		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:41:13-44
 	android:name
-		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:41:13-72
+		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:38:13-47
+activity#ute.webservice.voiceagent.WelcomeActivity
+ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:46:9-49:68
+	android:label
+		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:48:13-59
+	android:theme
+		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:49:13-56
+	android:name
+		ADDED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml:47:13-44
 uses-sdk
 INJECTED from C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:design:25.3.1] C:\Users\Nathan Taylor\.android\build-cache\378e771b28b37edf1e1c5035dbbdc0d5de383ed4\output\AndroidManifest.xml:21:5-23:62
@@ -122,6 +131,7 @@ MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\Nathan Taylor\
 MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\Nathan Taylor\.android\build-cache\598a34e771b74a68079501d778b101951f570168\output\AndroidManifest.xml:21:5-23:61
 MERGED from [com.android.support:support-compat:25.3.1] C:\Users\Nathan Taylor\.android\build-cache\d64843f9c5b9a40c23acd1d2825ba527f7b8d0da\output\AndroidManifest.xml:21:5-23:58
 MERGED from [ai.api:sdk:2.0.7] C:\Users\Nathan Taylor\.android\build-cache\62188b73fe200914c7254047b3b272633b364a1b\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Nathan Taylor\.android\build-cache\39c7f4ff6879b8f69dce7bf49a150cda63a6e4c3\output\AndroidManifest.xml:5:5-7:41
 	tools:overrideLibrary
 		ADDED from [com.android.support:design:25.3.1] C:\Users\Nathan Taylor\.android\build-cache\378e771b28b37edf1e1c5035dbbdc0d5de383ed4\output\AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
