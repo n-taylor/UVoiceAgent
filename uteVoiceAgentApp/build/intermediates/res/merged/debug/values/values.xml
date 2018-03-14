@@ -712,9 +712,9 @@
     <string name="search_menu_title">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="surgery_cost_label">Surgery Cost Estimator</string>
-    <string name="title_activity_aibutton_sample">Voice Assistant</string>
-    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="title_activity_aibutton_sample">Voice Agent</string>
     <string name="title_app_widget">Voice Assistant</string>
+    <string name="title_welcome_activity">Voice Agent</string>
     <string name="use_bluetooth_headset">Use Bluetooth headset</string>
     <string name="welcome_message">What do you want to know?</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>

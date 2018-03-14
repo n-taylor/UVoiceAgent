@@ -984,7 +984,7 @@ int layout abc_search_view 0x7f030019
 int layout abc_select_dialog_material 0x7f03001a
 int layout activity_aibutton_sample 0x7f03001b
 int layout activity_history 0x7f03001c
-int layout activity_main 0x7f03001d
+int layout activity_login 0x7f03001d
 int layout activity_settings 0x7f03001e
 int layout activity_welcome 0x7f03001f
 int layout aidialog 0x7f030020
@@ -1083,8 +1083,8 @@ int string search_menu_title 0x7f070013
 int string status_bar_notification_info_overflow 0x7f070014
 int string surgery_cost_label 0x7f070034
 int string title_activity_aibutton_sample 0x7f070035
-int string title_activity_welcome 0x7f070036
-int string title_app_widget 0x7f070037
+int string title_app_widget 0x7f070036
+int string title_welcome_activity 0x7f070037
 int string use_bluetooth_headset 0x7f070038
 int string welcome_message 0x7f070039
 int style AlertDialog_AppCompat 0x7f0900a4

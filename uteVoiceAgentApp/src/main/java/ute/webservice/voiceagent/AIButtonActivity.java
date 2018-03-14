@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.speech.tts.Voice;
 import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
@@ -327,8 +326,8 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
                 return true;
 
             case R.id.action_logout:
-                // Create an AuthenticationTask and execute it to logout
-                AuthenticationTask httpTask = new AuthenticationTask();
+                // Create an LogoutTask and execute it to logout
+                LogoutTask httpTask = new LogoutTask(this);
                 httpTask.execute();
                 return true;
             default:
@@ -435,53 +434,56 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
 
     }
 
-    /**
-     * Build one thread to log out.
-     */
-    class AuthenticationTask extends AsyncTask<Void,Void,Boolean> {
 
-        private Exception exception;
-        private AccountCheck acnt;
+    // Deprecated method of logging out. Access the class LogoutTask in voiceagent to log out
 
-        @Override
-        protected Boolean doInBackground(Void... voids) {
-            acnt= new AccountCheck();
-            boolean authentication=false;
-
-            try {
-                authentication = acnt.logout();
-            }
-            catch (Exception e){
-                e.printStackTrace();
-            }
-            /*
-            for (int i=0; i<2; i++){
-                //publishProgress(i);
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            */
-            return authentication;
-        }
-
-        @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            super.onPostExecute(aBoolean);
-            //progress.dismiss();
-            if(aBoolean){
-                sessiondata.logoutUser();
-                final Intent intent = new Intent(AIButtonActivity.this, MainActivity.class);
-                startActivity(intent);
-                //startActivity(MainActivity.class);
-            }
-            else{
-                LoginAlertDialog alertd= new LoginAlertDialog();
-                alertd.showAlertDialog(AIButtonActivity.this,"Log out fail","time out",null);
-                //clearEditText();
-            }
-        }
-    }
+//    /**
+//     * Build one thread to log out.
+//     */
+//    class LogoutTask extends AsyncTask<Void,Void,Boolean> {
+//
+//        private Exception exception;
+//        private AccountCheck acnt;
+//
+//        @Override
+//        protected Boolean doInBackground(Void... voids) {
+//            acnt= new AccountCheck();
+//            boolean authentication=false;
+//
+//            try {
+//                authentication = acnt.logout();
+//            }
+//            catch (Exception e){
+//                e.printStackTrace();
+//            }
+//            /*
+//            for (int i=0; i<2; i++){
+//                //publishProgress(i);
+//                try {
+//                    Thread.sleep(1000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//            */
+//            return authentication;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Boolean aBoolean) {
+//            super.onPostExecute(aBoolean);
+//            //progress.dismiss();
+//            if(aBoolean){
+//                sessiondata.logoutUser();
+//                final Intent intent = new Intent(AIButtonActivity.this, LoginActivity.class);
+//                startActivity(intent);
+//                //startActivity(LoginActivity.class);
+//            }
+//            else{
+//                LoginAlertDialog alertd= new LoginAlertDialog();
+//                alertd.showAlertDialog(AIButtonActivity.this,"Log out fail","time out",null);
+//                //clearEditText();
+//            }
+//        }
+//    }
 }

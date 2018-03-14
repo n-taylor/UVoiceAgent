@@ -3454,7 +3454,7 @@ containing a value of this type.
         public static final int abc_select_dialog_material=0x7f03001a;
         public static final int activity_aibutton_sample=0x7f03001b;
         public static final int activity_history=0x7f03001c;
-        public static final int activity_main=0x7f03001d;
+        public static final int activity_login=0x7f03001d;
         public static final int activity_settings=0x7f03001e;
         public static final int activity_welcome=0x7f03001f;
         public static final int aidialog=0x7f030020;
@@ -3559,8 +3559,8 @@ containing a value of this type.
         public static final int status_bar_notification_info_overflow=0x7f070014;
         public static final int surgery_cost_label=0x7f070034;
         public static final int title_activity_aibutton_sample=0x7f070035;
-        public static final int title_activity_welcome=0x7f070036;
-        public static final int title_app_widget=0x7f070037;
+        public static final int title_app_widget=0x7f070036;
+        public static final int title_welcome_activity=0x7f070037;
         public static final int use_bluetooth_headset=0x7f070038;
         public static final int welcome_message=0x7f070039;
     }

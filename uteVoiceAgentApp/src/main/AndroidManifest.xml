@@ -16,7 +16,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name">
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -28,20 +28,20 @@
         <activity
             android:name=".AIButtonActivity"
             android:label="@string/title_activity_aibutton_sample"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".LoginActivity"
             android:theme="@style/My_theme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ute.webservice.voiceagent.MainActivity" />
+                android:value="ute.webservice.voiceagent.LoginActivity" />
         </activity>
         <activity
             android:name=".AISettingsActivity"
             android:label="@string/action_settings"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".LoginActivity"
             android:theme="@style/My_theme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ute.webservice.voiceagent.MainActivity" />
+                android:value="ute.webservice.voiceagent.LoginActivity" />
         </activity>
         <activity
             android:name=".WelcomeActivity"
