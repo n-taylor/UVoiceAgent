@@ -17,125 +17,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e27233d9-b878-4421-a66b-7fedf0d2161c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/ResultsActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_results.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ai/api/R$id.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ai/api/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ai/api/R$layout.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ai/api/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/android/support/design/R$id.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/android/support/design/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/android/support/design/R$layout.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/android/support/design/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/android/support/v7/appcompat/R$id.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/android/support/v7/appcompat/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/android/support/v7/appcompat/R$layout.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/android/support/v7/appcompat/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AIButtonActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AISettingsActivity.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/AISettingsActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/Constants.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/Constants.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/DataAsked.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/DataAsked.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/R$id.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/R$integer.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/R$integer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/R$layout.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/R$menu.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/R$menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/R$raw.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/R$raw.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/R$string.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/R$style.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/R$styleable.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/classes/debug/ute/webservice/voiceagent/R$styleable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ai/api/R$id.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ai/api/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ai/api/R$layout.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ai/api/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/android/support/design/R$id.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/android/support/design/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/android/support/design/R$layout.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/android/support/design/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/android/support/v7/appcompat/R$id.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/android/support/v7/appcompat/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/android/support/v7/appcompat/R$layout.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/android/support/v7/appcompat/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AIButtonActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AISettingsActivity.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/AISettingsActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/Constants.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/Constants.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/DataAsked.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/DataAsked.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/R$id.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/R$integer.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/R$integer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/R$layout.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/R$menu.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/R$menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/R$raw.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/R$raw.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/R$string.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/R$style.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/R$styleable.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental-verifier/debug/ute/webservice/voiceagent/R$styleable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-resources/resources-debug.ir.ap_" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-resources/resources-debug.ir.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/res/resources-debug.ap_" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/res/resources-debug.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/split-apk/debug/slices/slice_0.apk" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/split-apk/debug/slices/slice_0.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/split-apk/debug/slices/slice_2.apk" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/split-apk/debug/slices/slice_2.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/split-apk/debug/slices/slice_4.apk" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/split-apk/debug/slices/slice_4.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/split-apk/debug/slices/slice_6.apk" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/split-apk/debug/slices/slice_6.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_0/classes.dex" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_0/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_2/classes.dex" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_2/classes.dex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/R$id.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/R$layout.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ai/api/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/design/R$id.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/design/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/design/R$layout.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/design/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$id.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$layout.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AIButtonActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AISettingsActivity.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/AISettingsActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/Constants.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/Constants.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/DataAsked.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/DataAsked.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/R$id.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/R$integer.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/R$integer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/R$layout.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/R$menu.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/R$menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/R$raw.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/R$raw.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/R$string.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/R$style.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/R$styleable.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRun/debug/folders/1/5/main/ute/webservice/voiceagent/R$styleable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_0/android/support/design/R$id.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_0/android/support/design/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_0/android/support/design/R$layout.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_0/android/support/design/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_2/android/support/v7/appcompat/R$id.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_2/android/support/v7/appcompat/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_2/android/support/v7/appcompat/R$layout.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_2/android/support/v7/appcompat/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AIButtonActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AISettingsActivity.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/AISettingsActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/Constants.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/Constants.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/DataAsked.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/DataAsked.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/R$id.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/R$integer.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/R$integer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/R$layout.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/R$menu.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/R$menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/R$raw.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/R$raw.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/R$string.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/R$style.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/R$styleable.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/ute/webservice/voiceagent/R$styleable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/ai/api/R$id.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/ai/api/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/ai/api/R$layout.class" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/ai/api/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/outputs/apk/uteVoiceAgentApp-debug.apk" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/outputs/apk/uteVoiceAgentApp-debug.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/generated/source/r/debug/ai/api/R.java" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/generated/source/r/debug/ai/api/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/generated/source/r/debug/android/support/design/R.java" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/generated/source/r/debug/android/support/design/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/generated/source/r/debug/android/support/v7/appcompat/R.java" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/generated/source/r/debug/android/support/v7/appcompat/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/generated/source/r/debug/ute/webservice/voiceagent/R.java" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/generated/source/r/debug/ute/webservice/voiceagent/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/blame/res/debug/multi/values.json" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/blame/res/debug/multi/values.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/blame/res/debug/single/layout.json" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/blame/res/debug/single/layout.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/mergeDebugResources/merger.xml" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/mergeDebugResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageDebug/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageDebug/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageDebug/file-input-save-data.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageDebug/file-input-save-data.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageInstantRunResourcesDebug/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageInstantRunResourcesDebug/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageInstantRunResourcesDebug/file-input-save-data.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/incremental/packageInstantRunResourcesDebug/file-input-save-data.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/manifest.crc" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/manifest.crc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/manifest.xml" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/manifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/package_slice_0/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/package_slice_0/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/package_slice_2/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/package_slice_2/dex-renamer-state.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/package_slice_4/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/package_slice_4/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/package_slice_6/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/instant-run-support/debug/package_slice_6/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/manifests/full/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/manifests/instant-run/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/manifests/instant-run/debug/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/res/merged/debug/values/values.xml" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/res/merged/debug/values/values.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/restart-dex/debug/build-info.xml" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/restart-dex/debug/build-info.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/symbols/debug/R.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/intermediates/symbols/debug/R.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/build/outputs/logs/manifest-merger-debug-report.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/WelcomeActivity.java" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/WelcomeActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/ResultsActivity.java" afterPath="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/ResultsActivity.java" />
     </list>
     <ignored path="app.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -275,21 +166,21 @@
       <file leaf-file-name="WelcomeActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/WelcomeActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="293" column="0" lean-forward="false" selection-start-line="293" selection-start-column="0" selection-end-line="293" selection-end-column="0" />
+            <state relative-caret-position="316">
+              <caret line="210" column="4" lean-forward="false" selection-start-line="210" selection-start-column="4" selection-end-line="231" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/AndroidManifest.xml">
           <provider editor-type-id="android-manifest">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="505">
-              <caret line="52" column="74" lean-forward="true" selection-start-line="52" selection-start-column="74" selection-end-line="52" selection-end-column="74" />
+            <state relative-caret-position="652">
+              <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
               <folding>
                 <element signature="e#935#965#0" expanded="true" />
                 <element signature="e#2537#2569#0" expanded="true" />
@@ -299,11 +190,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResultsActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ResultsActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/ResultsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="662">
-              <caret line="88" column="44" lean-forward="false" selection-start-line="88" selection-start-column="44" selection-end-line="88" selection-end-column="44" />
+            <state relative-caret-position="665">
+              <caret line="311" column="41" lean-forward="false" selection-start-line="311" selection-start-column="41" selection-end-line="311" selection-end-column="41" />
               <folding>
                 <element signature="method#loadCA#0;class#ResultsActivity#0" expanded="false" />
               </folding>
@@ -3104,8 +2995,8 @@
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/res/layout/activity_results.xml" />
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/WelcomeActivity.java" />
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/ResultsActivity.java" />
         <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/ResultsActivity.java" />
       </list>
     </option>
   </component>
@@ -3360,7 +3251,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521067619080" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521068231129" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -3408,7 +3299,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521067619080" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521068231130" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -3591,7 +3482,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521067619081" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521068231131" />
       </method>
     </configuration>
     <configuration default="false" name="uteVoiceAgentApp" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
@@ -3640,7 +3531,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521067619081" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521068231131" />
       </method>
     </configuration>
     <list size="2">
@@ -4261,19 +4152,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/WelcomeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="293" column="0" lean-forward="false" selection-start-line="293" selection-start-column="0" selection-end-line="293" selection-end-column="0" />
+        <state relative-caret-position="316">
+          <caret line="210" column="4" lean-forward="false" selection-start-line="210" selection-start-column="4" selection-end-line="231" selection-end-column="5" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/ResultsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="662">
-          <caret line="88" column="44" lean-forward="false" selection-start-line="88" selection-start-column="44" selection-end-line="88" selection-end-column="44" />
-          <folding>
-            <element signature="method#loadCA#0;class#ResultsActivity#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -4282,12 +4163,22 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="52" column="74" lean-forward="true" selection-start-line="52" selection-start-column="74" selection-end-line="52" selection-end-column="74" />
+        <state relative-caret-position="652">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding>
             <element signature="e#935#965#0" expanded="true" />
             <element signature="e#2537#2569#0" expanded="true" />
             <marker date="1521067461525" expanded="true" signature="2613:2624" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uteVoiceAgentApp/src/main/java/ute/webservice/voiceagent/ResultsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="665">
+          <caret line="311" column="41" lean-forward="false" selection-start-line="311" selection-start-column="41" selection-end-line="311" selection-end-column="41" />
+          <folding>
+            <element signature="method#loadCA#0;class#ResultsActivity#0" expanded="false" />
           </folding>
         </state>
       </provider>

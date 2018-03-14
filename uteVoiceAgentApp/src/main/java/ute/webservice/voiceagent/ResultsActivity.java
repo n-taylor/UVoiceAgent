@@ -7,6 +7,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -262,6 +264,29 @@ public class ResultsActivity extends BaseActivity implements AIButton.AIButtonLi
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(final Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_aibutton_sample, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+        final int id = item.getItemId();
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                return true;
+
+            case R.id.action_logout:
+                // Create an LogoutTask and execute it to logout
+                LogoutTask httpTask = new LogoutTask(this);
+                httpTask.execute();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     /**
      * If the query needs to be more specific (i.e. a surgery type or unit name), open the
      * appropriate Activity. Else open the activity to display the results.
@@ -279,7 +304,12 @@ public class ResultsActivity extends BaseActivity implements AIButton.AIButtonLi
         }
         else {
             // The query is complete as is, so display the results
-            // TODO: Send to the results activity
+            query = PR.get_ResolvedQuery();
+            this.result = result;
+            if (result != null)
+                resultsTextView.setText(result);
+            if (query != null)
+            queryTextView.setText(query);
         }
     }
 }
