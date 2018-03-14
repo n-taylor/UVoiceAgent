@@ -14,4 +14,10 @@
     <string name="use_bluetooth_headset">Use Bluetooth headset</string>
     <string name="VoiceAssistant">Voice  Assistant</string>
 
+    <string name="cancel">Cancel</string>
+    <string name="bed_finder_label">Open Bed Finder</string>
+    <string name="surgery_cost_label">Surgery Cost Estimator</string>
+    <string name="equipment_locator_label">Equipment Finder</string>
+    <string name="on_call_label">On-call Finder</string>
+
 </resources>

@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/micButton"
             android:layout_centerHorizontal="true"
-            android:text="Cancel" />
+            android:text="@string/cancel" />
 
     </RelativeLayout>
 
