@@ -68,7 +68,6 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
     SharedData sessiondata;
     private String accountID;
     private int account_access;
-    private boolean cancel = false; // use to cancel the current data retrieval
 
     //Progress bar
     private ProgressDialog progress;

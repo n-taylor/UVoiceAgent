@@ -209,7 +209,7 @@ public class LoginActivity extends BaseActivity {
             if(aBoolean){
                 //LoginActivity.this.sessiondata.createLoginSession(acnt.getAccountID(),acnt.getAccessLevel());
                 LoginActivity.this.sessiondata.createLoginSession(acnt.getAccountID(),2);
-                startActivity(AIButtonActivity.class);
+                startActivity(WelcomeActivity.class);
             }
             else{
                 LoginAlertDialog alertd= new LoginAlertDialog();

@@ -3560,9 +3560,10 @@ containing a value of this type.
         public static final int surgery_cost_label=0x7f070034;
         public static final int title_activity_aibutton_sample=0x7f070035;
         public static final int title_app_widget=0x7f070036;
-        public static final int title_welcome_activity=0x7f070037;
-        public static final int use_bluetooth_headset=0x7f070038;
-        public static final int welcome_message=0x7f070039;
+        public static final int title_login_activity=0x7f070037;
+        public static final int title_welcome_activity=0x7f070038;
+        public static final int use_bluetooth_headset=0x7f070039;
+        public static final int welcome_message=0x7f07003a;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f0900a4;
