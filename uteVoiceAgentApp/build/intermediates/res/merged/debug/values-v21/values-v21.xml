@@ -9,6 +9,7 @@
         <item name="colorPrimary">@color/color_slategrey</item>
         <item name="android:statusBarColor">?attr/colorControlActivated</item>
         <item name="android:navigationBarColor">@color/color_slategrey</item>
+        <!--<item name="android:actionOverflowButtonStyle">@style/MyActionButtonOverflow</item> -->
     </style>
     <style name="Base.TextAppearance.AppCompat" parent="android:TextAppearance.Material"/>
     <style name="Base.TextAppearance.AppCompat.Body1" parent="android:TextAppearance.Material.Body1"/>
@@ -229,10 +230,19 @@
     <style name="Base.Widget.AppCompat.TextView.SpinnerItem" parent="android:Widget.Material.TextView.SpinnerItem"/>
     <style name="Base.Widget.AppCompat.Toolbar.Button.Navigation" parent="android:Widget.Material.Toolbar.Button.Navigation">
     </style>
+    <style name="MyActionButtonOverflow" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
+        <item name="android:src">@drawable/user_icon</item>
+        <item name="android:minWidth">8dp</item>
+        <item name="android:maxWidth">10dp</item>
+        <item name="android:width">9dp</item>
+        <item name="android:background">?android:attr/actionBarItemBackground</item>
+        <item name="android:contentDescription">"Menu options"</item>
+    </style>
     <style name="My_theme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/color_slategrey</item>
         <item name="android:statusBarColor">?attr/colorControlActivated</item>
         <item name="android:navigationBarColor">@color/color_slategrey</item>
+        <!--<item name="android:actionOverflowButtonStyle">@style/MyActionButtonOverflow</item> -->
     </style>
     <style name="Platform.AppCompat" parent="Platform.V21.AppCompat"/>
     <style name="Platform.AppCompat.Light" parent="Platform.V21.AppCompat.Light"/>

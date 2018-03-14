@@ -107,11 +107,12 @@ containing a value of this type.
         public static final int state_waiting=0x7f010008;
     }
     public static final class color {
-        public static final int aidialog_background=0x7f050000;
-        public static final int icon_orange_color=0x7f050001;
-        public static final int main_bg_color=0x7f050002;
-        public static final int mic_button_halo=0x7f050003;
-        public static final int mic_colors=0x7f050004;
+        public static final int accent_material_light=0x7f050000;
+        public static final int aidialog_background=0x7f050001;
+        public static final int icon_orange_color=0x7f050002;
+        public static final int main_bg_color=0x7f050003;
+        public static final int mic_button_halo=0x7f050004;
+        public static final int mic_colors=0x7f050005;
     }
     public static final class dimen {
         public static final int mic_button_halo_radius_max=0x7f060000;
@@ -145,6 +146,7 @@ containing a value of this type.
         public static final int ApiAi=0x7f080000;
         public static final int ApiAi_FullScreenDialog=0x7f080001;
         public static final int ApiAi_Microphone=0x7f080002;
+        public static final int red_light=0x7f080003;
     }
     public static final class styleable {
         /** Attributes that can be used with a MaskedColorView.

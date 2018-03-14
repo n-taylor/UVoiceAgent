@@ -6,25 +6,28 @@
     density="xxhdpi"
     format="10"
     plugin-version="2.3.1"
-    timestamp="1520892981818"
+    timestamp="1521046141595"
     token="2862229553357409935"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="438" />
+        duration="852" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="26" />
+        duration="45" />
     <task
         name="verifier"
-        duration="14" />
+        duration="17" />
 
     <artifact
         location="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_6.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_4.apk"
         type="SPLIT" />
     <artifact
         location="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_2.apk"
@@ -33,15 +36,12 @@
         location="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_0.apk"
         type="SPLIT" />
     <artifact
-        location="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_4.apk"
-        type="SPLIT" />
-    <artifact
         location="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\outputs\apk\uteVoiceAgentApp-debug.apk"
         type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
-        timestamp="1520891559404"
+        timestamp="1521044966965"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_9.apk"
@@ -82,19 +82,19 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1520892981818"
+        timestamp="1521046141595"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_4.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_0.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_4.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\outputs\apk\uteVoiceAgentApp-debug.apk"

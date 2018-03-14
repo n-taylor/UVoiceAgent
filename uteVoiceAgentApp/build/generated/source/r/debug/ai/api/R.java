@@ -56,9 +56,9 @@ public final class R {
         public static final int default_aidialog_title = 0x7f070029;
     }
     public static final class style {
-        public static final int ApiAi = 0x7f0900a8;
-        public static final int ApiAi_FullScreenDialog = 0x7f0900a9;
-        public static final int ApiAi_Microphone = 0x7f0900aa;
+        public static final int ApiAi = 0x7f0900a9;
+        public static final int ApiAi_FullScreenDialog = 0x7f0900aa;
+        public static final int ApiAi_Microphone = 0x7f0900ab;
     }
     public static final class styleable {
         public static final int[] MaskedColorView = { 0x7f0100d7 };

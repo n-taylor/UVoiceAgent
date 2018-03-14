@@ -9,11 +9,12 @@ int attr state_initializing_tts 0x7f01000a
 int attr state_listening 0x7f010007
 int attr state_speaking 0x7f010009
 int attr state_waiting 0x7f010008
-int color aidialog_background 0x7f050000
-int color icon_orange_color 0x7f050001
-int color main_bg_color 0x7f050002
-int color mic_button_halo 0x7f050003
-int color mic_colors 0x7f050004
+int color accent_material_light 0x7f050000
+int color aidialog_background 0x7f050001
+int color icon_orange_color 0x7f050002
+int color main_bg_color 0x7f050003
+int color mic_button_halo 0x7f050004
+int color mic_colors 0x7f050005
 int dimen mic_button_halo_radius_max 0x7f060000
 int dimen mic_button_halo_radius_min 0x7f060001
 int dimen mic_button_size 0x7f060002
@@ -33,6 +34,7 @@ int string default_aidialog_title 0x7f070001
 int style ApiAi 0x7f080000
 int style ApiAi_FullScreenDialog 0x7f080001
 int style ApiAi_Microphone 0x7f080002
+int style red_light 0x7f080003
 int[] styleable MaskedColorView { 0x7f010000 }
 int styleable MaskedColorView_mainColor 0
 int[] styleable SoundLevelButton { 0x7f010001, 0x7f010002, 0x7f010003, 0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007, 0x7f010008, 0x7f010009, 0x7f01000a }

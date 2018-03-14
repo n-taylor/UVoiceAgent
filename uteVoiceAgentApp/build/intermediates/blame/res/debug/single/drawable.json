@@ -16,6 +16,10 @@
         "source": "C:\\Users\\Nathan Taylor\\.android\\build-cache\\a88c6bd92777100ef6a087ed6949f8e47a33cb29\\output\\res\\drawable\\abc_dialog_material_background.xml"
     },
     {
+        "merged": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\drawable\\user_icon.png",
+        "source": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\src\\main\\res\\drawable\\user_icon.png"
+    },
+    {
         "merged": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_tick_mark_material.xml",
         "source": "C:\\Users\\Nathan Taylor\\.android\\build-cache\\a88c6bd92777100ef6a087ed6949f8e47a33cb29\\output\\res\\drawable\\abc_seekbar_tick_mark_material.xml"
     },

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="accent_material_light">#ff4040</color>
     <color name="aidialog_background">#ffffffff</color>
     <color name="icon_orange_color">#f26c29</color>
     <color name="main_bg_color">#FF2a91be</color>
@@ -35,4 +36,7 @@
 	    <item name="android:layout_height">@dimen/mic_button_size</item>
 	    <item name="android:scaleType">centerInside</item>
 	</style>
+    <style name="red_light" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:colorAccent">@color/accent_material_light</item>
+    </style>
 </resources>
