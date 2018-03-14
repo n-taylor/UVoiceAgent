@@ -31,6 +31,9 @@ final class Constants {
     public final static String CLINWEB_CENSUS_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/census/getCensus";
     public final static String CLINWEB_CENSUS_SPECFIC_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/census/getCensusByUnit/";
 
+    public final static String GET_SURGERY_COST = "getSurgeryCost";
+    public final static String GET_CENSUS = "getCensus";
+
     public HashMap<String, String> units = new HashMap<String, String>();
 
     public Constants(){

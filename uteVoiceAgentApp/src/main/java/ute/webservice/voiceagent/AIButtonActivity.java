@@ -353,18 +353,17 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
 //                RetrieveTask httpTask = new RetrieveTask();
 //                httpTask.execute();
 
-                // Retrieve the information and display the results
-                RetrieveTask httpTask = new RetrieveTask(dataasked, sslContext); // the task to retrieve the information
-                httpTask.addListener(AIButtonActivity.this);
-                httpTask.execute();
-
-
                 dataasked.setIncomplete(PR.get_ActionIncomplete());
                 dataasked.setCurrentReply(PR.get_reply());
                 dataasked.setCensusUnit(PR.getCensusUnit());
                 dataasked.setCurrentSurgeryCategory(PR.get_param_Surgery());
                 dataasked.setCurrentAction(PR.get_Action());
                 Log.d("OUTPUTRESPONSE", PR.get_reply());
+
+                // Retrieve the information and display the results
+                RetrieveTask httpTask = new RetrieveTask(dataasked, sslContext); // the task to retrieve the information
+                httpTask.addListener(AIButtonActivity.this);
+                httpTask.execute();
             }
 
         });

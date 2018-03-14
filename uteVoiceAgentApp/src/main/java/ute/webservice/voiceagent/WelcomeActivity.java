@@ -244,18 +244,17 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
 
                 String query = PR.get_ResolvedQuery();
 
-                // Retrieve the information and display the results
-                RetrieveTask httpTask = new RetrieveTask(dataasked, sslContext); // the task to retrieve the information
-                httpTask.addListener(WelcomeActivity.this);
-                httpTask.execute();
-
-
                 dataasked.setIncomplete(PR.get_ActionIncomplete());
                 dataasked.setCurrentReply(PR.get_reply());
                 dataasked.setCensusUnit(PR.getCensusUnit());
                 dataasked.setCurrentSurgeryCategory(PR.get_param_Surgery());
                 dataasked.setCurrentAction(PR.get_Action());
                 Log.d("OUTPUTRESPONSE", PR.get_reply());
+
+                // Retrieve the information and display the results
+                RetrieveTask httpTask = new RetrieveTask(dataasked, sslContext); // the task to retrieve the information
+                httpTask.addListener(WelcomeActivity.this);
+                httpTask.execute();
             }
 
         });
@@ -283,9 +282,25 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         });
     }
 
+    /**
+     * If the query needs to be more specific (i.e. a surgery type or unit name), open the
+     * appropriate Activity. Else open the activity to display the results.
+     * @param result the result of what what retrieved from the server
+     */
     @Override
     public void onRetrieval(String result) {
-
+        if (dataasked.isIncomplete()){
+            if (dataasked.getCurrentAction().equals(Constants.GET_CENSUS)){
+                // TODO: Send to the activity that will prompt for a unit name
+            }
+            else if (dataasked.getCurrentAction().equals(Constants.GET_SURGERY_COST)){
+                // TODO: Send to the activity that will prompt for a surgery category
+            }
+        }
+        else {
+            // The query is complete as is, so display the results
+            // TODO: Send to the results activity
+        }
     }
 
     @Override

@@ -41,7 +41,7 @@ public class DataAsked {
     private Constants const_value;
 
     //TODO: load data from files
-    //private static final Hash
+
     private HashMap<String,HashMap<String,String>> Map_Sugery = new HashMap<String,HashMap<String,String>>();
 
     private HashMap<String, String> surgeries = new HashMap<String, String>();
@@ -215,7 +215,6 @@ public class DataAsked {
 
     /**
      * Get data from webservice by CloseableHttpClient.
-     * If cancel is equal to true, stop retrieving data; display that the retrieval was cancelled.
      * @return Response to user's query.
      * @throws IOException
      */
@@ -418,5 +417,9 @@ public class DataAsked {
 
         return str;
     }
+
+    public boolean isIncomplete() { return this.isIncomplete; }
+
+    public String getCurrentAction() { return this.currentAction; }
 }
 
