@@ -752,7 +752,7 @@
 	    <item name="android:scaleType">centerInside</item>
 	</style>
     <style name="AppTheme" parent="Theme.AppCompat.Light">
-        
+        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/color_softgreen</item>
     </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
@@ -1891,6 +1891,9 @@
         <item name="android:dropDownItemStyle">@style/Widget.AppCompat.DropDownItem.Spinner</item>
     </style>
     <style name="Platform.Widget.AppCompat.Spinner" parent="android:Widget.Spinner"/>
+    <style name="Red_theme" parent="My_theme">
+        <item name="colorAccent">@color/Dark_Red</item>
+    </style>
     <style name="RtlOverlay.DialogWindowTitle.AppCompat" parent="Base.DialogWindowTitle.AppCompat">
     </style>
     <style name="RtlOverlay.Widget.AppCompat.ActionBar.TitleItem" parent="android:Widget">

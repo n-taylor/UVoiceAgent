@@ -35,4 +35,8 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="Red_theme" parent="My_theme" >
+        <item name="colorAccent">@color/Dark_Red</item>
+    </style>
+
 </resources>
