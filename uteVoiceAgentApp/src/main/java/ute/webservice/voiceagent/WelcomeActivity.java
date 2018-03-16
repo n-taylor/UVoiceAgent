@@ -46,6 +46,11 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
 
     private AIButton aiButton;
     private Button cancelButton;
+    private Button bedButton;
+    private Button surgeryButton;
+    private Button equipButton;
+    private Button oncallButton;
+
     private TextView welcomeTextView;
     private ActionBar actionBar;
 
@@ -73,6 +78,10 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         aiButton = (AIButton) findViewById(R.id.micButton);
         welcomeTextView = (TextView) findViewById(R.id.welcome_message);
         cancelButton = (Button) findViewById(R.id.cancelButton);
+        bedButton = (Button) findViewById(R.id.bed_finder_button);
+        surgeryButton = (Button) findViewById(R.id.cost_button);
+        equipButton = (Button) findViewById(R.id.equipment_button);
+        oncallButton = (Button) findViewById(R.id.on_call_button);
 
         //Open shared data
         sessiondata = new SharedData(getApplicationContext());
@@ -103,7 +112,14 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
             }
         });
 
-        //Save asked query
+        surgeryButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), AIListActivity.class);
+                intent.putExtra("query", PR.get_ResolvedQuery());
+                startActivity(intent);
+
+            }
+        });
         dataasked = new DataAsked();
 
         this.loadCA();
@@ -297,7 +313,7 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         if (dataasked.isIncomplete()){
             if (dataasked.getCurrentAction().equals(Constants.GET_CENSUS)){
                 // TODO: Send to the activity that will prompt for a unit name
-                Intent intent = new Intent(this, ResultsActivity.class);
+                Intent intent = new Intent(this, AIListActivity.class);
                 intent.putExtra("query", PR.get_ResolvedQuery());
                 intent.putExtra("result", result);
                 startActivity(intent);

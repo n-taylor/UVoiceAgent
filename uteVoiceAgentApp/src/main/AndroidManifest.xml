@@ -55,7 +55,14 @@
         <activity
             android:name=".ResultsActivity"
             android:label="@string/title_welcome_activity"
-            android:theme="@style/My_theme"></activity>
-    </application>
+            android:theme="@style/My_theme">
 
+        </activity>
+        <activity
+            android:name=".AIListActivity"
+            android:label="Voice Agent"
+            android:theme="@style/My_theme">
+
+        </activity>
+    </application>
 </manifest>

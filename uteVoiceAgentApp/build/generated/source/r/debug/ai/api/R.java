@@ -34,19 +34,19 @@ public final class R {
     }
     public static final class drawable {
         public static final int cube = 0x7f020055;
-        public static final int mic_control = 0x7f02005e;
-        public static final int microphone_control = 0x7f02005f;
-        public static final int speaker = 0x7f02006c;
-        public static final int speaker_silent = 0x7f02006d;
+        public static final int mic_control = 0x7f02005f;
+        public static final int microphone_control = 0x7f020060;
+        public static final int speaker = 0x7f02006d;
+        public static final int speaker_silent = 0x7f02006e;
     }
     public static final class id {
         public static final int micButton = 0x7f0d007e;
-        public static final int micContainer = 0x7f0d0090;
-        public static final int partialResultsTextView = 0x7f0d0092;
-        public static final int titleTextView = 0x7f0d0091;
+        public static final int micContainer = 0x7f0d0091;
+        public static final int partialResultsTextView = 0x7f0d0093;
+        public static final int titleTextView = 0x7f0d0092;
     }
     public static final class layout {
-        public static final int aidialog = 0x7f030021;
+        public static final int aidialog = 0x7f030022;
     }
     public static final class raw {
         public static final int version_config = 0x7f060003;

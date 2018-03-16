@@ -65,7 +65,13 @@
         <activity
             android:name="ute.webservice.voiceagent.ResultsActivity"
             android:label="@string/title_welcome_activity"
-            android:theme="@style/My_theme" />
+            android:theme="@style/My_theme" >
+        </activity>
+        <activity
+            android:name="ute.webservice.voiceagent.AIListActivity"
+            android:label="Voice Agent"
+            android:theme="@style/My_theme" >
+        </activity>
     </application>
 
 </manifest>

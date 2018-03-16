@@ -1,18 +1,18 @@
 [
     {
-        "merged": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\raw\\version_config.json",
-        "source": "C:\\Users\\Nathan Taylor\\.android\\build-cache\\62188b73fe200914c7254047b3b272633b364a1b\\output\\res\\raw\\version_config.json"
+        "merged": "C:\\Clone\\UVoiceAgent\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\raw\\test_start.wav",
+        "source": "C:\\Clone\\UVoiceAgent\\uteVoiceAgentApp\\src\\main\\res\\raw\\test_start.wav"
     },
     {
-        "merged": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\raw\\test_cancel.wav",
-        "source": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\src\\main\\res\\raw\\test_cancel.wav"
+        "merged": "C:\\Clone\\UVoiceAgent\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\raw\\test_stop.mp3",
+        "source": "C:\\Clone\\UVoiceAgent\\uteVoiceAgentApp\\src\\main\\res\\raw\\test_stop.mp3"
     },
     {
-        "merged": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\raw\\test_start.wav",
-        "source": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\src\\main\\res\\raw\\test_start.wav"
+        "merged": "C:\\Clone\\UVoiceAgent\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\raw\\test_cancel.wav",
+        "source": "C:\\Clone\\UVoiceAgent\\uteVoiceAgentApp\\src\\main\\res\\raw\\test_cancel.wav"
     },
     {
-        "merged": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\raw\\test_stop.mp3",
-        "source": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\src\\main\\res\\raw\\test_stop.mp3"
+        "merged": "C:\\Clone\\UVoiceAgent\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\raw\\version_config.json",
+        "source": "C:\\Users\\u0450254\\.android\\build-cache\\ef3f4c3745aab8c3b8e2d585ade968fd7141ac49\\output\\res\\raw\\version_config.json"
     }
 ]

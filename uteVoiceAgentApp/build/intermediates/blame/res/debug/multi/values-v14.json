@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
+        "outputFile": "C:\\Clone\\UVoiceAgent\\uteVoiceAgentApp\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
         "map": [
             {
                 "to": {
@@ -12,7 +12,7 @@
                     "endOffset": 230
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\src\\main\\res\\values-v14\\styles.xml",
+                    "file": "C:\\Clone\\UVoiceAgent\\uteVoiceAgentApp\\src\\main\\res\\values-v14\\styles.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -33,7 +33,7 @@
                     "endOffset": 506
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\.android\\build-cache\\a88c6bd92777100ef6a087ed6949f8e47a33cb29\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "C:\\Users\\u0450254\\.android\\build-cache\\48f189cc7534eaa13a9e1fae7a16d1bd84b05490\\output\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -53,7 +53,7 @@
                     "endOffset": 577
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\.android\\build-cache\\a88c6bd92777100ef6a087ed6949f8e47a33cb29\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "C:\\Users\\u0450254\\.android\\build-cache\\48f189cc7534eaa13a9e1fae7a16d1bd84b05490\\output\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -72,7 +72,7 @@
                     "endOffset": 660
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\.android\\build-cache\\a88c6bd92777100ef6a087ed6949f8e47a33cb29\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "C:\\Users\\u0450254\\.android\\build-cache\\48f189cc7534eaa13a9e1fae7a16d1bd84b05490\\output\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -92,7 +92,7 @@
                     "endOffset": 1070
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\.android\\build-cache\\a88c6bd92777100ef6a087ed6949f8e47a33cb29\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "C:\\Users\\u0450254\\.android\\build-cache\\48f189cc7534eaa13a9e1fae7a16d1bd84b05490\\output\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -113,7 +113,7 @@
                     "endOffset": 1492
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\.android\\build-cache\\a88c6bd92777100ef6a087ed6949f8e47a33cb29\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "C:\\Users\\u0450254\\.android\\build-cache\\48f189cc7534eaa13a9e1fae7a16d1bd84b05490\\output\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
@@ -133,7 +133,7 @@
                     "endOffset": 1612
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\.android\\build-cache\\a88c6bd92777100ef6a087ed6949f8e47a33cb29\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "C:\\Users\\u0450254\\.android\\build-cache\\48f189cc7534eaa13a9e1fae7a16d1bd84b05490\\output\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
@@ -152,7 +152,7 @@
                     "endOffset": 1744
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\.android\\build-cache\\a88c6bd92777100ef6a087ed6949f8e47a33cb29\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "C:\\Users\\u0450254\\.android\\build-cache\\48f189cc7534eaa13a9e1fae7a16d1bd84b05490\\output\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 22,
                         "startColumn": 4,
@@ -171,7 +171,7 @@
                     "endOffset": 1864
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\.android\\build-cache\\a88c6bd92777100ef6a087ed6949f8e47a33cb29\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "C:\\Users\\u0450254\\.android\\build-cache\\48f189cc7534eaa13a9e1fae7a16d1bd84b05490\\output\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 23,
                         "startColumn": 4,
@@ -190,7 +190,7 @@
                     "endOffset": 1927
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\.android\\build-cache\\a88c6bd92777100ef6a087ed6949f8e47a33cb29\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "C:\\Users\\u0450254\\.android\\build-cache\\48f189cc7534eaa13a9e1fae7a16d1bd84b05490\\output\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 24,
                         "startColumn": 4,
@@ -210,7 +210,7 @@
                     "endOffset": 2081
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\.android\\build-cache\\a88c6bd92777100ef6a087ed6949f8e47a33cb29\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "C:\\Users\\u0450254\\.android\\build-cache\\48f189cc7534eaa13a9e1fae7a16d1bd84b05490\\output\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 25,
                         "startColumn": 4,
@@ -230,7 +230,7 @@
                     "endOffset": 2144
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\.android\\build-cache\\a88c6bd92777100ef6a087ed6949f8e47a33cb29\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "C:\\Users\\u0450254\\.android\\build-cache\\48f189cc7534eaa13a9e1fae7a16d1bd84b05490\\output\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 28,
                         "startColumn": 4,
@@ -249,7 +249,7 @@
                     "endOffset": 2276
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\.android\\build-cache\\a88c6bd92777100ef6a087ed6949f8e47a33cb29\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "C:\\Users\\u0450254\\.android\\build-cache\\48f189cc7534eaa13a9e1fae7a16d1bd84b05490\\output\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 29,
                         "startColumn": 4,

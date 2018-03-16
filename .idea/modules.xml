@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Voice_Assistant.iml" filepath="$PROJECT_DIR$/Voice_Assistant.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UVoiceAgent.iml" filepath="$PROJECT_DIR$/UVoiceAgent.iml" />
       <module fileurl="file://$PROJECT_DIR$/ailib/ailib.iml" filepath="$PROJECT_DIR$/ailib/ailib.iml" />
       <module fileurl="file://$PROJECT_DIR$/uteVoiceAgentApp/uteVoiceAgentApp.iml" filepath="$PROJECT_DIR$/uteVoiceAgentApp/uteVoiceAgentApp.iml" />
     </modules>

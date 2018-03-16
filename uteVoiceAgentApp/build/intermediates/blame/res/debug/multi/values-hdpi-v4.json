@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hdpi-v4\\values-hdpi-v4.xml",
+        "outputFile": "C:\\Clone\\UVoiceAgent\\uteVoiceAgentApp\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hdpi-v4\\values-hdpi-v4.xml",
         "map": [
             {
                 "to": {
@@ -12,7 +12,7 @@
                     "endOffset": 327
                 },
                 "from": {
-                    "file": "C:\\Users\\Nathan Taylor\\.android\\build-cache\\a88c6bd92777100ef6a087ed6949f8e47a33cb29\\output\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "file": "C:\\Users\\u0450254\\.android\\build-cache\\48f189cc7534eaa13a9e1fae7a16d1bd84b05490\\output\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,

@@ -1,14 +1,14 @@
 [
     {
-        "merged": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
-        "source": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\src\\main\\res\\menu\\main.xml"
+        "merged": "C:\\Clone\\UVoiceAgent\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\menu\\menu_aiservice_sample.xml",
+        "source": "C:\\Clone\\UVoiceAgent\\uteVoiceAgentApp\\src\\main\\res\\menu\\menu_aiservice_sample.xml"
     },
     {
-        "merged": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\menu\\menu_aiservice_sample.xml",
-        "source": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\src\\main\\res\\menu\\menu_aiservice_sample.xml"
+        "merged": "C:\\Clone\\UVoiceAgent\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
+        "source": "C:\\Clone\\UVoiceAgent\\uteVoiceAgentApp\\src\\main\\res\\menu\\main.xml"
     },
     {
-        "merged": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\menu\\menu_aibutton_sample.xml",
-        "source": "C:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\src\\main\\res\\menu\\menu_aibutton_sample.xml"
+        "merged": "C:\\Clone\\UVoiceAgent\\uteVoiceAgentApp\\build\\intermediates\\res\\merged\\debug\\menu\\menu_aibutton_sample.xml",
+        "source": "C:\\Clone\\UVoiceAgent\\uteVoiceAgentApp\\src\\main\\res\\menu\\menu_aibutton_sample.xml"
     }
 ]
