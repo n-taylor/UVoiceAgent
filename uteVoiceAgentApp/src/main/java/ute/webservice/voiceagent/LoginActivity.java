@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,12 +25,16 @@ public class LoginActivity extends BaseActivity {
     private EditText passwordEditText;
     SharedData sessiondata;
 
+    private ActionBar actionBar;
+
     public static final String TAG = LoginActivity.class.getName();
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        setSupportActionBar((Toolbar) findViewById(R.id.setting_toolbar));
+        actionBar = getSupportActionBar();
 
         sessiondata = new SharedData(getApplicationContext());
         idEditText = (EditText) findViewById(R.id.inputAccount);

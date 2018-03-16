@@ -2,24 +2,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="ute.webservice.voiceagent.LoginActivity">
 
 
-    <LinearLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/setting_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
+        android:layout_height="?attr/actionBarSize"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="129dp"
-        android:id="@+id/linearLayout">
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/My_theme"
+        app:popupTheme="@style/My_theme" />
 
-        </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="129dp"
+            android:orientation="vertical">
+
+            </LinearLayout>
+
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -72,5 +89,7 @@
         android:layout_alignRight="@+id/textInputLayout2"
         android:layout_alignEnd="@+id/textInputLayout2"
         android:layout_marginTop="18dp" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

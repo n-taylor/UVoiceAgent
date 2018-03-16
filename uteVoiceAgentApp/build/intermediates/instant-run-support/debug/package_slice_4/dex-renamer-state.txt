@@ -1,4 +1,4 @@
-#Fri Mar 16 10:01:55 MDT 2018
+#Fri Mar 16 10:39:10 MDT 2018
 base.0=C\:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_4
 renamed.0=classes.dex
 file.0=C\:\\Users\\Nathan Taylor\\Sudo\\Voice_Assistant\\uteVoiceAgentApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_4\\classes.dex

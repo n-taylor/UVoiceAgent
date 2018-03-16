@@ -3,6 +3,8 @@ package ute.webservice.voiceagent;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
@@ -45,6 +47,7 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
     private AIButton aiButton;
     private Button cancelButton;
     private TextView welcomeTextView;
+    private ActionBar actionBar;
 
     private Gson gson = GsonFactory.getGson();
     private DataAsked dataasked;
