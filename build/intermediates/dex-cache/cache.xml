@@ -2,40 +2,22 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="C:\Users\Nathan Taylor\.gradle\caches\modules-2\files-2.1\com.android.support.constraint\constraint-layout-solver\1.0.2\b9cd8fc6bd15cb915735d34535db30ece0c44603\constraint-layout-solver-1.0.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
-        <dex dex="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.2_6465a99ed05d9a7c3ce1b09e2bfda9d4dddb6d27\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
-        <dex dex="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_6c3122553e29f60cc987c591ace95252d7893b44\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
+        is-multidex="false"
         jar="C:\Users\Nathan Taylor\.android\build-cache\39c7f4ff6879b8f69dce7bf49a150cda63a6e4c3\output\jars\classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
-        <dex dex="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\transforms\dex\debug\folders\1000\10\classes_773338520550ae9868bd8ec6244ecde32a80b419\classes.dex" />
+        <dex dex="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\pre-dexed\debug\classes_773338520550ae9868bd8ec6244ecde32a80b419.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\Nathan Taylor\.gradle\caches\modules-2\files-2.1\com.android.support.constraint\constraint-layout-solver\1.0.2\b9cd8fc6bd15cb915735d34535db30ece0c44603\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="8a6b6f0143a9a033bb892400655a0bfdcb91be21">
-        <dex dex="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_c6133fcef74eedd62c3fcbc1bbd1622b30ef3f3f\classes.dex" />
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.2_6465a99ed05d9a7c3ce1b09e2bfda9d4dddb6d27.jar" />
     </item>
 
 </items>
