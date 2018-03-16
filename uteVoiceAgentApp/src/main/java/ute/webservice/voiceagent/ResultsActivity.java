@@ -87,8 +87,10 @@ public class ResultsActivity extends BaseActivity implements AIButton.AIButtonLi
 
         if (query != null)
             queryTextView.setText(query);
-        if (result != null)
+        if (result != null) {
             resultsTextView.setText(result);
+            TTS.speak(result);
+        }
 
         //Open shared data
         sessiondata = new SharedData(getApplicationContext());
@@ -306,8 +308,10 @@ public class ResultsActivity extends BaseActivity implements AIButton.AIButtonLi
             // The query is complete as is, so display the results
             query = PR.get_ResolvedQuery();
             this.result = result;
-            if (result != null)
+            if (result != null) {
                 resultsTextView.setText(result);
+                TTS.speak(result);
+            }
             if (query != null)
             queryTextView.setText(query);
         }

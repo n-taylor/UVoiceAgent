@@ -268,7 +268,7 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
             @Override
             public void run() {
                 Log.d(TAG, "onError");
-                welcomeTextView.setText(error.toString());
+                welcomeTextView.setText("Please try again");
             }
         });
     }
