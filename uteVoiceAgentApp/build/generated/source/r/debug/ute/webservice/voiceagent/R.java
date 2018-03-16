@@ -3579,8 +3579,6 @@ containing a value of this type.
         public static final int ApiAi=0x7f0900aa;
         public static final int ApiAi_FullScreenDialog=0x7f0900ab;
         public static final int ApiAi_Microphone=0x7f0900ac;
-        /** <item name="android:actionOverflowButtonStyle">@style/MyActionButtonOverflow</item> 
-         */
         public static final int AppTheme=0x7f090028;
         public static final int AppTheme_AppBarOverlay=0x7f0900ad;
         public static final int AppTheme_NoActionBar=0x7f0900ae;
@@ -3741,8 +3739,6 @@ containing a value of this type.
         public static final int Base_Widget_Design_TabLayout=0x7f0900dc;
         public static final int MyActionBar_theme=0x7f090087;
         public static final int MyActionButtonOverflow=0x7f090088;
-        /** <item name="android:actionOverflowButtonStyle">@style/MyActionButtonOverflow</item> 
-         */
         public static final int My_theme=0x7f090089;
         public static final int Platform_AppCompat=0x7f09001f;
         public static final int Platform_AppCompat_Light=0x7f090020;

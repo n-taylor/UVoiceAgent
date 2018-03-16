@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
-        android:theme="@style/My_theme"
+        android:theme="@style/MyActionBar_theme"
         app:popupTheme="@style/My_theme" />
 
 

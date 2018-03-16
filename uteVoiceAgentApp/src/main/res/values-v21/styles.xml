@@ -26,7 +26,7 @@
 
     <style name="MyActionBar_theme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:colorPrimary">@color/color_slategrey</item>
-        <item name="android:textColorPrimary">@color/Dark_Red</item>
+        <item name="android:textColorPrimary">@color/black</item>
     </style>
     
 </resources>

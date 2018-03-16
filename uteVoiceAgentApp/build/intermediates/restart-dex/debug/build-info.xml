@@ -6,7 +6,7 @@
     density="xxhdpi"
     format="10"
     plugin-version="2.3.1"
-    timestamp="1521219394922"
+    timestamp="1521220242204"
     token="2862229553357409935"
     verifier="COLD_SWAP_REQUESTED" >
 
@@ -81,13 +81,18 @@
         <artifact
             location="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1521219740466"
+        verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_4.apk"
             type="SPLIT" />
     </build>
     <build
         build-mode="COLD"
-        timestamp="1521219394922"
+        timestamp="1521220242204"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\Nathan Taylor\Sudo\Voice_Assistant\uteVoiceAgentApp\build\outputs\apk\uteVoiceAgentApp-debug.apk"
