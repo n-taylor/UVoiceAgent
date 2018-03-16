@@ -297,6 +297,10 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         if (dataasked.isIncomplete()){
             if (dataasked.getCurrentAction().equals(Constants.GET_CENSUS)){
                 // TODO: Send to the activity that will prompt for a unit name
+                Intent intent = new Intent(this, ResultsActivity.class);
+                intent.putExtra("query", PR.get_ResolvedQuery());
+                intent.putExtra("result", result);
+                startActivity(intent);
             }
             else if (dataasked.getCurrentAction().equals(Constants.GET_SURGERY_COST)){
                 // TODO: Send to the activity that will prompt for a surgery category
