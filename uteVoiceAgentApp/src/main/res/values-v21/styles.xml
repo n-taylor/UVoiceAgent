@@ -6,14 +6,12 @@
         <item name="colorPrimary">@color/color_slategrey</item>
         <item name="android:statusBarColor">?attr/colorControlActivated</item>
         <item name="android:navigationBarColor">@color/color_slategrey</item>
-        <!--<item name="android:actionOverflowButtonStyle">@style/MyActionButtonOverflow</item> -->
     </style>
 
     <style name="My_theme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/color_slategrey</item>
         <item name="android:statusBarColor">?attr/colorControlActivated</item>
         <item name="android:navigationBarColor">@color/color_slategrey</item>
-        <!--<item name="android:actionOverflowButtonStyle">@style/MyActionButtonOverflow</item> -->
     </style>
 
     <!-- Style to replace actionbar overflow icon. set item 'android:actionOverflowButtonStyle' in AppTheme -->
@@ -24,6 +22,11 @@
         <item name="android:width">9dp</item>
         <item name="android:background">?android:attr/actionBarItemBackground</item>
         <item name="android:contentDescription">"Menu options"</item>
+    </style>
+
+    <style name="MyActionBar_theme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:colorPrimary">@color/color_slategrey</item>
+        <item name="android:textColorPrimary">@color/Dark_Red</item>
     </style>
     
 </resources>

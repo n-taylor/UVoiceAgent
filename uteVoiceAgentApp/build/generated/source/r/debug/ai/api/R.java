@@ -22,10 +22,10 @@ public final class R {
     }
     public static final class color {
         public static final int aidialog_background = 0x7f0c0009;
-        public static final int icon_orange_color = 0x7f0c002c;
-        public static final int main_bg_color = 0x7f0c002d;
-        public static final int mic_button_halo = 0x7f0c003a;
-        public static final int mic_colors = 0x7f0c0067;
+        public static final int icon_orange_color = 0x7f0c002d;
+        public static final int main_bg_color = 0x7f0c002e;
+        public static final int mic_button_halo = 0x7f0c003b;
+        public static final int mic_colors = 0x7f0c0068;
     }
     public static final class dimen {
         public static final int mic_button_halo_radius_max = 0x7f080083;
@@ -56,9 +56,9 @@ public final class R {
         public static final int default_aidialog_title = 0x7f07002b;
     }
     public static final class style {
-        public static final int ApiAi = 0x7f0900a9;
-        public static final int ApiAi_FullScreenDialog = 0x7f0900aa;
-        public static final int ApiAi_Microphone = 0x7f0900ab;
+        public static final int ApiAi = 0x7f0900aa;
+        public static final int ApiAi_FullScreenDialog = 0x7f0900ab;
+        public static final int ApiAi_Microphone = 0x7f0900ac;
     }
     public static final class styleable {
         public static final int[] MaskedColorView = { 0x7f010103 };
