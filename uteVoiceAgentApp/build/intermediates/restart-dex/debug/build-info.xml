@@ -6,19 +6,19 @@
     density="xxhdpi"
     format="10"
     plugin-version="2.3.1"
-    timestamp="1521228487189"
+    timestamp="1521229596368"
     token="5559591271012829357"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="3336" />
+        duration="4001" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="103" />
+        duration="272" />
     <task
         name="verifier"
         duration="29" />
@@ -26,9 +26,6 @@
     <artifact
         location="C:\Clone\UVoiceAgent\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_4.apk"
         type="SPLIT" />
-    <artifact
-        location="C:\Clone\UVoiceAgent\uteVoiceAgentApp\build\outputs\apk\uteVoiceAgentApp-debug.apk"
-        type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
@@ -73,14 +70,19 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1521228487189"
+        timestamp="1521229305309"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="C:\Clone\UVoiceAgent\uteVoiceAgentApp\build\outputs\apk\uteVoiceAgentApp-debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1521229596368"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Clone\UVoiceAgent\uteVoiceAgentApp\build\intermediates\split-apk\debug\slices\slice_4.apk"
             type="SPLIT" />
-        <artifact
-            location="C:\Clone\UVoiceAgent\uteVoiceAgentApp\build\outputs\apk\uteVoiceAgentApp-debug.apk"
-            type="SPLIT_MAIN" />
     </build>
 
 </instant-run>

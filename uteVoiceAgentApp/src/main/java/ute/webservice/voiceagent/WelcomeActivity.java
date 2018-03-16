@@ -112,10 +112,10 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
             }
         });
 
-        surgeryButton.setOnClickListener(new View.OnClickListener() {
+        bedButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), AIListActivity.class);
-                intent.putExtra("query", PR.get_ResolvedQuery());
+               // intent.putExtra("query", PR.get_ResolvedQuery());
                 startActivity(intent);
 
             }
