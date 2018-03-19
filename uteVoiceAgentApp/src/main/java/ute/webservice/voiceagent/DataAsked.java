@@ -277,7 +277,9 @@ public class DataAsked {
                         responseString ="";
 
                         for(RoomStatus r : rooms) {
-                            responseString = "\n" + this.censusUnit + " has " + r.getAvailableBeds() + " beds available";
+                            int beds =r.getAvailableBeds();
+                            responseString = String.format("\n%1$s has %2$d bed%3$s available", this.censusUnit, beds, (beds == 1)?"":"s");
+                            //responseString = "\n" + this.censusUnit + " has " + r.getAvailableBeds() + " beds available";
                         }
                         return responseString;
                     }
@@ -378,7 +380,7 @@ public class DataAsked {
                         responseString = responseString + r.toString() + "\n";
                     }
 
-                    responseString = "All the Census:\n" + responseString + ".";
+                    responseString = "All Open Beds:\n" + responseString;
                 }
 
             }

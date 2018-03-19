@@ -46,55 +46,43 @@
             />
 
 
-        <TextView
-            android:id="@+id/resultTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/querytextView"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@android:color/holo_green_dark"
-            android:textSize="21sp"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
-            />
-
         <ExpandableListView
             android:id="@+id/resultListView"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/resultTextView"/>
+            android:layout_below="@+id/querytextView"/>
 
 
 
 
     </RelativeLayout>
 
-    <RelativeLayout
+     <RelativeLayout
         android:id="@+id/bottom_container"
         android:layout_width="fill_parent"
-        android:layout_height="80dp"
-        android:layout_alignParentBottom="true">
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        tools:ignore="RtlHardcoded">
 
         <ai.api.ui.AIButton
             android:id="@+id/micButton"
             style="@style/ApiAi.Microphone"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
+            android:layout_width="150dp"
+
             android:layout_centerHorizontal="true"
-
-            android:layout_centerVertical="true"
-
-            />
+            android:layout_alignParentTop="true" />
 
         <Button
-            android:layout_width="125dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:text="Cancel"
-            />
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/micButton"
+            android:layout_centerHorizontal="true"
+            android:text="@string/cancel" />
 
     </RelativeLayout>
 

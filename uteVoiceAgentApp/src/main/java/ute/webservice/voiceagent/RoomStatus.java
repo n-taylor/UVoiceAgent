@@ -17,7 +17,8 @@ public class RoomStatus{
 
     @Override
     public String toString() {
-        return "Unit " + this.unit + " has " + this.availableBeds + " available beds ";
+        return String.format("%1$s has %2$d available bed%3$s ", this.unit, this.availableBeds, ((this.availableBeds == 1)?"":"s"));
+        //return "Unit " + this.unit + " has " + this.availableBeds + " available beds ";
     }
 
     public String getUnit(){return this.unit;}

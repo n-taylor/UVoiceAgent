@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -76,6 +77,7 @@ public class ResultsActivity extends BaseActivity implements AIButton.AIButtonLi
         cancelButton = (Button) findViewById(R.id.cancelButton);
         queryTextView = (TextView) findViewById(R.id.query_text);
         resultsTextView = (TextView) findViewById(R.id.result_textView);
+        resultsTextView.setMovementMethod(new ScrollingMovementMethod());
 
         Bundle bundle = getIntent().getExtras();
 
