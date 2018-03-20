@@ -61,9 +61,9 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
     private int account_access;
 
     //CA variables
-    private CertificateFactory cf = null;
-    private Certificate ca;
-    private SSLContext sslContext = null;
+//    private CertificateFactory cf = null;
+//    private Certificate ca;
+//    private SSLContext sslContext = null;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,94 +117,94 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
         });
         dataAsked = new DataAsked();
 
-        this.loadCA();
+        //this.loadCA();
 
     }
 
-    private void loadCA(){
-        System.out.println("working:"+System.getProperty("user.dir"));
-        // Load CAs from an InputStream
-        // (could be from a resource or ByteArrayInputStream or ...)
-        //CertificateFactory cf = null;
-        try {
-            cf = CertificateFactory.getInstance("X.509");
-        } catch (CertificateException e) {
-            e.printStackTrace();
-        }
-        // From https://www.washington.edu/itconnect/security/ca/load-der.crt
-        InputStream caInput = null;
-        try {
-            caInput = new BufferedInputStream(this.getBaseContext().getAssets().open("ca.cer"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        //Certificate ca;
-        try {
-            ca = cf.generateCertificate(caInput);
-            System.out.println("ca=" + ((X509Certificate) ca).getSubjectDN());
-        } catch (CertificateException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                caInput.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        // Create a KeyStore containing our trusted CAs
-        String keyStoreType = KeyStore.getDefaultType();
-        KeyStore keyStore = null;
-        try {
-            keyStore = KeyStore.getInstance(keyStoreType);
-        } catch (KeyStoreException e) {
-            e.printStackTrace();
-        }
-        try {
-            keyStore.load(null, null);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (CertificateException e) {
-            e.printStackTrace();
-        }
-        try {
-            keyStore.setCertificateEntry("ca", ca);
-        } catch (KeyStoreException e) {
-            e.printStackTrace();
-        }
-
-        // Create a TrustManager that trusts the CAs in our KeyStore
-        String tmfAlgorithm = TrustManagerFactory.getDefaultAlgorithm();
-        TrustManagerFactory tmf = null;
-        try {
-            tmf = TrustManagerFactory.getInstance(tmfAlgorithm);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        try {
-            tmf.init(keyStore);
-        } catch (KeyStoreException e) {
-            e.printStackTrace();
-        }
-
-        // Create an SSLContext that uses our TrustManager
-
-        try {
-            sslContext = SSLContext.getInstance("TLS");
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        try {
-            sslContext.init(null, tmf.getTrustManagers(), null);
-        } catch (KeyManagementException e) {
-            e.printStackTrace();
-        }
-    }
+//    private void loadCA(){
+//        System.out.println("working:"+System.getProperty("user.dir"));
+//        // Load CAs from an InputStream
+//        // (could be from a resource or ByteArrayInputStream or ...)
+//        //CertificateFactory cf = null;
+//        try {
+//            cf = CertificateFactory.getInstance("X.509");
+//        } catch (CertificateException e) {
+//            e.printStackTrace();
+//        }
+//        // From https://www.washington.edu/itconnect/security/ca/load-der.crt
+//        InputStream caInput = null;
+//        try {
+//            caInput = new BufferedInputStream(this.getBaseContext().getAssets().open("ca.cer"));
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        //Certificate ca;
+//        try {
+//            ca = cf.generateCertificate(caInput);
+//            System.out.println("ca=" + ((X509Certificate) ca).getSubjectDN());
+//        } catch (CertificateException e) {
+//            e.printStackTrace();
+//        } finally {
+//            try {
+//                caInput.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        // Create a KeyStore containing our trusted CAs
+//        String keyStoreType = KeyStore.getDefaultType();
+//        KeyStore keyStore = null;
+//        try {
+//            keyStore = KeyStore.getInstance(keyStoreType);
+//        } catch (KeyStoreException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            keyStore.load(null, null);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (NoSuchAlgorithmException e) {
+//            e.printStackTrace();
+//        } catch (CertificateException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            keyStore.setCertificateEntry("ca", ca);
+//        } catch (KeyStoreException e) {
+//            e.printStackTrace();
+//        }
+//
+//        // Create a TrustManager that trusts the CAs in our KeyStore
+//        String tmfAlgorithm = TrustManagerFactory.getDefaultAlgorithm();
+//        TrustManagerFactory tmf = null;
+//        try {
+//            tmf = TrustManagerFactory.getInstance(tmfAlgorithm);
+//        } catch (NoSuchAlgorithmException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            tmf.init(keyStore);
+//        } catch (KeyStoreException e) {
+//            e.printStackTrace();
+//        }
+//
+//        // Create an SSLContext that uses our TrustManager
+//
+//        try {
+//            sslContext = SSLContext.getInstance("TLS");
+//        } catch (NoSuchAlgorithmException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            sslContext.init(null, tmf.getTrustManagers(), null);
+//        } catch (KeyManagementException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     /*
      * Preparing the list data
@@ -310,7 +310,8 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
                 Log.d("OUTPUTRESPONSE", PR.get_reply());
 
                 // Retrieve the information and display the results
-                RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                RetrieveTask httpTask = new RetrieveTask(dataAsked,
+                        CertificateManager.getSSlContext(OpenBedsActivity.this)); // the task to retrieve the information
                 httpTask.addListener(OpenBedsActivity.this);
                 httpTask.execute();
             }
