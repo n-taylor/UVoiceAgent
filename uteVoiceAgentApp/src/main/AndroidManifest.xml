@@ -55,14 +55,15 @@
         <activity
             android:name=".ResultsActivity"
             android:label="@string/title_welcome_activity"
-            android:theme="@style/My_theme">
-
-        </activity>
+            android:theme="@style/My_theme"></activity>
         <activity
             android:name=".OpenBedsActivity"
             android:label="Voice Agent"
-            android:theme="@style/My_theme">
-
-        </activity>
+            android:theme="@style/My_theme"></activity>
+        <activity
+            android:name=".SurgeryActivity"
+            android:label="@string/title_activity_surgery"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
+
 </manifest>

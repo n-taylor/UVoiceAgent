@@ -39,7 +39,7 @@
             android:textColor="?android:attr/colorControlActivated"
             android:textSize="24sp"
             tools:ignore="RtlHardcoded"
-            android:text="@string/open_beds_message"
+            android:text="@string/surgery_message"
             android:textAlignment="viewStart"
             android:paddingBottom="16dp"
 
@@ -58,7 +58,7 @@
 
     </RelativeLayout>
 
-     <RelativeLayout
+    <RelativeLayout
         android:id="@+id/bottom_container"
         android:layout_width="fill_parent"
         android:layout_height="200dp"

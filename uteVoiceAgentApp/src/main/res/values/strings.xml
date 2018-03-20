@@ -25,5 +25,7 @@
     <string name="title_activity_results">ResultsActivity</string>
 
     <string name="open_beds_message">For which unit do you want the open bed availability?</string>
+    <string name="title_activity_surgery">Voice Agent</string>
+    <string name="surgery_message">For which surgery do you want the estimated patient price?</string>
 
 </resources>
