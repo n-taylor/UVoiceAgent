@@ -14,22 +14,6 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
-import java.io.BufferedInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.security.KeyManagementException;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateException;
-import java.security.cert.CertificateFactory;
-import java.security.cert.X509Certificate;
-
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManagerFactory;
-
 import ai.api.android.AIConfiguration;
 import ai.api.android.GsonFactory;
 import ai.api.model.AIError;
@@ -110,7 +94,7 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
 
         bedButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), OpenBedsActivity.class);
+                Intent intent = new Intent(v.getContext(), AIListActivity.class);
                // intent.putExtra("query", PR.get_ResolvedQuery());
                 startActivity(intent);
 
@@ -310,7 +294,7 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         if (dataasked.isIncomplete()){
             if (dataasked.getCurrentAction().equals(Constants.GET_CENSUS)){
                 // TODO: Send to the activity that will prompt for a unit name
-                Intent intent = new Intent(this, OpenBedsActivity.class);
+                Intent intent = new Intent(this, AIListActivity.class);
                 intent.putExtra("query", PR.get_ResolvedQuery());
                 intent.putExtra("result", result);
                 startActivity(intent);

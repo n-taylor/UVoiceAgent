@@ -2,16 +2,12 @@ package ute.webservice.voiceagent;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
@@ -225,7 +221,7 @@ public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonLi
         if (dataasked.isIncomplete()){
             if (dataasked.getCurrentAction().equals(Constants.GET_CENSUS)){
                 // TODO: Send to the activity that will prompt for a unit name
-                Intent intent = new Intent(this, OpenBedsActivity.class);
+                Intent intent = new Intent(this, AIListActivity.class);
                 intent.putExtra("query", PR.get_ResolvedQuery());
                 intent.putExtra("result", result);
                 startActivity(intent);

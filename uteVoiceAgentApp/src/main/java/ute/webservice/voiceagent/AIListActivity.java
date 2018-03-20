@@ -13,18 +13,6 @@ import android.widget.Button;
  * Created by u0450254 on 3/13/2018.
  */
 
-import java.io.BufferedInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.security.KeyManagementException;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateException;
-import java.security.cert.CertificateFactory;
-import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,17 +20,14 @@ import java.util.List;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManagerFactory;
-
 import ai.api.android.AIConfiguration;
 import ai.api.model.AIError;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
 
-public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener {
+public class AIListActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener {
 
-    private static String TAG = OpenBedsActivity.class.getName();
+    private static String TAG = AIListActivity.class.getName();
 
     ListAdapter listAdapter;
     ExpandableListView expListView;
@@ -68,7 +53,7 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_open_beds);
+        setContentView(R.layout.activity_aibutton_sample_accordion);
 
         // get the listview
         expListView = (ExpandableListView) findViewById(R.id.resultListView);
@@ -311,8 +296,8 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
 
                 // Retrieve the information and display the results
                 RetrieveTask httpTask = new RetrieveTask(dataAsked,
-                        CertificateManager.getSSlContext(OpenBedsActivity.this)); // the task to retrieve the information
-                httpTask.addListener(OpenBedsActivity.this);
+                        CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
+                httpTask.addListener(AIListActivity.this);
                 httpTask.execute();
             }
 
