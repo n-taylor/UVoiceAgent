@@ -39,7 +39,7 @@
             android:textColor="?android:attr/colorControlActivated"
             android:textSize="24sp"
             tools:ignore="RtlHardcoded"
-            android:text="Open Beds"
+            android:text="@string/open_beds_message"
             android:textAlignment="viewStart"
             android:paddingBottom="16dp"
 

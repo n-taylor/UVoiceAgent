@@ -3,10 +3,8 @@ package ute.webservice.voiceagent;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.DrawableRes;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,11 +31,9 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManagerFactory;
 
 import ai.api.android.AIConfiguration;
-import ai.api.android.AIDataService;
 import ai.api.android.GsonFactory;
 import ai.api.model.AIError;
 import ai.api.model.AIResponse;
-import ai.api.model.Result;
 import ai.api.ui.AIButton;
 
 public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener  {
@@ -114,7 +110,7 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
 
         bedButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), AIListActivity.class);
+                Intent intent = new Intent(v.getContext(), OpenBedsActivity.class);
                // intent.putExtra("query", PR.get_ResolvedQuery());
                 startActivity(intent);
 
@@ -313,7 +309,7 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         if (dataasked.isIncomplete()){
             if (dataasked.getCurrentAction().equals(Constants.GET_CENSUS)){
                 // TODO: Send to the activity that will prompt for a unit name
-                Intent intent = new Intent(this, AIListActivity.class);
+                Intent intent = new Intent(this, OpenBedsActivity.class);
                 intent.putExtra("query", PR.get_ResolvedQuery());
                 intent.putExtra("result", result);
                 startActivity(intent);

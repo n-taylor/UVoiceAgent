@@ -7,10 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 
 /**
  * Created by u0450254 on 3/13/2018.
@@ -31,16 +28,9 @@ import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.View;
+
 import android.widget.ExpandableListView;
-import android.widget.ExpandableListView.OnChildClickListener;
-import android.widget.ExpandableListView.OnGroupClickListener;
-import android.widget.ExpandableListView.OnGroupCollapseListener;
-import android.widget.ExpandableListView.OnGroupExpandListener;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManagerFactory;
@@ -49,11 +39,10 @@ import ai.api.android.AIConfiguration;
 import ai.api.model.AIError;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
-import ai.api.ui.SoundLevelCircleDrawable;
 
-public class AIListActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener {
+public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener {
 
-    private static String TAG = AIListActivity.class.getName();
+    private static String TAG = OpenBedsActivity.class.getName();
 
     ListAdapter listAdapter;
     ExpandableListView expListView;
@@ -79,7 +68,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_aibutton_sample_accordion);
+        setContentView(R.layout.activity_open_beds);
 
         // get the listview
         expListView = (ExpandableListView) findViewById(R.id.resultListView);
@@ -322,7 +311,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
 
                 // Retrieve the information and display the results
                 RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
-                httpTask.addListener(AIListActivity.this);
+                httpTask.addListener(OpenBedsActivity.this);
                 httpTask.execute();
             }
 

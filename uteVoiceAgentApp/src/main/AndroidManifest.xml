@@ -59,7 +59,7 @@
 
         </activity>
         <activity
-            android:name=".AIListActivity"
+            android:name=".OpenBedsActivity"
             android:label="Voice Agent"
             android:theme="@style/My_theme">
 
