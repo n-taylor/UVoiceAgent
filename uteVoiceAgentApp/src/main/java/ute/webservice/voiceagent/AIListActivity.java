@@ -74,39 +74,13 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
-
                 if (i == 0) {
-                    System.out.println("gzero");
-
                     if (i1 == 0) {
-
-                        query = "2A";
-
-                        dataAsked.setCensusUnit("2A");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("2A has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                       // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("2A");
                     }
                     else if (i1 == 1)
                     {
-                        query = "2B";
-
-                        dataAsked.setCensusUnit("2B");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("2B has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("2B");
                     }
                     else if (i1 == 2)
                     {
@@ -231,409 +205,116 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                     }
                 }
                 else if  (i == 1) {
-
                     if (i1 == 0) {
-
-                        query = "5STB";
-
-                        dataAsked.setCensusUnit("5STB");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("5STB has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("5STB");
                     }
                     else if (i1 == 1)
                     {
-                        query = "5W";
-
-                        dataAsked.setCensusUnit("5W");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("5W has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("5W");
                     }
                     else if (i1 == 2)
                     {
-                        query = "AIMA";
-
-                        dataAsked.setCensusUnit("AIMA");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("AIMA has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("AIMA");
                     }
                     else if (i1 == 3)
                     {
-                        query = "AIMB";
-
-                        dataAsked.setCensusUnit("AIMB");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("AIMB has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("AIMB");
                     }
                     else if (i1 == 4)
                     {
-                        query = "BRN";
-
-                        dataAsked.setCensusUnit("BRN");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("BRN has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("BRN");
                     }
-
                     else if (i1 == 5)
                     {
-                        query = "CVICU";
-
-                        dataAsked.setCensusUnit("CVICU");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("CVICU has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("CVICU");
                     }
                     else if (i1 == 6)
                     {
-                        query = "CVMU";
-
-                        dataAsked.setCensusUnit("CVMU");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("CVMU has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("CVMU");
                     }
                     else if (i1 == 7)
                     {
-                        query = "ICN";
-
-                        dataAsked.setCensusUnit("ICN");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("ICN has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("ICN");
                     }
                     else if (i1 == 8)
                     {
-                        query = "IMR";
-
-                        dataAsked.setCensusUnit("IMR");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("IMR has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("IMR");
                     }
                     else if (i1 == 9)
                     {
-                        query = "LND";
-
-                        dataAsked.setCensusUnit("LND");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("LND has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("LND");
                     }
                     else if (i1 == 10)
                     {
-                        query = "MICU";
-
-                        dataAsked.setCensusUnit("MICU");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("MICU has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("MICU");
                     }
                     else if (i1 == 11)
                     {
-                        query = "MNBC";
-
-                        dataAsked.setCensusUnit("MNBC");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("MNBC has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("MNBC");
                     }
                     else if (i1 == 12)
                     {
-                        query = "NAC";
-
-                        dataAsked.setCensusUnit("NAC");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("NAC has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("NAC");
                     }
                     else if (i1 == 13)
                     {
-                        query = "NCCU";
-
-                        dataAsked.setCensusUnit("NCCU");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("NCCU has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("NCCU");
                     }
                     else if (i1 == 14)
                     {
-                        query = "NICU";
-
-                        dataAsked.setCensusUnit("NICU");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("NICU has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("NICU");
                     }
                     else if (i1 == 15)
                     {
-                        query = "NNCCN";
-
-                        dataAsked.setCensusUnit("NNCCN");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("NNCCN has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("NNCCN");
                     }
                     else if (i1 == 16)
                     {
-                        query = "NSY";
-
-                        dataAsked.setCensusUnit("NSY");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("NSY has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("NSY");
                     }
                     else if (i1 == 17)
                     {
-                        query = "OBGY";
-
-                        dataAsked.setCensusUnit("OBGY");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("OBGY has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("OBGY");
                     }
                     else if (i1 == 18)
                     {
-                        query = "OTSS";
-
-                        dataAsked.setCensusUnit("OTSS");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("OTSS has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("OTSS");
                     }
                     else if (i1 == 19)
                     {
-                        query = "SICU";
-
-                        dataAsked.setCensusUnit("SICU");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("SICU has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("SICU");
                     }
                     else if (i1 == 20)
                     {
-                        query = "SSTU";
-
-                        dataAsked.setCensusUnit("SSTU");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("SSTU has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("SSTU");
                     }
                     else if (i1 == 21)
                     {
-                        query = "WP5";
-
-                        dataAsked.setCensusUnit("WP5");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("WP5 has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("WP5");
                     }
                 }
                 else if (i ==2)
                 {
                     if (i1 == 0)
                     {
-                    query = "HCBMT";
-
-                    dataAsked.setCensusUnit("HCBMT");
-                    dataAsked.setCurrentAction("getCensus");
-                    dataAsked.setCurrentReply("HCBMT has this many beds remaning:");
-                    dataAsked.setIncomplete(false);
-                    dataAsked.setCurrentSurgeryCategory("");
-                    // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                    RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                    httpTask.addListener(AIListActivity.this);
-                    httpTask.execute();
+                        launchCensus("HCBMT");
                     }
                     else if (i1 == 1)
                     {
-                        query = "HCH4";
-
-                        dataAsked.setCensusUnit("HCH4");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("HCH4 has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("HCH4");
                     }
                     else if (i1 == 2)
                     {
-                        query = "HCH5";
-
-                        dataAsked.setCensusUnit("HCH5");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("HCH5 has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("HCH5");
                     }
                     else if (i1 == 3)
                     {
-                        query = "HCICU";
-
-                        dataAsked.setCensusUnit("HCICU");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("HCICU has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("HCICU");
                     }
                 }
                 return false;
             }
         });
-
-
-
-
 
         aiButton = (AIButton) findViewById(R.id.micButton);
         cancelButton = (Button) findViewById(R.id.cancelButton);
@@ -963,6 +644,21 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
         }
     }
 
+    public void launchCensus(String room)
+    {
+        query = room;
+
+        dataAsked.setCensusUnit(room);
+        dataAsked.setCurrentAction("getCensus");
+        dataAsked.setCurrentReply(room + " has this many beds remaning:");
+        dataAsked.setIncomplete(false);
+        dataAsked.setCurrentSurgeryCategory("");
+        // Log.d("OUTPUTRESPONSE", PR.get_reply());
+
+        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
+        httpTask.addListener(AIListActivity.this);
+        httpTask.execute();
+    }
 
 
 
