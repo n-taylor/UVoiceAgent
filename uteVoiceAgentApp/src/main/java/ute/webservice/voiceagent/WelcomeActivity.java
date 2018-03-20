@@ -116,6 +116,14 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
 
             }
         });
+
+        surgeryButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), SurgeryActivity.class);
+                startActivity(intent);
+            }
+        });
         dataasked = new DataAsked();
 
         //this.loadCA();
