@@ -71,7 +71,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
         // setting list adapter
         expListView.setAdapter(listAdapter);
 
-        expListView.setOnChildClickListener(new OnChildClickListener() {
+        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
 
@@ -89,7 +89,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -104,7 +104,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -119,7 +119,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -134,7 +134,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -149,7 +149,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -165,7 +165,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -180,7 +180,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -195,7 +195,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -210,7 +210,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -225,7 +225,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -243,7 +243,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -258,7 +258,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -273,7 +273,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -288,7 +288,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -303,7 +303,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -319,7 +319,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -334,7 +334,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -349,7 +349,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -364,7 +364,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -379,7 +379,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -394,7 +394,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -409,7 +409,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -424,7 +424,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -439,7 +439,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -454,7 +454,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -469,7 +469,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -484,7 +484,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -499,7 +499,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -514,7 +514,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -529,7 +529,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -544,7 +544,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -559,7 +559,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -577,7 +577,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                     dataAsked.setCurrentSurgeryCategory("");
                     // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                    RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                    RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                     httpTask.addListener(AIListActivity.this);
                     httpTask.execute();
                     }
@@ -592,7 +592,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -607,7 +607,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
@@ -622,7 +622,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                         dataAsked.setCurrentSurgeryCategory("");
                         // Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, sslContext); // the task to retrieve the information
+                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
                         httpTask.addListener(AIListActivity.this);
                         httpTask.execute();
                     }
