@@ -1,7 +1,17 @@
 package ute.webservice.voiceagent;
 
+import android.accounts.Account;
 import android.os.AsyncTask;
+import android.util.Log;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPostHC4;
+import org.apache.http.client.methods.HttpGetHC4;
+import org.apache.http.entity.StringEntity;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
@@ -30,16 +40,60 @@ import java.util.ArrayList;
  */
 public class SurgeryCategoryRetrieveTask extends AsyncTask<Void, Void, String> {
 
+    /**
+     * The list of listeners to notify when a result is obtained and processed.
+     */
     private ArrayList<SurgeryCategoryRetrievalListener> listeners;
 
+    public SurgeryCategoryRetrieveTask(){
+        listeners = new ArrayList<>();
+    }
+
+    /**
+     * Sends a GET request to the server to get a JSON response containing all the categories,
+     * subcategories and specific surgery types.
+     * @return The JSON string containing the response.
+     */
     @Override
     protected String doInBackground(Void... voids) {
+        try{
+            String responseString = "";
+            HttpGetHC4 getRequest = new HttpGetHC4(Constants.CLINWEB_SURGERY_CATEGORIES_QUERY);
+            CloseableHttpResponse response = AccountCheck.httpclient.execute(getRequest);
+            HttpEntity entity = response.getEntity();
+            if (entity != null){
+                BufferedReader rdSrch = new BufferedReader(
+                        new InputStreamReader(response.getEntity().getContent()));
+
+                String lineSrch;
+                while ((lineSrch = rdSrch.readLine()) != null) {
+                    responseString += lineSrch;
+                }
+
+                if (responseString.equals(Constants.ACCESS_DENIED)) {
+                    responseString = "You are not allowed to access.";
+                }
+                rdSrch.close();
+            }
+            response.close();
+            return responseString;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
         return null;
     }
 
     @Override
     protected void onPostExecute(String result){
-        
+        SurgeryCategoryMap map = null;
+        if (result != null && !result.isEmpty()){
+            map = ParseResult.parseCategories(result);
+        }
+
+        for (SurgeryCategoryRetrievalListener listener : listeners){
+            listener.onCategoryRetrieval(map.getCategories(), map.getSubcategories(), map.getSurgeries());
+        }
     }
 
     /**
@@ -49,4 +103,6 @@ public class SurgeryCategoryRetrieveTask extends AsyncTask<Void, Void, String> {
     public void addListener(SurgeryCategoryRetrievalListener listener){
         listeners.add(listener);
     }
+
 }
+

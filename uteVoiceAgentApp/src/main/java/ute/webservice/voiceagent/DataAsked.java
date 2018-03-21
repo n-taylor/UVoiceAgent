@@ -255,15 +255,15 @@ public class DataAsked {
                 BufferedReader rdSrch = new BufferedReader(
                         new InputStreamReader(response3.getEntity().getContent()));
 
-                String lineSrch;
-                while ((lineSrch = rdSrch.readLine()) != null) {
-                    Log.d(TAG, lineSrch);
-                    responseString += lineSrch;
-                }
+                    String lineSrch;
+                    while ((lineSrch = rdSrch.readLine()) != null) {
+                        Log.d(TAG, lineSrch);
+                        responseString += lineSrch;
+                    }
 
-                if (responseString.equals(const_value.ACCESS_DENIED)) {
-                    responseString = "You are not allowed to access.";
-                } else {
+                    if (responseString.equals(const_value.ACCESS_DENIED)) {
+                        responseString = "You are not allowed to access.";
+                    } else {
                     if (surgery) {
                         SurgeryInfo si = ParseResult.parseSurgery(responseString);
 
@@ -285,7 +285,6 @@ public class DataAsked {
                     }
                 }
             }
-
 
         } catch (Exception e) {
             e.printStackTrace();
