@@ -293,7 +293,6 @@ public class DataAsked {
         return this.currentReply + responseString;
     }
 
-
     /**
      * Create query (Surgery, hernia) for test
      * @return

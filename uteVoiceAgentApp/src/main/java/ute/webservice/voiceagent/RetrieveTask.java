@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.net.ssl.SSLContext;
 
 /**
- * Create AsyncTask thread to send query to serve and display response.
+ * Create AsyncTask thread to send a query received from DialogFlow to the webservice and display response.
  * After creating an instance of RetrieveTask, call addListener(this) and then call execute().
  * Get the information received from the server in onRetrieved (required for RetrievalListeners)
  * Created by Nathan Taylor on 3/14/18
