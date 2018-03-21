@@ -47,10 +47,11 @@
 
 
         <ExpandableListView
-            android:id="@+id/resultListView"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/surgeryListView"
+            android:layout_width="@dimen/surgery_list_width"
+            android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
+            android:scrollbars="none"
             android:layout_below="@+id/querytextView"/>
 
 

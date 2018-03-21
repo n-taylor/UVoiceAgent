@@ -1,7 +1,9 @@
 package ute.webservice.voiceagent;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -11,6 +13,7 @@ import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -22,16 +25,16 @@ import ai.api.ui.AIButton;
 public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener {
 
     private static String TAG = SurgeryActivity.class.getName();
-    
+
     private AIButton aiButton;
     private Button cancelButton;
     private TextView queryTextView;
 
-    SurgeryListAdapter listAdapter;
+    SurgeryParentListAdapter listAdapter;
     ExpandableListView listView;
     List<String> categoryHeaders;
     HashMap<String, List<String>> categoryChildren;
-    
+
     private String query;
 
     private ParseResult PR;
@@ -48,7 +51,49 @@ public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonLi
         initializeToolbar();
         initializeButtons();
         initializeTextViews();
-        initializeSharedData();        
+        initializeSharedData();
+        //initializeListView();
+        fillListViewPractice();
+    }
+
+    /**
+     * Initializes the list view and fills it with dummy data to test its functionality.
+     */
+    private void fillListViewPractice(){
+        listView = (ExpandableListView)findViewById(R.id.surgeryListView);
+        if (listView != null){
+            ArrayList<String> parentHeaders = new ArrayList<>();
+            parentHeaders.add("Parent 1");
+            parentHeaders.add("Parent 2");
+            parentHeaders.add("Parent 3");
+            parentHeaders.add("Parent 4");
+            parentHeaders.add("Parent 5");
+            parentHeaders.add("Parent 6");
+            parentHeaders.add("Parent 7");
+
+            HashMap<String, List<String>> secondHeaders = new HashMap<>();
+            HashMap<String, List<String>> thirdItems = new HashMap<>();
+            for (int i = 0; i < parentHeaders.size(); i++){
+                ArrayList<String> secondItems = new ArrayList<>();
+                secondItems.add("Second 1");
+                secondItems.add("Second 2");
+                secondHeaders.put(parentHeaders.get(i), secondItems);
+
+                for (int j = 0; j < secondItems.size(); j++){
+                    ArrayList<String> thirds = new ArrayList<>();
+                    thirds.add("Third 1");
+                    thirds.add("Third 2");
+                    thirdItems.put(secondItems.get(j), thirds);
+                }
+            }
+            SurgeryParentListAdapter parentAdapter = new SurgeryParentListAdapter(this, parentHeaders, secondHeaders,
+                    thirdItems);
+            parentAdapter.setWidth(R.dimen.surgery_list_width);
+            parentAdapter.setTopColor(ContextCompat.getColor(this, R.color.black));
+            parentAdapter.setTopTextColor(Color.WHITE);
+            parentAdapter.setBottomTextColor(Color.BLUE);
+            listView.setAdapter(parentAdapter);
+        }
     }
 
     /**
@@ -58,9 +103,8 @@ public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonLi
         listView = (ExpandableListView) findViewById(R.id.resultListView);
         listView.setBackgroundResource(R.drawable.menushape);
 
-        //listAdapter = new ListAdapter(this, categoryHeaders, categoryChildren);
 
-        // setting list adapter
+
         listView.setAdapter(listAdapter);
     }
 
