@@ -3,6 +3,7 @@ package ute.webservice.voiceagent;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ public class SurgeryParentListAdapter extends BaseExpandableListAdapter {
     private List<String> parentLevelHeaders;
     private Map<String, List<String>> secondLevel_Map;
     private Map<String, List<String>> thirdLevel_Map;
+    private int width = 800; // the width of the second and third-level headers
 
     public SurgeryParentListAdapter(Context context, List<String> parentLevelHeaders, Map<String, List<String>> secondLevel_Map,
                                     Map<String, List<String>> thirdLevel_Map){
@@ -59,10 +61,12 @@ public class SurgeryParentListAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
         final CustomExpListView secondLevelExpListView = new CustomExpListView(this.context);
+        //final ExpandableListView expListView = new ExpandableListView(context);
         String parentNode = (String) getGroup(groupPosition);
         secondLevelExpListView.setAdapter(new SurgerySecondLevelAdapter(this.context, secondLevel_Map.get(parentNode),
                 thirdLevel_Map));
         secondLevelExpListView.setGroupIndicator(null);
+        secondLevelExpListView.setPreferredWidth(width);
         return secondLevelExpListView;
     }
     @Override
@@ -88,12 +92,14 @@ public class SurgeryParentListAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.list_group, parent, false);
+            convertView = layoutInflater.inflate(R.layout.list_group, null);
+            // SET BACKGROUND COLOR HERE
+            convertView.setBackgroundColor(ContextCompat.getColor(context, R.color.color_slategrey));
         }
         TextView lblListHeader = (TextView) convertView
                 .findViewById(R.id.listHeader);
         lblListHeader.setTypeface(null, Typeface.BOLD);
-        lblListHeader.setTextColor(Color.CYAN);
+        lblListHeader.setTextColor(Color.WHITE);
         lblListHeader.setText(headerTitle);
         return convertView;
     }
@@ -104,6 +110,14 @@ public class SurgeryParentListAdapter extends BaseExpandableListAdapter {
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
+    }
+
+    /**
+     * Sets the width of the second and third-level headers
+     * @param width
+     */
+    public void setWidth(int width){
+        this.width = width;
     }
 }
 

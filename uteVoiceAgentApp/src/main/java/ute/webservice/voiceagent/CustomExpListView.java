@@ -9,14 +9,25 @@ import android.widget.ExpandableListView;
 
 public class CustomExpListView extends ExpandableListView
 {
+
+    private int preferredWidth = 800;
+
     public CustomExpListView(Context context)
     {
         super(context);
     }
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
     {
-        widthMeasureSpec = MeasureSpec.makeMeasureSpec(960, MeasureSpec.AT_MOST);
+        widthMeasureSpec = MeasureSpec.makeMeasureSpec(preferredWidth, MeasureSpec.EXACTLY);
         heightMeasureSpec = MeasureSpec.makeMeasureSpec(600, MeasureSpec.AT_MOST);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    /**
+     * Sets the preferred width of the second and third-level items
+     * @param width
+     */
+    public void setPreferredWidth(int width){
+        this.preferredWidth = width;
     }
 }

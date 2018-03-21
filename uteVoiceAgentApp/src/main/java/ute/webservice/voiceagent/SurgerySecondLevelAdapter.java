@@ -2,6 +2,7 @@ package ute.webservice.voiceagent;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,11 +56,15 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter {
             LayoutInflater layoutInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.list_items, parent, false);
+
+            // DEFINE BACKGROUND COLOR HERE
+            convertView.setBackgroundColor(Color.WHITE);
         }
         TextView txtListChild = (TextView) convertView
                 .findViewById(R.id.listItem);
         //txtListChild.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         txtListChild.setText(childText);
+        txtListChild.setTextColor(Color.BLACK);
         return convertView;
     }
     @Override
@@ -95,12 +100,14 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter {
             LayoutInflater layoutInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.list_group_second, parent, false);
+            // SET BACKGROUND COLOR HERE
+            convertView.setBackgroundColor(Color.GRAY);
         }
         TextView lblListHeader = (TextView) convertView
-                .findViewById(R.id.listHeader);
+                .findViewById(R.id.listHeaderSecond);
         lblListHeader.setText(headerTitle);
         lblListHeader.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
-        //lblListHeader.setTextColor(Color.YELLOW);
+        lblListHeader.setTextColor(Color.WHITE);
         return convertView;
     }
     @Override

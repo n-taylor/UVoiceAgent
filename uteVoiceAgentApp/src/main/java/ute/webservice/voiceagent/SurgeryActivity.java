@@ -2,6 +2,7 @@ package ute.webservice.voiceagent;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -64,6 +65,10 @@ public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonLi
             parentHeaders.add("Parent 1");
             parentHeaders.add("Parent 2");
             parentHeaders.add("Parent 3");
+            parentHeaders.add("Parent 4");
+            parentHeaders.add("Parent 5");
+            parentHeaders.add("Parent 6");
+            parentHeaders.add("Parent 7");
 
             HashMap<String, List<String>> secondHeaders = new HashMap<>();
             HashMap<String, List<String>> thirdItems = new HashMap<>();
@@ -82,6 +87,7 @@ public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonLi
             }
             SurgeryParentListAdapter parentAdapter = new SurgeryParentListAdapter(this, parentHeaders, secondHeaders,
                     thirdItems);
+            parentAdapter.setWidth(R.dimen.surgery_list_width);
             listView.setAdapter(parentAdapter);
         }
     }
