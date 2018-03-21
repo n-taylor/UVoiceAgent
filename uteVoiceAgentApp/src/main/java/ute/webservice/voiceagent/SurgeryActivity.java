@@ -103,9 +103,8 @@ public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonLi
         listView = (ExpandableListView) findViewById(R.id.resultListView);
         listView.setBackgroundResource(R.drawable.menushape);
 
-        //listAdapter = new SurgeryParentListAdapter();
 
-        // setting list adapter
+
         listView.setAdapter(listAdapter);
     }
 
