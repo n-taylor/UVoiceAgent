@@ -71,6 +71,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
         // setting list adapter
         expListView.setAdapter(listAdapter);
 
+        //
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
@@ -84,124 +85,33 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                     }
                     else if (i1 == 2)
                     {
-                        query = "2EAST";
-
-                        dataAsked.setCensusUnit("2EAST");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("2 EAST has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("2 EAST");
                     }
-                    else if (i1 == 3)
-                    {
-                        query = "2NORTH";
-
-                        dataAsked.setCensusUnit("2NORTH");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("2 NORTH has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                    else if (i1 == 3) {
+                        launchCensus("2 NORTH");
                     }
                     else if (i1 == 4)
                     {
-                        query = "2SOUTH";
-
-                        dataAsked.setCensusUnit("2SOUTH");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("2 SOUTH has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("2 SOUTH");
                     }
 
                     else if (i1 == 5)
                     {
                         query = "3NORTH";
-
-                        dataAsked.setCensusUnit("3NORTH");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("3 NORTH has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("3 NORTH");
                     }
                     else if (i1 == 6)
                     {
-                        query = "3SOUTH";
-
-                        dataAsked.setCensusUnit("3SOUTH");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("3 SOUTH has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("3 SOUTH");
                     }
                     else if (i1 == 7)
                     {
                         query = "4NORTH";
-
-                        dataAsked.setCensusUnit("4NORTH");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("4 NORTH has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("4 NORTH");
                     }
                     else if (i1 == 8)
                     {
-                        query = "4SOUTH";
-
-                        dataAsked.setCensusUnit("4SOUTH");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("4 SOUTH has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
-                    }
-                    else if (i1 == 9)
-                    {
-                        query = "4NORTH";
-
-                        dataAsked.setCensusUnit("4NORTH");
-                        dataAsked.setCurrentAction("getCensus");
-                        dataAsked.setCurrentReply("4 NORTH has this many beds remaning:");
-                        dataAsked.setIncomplete(false);
-                        dataAsked.setCurrentSurgeryCategory("");
-                        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
-                        httpTask.addListener(AIListActivity.this);
-                        httpTask.execute();
+                        launchCensus("4 SOUTH");
                     }
                 }
                 else if  (i == 1) {
@@ -613,6 +523,8 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
             // open a ResultsActivity with the query and the corresponding result
             Intent intent = new Intent(this, ResultsActivity.class);
 
+
+            //if result is from button, extract
             if (result.contains("[{"))
             {
                 int aindex = result.indexOf("available");
@@ -633,9 +545,6 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
                 }
 
                 int sindex = result.indexOf("has");
-
-
-
                 result = result.substring(0,sindex)+"has "+sAnswer+" "+beds+" available";
             }
             intent.putExtra("query", query);
@@ -644,11 +553,15 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
         }
     }
 
+    //launch census request via button
     public void launchCensus(String room)
     {
-        query = room;
 
-        dataAsked.setCensusUnit(room);
+        String roomx = room.replaceAll("\\s", "");
+
+        query = roomx;
+
+        dataAsked.setCensusUnit(roomx);
         dataAsked.setCurrentAction("getCensus");
         dataAsked.setCurrentReply(room + " has this many beds remaning:");
         dataAsked.setIncomplete(false);
