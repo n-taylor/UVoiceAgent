@@ -54,3 +54,8 @@ google-services.json
 freeline.py
 freeline/
 freeline_project_description.json
+
+# APK files
+uteVoiceAgentApp/build/outputs/apk/uteVoiceAgentApp-debug.apk
+uteVoiceAgentApp/build/outputs/logs/manifest-merger-debug-report.txt
+uteVoiceAgentApp/uteVoiceAgentApp.iml
