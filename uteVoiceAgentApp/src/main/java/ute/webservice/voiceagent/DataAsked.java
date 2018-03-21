@@ -423,5 +423,13 @@ public class DataAsked {
     public boolean isIncomplete() { return this.isIncomplete; }
 
     public String getCurrentAction() { return this.currentAction; }
+
+
+    public void sendQuery(String type)
+    {
+
+
+    }
+
 }
 

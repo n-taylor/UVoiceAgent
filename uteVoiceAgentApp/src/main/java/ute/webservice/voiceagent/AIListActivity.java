@@ -25,6 +25,8 @@ import ai.api.model.AIError;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
 
+import static ute.webservice.voiceagent.Constants.CLINWEB_CENSUS_SPECFIC_QUERY;
+
 public class AIListActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener {
 
     private static String TAG = AIListActivity.class.getName();
@@ -40,6 +42,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
 
     private DataAsked dataAsked;
     private ParseResult PR;
+    private String query;
 
     SharedData sessiondata;
     private String accountID;
@@ -67,6 +70,161 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
 
         // setting list adapter
         expListView.setAdapter(listAdapter);
+
+        //
+        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
+                if (i == 0) {
+                    if (i1 == 0) {
+                        launchCensus("2A");
+                    }
+                    else if (i1 == 1)
+                    {
+                        launchCensus("2B");
+                    }
+                    else if (i1 == 2)
+                    {
+                        launchCensus("2 EAST");
+                    }
+                    else if (i1 == 3) {
+                        launchCensus("2 NORTH");
+                    }
+                    else if (i1 == 4)
+                    {
+                        launchCensus("2 SOUTH");
+                    }
+
+                    else if (i1 == 5)
+                    {
+                        query = "3NORTH";
+                        launchCensus("3 NORTH");
+                    }
+                    else if (i1 == 6)
+                    {
+                        launchCensus("3 SOUTH");
+                    }
+                    else if (i1 == 7)
+                    {
+                        query = "4NORTH";
+                        launchCensus("4 NORTH");
+                    }
+                    else if (i1 == 8)
+                    {
+                        launchCensus("4 SOUTH");
+                    }
+                }
+                else if  (i == 1) {
+                    if (i1 == 0) {
+                        launchCensus("5STB");
+                    }
+                    else if (i1 == 1)
+                    {
+                        launchCensus("5W");
+                    }
+                    else if (i1 == 2)
+                    {
+                        launchCensus("AIMA");
+                    }
+                    else if (i1 == 3)
+                    {
+                        launchCensus("AIMB");
+                    }
+                    else if (i1 == 4)
+                    {
+                        launchCensus("BRN");
+                    }
+                    else if (i1 == 5)
+                    {
+                        launchCensus("CVICU");
+                    }
+                    else if (i1 == 6)
+                    {
+                        launchCensus("CVMU");
+                    }
+                    else if (i1 == 7)
+                    {
+                        launchCensus("ICN");
+                    }
+                    else if (i1 == 8)
+                    {
+                        launchCensus("IMR");
+                    }
+                    else if (i1 == 9)
+                    {
+                        launchCensus("LND");
+                    }
+                    else if (i1 == 10)
+                    {
+                        launchCensus("MICU");
+                    }
+                    else if (i1 == 11)
+                    {
+                        launchCensus("MNBC");
+                    }
+                    else if (i1 == 12)
+                    {
+                        launchCensus("NAC");
+                    }
+                    else if (i1 == 13)
+                    {
+                        launchCensus("NCCU");
+                    }
+                    else if (i1 == 14)
+                    {
+                        launchCensus("NICU");
+                    }
+                    else if (i1 == 15)
+                    {
+                        launchCensus("NNCCN");
+                    }
+                    else if (i1 == 16)
+                    {
+                        launchCensus("NSY");
+                    }
+                    else if (i1 == 17)
+                    {
+                        launchCensus("OBGY");
+                    }
+                    else if (i1 == 18)
+                    {
+                        launchCensus("OTSS");
+                    }
+                    else if (i1 == 19)
+                    {
+                        launchCensus("SICU");
+                    }
+                    else if (i1 == 20)
+                    {
+                        launchCensus("SSTU");
+                    }
+                    else if (i1 == 21)
+                    {
+                        launchCensus("WP5");
+                    }
+                }
+                else if (i ==2)
+                {
+                    if (i1 == 0)
+                    {
+                        launchCensus("HCBMT");
+                    }
+                    else if (i1 == 1)
+                    {
+                        launchCensus("HCH4");
+                    }
+                    else if (i1 == 2)
+                    {
+                        launchCensus("HCH5");
+                    }
+                    else if (i1 == 3)
+                    {
+                        launchCensus("HCICU");
+                    }
+                }
+                return false;
+            }
+        });
 
         aiButton = (AIButton) findViewById(R.id.micButton);
         cancelButton = (Button) findViewById(R.id.cancelButton);
@@ -199,37 +357,57 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
         listDataChild = new HashMap<String, List<String>>();
 
         // Adding child data
-        listDataHeader.add("North");
-        listDataHeader.add("South");
-        listDataHeader.add("East");
-        listDataHeader.add("West");
+        listDataHeader.add("U Neuro Institute");
+        listDataHeader.add("University Hospitals");
+        listDataHeader.add("Huntsman Cancer Institute");
 
         // Adding child data
 
-        List<String> north = new ArrayList<String>();
-        north.add("one ");
-        north.add("Two");
-        north.add("Three");
+        List<String> UNI = new ArrayList<String>();
+        UNI.add("2A");
+        UNI.add("2B");
+        UNI.add("2EAST");
+        UNI.add("2NORTH");
+        UNI.add("2SOUTH");
+        UNI.add("3NORTH");
+        UNI.add("3SOUTH");
+        UNI.add("4NORTH");
+        UNI.add("4SOUTH");
 
-        List<String> south = new ArrayList<String>();
-        south.add("one ");
-        south.add("Two");
-        south.add("Three");
+        List<String> UH = new ArrayList<String>();
+        UH.add("5STB");
+        UH.add("5W");
+        UH.add("AIMA");
+        UH.add("AIMB");
+        UH.add("BRN");
+        UH.add("CVICU");
+        UH.add("CVMU");
+        UH.add("ICN");
+        UH.add("IMR");
+        UH.add("LND");
+        UH.add("MICU");
+        UH.add("MNBC");
+        UH.add("NAC");
+        UH.add("NCCU");
+        UH.add("NICU");
+        UH.add("NNCCN");
+        UH.add("NSY");
+        UH.add("OBGY");
+        UH.add("OTSS");
+        UH.add("SICU");
+        UH.add("SSTU");
+        UH.add("WP5");
 
-        List<String> east = new ArrayList<String>();
-        east.add("one ");
-        east.add("Two");
-        east.add("Three");
+        List<String> HC = new ArrayList<String>();
+        HC.add("HCBMT ");
+        HC.add("HCH4");
+        HC.add("HCH5");
+        HC.add("HCICU");
+      
 
-        List<String> west = new ArrayList<String>();
-        west.add("one ");
-        west.add("Two");
-        west.add("Three");
-
-        listDataChild.put(listDataHeader.get(0), north);
-        listDataChild.put(listDataHeader.get(1), south);
-        listDataChild.put(listDataHeader.get(2), east);
-        listDataChild.put(listDataHeader.get(3), west);
+        listDataChild.put(listDataHeader.get(0), UNI);
+        listDataChild.put(listDataHeader.get(1), UH);
+        listDataChild.put(listDataHeader.get(2), HC);
     }
 
     @Override
@@ -285,7 +463,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
 
                 PR = new ParseResult(response);
 
-                String query = PR.get_ResolvedQuery();
+                query = PR.get_ResolvedQuery();
 
                 dataAsked.setIncomplete(PR.get_ActionIncomplete());
                 dataAsked.setCurrentReply(PR.get_reply());
@@ -344,9 +522,57 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
         else {
             // open a ResultsActivity with the query and the corresponding result
             Intent intent = new Intent(this, ResultsActivity.class);
-            intent.putExtra("query", PR.get_ResolvedQuery());
+
+
+            //if result is from button, extract
+            if (result.contains("[{"))
+            {
+                int aindex = result.indexOf("available");
+
+                aindex += 10;
+
+                int bindex = result.indexOf(",", aindex);
+
+                String sAnswer = result.substring(aindex+1,bindex);
+
+                int answer = Integer.parseInt(sAnswer);
+
+                String beds = "beds";
+
+                if (answer == 1)
+                {
+                    beds = "bed";
+                }
+
+                int sindex = result.indexOf("has");
+                result = result.substring(0,sindex)+"has "+sAnswer+" "+beds+" available";
+            }
+            intent.putExtra("query", query);
             intent.putExtra("result", result);
             startActivity(intent);
         }
     }
+
+    //launch census request via button
+    public void launchCensus(String room)
+    {
+
+        String roomx = room.replaceAll("\\s", "");
+
+        query = roomx;
+
+        dataAsked.setCensusUnit(roomx);
+        dataAsked.setCurrentAction("getCensus");
+        dataAsked.setCurrentReply(room + " has this many beds remaning:");
+        dataAsked.setIncomplete(false);
+        dataAsked.setCurrentSurgeryCategory("");
+        // Log.d("OUTPUTRESPONSE", PR.get_reply());
+
+        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(AIListActivity.this)); // the task to retrieve the information
+        httpTask.addListener(AIListActivity.this);
+        httpTask.execute();
+    }
+
+
+
 }

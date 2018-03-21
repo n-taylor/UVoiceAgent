@@ -22,6 +22,7 @@ import java.io.BufferedInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.FileOutputStream;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -313,6 +314,7 @@ public class ResultsActivity extends BaseActivity implements AIButton.AIButtonLi
             this.result = result;
             if (result != null) {
                 resultsTextView.setText(result);
+
                 TTS.speak(result);
             }
             if (query != null)

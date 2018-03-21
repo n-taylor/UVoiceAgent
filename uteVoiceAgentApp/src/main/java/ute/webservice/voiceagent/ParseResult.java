@@ -18,6 +18,10 @@ import ai.api.model.Metadata;
 import ai.api.model.Result;
 import ai.api.model.Status;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.StringReader;
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
@@ -226,9 +230,28 @@ class RoomStatusDeserializer implements JsonDeserializer<RoomStatus> {
         JsonObject jobj = json.getAsJsonObject();
 
         RoomStatus currRoom = new RoomStatus(
+
                 jobj.get("unit").getAsString(),
                 jobj.get("available").getAsInt()
         );
+        System.out.println("getting here");
+        byte data[] = currRoom.getUnit().getBytes();
+
+        File newFile = new File("results.txt");
+        try {
+            FileOutputStream out = new FileOutputStream(newFile, true);
+            out.write(data);
+            out.close();
+
+        }
+        catch(FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
 
         return currRoom;
     }
