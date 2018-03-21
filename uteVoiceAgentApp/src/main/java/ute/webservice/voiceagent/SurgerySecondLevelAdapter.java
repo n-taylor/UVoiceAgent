@@ -2,7 +2,6 @@ package ute.webservice.voiceagent;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +24,16 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter {
     private List<String> headers;
     private Map<String, List<String>> children;
 
+    private boolean setMidColor;
+    private boolean setBottomColor;
+    private int midColor;
+    private int bottomColor;
+
+    private boolean setMidTextColor;
+    private boolean setBottomTextColor;
+    private int midTextColor;
+    private int bottomTextColor;
+
     public SurgerySecondLevelAdapter(Context context, List<String> headers, Map<String, List<String>> children){
         this.context = context;
         this.headers = new ArrayList<>();
@@ -46,6 +55,8 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter {
     {
         return childPosition;
     }
+
+
     @Override
     public View getChildView(int groupPosition, int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent)
@@ -58,15 +69,22 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter {
             convertView = layoutInflater.inflate(R.layout.list_items, parent, false);
 
             // DEFINE BACKGROUND COLOR HERE
-            convertView.setBackgroundColor(Color.WHITE);
+            if (setBottomColor)
+                convertView.setBackgroundColor(bottomColor);
+            else
+                convertView.setBackgroundColor(Color.WHITE);
         }
-        TextView txtListChild = (TextView) convertView
+        TextView thirdLevelTextView = (TextView) convertView
                 .findViewById(R.id.listItem);
         //txtListChild.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
-        txtListChild.setText(childText);
-        txtListChild.setTextColor(Color.BLACK);
+        thirdLevelTextView.setText(childText);
+        if (setBottomTextColor)
+            thirdLevelTextView.setTextColor(bottomTextColor);
+        else
+            thirdLevelTextView.setTextColor(Color.BLACK);
         return convertView;
     }
+
     @Override
     public int getChildrenCount(int groupPosition)
     {
@@ -91,6 +109,8 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter {
     {
         return groupPosition;
     }
+
+
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent)
@@ -100,14 +120,21 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter {
             LayoutInflater layoutInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.list_group_second, parent, false);
+
             // SET BACKGROUND COLOR HERE
-            convertView.setBackgroundColor(Color.GRAY);
+            if (setMidColor)
+                convertView.setBackgroundColor(midColor);
+            else
+                convertView.setBackgroundColor(Color.GRAY);
         }
-        TextView lblListHeader = (TextView) convertView
+        TextView secondLevelTextView = (TextView) convertView
                 .findViewById(R.id.listHeaderSecond);
-        lblListHeader.setText(headerTitle);
-        lblListHeader.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
-        lblListHeader.setTextColor(Color.WHITE);
+        secondLevelTextView.setText(headerTitle);
+        secondLevelTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
+        if (setMidTextColor)
+            secondLevelTextView.setTextColor(midTextColor);
+        else
+            secondLevelTextView.setTextColor(Color.WHITE);
         return convertView;
     }
     @Override
@@ -118,4 +145,41 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
     }
+
+    /**
+     * Sets the background color of the second-level items
+     * @param color The resolved color int (for example, use ContextCompat.getColor(this, R.color.color_slategrey))
+     */
+    public void setMidColor(int color){
+        this.setMidColor = true;
+        this.midColor = color;
+    }
+
+    /**
+     * Sets the background color of the third-level items
+     * @param color The resolved color int (for example, use ContextCompat.getColor(this, R.color.color_slategrey))
+     */
+    public void setBottomColor(int color){
+        this.setBottomColor = true;
+        this.bottomColor = color;
+    }
+
+    /**
+     * Sets the text color of the second-level items
+     * @param color The resolved color int (for example, use ContextCompat.getColor(this, R.color.color_slategrey))
+     */
+    public void setMidTextColor(int color){
+        midTextColor = color;
+        setMidTextColor = true;
+    }
+
+    /**
+     * Sets the text color of the third-level items
+     * @param color The resolved color int (for example, use ContextCompat.getColor(this, R.color.color_slategrey))
+     */
+    public void setBottomTextColor(int color){
+        bottomTextColor = color;
+        setBottomTextColor = true;
+    }
+
 }

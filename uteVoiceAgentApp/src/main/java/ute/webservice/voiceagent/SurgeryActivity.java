@@ -1,6 +1,7 @@
 package ute.webservice.voiceagent;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
@@ -88,6 +89,9 @@ public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonLi
             SurgeryParentListAdapter parentAdapter = new SurgeryParentListAdapter(this, parentHeaders, secondHeaders,
                     thirdItems);
             parentAdapter.setWidth(R.dimen.surgery_list_width);
+            parentAdapter.setTopColor(ContextCompat.getColor(this, R.color.black));
+            parentAdapter.setTopTextColor(Color.WHITE);
+            parentAdapter.setBottomTextColor(Color.BLUE);
             listView.setAdapter(parentAdapter);
         }
     }
