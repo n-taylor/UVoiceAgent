@@ -1,6 +1,7 @@
 package ute.webservice.voiceagent;
 
 import android.util.Log;
+import android.widget.ExpandableListView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -81,6 +82,7 @@ public class ParseResult {
         GsonBuilder gBuilder = new GsonBuilder();
         gBuilder.registerTypeAdapter(SurgeryCategoryMap.class, new SurgeryCategoryDeserializer());
         gBuilder.registerTypeAdapter(new TypeToken<HashMap<String, String>>(){}.getType(), new SurgeryCodeDeserializer());
+        gBuilder.registerTypeAdapter(new TypeToken<Integer>(){}.getType(), new SurgeryCostDeserializer());
         gson = gBuilder.create();
     }
 
@@ -258,6 +260,18 @@ public class ParseResult {
         }
         return codes;
     }
+
+    public Integer parseSurgeryCost(String jsonCost){
+        Integer cost = 0;
+        Type returnType = new TypeToken<Integer>(){}.getType();
+        try{
+            cost = gson.fromJson(jsonCost, returnType);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return cost;
+    }
 }
 
 class RoomStatusDeserializer implements JsonDeserializer<RoomStatus> {
@@ -401,5 +415,31 @@ class SurgeryCodeDeserializer implements JsonDeserializer<HashMap<String, String
             codes.put(code, surgery.get("description").getAsString());
         }
         return codes;
+    }
+}
+
+class SurgeryCostDeserializer implements JsonDeserializer<Integer>{
+
+    /**
+     * Gson invokes this call-back method during deserialization when it encounters a field of the
+     * specified type.
+     * <p>In the implementation of this call-back method, you should consider invoking
+     * {@link JsonDeserializationContext#deserialize(JsonElement, Type)} method to create objects
+     * for any non-trivial field of the returned object. However, you should never invoke it on the
+     * the same type passing {@code json} since that will cause an infinite loop (Gson will call your
+     * call-back method again).
+     *
+     * @param json    The Json data being deserialized
+     * @param typeOfT The type of the Object to deserialize to
+     * @param context
+     * @return a deserialized object of the specified type typeOfT which is a subclass of {@code T}
+     * @throws JsonParseException if json is not in the expected format of {@code typeofT}
+     */
+    @Override
+    public Integer deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        Integer cost;
+        JsonObject jsonCost = json.getAsJsonObject();
+        cost = jsonCost.get("patientCharges").getAsInt();
+        return cost;
     }
 }

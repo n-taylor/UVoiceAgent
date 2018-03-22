@@ -30,6 +30,7 @@ final class Constants {
 
     public final static String CLINWEB_SURGERY_CATEGORIES_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/pricing/getCategories";
     public final static String CLINWEB_SURGERY_CODES_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/pricing/getBySearchParams";
+    public final static String CLINWEB_SURGERY_COST_BY_CODE_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/pricing/getCost";
 
     public final static String CLINWEB_CENSUS_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/census/getCensus";
     public final static String CLINWEB_CENSUS_SPECFIC_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/census/getCensusByUnit/";
