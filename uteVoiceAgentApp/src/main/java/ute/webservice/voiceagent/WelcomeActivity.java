@@ -308,7 +308,8 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
                 startActivity(intent);
             }
             else if (dataasked.getCurrentAction().equals(Constants.GET_SURGERY_COST)){
-                // TODO: Send to the activity that will prompt for a surgery category
+                Intent intent = new Intent(this, SurgeryActivity.class);
+                startActivity(intent);
             }
         }
         else {

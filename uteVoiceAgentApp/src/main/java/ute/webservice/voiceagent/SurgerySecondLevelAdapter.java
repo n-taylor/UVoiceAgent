@@ -221,7 +221,8 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter impleme
         }
         else if (codes.size() == 1){
             for (String code : codes.keySet()){
-                displaySurgeryCost(code, codes.get(code));
+                //displaySurgeryCost(code, codes.get(code));
+                startSurgeryCodesActivity(null, codes);
             }
         }
         else {
