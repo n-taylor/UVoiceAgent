@@ -1,14 +1,20 @@
 package ute.webservice.voiceagent;
 
+import android.accounts.Account;
 import android.os.AsyncTask;
+import android.util.Log;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPostHC4;
 import org.apache.http.client.methods.HttpGetHC4;
+import org.apache.http.entity.StringEntity;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 
 /**
  * This task sends a GET request to the server for the code and description of a surgery.
@@ -82,6 +88,7 @@ public class SurgeryCodeRetrieveTask extends AsyncTask<String, Void, String> {
             String queryString = Constants.CLINWEB_SURGERY_CODES_QUERY + "/" + category;
             queryString += "/" + subCategory;
             queryString += "/" + extremity;
+            queryString = queryString.replace(" BODY", "");
 
             HttpGetHC4 getRequest = new HttpGetHC4(queryString);
             CloseableHttpResponse response = AccountCheck.httpclient.execute(getRequest);

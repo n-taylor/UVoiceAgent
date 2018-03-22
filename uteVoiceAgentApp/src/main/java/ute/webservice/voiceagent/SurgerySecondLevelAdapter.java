@@ -1,10 +1,8 @@
 package ute.webservice.voiceagent;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,14 +10,8 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGetHC4;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -218,11 +210,56 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter impleme
     }
 
     /**
-     *
+     * If codes is null or empty, displays an error message on the results activity. Otherwise,
+     * if there is only one sugery type in the hash map, displays the surgery cost in the results activity.
+     * Otherwise, displays all the surgeries in the surgery codes activity.
      * @param codes
      */
     public void onCodeRetrieval(HashMap<String, String> codes){
-        
+        if (codes == null || codes.size() <= 0){
+            startResultsActivity("", "No procedures were returned.");
+        }
+        else if (codes.size() == 1){
+            for (String code : codes.keySet()){
+                displaySurgeryCost(code, codes.get(code));
+            }
+        }
+        else {
+            startSurgeryCodesActivity(null, codes);
+        }
+    }
+
+    /**
+     * Sends a REST call to the server to get the cost of the given procedure.
+     * @param code The procedure code
+     * @param description The description to display.
+     */
+    private void displaySurgeryCost(String code, String description){
+        // TODO: Make a class to query the surgery cost and execute it here
+    }
+
+    /**
+     * Creates an intent and starts the surgery codes activity.
+     * @param message The message to display in the new activity.
+     * @param codes The codes and their associated descriptions.
+     */
+    private void startSurgeryCodesActivity(String message, HashMap<String, String> codes){
+        Intent intent = new Intent(context, SurgeryCodesActivity.class);
+        intent.putExtra("message", message);
+        intent.putExtra("codes", codes);
+        context.startActivity(intent);
+    }
+
+    /**
+     * Creates an intent and starts the result activity.
+     * @param query The query to display in the results activity
+     * @param result The result message to display in the results activity.
+     */
+    private void startResultsActivity(String query, String result){
+        Intent intent = new Intent(context, ResultsActivity.class);
+        intent.putExtra("query", query);
+        intent.putExtra("result", result);
+        context.startActivity(intent);
     }
 
 }
