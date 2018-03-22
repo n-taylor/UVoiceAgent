@@ -25,9 +25,9 @@ import java.util.Map;
 public class SurgeryParentListAdapter extends BaseExpandableListAdapter {
 
     private Context context;
-    private List<String> parentLevelHeaders;
-    private Map<String, List<String>> secondLevel_Map;
-    private Map<String, List<String>> thirdLevel_Map;
+    private ArrayList<String> parentLevelHeaders;
+    private Map<String, ArrayList<String>> secondLevel_Map;
+    private Map<String, ArrayList<String>> thirdLevel_Map;
     private int width = 800; // the width of the second and third-level headers
 
     private boolean setTopColor = false;
@@ -44,8 +44,8 @@ public class SurgeryParentListAdapter extends BaseExpandableListAdapter {
     private int midTextColor;
     private int bottomTextColor;
 
-    public SurgeryParentListAdapter(Context context, List<String> parentLevelHeaders, Map<String, List<String>> secondLevel_Map,
-                                    Map<String, List<String>> thirdLevel_Map){
+    public SurgeryParentListAdapter(Context context, ArrayList<String> parentLevelHeaders, Map<String, ArrayList<String>> secondLevel_Map,
+                                    Map<String, ArrayList<String>> thirdLevel_Map){
         this.context = context;
 
         this.parentLevelHeaders = new ArrayList<>();

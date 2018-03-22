@@ -16,13 +16,14 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import ai.api.android.AIConfiguration;
 import ai.api.model.AIError;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
 
-public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener {
+public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener, SurgeryCategoryRetrievalListener {
 
     private static String TAG = SurgeryActivity.class.getName();
 
@@ -52,8 +53,8 @@ public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonLi
         initializeButtons();
         initializeTextViews();
         initializeSharedData();
-        //initializeListView();
-        fillListViewPractice();
+        initializeListView();
+//        fillListViewPractice();
     }
 
     /**
@@ -61,6 +62,7 @@ public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonLi
      */
     private void fillListViewPractice(){
         listView = (ExpandableListView)findViewById(R.id.surgeryListView);
+        //listView.setBackgroundResource(R.drawable.menushape);
         if (listView != null){
             ArrayList<String> parentHeaders = new ArrayList<>();
             parentHeaders.add("Parent 1");
@@ -71,8 +73,8 @@ public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonLi
             parentHeaders.add("Parent 6");
             parentHeaders.add("Parent 7");
 
-            HashMap<String, List<String>> secondHeaders = new HashMap<>();
-            HashMap<String, List<String>> thirdItems = new HashMap<>();
+            HashMap<String, ArrayList<String>> secondHeaders = new HashMap<>();
+            HashMap<String, ArrayList<String>> thirdItems = new HashMap<>();
             for (int i = 0; i < parentHeaders.size(); i++){
                 ArrayList<String> secondItems = new ArrayList<>();
                 secondItems.add("Second 1");
@@ -97,15 +99,30 @@ public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonLi
     }
 
     /**
-     * Initializes the expandable list view for this activity.
+     * Creates and executes a SurgeryCategoryRetrieveTask to get all the surgery categories and subcategories.
      */
     private void initializeListView(){
-        listView = (ExpandableListView) findViewById(R.id.resultListView);
-        listView.setBackgroundResource(R.drawable.menushape);
+        SurgeryCategoryRetrieveTask task = new SurgeryCategoryRetrieveTask();
+        task.addListener(this);
+        task.execute();
+    }
 
-
-
-        listView.setAdapter(listAdapter);
+    /**
+     * Initializes the expandable list view and populates it with the results of the Category retrieval.
+     *
+     * @param categories A ArrayList of all the main categories of surgery
+     * @param subCategories A map from each main category of surgery to its subcategory
+     * @param surgeryTypes A map from each subcategory to the extremity.
+     */
+    public void onCategoryRetrieval(ArrayList<String> categories, Map<String, ArrayList<String>> subCategories,
+                                    Map<String, ArrayList<String>> surgeryTypes)
+    {
+        listView = (ExpandableListView)findViewById(R.id.surgeryListView);
+        if (listView != null){
+            SurgeryParentListAdapter adapter = new SurgeryParentListAdapter(this, categories, subCategories, surgeryTypes);
+            adapter.setWidth(R.dimen.surgery_list_width);
+            listView.setAdapter(adapter);
+        }
     }
 
     /**

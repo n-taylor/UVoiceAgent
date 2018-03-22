@@ -74,6 +74,16 @@ public class ParseResult {
     }
 
     /**
+     * For use when a call to DialogFlow has not been made. Builds a Gson object to deserialize
+     * Surgery Categories.
+     */
+    public ParseResult(){
+        GsonBuilder gBuilder = new GsonBuilder();
+        gBuilder.registerTypeAdapter(SurgeryCategoryMap.class, new SurgeryCategoryDeserializer());
+        gson = gBuilder.create();
+    }
+
+    /**
      * Get replied sentences from API.AI.
      * @return replied sentences
      */
@@ -213,10 +223,11 @@ public class ParseResult {
      * @param jsonCategories
      * @return
      */
-    public static SurgeryCategoryMap parseCategories(String jsonCategories){
+    public SurgeryCategoryMap parseCategories(String jsonCategories){
         SurgeryCategoryMap map = null;
+        Type returnType = new TypeToken<SurgeryCategoryMap>(){}.getType();
         try{
-            map = gson.fromJson(jsonCategories, SurgeryCategoryMap.class);
+            map = gson.fromJson(jsonCategories, returnType);
         }
         catch (Exception e){
             e.printStackTrace();
@@ -320,7 +331,7 @@ class SurgeryCategoryDeserializer implements JsonDeserializer<SurgeryCategoryMap
         JsonObject jsonObject = json.getAsJsonObject();
 
         // Get each category name
-        JsonArray allCategories = jsonObject.getAsJsonArray();
+        JsonArray allCategories = jsonObject.get("categories").getAsJsonArray();
         for (JsonElement json_category : allCategories){
 
             JsonObject category = json_category.getAsJsonObject();

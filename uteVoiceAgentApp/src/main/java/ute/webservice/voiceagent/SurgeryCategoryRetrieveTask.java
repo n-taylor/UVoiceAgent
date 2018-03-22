@@ -45,8 +45,11 @@ public class SurgeryCategoryRetrieveTask extends AsyncTask<Void, Void, String> {
      */
     private ArrayList<SurgeryCategoryRetrievalListener> listeners;
 
+    private ParseResult PR;
+
     public SurgeryCategoryRetrieveTask(){
         listeners = new ArrayList<>();
+        PR = new ParseResult();
     }
 
     /**
@@ -88,7 +91,7 @@ public class SurgeryCategoryRetrieveTask extends AsyncTask<Void, Void, String> {
     protected void onPostExecute(String result){
         SurgeryCategoryMap map = null;
         if (result != null && !result.isEmpty()){
-            map = ParseResult.parseCategories(result);
+            map = PR.parseCategories(result);
         }
 
         for (SurgeryCategoryRetrievalListener listener : listeners){

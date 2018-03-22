@@ -572,7 +572,4 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
         httpTask.addListener(AIListActivity.this);
         httpTask.execute();
     }
-
-
-
 }

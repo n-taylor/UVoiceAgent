@@ -230,7 +230,7 @@ public class DataAsked {
         boolean surgery = false;
         if (this.surgeries.containsKey(this.Surgery_type)) {
             currCPTCODE = this.surgeries.get(this.Surgery_type);
-            newUrlWithCPT = const_value.CLINWEB_QUERY+ "" + currCPTCODE;//.toUpperCase().replace(" ", "");
+            newUrlWithCPT = const_value.CLINWEB_PRICE_QUERY + "" + currCPTCODE;//.toUpperCase().replace(" ", "");
             surgery = true;
         }
         else if(this.censusUnit.length() > 0) {

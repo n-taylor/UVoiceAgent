@@ -321,4 +321,10 @@ public class ResultsActivity extends BaseActivity implements AIButton.AIButtonLi
             queryTextView.setText(query);
         }
     }
+
+    @Override
+    public void onBackPressed(){
+        TTS.stop();
+        super.onBackPressed();
+    }
 }
