@@ -91,9 +91,11 @@ public class SurgeryParentListAdapter extends BaseExpandableListAdapter {
         if (setBottomTextColor)
             secondLevel.setBottomTextColor(bottomTextColor);
 
+        secondLevel.setCurrentCategory((String)getGroup(groupPosition));
         secondLevelExpListView.setAdapter(secondLevel);
         secondLevelExpListView.setGroupIndicator(null);
         secondLevelExpListView.setPreferredWidth(width);
+
         return secondLevelExpListView;
     }
 

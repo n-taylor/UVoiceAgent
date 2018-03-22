@@ -15,12 +15,12 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
- * This task, when executed, retrieves all the categories, subcategories and specific surgery types.
- * To get the results, the caller must implement SurgeryCategoryRetrievalListener.
+ * <p>This task, when executed, retrieves all the categories, subcategories and specific surgery types.
+ * To get the results, the caller must implement SurgeryCategoryRetrievalListener.</p>
  *
- * Here is an example of how to use this class:
+ * <p>Here is an example of how to use this class:</p>
  *
- * public class Example implements SurgeryCategoryRetrievalListener {
+ * public class Example implements SurgeryCategoryRetrievalListener {<br/>
  *
  *     public getCategories(){
  *         SurgeryCategoryRetrieveTask task = new SurgeryCategoryRetrieveTask();

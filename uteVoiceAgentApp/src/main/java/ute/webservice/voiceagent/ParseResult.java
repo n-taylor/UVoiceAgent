@@ -69,6 +69,7 @@ public class ParseResult {
         gBuilder.registerTypeAdapter(RoomStatus.class, new RoomStatusDeserializer());
         gBuilder.registerTypeAdapter(SurgeryInfo.class, new SurgeryInfoDeserializer());
         gBuilder.registerTypeAdapter(SurgeryCategoryMap.class, new SurgeryCategoryDeserializer());
+        gBuilder.registerTypeAdapter(new TypeToken<HashMap<String, String>>(){}.getType(), new SurgeryCodeDeserializer());
         gson = gBuilder.create();
 
     }
@@ -246,9 +247,50 @@ public class ParseResult {
         return si;
     }
 
+    public HashMap<String, String> parseSurgeryCodes(String jsonCodes){
+        HashMap<String, String> map = null;
+        Type returnType = new TypeToken<HashMap<String, String>>(){}.getType();
+        try{
+            map = gson.fromJson(jsonCodes, returnType);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return map;
+    }
+}
 
+class SurgeryCodeDeserializer implements JsonDeserializer<HashMap<String, String>> {
 
+    /**
+     * Gson invokes this call-back method during deserialization when it encounters a field of the
+     * specified type.
+     * <p>In the implementation of this call-back method, you should consider invoking
+     * {@link JsonDeserializationContext#deserialize(JsonElement, Type)} method to create objects
+     * for any non-trivial field of the returned object. However, you should never invoke it on the
+     * the same type passing {@code json} since that will cause an infinite loop (Gson will call your
+     * call-back method again).
+     *
+     * @param json    The Json data being deserialized
+     * @param typeOfT The type of the Object to deserialize to
+     * @param context
+     * @return a deserialized object of the specified type typeOfT which is a subclass of {@code T}
+     * @throws JsonParseException if json is not in the expected format of {@code typeofT}
+     */
+    @Override
+    public HashMap<String, String> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
 
+        HashMap<String, String> codes = new HashMap<>();
+
+        JsonArray surgeries = json.getAsJsonArray();
+
+        for (JsonElement surgery_element : surgeries){
+            JsonObject surgery = surgery_element.getAsJsonObject();
+            codes.put(surgery.get("code").getAsString(), surgery.get("description").getAsString());
+        }
+
+        return codes;
+    }
 }
 
 class RoomStatusDeserializer implements JsonDeserializer<RoomStatus> {

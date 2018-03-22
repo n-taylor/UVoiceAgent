@@ -1,7 +1,10 @@
 package ute.webservice.voiceagent;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +12,11 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGetHC4;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,11 +26,13 @@ import java.util.Map;
  * Created by Nathan Taylor on 3/20/2018.
  */
 
-public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter {
+public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter implements SurgeryCodeRetrievalListener{
 
     private Context context;
     private ArrayList<String> headers;
     private Map<String, ArrayList<String>> children;
+
+    private String currentCategory; // the category (parent-level header) under which this is displayed
 
     private boolean setMidColor;
     private boolean setBottomColor;
@@ -58,7 +68,7 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter {
 
 
     @Override
-    public View getChildView(int groupPosition, int childPosition,
+    public View getChildView(final int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent)
     {
         final String childText = (String) getChild(groupPosition, childPosition);
@@ -82,6 +92,14 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter {
             thirdLevelTextView.setTextColor(bottomTextColor);
         else
             thirdLevelTextView.setTextColor(Color.BLACK);
+
+        // Call the results page when the third-level view is clicked.
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                displaySurgeries(currentCategory, (String)getGroup(groupPosition), childText);
+            }
+        });
         return convertView;
     }
 
@@ -180,6 +198,31 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter {
     public void setBottomTextColor(int color){
         bottomTextColor = color;
         setBottomTextColor = true;
+    }
+
+    /**
+     * Defines under which category this subcategory is.
+     * @param category The parent-level header.
+     */
+    public void setCurrentCategory(String category){
+        this.currentCategory = category;
+    }
+
+    /**
+     * Makes a call to the server to retrieve the specific surgeries and their codes.
+     */
+    private void displaySurgeries(final String category, final String subcategory, final String extremity){
+        SurgeryCodeRetrieveTask task = new SurgeryCodeRetrieveTask();
+        task.addListener(this);
+        task.execute(category, subcategory, extremity);
+    }
+
+    /**
+     *
+     * @param codes
+     */
+    public void onCodeRetrieval(HashMap<String, String> codes){
+        
     }
 
 }
