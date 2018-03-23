@@ -125,7 +125,7 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter impleme
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent)
     {
-        String headerTitle = (String) getGroup(groupPosition);
+        final String headerTitle = (String) getGroup(groupPosition);
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -145,6 +145,17 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter impleme
             secondLevelTextView.setTextColor(midTextColor);
         else
             secondLevelTextView.setTextColor(Color.WHITE);
+
+        // If there are no extremities, make the subcategory clickable and display the procedures.
+        if (!children.containsKey(headerTitle) || children.get(headerTitle).size() < 1){
+            convertView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    displaySurgeries(currentCategory, headerTitle);
+                }
+            });
+        }
+
         return convertView;
     }
     @Override
@@ -203,10 +214,10 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter impleme
     /**
      * Makes a call to the server to retrieve the specific surgeries and their codes.
      */
-    private void displaySurgeries(final String category, final String subcategory, final String extremity){
+    private void displaySurgeries(final String... strings){
         SurgeryCodeRetrieveTask task = new SurgeryCodeRetrieveTask();
         task.addListener(this);
-        task.execute(category, subcategory, extremity);
+        task.execute(strings);
     }
 
     /**

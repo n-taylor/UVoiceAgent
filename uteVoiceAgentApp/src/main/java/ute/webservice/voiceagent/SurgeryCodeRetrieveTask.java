@@ -56,9 +56,9 @@ public class SurgeryCodeRetrieveTask extends AsyncTask<String, Void, String> {
      */
     @Override
     protected String doInBackground(String... strings) {
-        if (strings.length != 3)
+        if (strings.length < 1 || strings.length > 3)
             return null;
-        return getJsonSurgeries(strings[0], strings[1], strings[2]);
+        return getJsonSurgeries(strings);
     }
 
     /**
@@ -82,12 +82,15 @@ public class SurgeryCodeRetrieveTask extends AsyncTask<String, Void, String> {
      * @param extremity The third-level extremity on which to perform the procedure.
      * @return
      */
-    private String getJsonSurgeries(String category, String subCategory, String extremity){
+    private String getJsonSurgeries(String... strings){
         try{
             String responseString = "";
-            String queryString = Constants.CLINWEB_SURGERY_CODES_QUERY + "/" + category;
-            queryString += "/" + subCategory;
-            queryString += "/" + extremity;
+            String category = (strings.length > 0) ? strings[0] : "";
+            String subCategory = (strings.length > 1) ? strings[1] : "";
+            String extremity = (strings.length > 2) ? strings[2] : "";
+            String queryString = Constants.CLINWEB_SURGERY_CODES_QUERY + ((!category.isEmpty()) ? "/" + category : "");
+            queryString += ((!subCategory.isEmpty()) ? "/" + subCategory : "");
+            queryString += ((!extremity.isEmpty()) ? "/" + extremity : "");
             queryString = queryString.replace(" ", "%20");
 
             HttpGetHC4 getRequest = new HttpGetHC4(queryString);

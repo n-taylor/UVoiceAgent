@@ -10,7 +10,7 @@ import android.widget.ExpandableListView;
 public class CustomExpListView extends ExpandableListView
 {
 
-    private int preferredWidth = 800;
+    private int preferredWidth = 1000;
 
     public CustomExpListView(Context context)
     {

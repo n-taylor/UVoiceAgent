@@ -1,6 +1,7 @@
 package ute.webservice.voiceagent;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
@@ -22,7 +23,7 @@ import java.util.Map;
  * Created by Nathan Taylor on 3/20/2018.
  */
 
-public class SurgeryParentListAdapter extends BaseExpandableListAdapter {
+public class SurgeryParentListAdapter extends BaseExpandableListAdapter implements SurgeryCodeRetrievalListener {
 
     private Context context;
     private ArrayList<String> parentLevelHeaders;
@@ -65,7 +66,7 @@ public class SurgeryParentListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return childPosition;
+        return secondLevel_Map.get(parentLevelHeaders.get(groupPosition)).get(childPosition);
     }
     @Override
     public long getChildId(int groupPosition, int childPosition) {
@@ -74,7 +75,7 @@ public class SurgeryParentListAdapter extends BaseExpandableListAdapter {
 
 
     @Override
-    public View getChildView(int groupPosition, int childPosition,
+    public View getChildView(final int groupPosition, int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
         final CustomExpListView secondLevelExpListView = new CustomExpListView(this.context);
         //final ExpandableListView expListView = new ExpandableListView(context);
@@ -99,6 +100,29 @@ public class SurgeryParentListAdapter extends BaseExpandableListAdapter {
         return secondLevelExpListView;
     }
 
+    /**
+     * Uses SurgeryCodeRetrieveTask to get surgery procedures and their codes.
+     * If one string is passed as a parameter, it must be the category.
+     * If two parameters are passed, they must be first the category and then the subcategory.
+     * If three are passed, they must be first the category, then subcategory, then extremity.
+     * @param strings The 1. Category, 2. Subcategory and 3. Extremity to get procedures for.
+     */
+    private void displayProcedures(String... strings){
+        SurgeryCodeRetrieveTask task = new SurgeryCodeRetrieveTask();
+        task.addListener(this);
+        task.execute(strings);
+    }
+
+    /**
+     * Starts the SurgeryCodesActivity with the given information.
+     * @param codes The mapping of codes to procedures.
+     */
+    public void onCodeRetrieval(HashMap<String, String> codes){
+        Intent intent = new Intent(context, SurgeryCodesActivity.class);
+        intent.putExtra("codes", codes);
+        context.startActivity(intent);
+    }
+
     @Override
     public int getChildrenCount(int groupPosition) {
         return 1;
@@ -120,7 +144,7 @@ public class SurgeryParentListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
-        String headerTitle = (String) getGroup(groupPosition);
+        final String headerTitle = (String) getGroup(groupPosition);
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -139,6 +163,16 @@ public class SurgeryParentListAdapter extends BaseExpandableListAdapter {
             headerTextView.setTextColor(topTextColor);
         else
             headerTextView.setTextColor(Color.WHITE);
+
+        // If the category has no subcategories, display the procedure codes.
+        if (!secondLevel_Map.containsKey(headerTitle) || secondLevel_Map.get(headerTitle).size() < 2){
+            convertView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    displayProcedures(headerTitle);
+                }
+            });
+        }
         return convertView;
     }
     @Override
