@@ -19,7 +19,7 @@ public class CustomExpListView extends ExpandableListView
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
     {
         widthMeasureSpec = MeasureSpec.makeMeasureSpec(preferredWidth, MeasureSpec.EXACTLY);
-        heightMeasureSpec = MeasureSpec.makeMeasureSpec(600, MeasureSpec.AT_MOST);
+        heightMeasureSpec = MeasureSpec.makeMeasureSpec(100000, MeasureSpec.AT_MOST);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 

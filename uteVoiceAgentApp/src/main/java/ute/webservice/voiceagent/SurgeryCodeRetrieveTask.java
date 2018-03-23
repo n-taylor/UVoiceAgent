@@ -88,7 +88,7 @@ public class SurgeryCodeRetrieveTask extends AsyncTask<String, Void, String> {
             String queryString = Constants.CLINWEB_SURGERY_CODES_QUERY + "/" + category;
             queryString += "/" + subCategory;
             queryString += "/" + extremity;
-            queryString = queryString.replace(" BODY", "");
+            queryString = queryString.replace(" ", "%20");
 
             HttpGetHC4 getRequest = new HttpGetHC4(queryString);
             CloseableHttpResponse response = AccountCheck.httpclient.execute(getRequest);
