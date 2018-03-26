@@ -65,7 +65,7 @@ public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonLi
         listView = (ExpandableListView)findViewById(R.id.surgeryListView);
         if (listView != null){
             SurgeryParentListAdapter adapter = new SurgeryParentListAdapter(this, ProcedureInfo.getCategoryNames());
-            adapter.setWidth(R.dimen.surgery_list_width);
+            adapter.setWidth(getResources().getDimensionPixelSize(R.dimen.surgery_list_width)-200);
             listView.setAdapter(adapter);
         }
     }

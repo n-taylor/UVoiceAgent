@@ -38,6 +38,8 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter impleme
     private int midTextColor;
     private int bottomTextColor;
 
+    private int width = 1000;
+
     private ParseResult PR;
 
     public SurgerySecondLevelAdapter(Context context, ArrayList<String> subcategoryHeaders){
@@ -81,6 +83,7 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter impleme
                 .findViewById(R.id.listItem);
         //txtListChild.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         thirdLevelTextView.setText(ProcedureInfo.removeCode(childText));
+        thirdLevelTextView.setWidth(width);
         if (setBottomTextColor)
             thirdLevelTextView.setTextColor(bottomTextColor);
         else
@@ -273,6 +276,10 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter impleme
         intent.putExtra("query", query);
         intent.putExtra("result", result);
         context.startActivity(intent);
+    }
+
+    public void setWidth(int width){
+        this.width = width;
     }
 
 }

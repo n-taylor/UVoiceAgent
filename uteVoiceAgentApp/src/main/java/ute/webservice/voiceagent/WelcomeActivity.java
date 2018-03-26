@@ -3,6 +3,7 @@ package ute.webservice.voiceagent;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -272,5 +273,6 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         equipButton.setEnabled(true);
         oncallButton.setEnabled(true);
         welcomeTextView.setText(R.string.welcome_message);
+        
     }
 }

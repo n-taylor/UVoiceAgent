@@ -62,7 +62,6 @@ public class SurgeryParentListAdapter extends BaseExpandableListAdapter {
     public View getChildView(final int groupPosition, int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
         final CustomExpListView secondLevelExpListView = new CustomExpListView(this.context);
-        //final ExpandableListView expListView = new ExpandableListView(context);
         String parentNode = (String) getGroup(groupPosition);
 
         SurgerySecondLevelAdapter secondLevel = new SurgerySecondLevelAdapter(this.context,
@@ -81,6 +80,7 @@ public class SurgeryParentListAdapter extends BaseExpandableListAdapter {
         secondLevelExpListView.setAdapter(secondLevel);
         secondLevelExpListView.setGroupIndicator(null);
         secondLevelExpListView.setPreferredWidth(width);
+        secondLevel.setWidth(width);
 
         return secondLevelExpListView;
     }
