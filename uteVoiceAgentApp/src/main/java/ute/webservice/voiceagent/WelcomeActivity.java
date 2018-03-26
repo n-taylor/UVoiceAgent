@@ -74,8 +74,11 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
     }
 
     private void fetchProcedureInfo(){
-        ProcedureInfo PI = ProcedureInfo.fetchData();
-        PI.addListener(this);
+        if (ProcedureInfo.needsData()) {
+            ProcedureInfo PI = ProcedureInfo.fetchData();
+            if (PI != null)
+                PI.addListener(this);
+        }
     }
 
     private void initializeButtons(){
@@ -124,14 +127,16 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
             }
         });
 
-        // disable everything
-        cancelButton.setEnabled(false);
-        aiButton.setEnabled(false);
-        bedButton.setEnabled(false);
-        surgeryButton.setEnabled(false);
-        equipButton.setEnabled(false);
-        oncallButton.setEnabled(false);
-        welcomeTextView.setText("Loading...");
+        if (ProcedureInfo.needsData()) {
+            // disable everything
+            cancelButton.setEnabled(false);
+            aiButton.setEnabled(false);
+            bedButton.setEnabled(false);
+            surgeryButton.setEnabled(false);
+            equipButton.setEnabled(false);
+            oncallButton.setEnabled(false);
+            welcomeTextView.setText("Loading...");
+        }
     }
 
     @Override

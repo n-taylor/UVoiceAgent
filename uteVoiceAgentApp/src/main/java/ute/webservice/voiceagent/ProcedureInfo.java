@@ -31,6 +31,14 @@ public class ProcedureInfo implements SurgeryCategoryRetrievalListener, SurgeryC
     }
 
     /**
+     * Determines whether the procedure information needs to be fetched from the server.
+     * @return True if the procedure information should be fetched.
+     */
+    public static boolean needsData(){
+        return procedureTreeRoot == null;
+    }
+
+    /**
      * Returns the given description without the code on the end.
      * @param description The description to truncate.
      * @return The truncated string. If there is no code to remove, the given description is returned.
