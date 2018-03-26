@@ -20,7 +20,7 @@ import ai.api.model.AIError;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
 
-public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener  {
+public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener, ProcedureInfoListener  {
 
     private String TAG = WelcomeActivity.class.getName();
 
@@ -55,13 +55,9 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        aiButton = (AIButton) findViewById(R.id.micButton);
-        welcomeTextView = (TextView) findViewById(R.id.welcome_message);
-        cancelButton = (Button) findViewById(R.id.cancelButton);
-        bedButton = (Button) findViewById(R.id.bed_finder_button);
-        surgeryButton = (Button) findViewById(R.id.cost_button);
-        equipButton = (Button) findViewById(R.id.equipment_button);
-        oncallButton = (Button) findViewById(R.id.on_call_button);
+        initializeButtons();
+
+
 
         //Open shared data
         sessiondata = new SharedData(getApplicationContext());
@@ -71,6 +67,24 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         //Set up action bar by toolbar
         Toolbar settintTB= (Toolbar) findViewById(R.id.setting_toolbar);
         setSupportActionBar(settintTB);
+        dataasked = new DataAsked();
+
+        fetchProcedureInfo();
+    }
+
+    private void fetchProcedureInfo(){
+        ProcedureInfo PI = ProcedureInfo.fetchData();
+        PI.addListener(this);
+    }
+
+    private void initializeButtons(){
+        aiButton = (AIButton) findViewById(R.id.micButton);
+        welcomeTextView = (TextView) findViewById(R.id.welcome_message);
+        cancelButton = (Button) findViewById(R.id.cancelButton);
+        bedButton = (Button) findViewById(R.id.bed_finder_button);
+        surgeryButton = (Button) findViewById(R.id.cost_button);
+        equipButton = (Button) findViewById(R.id.equipment_button);
+        oncallButton = (Button) findViewById(R.id.on_call_button);
 
         final AIConfiguration config = new AIConfiguration(Config.ACCESS_TOKEN,
                 AIConfiguration.SupportedLanguages.English,
@@ -95,7 +109,7 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         bedButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), AIListActivity.class);
-               // intent.putExtra("query", PR.get_ResolvedQuery());
+                // intent.putExtra("query", PR.get_ResolvedQuery());
                 startActivity(intent);
 
             }
@@ -108,95 +122,16 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
                 startActivity(intent);
             }
         });
-        dataasked = new DataAsked();
 
-        //this.loadCA();
+        // disable everything
+        cancelButton.setEnabled(false);
+        aiButton.setEnabled(false);
+        bedButton.setEnabled(false);
+        surgeryButton.setEnabled(false);
+        equipButton.setEnabled(false);
+        oncallButton.setEnabled(false);
+        welcomeTextView.setText("Loading...");
     }
-
-//    private void loadCA(){
-//        System.out.println("working:"+System.getProperty("user.dir"));
-//        // Load CAs from an InputStream
-//        // (could be from a resource or ByteArrayInputStream or ...)
-//        //CertificateFactory cf = null;
-//        try {
-//            cf = CertificateFactory.getInstance("X.509");
-//        } catch (CertificateException e) {
-//            e.printStackTrace();
-//        }
-//        // From https://www.washington.edu/itconnect/security/ca/load-der.crt
-//        InputStream caInput = null;
-//        try {
-//            caInput = new BufferedInputStream(this.getBaseContext().getAssets().open("ca.cer"));
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        //Certificate ca;
-//        try {
-//            ca = cf.generateCertificate(caInput);
-//            System.out.println("ca=" + ((X509Certificate) ca).getSubjectDN());
-//        } catch (CertificateException e) {
-//            e.printStackTrace();
-//        } finally {
-//            try {
-//                caInput.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        // Create a KeyStore containing our trusted CAs
-//        String keyStoreType = KeyStore.getDefaultType();
-//        KeyStore keyStore = null;
-//        try {
-//            keyStore = KeyStore.getInstance(keyStoreType);
-//        } catch (KeyStoreException e) {
-//            e.printStackTrace();
-//        }
-//        try {
-//            keyStore.load(null, null);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (NoSuchAlgorithmException e) {
-//            e.printStackTrace();
-//        } catch (CertificateException e) {
-//            e.printStackTrace();
-//        }
-//        try {
-//            keyStore.setCertificateEntry("ca", ca);
-//        } catch (KeyStoreException e) {
-//            e.printStackTrace();
-//        }
-//
-//        // Create a TrustManager that trusts the CAs in our KeyStore
-//        String tmfAlgorithm = TrustManagerFactory.getDefaultAlgorithm();
-//        TrustManagerFactory tmf = null;
-//        try {
-//            tmf = TrustManagerFactory.getInstance(tmfAlgorithm);
-//        } catch (NoSuchAlgorithmException e) {
-//            e.printStackTrace();
-//        }
-//        try {
-//            tmf.init(keyStore);
-//        } catch (KeyStoreException e) {
-//            e.printStackTrace();
-//        }
-//
-//        // Create an SSLContext that uses our TrustManager
-//
-//        try {
-//            sslContext = SSLContext.getInstance("TLS");
-//        } catch (NoSuchAlgorithmException e) {
-//            e.printStackTrace();
-//        }
-//        try {
-//            sslContext.init(null, tmf.getTrustManagers(), null);
-//        } catch (KeyManagementException e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     @Override
     protected void onPause() {
@@ -324,5 +259,18 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
     @Override
     public void onBackPressed() {
         // do nothing
+    }
+
+    /**
+     * Enable the buttons and change the welcome text to its proper message.
+     */
+    public void onInfoRetrieval(){
+        cancelButton.setEnabled(true);
+        aiButton.setEnabled(true);
+        bedButton.setEnabled(true);
+        surgeryButton.setEnabled(true);
+        equipButton.setEnabled(true);
+        oncallButton.setEnabled(true);
+        welcomeTextView.setText(R.string.welcome_message);
     }
 }

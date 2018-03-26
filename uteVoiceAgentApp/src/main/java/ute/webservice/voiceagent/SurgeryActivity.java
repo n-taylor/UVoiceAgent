@@ -1,7 +1,9 @@
 package ute.webservice.voiceagent;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
@@ -23,7 +25,7 @@ import ai.api.model.AIError;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
 
-public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener, SurgeryCategoryRetrievalListener {
+public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener {
 
     private static String TAG = SurgeryActivity.class.getName();
 
@@ -54,72 +56,15 @@ public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonLi
         initializeTextViews();
         initializeSharedData();
         initializeListView();
-//        fillListViewPractice();
-    }
-
-    /**
-     * Initializes the list view and fills it with dummy data to test its functionality.
-     */
-    private void fillListViewPractice(){
-        listView = (ExpandableListView)findViewById(R.id.surgeryListView);
-        //listView.setBackgroundResource(R.drawable.menushape);
-        if (listView != null){
-            ArrayList<String> parentHeaders = new ArrayList<>();
-            parentHeaders.add("Parent 1");
-            parentHeaders.add("Parent 2");
-            parentHeaders.add("Parent 3");
-            parentHeaders.add("Parent 4");
-            parentHeaders.add("Parent 5");
-            parentHeaders.add("Parent 6");
-            parentHeaders.add("Parent 7");
-
-            HashMap<String, ArrayList<String>> secondHeaders = new HashMap<>();
-            HashMap<String, ArrayList<String>> thirdItems = new HashMap<>();
-            for (int i = 0; i < parentHeaders.size(); i++){
-                ArrayList<String> secondItems = new ArrayList<>();
-                secondItems.add("Second 1");
-                secondItems.add("Second 2");
-                secondHeaders.put(parentHeaders.get(i), secondItems);
-
-                for (int j = 0; j < secondItems.size(); j++){
-                    ArrayList<String> thirds = new ArrayList<>();
-                    thirds.add("Third 1");
-                    thirds.add("Third 2");
-                    thirdItems.put(secondItems.get(j), thirds);
-                }
-            }
-            SurgeryParentListAdapter parentAdapter = new SurgeryParentListAdapter(this, parentHeaders, secondHeaders,
-                    thirdItems);
-            parentAdapter.setWidth(R.dimen.surgery_list_width);
-            parentAdapter.setTopColor(ContextCompat.getColor(this, R.color.black));
-            parentAdapter.setTopTextColor(Color.WHITE);
-            parentAdapter.setBottomTextColor(Color.BLUE);
-            listView.setAdapter(parentAdapter);
-        }
     }
 
     /**
      * Creates and executes a SurgeryCategoryRetrieveTask to get all the surgery categories and subcategories.
      */
     private void initializeListView(){
-        SurgeryCategoryRetrieveTask task = new SurgeryCategoryRetrieveTask();
-        task.addListener(this);
-        task.execute();
-    }
-
-    /**
-     * Initializes the expandable list view and populates it with the results of the Category retrieval.
-     *
-     * @param categories A ArrayList of all the main categories of surgery
-     * @param subCategories A map from each main category of surgery to its subcategory
-     * @param surgeryTypes A map from each subcategory to the extremity.
-     */
-    public void onCategoryRetrieval(ArrayList<String> categories, Map<String, ArrayList<String>> subCategories,
-                                    Map<String, ArrayList<String>> surgeryTypes)
-    {
         listView = (ExpandableListView)findViewById(R.id.surgeryListView);
         if (listView != null){
-            SurgeryParentListAdapter adapter = new SurgeryParentListAdapter(this, categories, subCategories, surgeryTypes);
+            SurgeryParentListAdapter adapter = new SurgeryParentListAdapter(this, ProcedureInfo.getCategoryNames());
             adapter.setWidth(R.dimen.surgery_list_width);
             listView.setAdapter(adapter);
         }

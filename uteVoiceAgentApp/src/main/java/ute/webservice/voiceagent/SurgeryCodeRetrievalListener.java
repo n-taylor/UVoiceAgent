@@ -8,5 +8,7 @@ import java.util.HashMap;
  */
 
 public interface SurgeryCodeRetrievalListener {
-    void onCodeRetrieval(HashMap<String, String> surgeries);
+    //void onCodeRetrieval(HashMap<String, String> surgeries);
+
+    void onCodeRetrieval(String jsonString);
 }

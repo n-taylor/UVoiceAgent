@@ -83,6 +83,7 @@ public class ParseResult {
         gBuilder.registerTypeAdapter(SurgeryCategoryMap.class, new SurgeryCategoryDeserializer());
         gBuilder.registerTypeAdapter(new TypeToken<HashMap<String, String>>(){}.getType(), new SurgeryCodeDeserializer());
         gBuilder.registerTypeAdapter(new TypeToken<Integer>(){}.getType(), new SurgeryCostDeserializer());
+        gBuilder.registerTypeAdapter(new TypeToken<ArrayList<String[]>>(){}.getType(), new ProceduresDeserializer());
         gson = gBuilder.create();
     }
 
@@ -272,6 +273,18 @@ public class ParseResult {
         }
         return cost;
     }
+
+    public ArrayList<String[]> parseAllProcedures(String jsonProcedures){
+        ArrayList<String[]> list = null;
+        Type type = new TypeToken<ArrayList<String[]>>(){}.getType();
+        try{
+            list = gson.fromJson(jsonProcedures, type);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return list;
+    }
 }
 
 class RoomStatusDeserializer implements JsonDeserializer<RoomStatus> {
@@ -441,5 +454,43 @@ class SurgeryCostDeserializer implements JsonDeserializer<Integer>{
         JsonObject jsonCost = json.getAsJsonObject();
         cost = jsonCost.get("patientCharges").getAsInt();
         return cost;
+    }
+}
+
+class ProceduresDeserializer implements JsonDeserializer<ArrayList<String[]>>{
+
+    /**
+     * Gson invokes this call-back method during deserialization when it encounters a field of the
+     * specified type.
+     * <p>In the implementation of this call-back method, you should consider invoking
+     * {@link JsonDeserializationContext#deserialize(JsonElement, Type)} method to create objects
+     * for any non-trivial field of the returned object. However, you should never invoke it on the
+     * the same type passing {@code json} since that will cause an infinite loop (Gson will call your
+     * call-back method again).
+     *
+     * @param json    The Json data being deserialized
+     * @param typeOfT The type of the Object to deserialize to
+     * @param context
+     * @return a deserialized object of the specified type typeOfT which is a subclass of {@code T}
+     * @throws JsonParseException if json is not in the expected format of {@code typeofT}
+     */
+    @Override
+    public ArrayList<String[]> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        ArrayList<String[]> list = new ArrayList<>();
+
+        JsonArray procedures = json.getAsJsonArray();
+        for (JsonElement json_procedure : procedures){
+            JsonObject procedure = json_procedure.getAsJsonObject();
+            String[] properties = new String[5];
+            properties[0] = (procedure.has("code") ? procedure.get("code").getAsString() : "");
+            properties[1] = (procedure.has("serviceLineCategory") ? procedure.get("serviceLineCategory").getAsString(): "");
+            properties[2] = (procedure.has("serviceLineSubCategory") && !procedure.get("serviceLineSubCategory").isJsonNull() ? procedure.get("serviceLineSubCategory").getAsString(): "");
+            properties[3] = (procedure.has("extremity") && !procedure.get("extremity").isJsonNull()? procedure.get("extremity").getAsString(): "");
+            properties[4] = (procedure.has("description") ? procedure.get("description").getAsString(): "");
+
+            list.add(properties);
+        }
+
+        return list;
     }
 }

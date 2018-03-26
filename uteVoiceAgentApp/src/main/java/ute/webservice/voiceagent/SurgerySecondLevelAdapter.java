@@ -10,19 +10,21 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
  * Created by Nathan Taylor on 3/20/2018.
  */
 
-public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter implements SurgeryCodeRetrievalListener{
+public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter implements SurgeryCostRetrievalListener {
 
     private Context context;
-    private ArrayList<String> headers;
-    private Map<String, ArrayList<String>> children;
+    private ArrayList<String> subcategoryHeaders;
 
     private String currentCategory; // the category (parent-level header) under which this is displayed
 
@@ -36,21 +38,20 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter impleme
     private int midTextColor;
     private int bottomTextColor;
 
-    public SurgerySecondLevelAdapter(Context context, ArrayList<String> headers, Map<String, ArrayList<String>> children){
+    private ParseResult PR;
+
+    public SurgerySecondLevelAdapter(Context context, ArrayList<String> subcategoryHeaders){
         this.context = context;
-        this.headers = new ArrayList<>();
-        this.headers.addAll(headers);
-        this.children = new HashMap<>();
-        for (String key : children.keySet()){
-            this.children.put(key, children.get(key));
-        }
+        this.subcategoryHeaders = new ArrayList<>();
+        this.subcategoryHeaders.addAll(subcategoryHeaders);
+        PR = new ParseResult();
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition)
     {
-        return this.children.get(this.headers.get(groupPosition))
-                .get(childPosition);
+        String subcategory = (String)getGroup(groupPosition);
+        return ProcedureInfo.getExtremityHeaders(currentCategory, subcategory).get(childPosition);
     }
     @Override
     public long getChildId(int groupPosition, int childPosition)
@@ -79,19 +80,31 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter impleme
         TextView thirdLevelTextView = (TextView) convertView
                 .findViewById(R.id.listItem);
         //txtListChild.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
-        thirdLevelTextView.setText(childText);
+        thirdLevelTextView.setText(ProcedureInfo.removeCode(childText));
         if (setBottomTextColor)
             thirdLevelTextView.setTextColor(bottomTextColor);
         else
             thirdLevelTextView.setTextColor(Color.BLACK);
 
-        // Call the results page when the third-level view is clicked.
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                displaySurgeries(currentCategory, (String)getGroup(groupPosition), childText);
-            }
-        });
+        final String subcategoryText = (String)getGroup(groupPosition);
+        if (!ProcedureInfo.isExtremity(currentCategory, subcategoryText, childText)){
+            // Display the cost of procedure using the description/child text
+            convertView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    displayCost(childText);
+                }
+            });
+        }
+        else {
+            // Call the results page when the third-level view is clicked.
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    displaySurgeries(currentCategory, subcategoryText, childText);
+                }
+            });
+        }
         return convertView;
     }
 
@@ -99,7 +112,7 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter impleme
     public int getChildrenCount(int groupPosition)
     {
         try {
-            return this.children.get(this.headers.get(groupPosition)).size();
+            return ProcedureInfo.getExtremityHeaders(currentCategory, (String)getGroup(groupPosition)).size();
         } catch (Exception e) {
             return 0;
         }
@@ -107,12 +120,12 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter impleme
     @Override
     public Object getGroup(int groupPosition)
     {
-        return this.headers.get(groupPosition);
+        return this.subcategoryHeaders.get(groupPosition);
     }
     @Override
     public int getGroupCount()
     {
-        return this.headers.size();
+        return this.subcategoryHeaders.size();
     }
     @Override
     public long getGroupId(int groupPosition)
@@ -146,12 +159,12 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter impleme
         else
             secondLevelTextView.setTextColor(Color.WHITE);
 
-        // If there are no extremities, make the subcategory clickable and display the procedures.
-        if (!children.containsKey(headerTitle) || children.get(headerTitle).size() < 1){
+        // If the current category is other, then display the cost of the surgery
+        if (currentCategory.equals(ProcedureInfo.MISC_CATEGORY_TITLE)){
             convertView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
-                    displaySurgeries(currentCategory, headerTitle);
+                    displayCost(headerTitle);
                 }
             });
         }
@@ -212,42 +225,30 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter impleme
     }
 
     /**
-     * Makes a call to the server to retrieve the specific surgeries and their codes.
+     * Displays all the procedures related to the extremity given.
      */
-    private void displaySurgeries(final String... strings){
-        SurgeryCodeRetrieveTask task = new SurgeryCodeRetrieveTask();
+    private void displaySurgeries(String category, String subCategory, String extremity){
+        ArrayList<String> procedures = ProcedureInfo.getExtremityProcedureDescriptions(category, subCategory, extremity);
+        Intent intent = new Intent(context, SurgeryCodesActivity.class);
+        intent.putExtra("procedures", procedures);
+        context.startActivity(intent);
+    }
+
+    private void displayCost(String description){
+        SurgeryCostRetrieveTask task = new SurgeryCostRetrieveTask();
         task.addListener(this);
-        task.execute(strings);
+        task.execute(ProcedureInfo.getCode(description), description);
     }
 
     /**
-     * If codes is null or empty, displays an error message on the results activity. Otherwise,
-     * if there is only one sugery type in the hash map, displays the surgery cost in the results activity.
-     * Otherwise, displays all the surgeries in the surgery codes activity.
-     * @param codes
+     * Displays the results in the results activity.
+     * @param cost The cost of the given procedure.
      */
-    public void onCodeRetrieval(HashMap<String, String> codes){
-        if (codes == null || codes.size() <= 0){
-            startResultsActivity("", "No procedures were returned.");
-        }
-        else if (codes.size() == 1){
-            for (String code : codes.keySet()){
-                //displaySurgeryCost(code, codes.get(code));
-                startSurgeryCodesActivity(null, codes);
-            }
-        }
-        else {
-            startSurgeryCodesActivity(null, codes);
-        }
-    }
-
-    /**
-     * Sends a REST call to the server to get the cost of the given procedure.
-     * @param code The procedure code
-     * @param description The description to display.
-     */
-    private void displaySurgeryCost(String code, String description){
-        // TODO: Make a class to query the surgery cost and execute it here
+    @Override
+    public void onCostRetrieval(int cost, String description) {
+        String value = NumberFormat.getNumberInstance(Locale.US).format(cost);
+        value = String.format("The estimated patient cost of this procedure is $" + value);
+        startResultsActivity(ProcedureInfo.removeCode(description), value);
     }
 
     /**

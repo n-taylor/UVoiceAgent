@@ -23,17 +23,17 @@ import java.util.HashMap;
 public class SurgeryCodesListAdapter extends ArrayAdapter<String> implements SurgeryCostRetrievalListener {
 
     private Context context;
-    private HashMap<String, String> codes;
+    private ArrayList<String> procedures;
 
     private int backColor;
     private int textColor;
     private boolean setBackColor = false;
     private boolean setTextColor = false;
 
-    public SurgeryCodesListAdapter(Context context, ArrayList<String> descriptions, HashMap<String, String> codes){
+    public SurgeryCodesListAdapter(Context context, ArrayList<String> descriptions){
         super(context, 0, descriptions);
         this.context = context;
-        this.codes = codes;
+        this.procedures = descriptions;
     }
 
     @Override
@@ -47,21 +47,11 @@ public class SurgeryCodesListAdapter extends ArrayAdapter<String> implements Sur
         // Get the description for this position
         final String description = getItem(position);
 
-        // Produce the text without the
-        Pattern pattern = Pattern.compile("(\\s-\\s[0-9]{4,})");
-        Matcher matcher = pattern.matcher(description);
-        String toShow = description;
-        if (matcher.find()) {
-            String end = matcher.group();
-            toShow = toShow.replace(end, "");
-        }
-        final String display = toShow;
-
         if (setBackColor)
             convertView.setBackgroundColor(backColor);
         // Lookup view for the description
         TextView textView = (TextView)convertView.findViewById(R.id.listHeader);
-        textView.setText(toShow);
+        textView.setText(ProcedureInfo.removeCode(description));
         if (setTextColor)
             textView.setTextColor(textColor);
         else
@@ -71,7 +61,7 @@ public class SurgeryCodesListAdapter extends ArrayAdapter<String> implements Sur
         convertView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                displayCost(description, display);
+                displayCost(description);
             }
         });
         return convertView;
@@ -82,15 +72,10 @@ public class SurgeryCodesListAdapter extends ArrayAdapter<String> implements Sur
      * displays it in the results activity.
      * @param description The description of the procedure.
      */
-    private void displayCost(String description, String toShow){
-        String code = "";
-        for (String key : codes.keySet()){
-            if (((String)codes.get(key)).equals(description))
-                code = key;
-        }
+    private void displayCost(String description){
         SurgeryCostRetrieveTask task = new SurgeryCostRetrieveTask();
         task.addListener(this);
-        task.execute(code, toShow);
+        task.execute(ProcedureInfo.getCode(description), description);
     }
 
     /**
@@ -119,7 +104,7 @@ public class SurgeryCodesListAdapter extends ArrayAdapter<String> implements Sur
     public void onCostRetrieval(int cost, String description) {
         Intent intent = new Intent(context, ResultsActivity.class);
         String value = NumberFormat.getNumberInstance(Locale.US).format(cost);
-        intent.putExtra("query", description);
+        intent.putExtra("query", ProcedureInfo.removeCode(description));
         intent.putExtra("result", "The estimated patient cost of this procedure is $" + value);
         context.startActivity(intent);
     }

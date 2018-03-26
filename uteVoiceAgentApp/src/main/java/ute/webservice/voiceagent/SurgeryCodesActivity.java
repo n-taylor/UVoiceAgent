@@ -26,7 +26,7 @@ import ai.api.model.AIError;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
 
-public class SurgeryCodesActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener {
+public class SurgeryCodesActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener{
 
     private static String TAG = SurgeryActivity.class.getName();
 
@@ -34,7 +34,7 @@ public class SurgeryCodesActivity extends BaseActivity implements AIButton.AIBut
     private Button cancelButton;
     private TextView queryTextView;
     private ListView listView;
-    private HashMap<String, String> codes;
+    private ArrayList<String> procedures;
 
     private String query;
 
@@ -62,9 +62,7 @@ public class SurgeryCodesActivity extends BaseActivity implements AIButton.AIBut
      */
     private void initializeListView(){
         listView = (ListView)findViewById(R.id.surgery_codes_list_view);
-        ArrayList<String> descriptions = new ArrayList<>();
-        descriptions.addAll(codes.values());
-        SurgeryCodesListAdapter adapter = new SurgeryCodesListAdapter(this, descriptions, codes);
+        SurgeryCodesListAdapter adapter = new SurgeryCodesListAdapter(this, procedures);
         adapter.setBackColor(ContextCompat.getColor(this, R.color.color_slategrey));
         adapter.setTextColor(Color.WHITE);
         listView.setAdapter(adapter);
@@ -80,7 +78,7 @@ public class SurgeryCodesActivity extends BaseActivity implements AIButton.AIBut
         String message = (String)bundle.get("message");
         if (message != null)
             queryTextView.setText(message);
-        codes = (HashMap<String, String>)bundle.get("codes");
+        procedures = (ArrayList<String>)bundle.get("procedures");
     }
 
     /**

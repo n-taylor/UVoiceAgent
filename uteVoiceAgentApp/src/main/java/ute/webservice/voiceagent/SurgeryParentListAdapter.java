@@ -9,13 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.ExpandableListView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,12 +20,10 @@ import java.util.Map;
  * Created by Nathan Taylor on 3/20/2018.
  */
 
-public class SurgeryParentListAdapter extends BaseExpandableListAdapter implements SurgeryCodeRetrievalListener {
+public class SurgeryParentListAdapter extends BaseExpandableListAdapter {
 
     private Context context;
-    private ArrayList<String> parentLevelHeaders;
-    private Map<String, ArrayList<String>> secondLevel_Map;
-    private Map<String, ArrayList<String>> thirdLevel_Map;
+    private ArrayList<String> categoryHeaders;
     private int width = 800; // the width of the second and third-level headers
 
     private boolean setTopColor = false;
@@ -45,28 +40,17 @@ public class SurgeryParentListAdapter extends BaseExpandableListAdapter implemen
     private int midTextColor;
     private int bottomTextColor;
 
-    public SurgeryParentListAdapter(Context context, ArrayList<String> parentLevelHeaders, Map<String, ArrayList<String>> secondLevel_Map,
-                                    Map<String, ArrayList<String>> thirdLevel_Map){
+    public SurgeryParentListAdapter(Context context, ArrayList<String> categoryHeaders){
         this.context = context;
 
-        this.parentLevelHeaders = new ArrayList<>();
-        this.parentLevelHeaders.addAll(parentLevelHeaders);
-
-        this.secondLevel_Map = new HashMap<>();
-        for (String key : secondLevel_Map.keySet()){
-            this.secondLevel_Map.put(key, secondLevel_Map.get(key));
-        }
-
-        this.thirdLevel_Map = new HashMap<>();
-        for (String key : thirdLevel_Map.keySet()){
-            this.thirdLevel_Map.put(key, thirdLevel_Map.get(key));
-        }
+        this.categoryHeaders = new ArrayList<>();
+        this.categoryHeaders.addAll(categoryHeaders);
 
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return secondLevel_Map.get(parentLevelHeaders.get(groupPosition)).get(childPosition);
+        return ProcedureInfo.getSubCategoryHeaders(categoryHeaders.get(groupPosition)).get(childPosition);
     }
     @Override
     public long getChildId(int groupPosition, int childPosition) {
@@ -80,8 +64,9 @@ public class SurgeryParentListAdapter extends BaseExpandableListAdapter implemen
         final CustomExpListView secondLevelExpListView = new CustomExpListView(this.context);
         //final ExpandableListView expListView = new ExpandableListView(context);
         String parentNode = (String) getGroup(groupPosition);
-        SurgerySecondLevelAdapter secondLevel = new SurgerySecondLevelAdapter(this.context, secondLevel_Map.get(parentNode),
-                thirdLevel_Map);
+
+        SurgerySecondLevelAdapter secondLevel = new SurgerySecondLevelAdapter(this.context,
+                ProcedureInfo.getSubCategoryHeaders(parentNode));
         if (setMidColor)
             secondLevel.setMidColor(midColor);
         if (setBottomColor)
@@ -100,40 +85,17 @@ public class SurgeryParentListAdapter extends BaseExpandableListAdapter implemen
         return secondLevelExpListView;
     }
 
-    /**
-     * Uses SurgeryCodeRetrieveTask to get surgery procedures and their codes.
-     * If one string is passed as a parameter, it must be the category.
-     * If two parameters are passed, they must be first the category and then the subcategory.
-     * If three are passed, they must be first the category, then subcategory, then extremity.
-     * @param strings The 1. Category, 2. Subcategory and 3. Extremity to get procedures for.
-     */
-    private void displayProcedures(String... strings){
-        SurgeryCodeRetrieveTask task = new SurgeryCodeRetrieveTask();
-        task.addListener(this);
-        task.execute(strings);
-    }
-
-    /**
-     * Starts the SurgeryCodesActivity with the given information.
-     * @param codes The mapping of codes to procedures.
-     */
-    public void onCodeRetrieval(HashMap<String, String> codes){
-        Intent intent = new Intent(context, SurgeryCodesActivity.class);
-        intent.putExtra("codes", codes);
-        context.startActivity(intent);
-    }
-
     @Override
     public int getChildrenCount(int groupPosition) {
         return 1;
     }
     @Override
     public Object getGroup(int groupPosition) {
-        return this.parentLevelHeaders.get(groupPosition);
+        return this.categoryHeaders.get(groupPosition);
     }
     @Override
     public int getGroupCount() {
-        return this.parentLevelHeaders.size();
+        return this.categoryHeaders.size();
     }
     @Override
     public long getGroupId(int groupPosition) {
@@ -163,16 +125,6 @@ public class SurgeryParentListAdapter extends BaseExpandableListAdapter implemen
             headerTextView.setTextColor(topTextColor);
         else
             headerTextView.setTextColor(Color.WHITE);
-
-        // If the category has no subcategories, display the procedure codes.
-        if (!secondLevel_Map.containsKey(headerTitle) || secondLevel_Map.get(headerTitle).size() < 2){
-            convertView.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v){
-                    displayProcedures(headerTitle);
-                }
-            });
-        }
         return convertView;
     }
     @Override

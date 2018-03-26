@@ -62,24 +62,23 @@ public class SurgeryCodeRetrieveTask extends AsyncTask<String, Void, String> {
     }
 
     /**
-     * Parse the results and notify all the subscribed listeners.
-     * The codes are distributed as a HashMap<string, string> where the first string is the code and
-     * the second is the description.
+     * Returns that which was retrieved from the server.
      * @param result
      */
     @Override
     protected void onPostExecute(String result){
-        HashMap<String, String> codes = PR.parseSurgeryCodes(result);
+//        HashMap<String, String> codes = PR.parseSurgeryCodes(result);
+//        for (SurgeryCodeRetrievalListener listener : listeners){
+//            listener.onCodeRetrieval(codes);
+//        }
         for (SurgeryCodeRetrievalListener listener : listeners){
-            listener.onCodeRetrieval(codes);
+            listener.onCodeRetrieval(result);
         }
     }
 
     /**
      * Sends a GET request to the webservice for the category, subCategory and extremity specified.
-     * @param category The parent-level category of the procedure.
-     * @param subCategory The second-level subcategory of the procedure.
-     * @param extremity The third-level extremity on which to perform the procedure.
+     * @param strings The 1. Category, 2. Subcategory and 3. Extremity of the procedures to query
      * @return
      */
     private String getJsonSurgeries(String... strings){

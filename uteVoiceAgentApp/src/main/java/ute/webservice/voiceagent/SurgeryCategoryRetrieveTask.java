@@ -95,7 +95,8 @@ public class SurgeryCategoryRetrieveTask extends AsyncTask<Void, Void, String> {
         }
 
         for (SurgeryCategoryRetrievalListener listener : listeners){
-            listener.onCategoryRetrieval(map.getCategories(), map.getSubcategories(), map.getSurgeries());
+            //listener.onCategoryRetrieval(map.getCategories(), map.getSubcategories(), map.getSurgeries());
+            listener.onCategoryRetrieval(map.getCategories());
         }
     }
 
