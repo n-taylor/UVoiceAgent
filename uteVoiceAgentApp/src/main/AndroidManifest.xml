@@ -63,7 +63,7 @@
         <activity
             android:name=".SurgeryActivity"
             android:label="@string/title_activity_surgery"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/My_theme" />
         <activity
             android:name=".SurgeryCodesActivity"
             android:label="@string/title_activity_surgery_codes"

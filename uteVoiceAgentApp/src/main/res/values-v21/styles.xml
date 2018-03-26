@@ -10,8 +10,9 @@
 
     <style name="My_theme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/color_slategrey</item>
-        <item name="android:statusBarColor">?attr/colorControlActivated</item>
+        <item name="android:statusBarColor">?attr/actionModeSplitBackground</item>
         <item name="android:navigationBarColor">@color/color_slategrey</item>
+        <item name="colorAccent">@color/color_slategrey</item>
     </style>
 
     <!-- Style to replace actionbar overflow icon. set item 'android:actionOverflowButtonStyle' in AppTheme -->
