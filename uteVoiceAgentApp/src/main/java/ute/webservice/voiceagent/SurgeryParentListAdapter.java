@@ -111,11 +111,6 @@ public class SurgeryParentListAdapter extends BaseExpandableListAdapter {
             LayoutInflater layoutInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.list_group, null);
-            // SET BACKGROUND COLOR HERE
-            if (setTopColor)
-                convertView.setBackgroundColor(topColor);
-            else
-                convertView.setBackgroundColor(ContextCompat.getColor(context, R.color.color_slategrey));
         }
         TextView headerTextView = (TextView) convertView
                 .findViewById(R.id.listHeader);
@@ -125,6 +120,16 @@ public class SurgeryParentListAdapter extends BaseExpandableListAdapter {
             headerTextView.setTextColor(topTextColor);
         else
             headerTextView.setTextColor(Color.WHITE);
+        // SET BACKGROUND COLOR HERE
+        if (setTopColor)
+            convertView.setBackgroundColor(topColor);
+        else
+            convertView.setBackgroundColor(ContextCompat.getColor(context, R.color.color_slategrey));
+        if (groupPosition == 0)
+        {
+            convertView.setBackgroundResource(R.drawable.menushape);
+
+        }
         return convertView;
     }
     @Override
