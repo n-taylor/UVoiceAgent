@@ -3,28 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="566dp"
-    tools:context="ute.webservice.voiceagent.activities.WelcomeActivity">
+    tools:context="ute.webservice.voiceagent.activities.AIButtonActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/setting_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
         android:theme="@style/MyActionBar_theme"
         app:popupTheme="@style/My_theme" />
 
-
     <RelativeLayout
-        android:id="@+id/top_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="476dp"
         android:layout_above="@+id/bottom_container"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/setting_toolbar"
-        android:gravity="bottom"
         android:padding="16dp"
         android:paddingBottom="16dp"
         android:paddingEnd="16dp"
@@ -34,55 +28,37 @@
         android:paddingTop="16dp">
 
         <TextView
-            android:id="@+id/welcome_message"
+            android:id="@+id/querytextView"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-            android:layout_height="70dp"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-
             android:layout_alignParentTop="true"
-            android:gravity="top"
-            android:text="@string/welcome_message"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/color_slategrey"
+            android:textColor="?android:attr/colorControlActivated"
             android:textSize="24sp"
-            tools:ignore="RtlHardcoded" />
+            tools:ignore="RtlHardcoded"
+            android:text="@string/open_beds_message"
+            android:textAlignment="viewStart"
+            android:paddingBottom="16dp"
 
-        <Button
-            android:id="@+id/bed_finder_button"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/welcome_message"
-            android:layout_centerHorizontal="true"
-            android:text="@string/bed_finder_label" />
+            />
 
-        <Button
-            android:id="@+id/cost_button"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/bed_finder_button"
-            android:layout_centerHorizontal="true"
-            android:text="@string/surgery_cost_label" />
 
-        <Button
-            android:id="@+id/equipment_button"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/cost_button"
-            android:layout_centerHorizontal="true"
-            android:text="@string/equipment_locator_label" />
-
-        <Button
-            android:id="@+id/on_call_button"
-            android:layout_width="250dp"
+        <ExpandableListView
+            android:id="@+id/resultListView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/equipment_button"
-            android:text="@string/on_call_label" />
+            android:layout_below="@+id/querytextView"/>
+
+
+
 
     </RelativeLayout>
 
-    <RelativeLayout
+     <RelativeLayout
         android:id="@+id/bottom_container"
         android:layout_width="fill_parent"
         android:layout_height="200dp"

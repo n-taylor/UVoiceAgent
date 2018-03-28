@@ -11,12 +11,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".AIApplication"
+        android:name=".activities.AIApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name">
         <activity
-            android:name=".LoginActivity"
+            android:name=".activities.LoginActivity"
             android:label="@string/title_login_activity"
             android:theme="@style/My_theme">
             <intent-filter>
@@ -26,46 +26,46 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AIButtonActivity"
+            android:name=".activities.AIButtonActivity"
             android:label="@string/title_activity_aibutton_sample"
-            android:parentActivityName=".LoginActivity"
+            android:parentActivityName=".activities.LoginActivity"
             android:theme="@style/My_theme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ute.webservice.voiceagent.LoginActivity" />
+                android:value="ute.webservice.voiceagent.activities.LoginActivity" />
         </activity>
         <activity
-            android:name=".AISettingsActivity"
+            android:name=".activities.AISettingsActivity"
             android:label="@string/action_settings"
-            android:parentActivityName=".LoginActivity"
+            android:parentActivityName=".activities.LoginActivity"
             android:theme="@style/My_theme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ute.webservice.voiceagent.LoginActivity" />
+                android:value="ute.webservice.voiceagent.activities.LoginActivity" />
         </activity>
         <activity
-            android:name=".WelcomeActivity"
+            android:name=".activities.WelcomeActivity"
             android:label="@string/title_welcome_activity"
-            android:parentActivityName=".LoginActivity"
+            android:parentActivityName=".activities.LoginActivity"
             android:theme="@style/My_theme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ute.webservice.voiceagent.LoginActivity" />
+                android:value="ute.webservice.voiceagent.activities.LoginActivity" />
         </activity>
         <activity
-            android:name=".ResultsActivity"
+            android:name=".activities.ResultsActivity"
             android:label="@string/title_welcome_activity"
             android:theme="@style/My_theme" />
         <activity
-            android:name=".AIListActivity"
+            android:name=".activities.OpenBedsActivity"
             android:label="Voice Agent"
             android:theme="@style/My_theme" />
         <activity
-            android:name=".ProceduresListActivity"
+            android:name=".activities.ProceduresListActivity"
             android:label="@string/title_activity_surgery"
             android:theme="@style/My_theme" />
         <activity
-            android:name=".ProceduresSelectActivity"
+            android:name=".activities.ProceduresSelectActivity"
             android:label="@string/title_activity_surgery_codes"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
