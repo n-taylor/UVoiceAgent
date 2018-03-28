@@ -104,6 +104,18 @@ public class ResultsActivity extends BaseActivity implements AIButton.AIButtonLi
         Toolbar settintTB= (Toolbar) findViewById(R.id.setting_toolbar);
         setSupportActionBar(settintTB);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        settintTB.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TTS.stop();
+                finish();
+            }
+        });
+
+
         final AIConfiguration config = new AIConfiguration(Config.ACCESS_TOKEN,
                 AIConfiguration.SupportedLanguages.English,
                 AIConfiguration.RecognitionEngine.System);
