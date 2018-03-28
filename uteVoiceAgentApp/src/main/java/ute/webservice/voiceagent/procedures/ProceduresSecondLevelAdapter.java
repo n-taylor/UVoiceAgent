@@ -177,6 +177,15 @@ public class ProceduresSecondLevelAdapter extends BaseExpandableListAdapter impl
             });
         }
 
+        if (ProcedureInfo.getExtremityHeaders(currentCategory, headerTitle).size() > 5){
+            convertView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    displaySurgeries(currentCategory, headerTitle);
+                }
+            });
+        }
+
         return convertView;
     }
     @Override
@@ -237,6 +246,13 @@ public class ProceduresSecondLevelAdapter extends BaseExpandableListAdapter impl
      */
     private void displaySurgeries(String category, String subCategory, String extremity){
         ArrayList<String> procedures = ProcedureInfo.getExtremityProcedureDescriptions(category, subCategory, extremity);
+        Intent intent = new Intent(context, ProceduresSelectActivity.class);
+        intent.putExtra("procedures", procedures);
+        context.startActivity(intent);
+    }
+
+    private void displaySurgeries(String category, String subcategory){
+        ArrayList<String> procedures = ProcedureInfo.getExtremityHeaders(category, subcategory);
         Intent intent = new Intent(context, ProceduresSelectActivity.class);
         intent.putExtra("procedures", procedures);
         context.startActivity(intent);
