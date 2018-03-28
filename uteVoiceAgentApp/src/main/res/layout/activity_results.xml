@@ -36,9 +36,9 @@
         <TextView
             android:id="@+id/query_text"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="wrap_content"
 
-            android:layout_above="@+id/result_textView"
+            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -52,14 +52,15 @@
             android:text="Results will go here when they are fetched"
 
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="match_parent"
 
             android:maxLines="50"
             android:scrollbars="vertical"
 
-            android:layout_alignParentBottom="true"
+            android:layout_below="@id/query_text"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:gravity="center_vertical"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/Soft_Red"
             android:textSize="24sp" />
