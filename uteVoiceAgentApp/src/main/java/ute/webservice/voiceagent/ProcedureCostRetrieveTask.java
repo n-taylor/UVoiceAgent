@@ -8,7 +8,6 @@ import org.apache.http.client.methods.HttpGetHC4;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.text.ParseException;
 import java.util.ArrayList;
 
 /**
@@ -18,13 +17,13 @@ import java.util.ArrayList;
  * Created by Nathan Taylor on 3/22/2018.
  */
 
-public class SurgeryCostRetrieveTask extends AsyncTask<String, Void, String> {
+public class ProcedureCostRetrieveTask extends AsyncTask<String, Void, String> {
 
-    private ArrayList<SurgeryCostRetrievalListener> listeners;
+    private ArrayList<ProcedureCostRetrievalListener> listeners;
     private ParseResult PR;
     private String description;
 
-    public SurgeryCostRetrieveTask(){
+    public ProcedureCostRetrieveTask(){
         listeners = new ArrayList<>();
         PR = new ParseResult();
         description = "";
@@ -52,7 +51,7 @@ public class SurgeryCostRetrieveTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String result){
         int cost = PR.parseSurgeryCost(result);
-        for (SurgeryCostRetrievalListener listener : listeners){
+        for (ProcedureCostRetrievalListener listener : listeners){
             listener.onCostRetrieval(cost, description);
         }
     }
@@ -94,10 +93,19 @@ public class SurgeryCostRetrieveTask extends AsyncTask<String, Void, String> {
     }
 
     /**
-     * Subscribes a SurgeryCostRetrievalListener to receive the results of the retrieval.
+     * Subscribes a ProcedureCostRetrievalListener to receive the results of the retrieval.
      * @param listener The subscriber.
      */
-    public void addListener(SurgeryCostRetrievalListener listener){
+    public void addListener(ProcedureCostRetrievalListener listener){
         listeners.add(listener);
     }
+}
+
+/**
+ * The interface that allows a subscriber to receive the results of a surgery cost retrieval.
+ * Created by Nathan Taylor on 3/22/2018.
+ */
+
+interface ProcedureCostRetrievalListener {
+    void onCostRetrieval(int cost, String description);
 }

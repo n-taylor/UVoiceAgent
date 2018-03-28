@@ -17,7 +17,7 @@
 
     <string name="cancel">Cancel</string>
     <string name="bed_finder_label">Open Bed Finder</string>
-    <string name="surgery_cost_label">Surgery Cost Estimator</string>
+    <string name="surgery_cost_label">Procedure Cost Estimator</string>
     <string name="equipment_locator_label">Equipment Finder</string>
     <string name="on_call_label">On-call Finder</string>
 
@@ -26,7 +26,7 @@
 
     <string name="open_beds_message">For which unit do you want the open bed availability?</string>
     <string name="title_activity_surgery">Voice Agent</string>
-    <string name="surgery_message">For which surgery do you want the estimated patient price?</string>
+    <string name="surgery_message">For which procedure do you want the estimated patient price?</string>
     <string name="title_activity_surgery_codes">Voice Agent</string>
 
 </resources>

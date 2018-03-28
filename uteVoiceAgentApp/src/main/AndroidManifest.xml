@@ -61,11 +61,11 @@
             android:label="Voice Agent"
             android:theme="@style/My_theme" />
         <activity
-            android:name=".SurgeryActivity"
+            android:name=".ProceduresListActivity"
             android:label="@string/title_activity_surgery"
             android:theme="@style/My_theme" />
         <activity
-            android:name=".SurgeryCodesActivity"
+            android:name=".ProceduresSelectActivity"
             android:label="@string/title_activity_surgery_codes"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

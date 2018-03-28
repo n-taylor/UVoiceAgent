@@ -1,50 +1,47 @@
 package ute.webservice.voiceagent;
 
-import android.accounts.Account;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpPostHC4;
 import org.apache.http.client.methods.HttpGetHC4;
 import org.apache.http.entity.StringEntity;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 
 /**
  * This task sends a GET request to the server for the code and description of a surgery.
  * To get the information of a surgery, pass String params {CATEGORY}, {SUBCATEGORY}, {EXTREMITY}.
  *
- * To get the results, the caller must implement SurgeryCategoryRetrievalListener.
+ * To get the results, the caller must implement ProcedureCategoryRetrievalListener.
  *
  * Here is an example of how to use this class:
  *
- * public class Example implements SurgeryCodeRetrievalListener {
+ * public class Example implements ProcedureJsonRetrievalListener {
  *
  *     public getCodes(){
- *         SurgeryCodRetrieveTask task = new SurgeryCodeRetrieveTask();
+ *         ProcedureJsonRetrieveTask task = new ProcedureJsonRetrieveTask();
  *         task.addListener(this);
  *         task.execute();
  *     }
  *
- *     public void onCodeRetrieval(String code, String description){
- *          System.out.println(code + ": " + description);
+ *     public void onCodeRetrieval(String jsonString){
+ *          ParseResult PR = new ParseResult();
+ *          PR.parseProcedures(jsonString);
  *     }
  * }
  * Created by Nathan Taylor on 3/22/2018.
  */
 
-public class SurgeryCodeRetrieveTask extends AsyncTask<String, Void, String> {
+public class ProcedureJsonRetrieveTask extends AsyncTask<String, Void, String> {
 
-    private ArrayList<SurgeryCodeRetrievalListener> listeners;
+    private ArrayList<ProcedureJsonRetrievalListener> listeners;
     private ParseResult PR;
 
-    public SurgeryCodeRetrieveTask(){
+    public ProcedureJsonRetrieveTask(){
         PR = new ParseResult();
         listeners = new ArrayList<>();
     }
@@ -68,10 +65,10 @@ public class SurgeryCodeRetrieveTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String result){
 //        HashMap<String, String> codes = PR.parseSurgeryCodes(result);
-//        for (SurgeryCodeRetrievalListener listener : listeners){
+//        for (ProcedureJsonRetrievalListener listener : listeners){
 //            listener.onCodeRetrieval(codes);
 //        }
-        for (SurgeryCodeRetrievalListener listener : listeners){
+        for (ProcedureJsonRetrievalListener listener : listeners){
             listener.onCodeRetrieval(result);
         }
     }
@@ -122,7 +119,18 @@ public class SurgeryCodeRetrieveTask extends AsyncTask<String, Void, String> {
      * Subscribes the given listener to receive the results of the GET call.
      * @param listener
      */
-    public void addListener(SurgeryCodeRetrievalListener listener){
+    public void addListener(ProcedureJsonRetrievalListener listener){
         listeners.add(listener);
     }
+}
+
+/**
+ * The interface that allows access to the results of a ProcedureJsonRetrieveTask.
+ * Created by Nathan Taylor on 3/22/2018.
+ */
+
+interface ProcedureJsonRetrievalListener {
+    //void onCodeRetrieval(HashMap<String, String> surgeries);
+
+    void onCodeRetrieval(String jsonString);
 }

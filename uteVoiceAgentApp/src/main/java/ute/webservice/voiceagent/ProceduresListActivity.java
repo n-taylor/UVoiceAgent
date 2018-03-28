@@ -1,11 +1,7 @@
 package ute.webservice.voiceagent;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -15,25 +11,23 @@ import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import ai.api.android.AIConfiguration;
 import ai.api.model.AIError;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
 
-public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener {
+public class ProceduresListActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener {
 
-    private static String TAG = SurgeryActivity.class.getName();
+    private static String TAG = ProceduresListActivity.class.getName();
 
     private AIButton aiButton;
     private Button cancelButton;
     private TextView queryTextView;
 
-    SurgeryParentListAdapter listAdapter;
+    ProceduresParentListAdapter listAdapter;
     ExpandableListView listView;
     List<String> categoryHeaders;
     HashMap<String, List<String>> categoryChildren;
@@ -59,12 +53,12 @@ public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonLi
     }
 
     /**
-     * Creates and executes a SurgeryCategoryRetrieveTask to get all the surgery categories and subcategories.
+     * Creates and executes a ProcedureCategoryRetrieveTask to get all the surgery categories and subcategories.
      */
     private void initializeListView(){
         listView = (ExpandableListView)findViewById(R.id.surgeryListView);
         if (listView != null){
-            SurgeryParentListAdapter adapter = new SurgeryParentListAdapter(this, ProcedureInfo.getCategoryNames());
+            ProceduresParentListAdapter adapter = new ProceduresParentListAdapter(this, ProcedureInfo.getCategoryNames());
             adapter.setWidth(getResources().getDimensionPixelSize(R.dimen.surgery_list_width)-200);
             listView.setAdapter(adapter);
         }
@@ -187,8 +181,8 @@ public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonLi
 
                 // Retrieve the information and display the results
                 RetrieveTask httpTask = new RetrieveTask(dataasked,
-                        CertificateManager.getSSlContext(SurgeryActivity.this)); // the task to retrieve the information
-                httpTask.addListener(SurgeryActivity.this);
+                        CertificateManager.getSSlContext(ProceduresListActivity.this)); // the task to retrieve the information
+                httpTask.addListener(ProceduresListActivity.this);
                 httpTask.execute();
             }
 

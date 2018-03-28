@@ -3,7 +3,6 @@ package ute.webservice.voiceagent;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -122,7 +121,7 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         surgeryButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), SurgeryActivity.class);
+                Intent intent = new Intent(view.getContext(), ProceduresListActivity.class);
                 startActivity(intent);
             }
         });
@@ -249,7 +248,7 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
                 startActivity(intent);
             }
             else if (dataasked.getCurrentAction().equals(Constants.GET_SURGERY_COST)){
-                Intent intent = new Intent(this, SurgeryActivity.class);
+                Intent intent = new Intent(this, ProceduresListActivity.class);
                 startActivity(intent);
             }
         }

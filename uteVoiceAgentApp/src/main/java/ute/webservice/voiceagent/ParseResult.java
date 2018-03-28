@@ -1,8 +1,5 @@
 package ute.webservice.voiceagent;
 
-import android.util.Log;
-import android.widget.ExpandableListView;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -12,9 +9,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
 
-import ai.api.android.GsonFactory;
 import ai.api.model.AIResponse;
 import ai.api.model.Metadata;
 import ai.api.model.Result;
@@ -24,8 +19,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.StringReader;
-import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -69,7 +62,7 @@ public class ParseResult {
         GsonBuilder gBuilder = new GsonBuilder();
         gBuilder.registerTypeAdapter(RoomStatus.class, new RoomStatusDeserializer());
         gBuilder.registerTypeAdapter(SurgeryInfo.class, new SurgeryInfoDeserializer());
-        gBuilder.registerTypeAdapter(SurgeryCategoryMap.class, new SurgeryCategoryDeserializer());
+        gBuilder.registerTypeAdapter(ProcedureCategoryMap.class, new ProcedureCategoryDeserializer());
         gson = gBuilder.create();
 
     }
@@ -80,9 +73,9 @@ public class ParseResult {
      */
     public ParseResult(){
         GsonBuilder gBuilder = new GsonBuilder();
-        gBuilder.registerTypeAdapter(SurgeryCategoryMap.class, new SurgeryCategoryDeserializer());
-        gBuilder.registerTypeAdapter(new TypeToken<HashMap<String, String>>(){}.getType(), new SurgeryCodeDeserializer());
-        gBuilder.registerTypeAdapter(new TypeToken<Integer>(){}.getType(), new SurgeryCostDeserializer());
+        gBuilder.registerTypeAdapter(ProcedureCategoryMap.class, new ProcedureCategoryDeserializer());
+        gBuilder.registerTypeAdapter(new TypeToken<HashMap<String, String>>(){}.getType(), new ProcedureCodeDeserializer());
+        gBuilder.registerTypeAdapter(new TypeToken<Integer>(){}.getType(), new ProcedureCostDeserializer());
         gBuilder.registerTypeAdapter(new TypeToken<ArrayList<String[]>>(){}.getType(), new ProceduresDeserializer());
         gson = gBuilder.create();
     }
@@ -223,13 +216,13 @@ public class ParseResult {
     }
 
     /**
-     * Parses a Json string containing categories into a SurgeryCategoryMap
+     * Parses a Json string containing categories into a ProcedureCategoryMap
      * @param jsonCategories
      * @return
      */
-    public SurgeryCategoryMap parseCategories(String jsonCategories){
-        SurgeryCategoryMap map = null;
-        Type returnType = new TypeToken<SurgeryCategoryMap>(){}.getType();
+    public ProcedureCategoryMap parseCategories(String jsonCategories){
+        ProcedureCategoryMap map = null;
+        Type returnType = new TypeToken<ProcedureCategoryMap>(){}.getType();
         try{
             map = gson.fromJson(jsonCategories, returnType);
         }
@@ -338,7 +331,7 @@ class SurgeryInfoDeserializer implements JsonDeserializer<SurgeryInfo>{
     }
 }
 
-class SurgeryCategoryDeserializer implements JsonDeserializer<SurgeryCategoryMap>{
+class ProcedureCategoryDeserializer implements JsonDeserializer<ProcedureCategoryMap>{
 
     /**
      * Gson invokes this call-back method during deserialization when it encounters a field of the
@@ -356,7 +349,7 @@ class SurgeryCategoryDeserializer implements JsonDeserializer<SurgeryCategoryMap
      * @throws JsonParseException if json is not in the expected format of {@code typeofT}
      */
     @Override
-    public SurgeryCategoryMap deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+    public ProcedureCategoryMap deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
             throws JsonParseException {
 
         ArrayList<String> categories = new ArrayList<>();
@@ -373,34 +366,34 @@ class SurgeryCategoryDeserializer implements JsonDeserializer<SurgeryCategoryMap
             String description = category.get("description").getAsString();
             categories.add(description);
 
-            // Get each subcategory name
-            ArrayList<String> subCategoryNames = new ArrayList<>();
-            JsonArray json_subCategories = category.get("subCategories").getAsJsonArray();
-            for (JsonElement json_subCategory : json_subCategories) {
-
-                JsonObject subCategory = json_subCategory.getAsJsonObject();
-                String subDescription = subCategory.get("description").getAsString();
-                subCategoryNames.add(subDescription);
-
-                // Get each extremity group name
-                ArrayList<String> extremityNames = new ArrayList<>();
-                JsonArray json_extremities = subCategory.get("extremities").getAsJsonArray();
-                for (JsonElement json_extremity : json_extremities) {
-                    JsonObject extremity = json_extremity.getAsJsonObject();
-                    String extremityName = extremity.get("description").getAsString();
-                    extremityNames.add(extremityName);
-                }
-                extremities.put(subDescription, extremityNames);
-            }
-            subCategories.put(description, subCategoryNames);
+//            // Get each subcategory name
+//            ArrayList<String> subCategoryNames = new ArrayList<>();
+//            JsonArray json_subCategories = category.get("subCategories").getAsJsonArray();
+//            for (JsonElement json_subCategory : json_subCategories) {
+//
+//                JsonObject subCategory = json_subCategory.getAsJsonObject();
+//                String subDescription = subCategory.get("description").getAsString();
+//                subCategoryNames.add(subDescription);
+//
+//                // Get each extremity group name
+//                ArrayList<String> extremityNames = new ArrayList<>();
+//                JsonArray json_extremities = subCategory.get("extremities").getAsJsonArray();
+//                for (JsonElement json_extremity : json_extremities) {
+//                    JsonObject extremity = json_extremity.getAsJsonObject();
+//                    String extremityName = extremity.get("description").getAsString();
+//                    extremityNames.add(extremityName);
+//                }
+//                extremities.put(subDescription, extremityNames);
+//            }
+//            subCategories.put(description, subCategoryNames);
         }
 
-        return new SurgeryCategoryMap(categories, subCategories, extremities);
-
+//        return new ProcedureCategoryMap(categories, subCategories, extremities);
+        return new ProcedureCategoryMap(categories);
     }
 }
 
-class SurgeryCodeDeserializer implements JsonDeserializer<HashMap<String, String>> {
+class ProcedureCodeDeserializer implements JsonDeserializer<HashMap<String, String>> {
 
     /**
      * Gson invokes this call-back method during deserialization when it encounters a field of the
@@ -431,7 +424,7 @@ class SurgeryCodeDeserializer implements JsonDeserializer<HashMap<String, String
     }
 }
 
-class SurgeryCostDeserializer implements JsonDeserializer<Integer>{
+class ProcedureCostDeserializer implements JsonDeserializer<Integer>{
 
     /**
      * Gson invokes this call-back method during deserialization when it encounters a field of the

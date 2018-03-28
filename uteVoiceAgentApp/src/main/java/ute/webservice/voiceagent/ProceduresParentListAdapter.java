@@ -1,7 +1,6 @@
 package ute.webservice.voiceagent;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
@@ -12,15 +11,13 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  *
  * Created by Nathan Taylor on 3/20/2018.
  */
 
-public class SurgeryParentListAdapter extends BaseExpandableListAdapter {
+public class ProceduresParentListAdapter extends BaseExpandableListAdapter {
 
     private Context context;
     private ArrayList<String> categoryHeaders;
@@ -40,7 +37,7 @@ public class SurgeryParentListAdapter extends BaseExpandableListAdapter {
     private int midTextColor;
     private int bottomTextColor;
 
-    public SurgeryParentListAdapter(Context context, ArrayList<String> categoryHeaders){
+    public ProceduresParentListAdapter(Context context, ArrayList<String> categoryHeaders){
         this.context = context;
 
         this.categoryHeaders = new ArrayList<>();
@@ -64,7 +61,7 @@ public class SurgeryParentListAdapter extends BaseExpandableListAdapter {
         final CustomExpListView secondLevelExpListView = new CustomExpListView(this.context);
         String parentNode = (String) getGroup(groupPosition);
 
-        SurgerySecondLevelAdapter secondLevel = new SurgerySecondLevelAdapter(this.context,
+        ProceduresSecondLevelAdapter secondLevel = new ProceduresSecondLevelAdapter(this.context,
                 ProcedureInfo.getSubCategoryHeaders(parentNode));
         if (setMidColor)
             secondLevel.setMidColor(midColor);

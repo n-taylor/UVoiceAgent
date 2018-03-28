@@ -11,16 +11,14 @@ import android.widget.TextView;
 
 import java.text.NumberFormat;
 import java.util.Locale;
-import java.util.regex.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * The Adapter for the list view with specific surgeries.
  * Created by Nathan Taylor on 3/22/2018.
  */
 
-public class SurgeryCodesListAdapter extends ArrayAdapter<String> implements SurgeryCostRetrievalListener {
+public class ProceduresSelectListAdapter extends ArrayAdapter<String> implements ProcedureCostRetrievalListener {
 
     private Context context;
     private ArrayList<String> procedures;
@@ -30,7 +28,7 @@ public class SurgeryCodesListAdapter extends ArrayAdapter<String> implements Sur
     private boolean setBackColor = false;
     private boolean setTextColor = false;
 
-    public SurgeryCodesListAdapter(Context context, ArrayList<String> descriptions){
+    public ProceduresSelectListAdapter(Context context, ArrayList<String> descriptions){
         super(context, 0, descriptions);
         this.context = context;
         this.procedures = descriptions;
@@ -73,7 +71,7 @@ public class SurgeryCodesListAdapter extends ArrayAdapter<String> implements Sur
      * @param description The description of the procedure.
      */
     private void displayCost(String description){
-        SurgeryCostRetrieveTask task = new SurgeryCostRetrieveTask();
+        ProcedureCostRetrieveTask task = new ProcedureCostRetrieveTask();
         task.addListener(this);
         task.execute(ProcedureInfo.getCode(description), description);
     }

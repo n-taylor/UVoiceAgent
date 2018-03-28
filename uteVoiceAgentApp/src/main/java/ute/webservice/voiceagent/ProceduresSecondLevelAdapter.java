@@ -10,18 +10,16 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
 /**
  * Created by Nathan Taylor on 3/20/2018.
  */
 
-public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter implements SurgeryCostRetrievalListener {
+public class ProceduresSecondLevelAdapter extends BaseExpandableListAdapter implements ProcedureCostRetrievalListener {
 
     private Context context;
     private ArrayList<String> subcategoryHeaders;
@@ -42,7 +40,7 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter impleme
 
     private ParseResult PR;
 
-    public SurgerySecondLevelAdapter(Context context, ArrayList<String> subcategoryHeaders){
+    public ProceduresSecondLevelAdapter(Context context, ArrayList<String> subcategoryHeaders){
         this.context = context;
         this.subcategoryHeaders = new ArrayList<>();
         this.subcategoryHeaders.addAll(subcategoryHeaders);
@@ -232,13 +230,13 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter impleme
      */
     private void displaySurgeries(String category, String subCategory, String extremity){
         ArrayList<String> procedures = ProcedureInfo.getExtremityProcedureDescriptions(category, subCategory, extremity);
-        Intent intent = new Intent(context, SurgeryCodesActivity.class);
+        Intent intent = new Intent(context, ProceduresSelectActivity.class);
         intent.putExtra("procedures", procedures);
         context.startActivity(intent);
     }
 
     private void displayCost(String description){
-        SurgeryCostRetrieveTask task = new SurgeryCostRetrieveTask();
+        ProcedureCostRetrieveTask task = new ProcedureCostRetrieveTask();
         task.addListener(this);
         task.execute(ProcedureInfo.getCode(description), description);
     }
@@ -260,7 +258,7 @@ public class SurgerySecondLevelAdapter extends BaseExpandableListAdapter impleme
      * @param codes The codes and their associated descriptions.
      */
     private void startSurgeryCodesActivity(String message, HashMap<String, String> codes){
-        Intent intent = new Intent(context, SurgeryCodesActivity.class);
+        Intent intent = new Intent(context, ProceduresSelectActivity.class);
         intent.putExtra("message", message);
         intent.putExtra("codes", codes);
         context.startActivity(intent);

@@ -3,32 +3,26 @@ package ute.webservice.voiceagent;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 import ai.api.android.AIConfiguration;
 import ai.api.model.AIError;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
 
-public class SurgeryCodesActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener{
+public class ProceduresSelectActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener{
 
-    private static String TAG = SurgeryActivity.class.getName();
+    private static String TAG = ProceduresListActivity.class.getName();
 
     private AIButton aiButton;
     private Button cancelButton;
@@ -62,7 +56,7 @@ public class SurgeryCodesActivity extends BaseActivity implements AIButton.AIBut
      */
     private void initializeListView(){
         listView = (ListView)findViewById(R.id.surgery_codes_list_view);
-        SurgeryCodesListAdapter adapter = new SurgeryCodesListAdapter(this, procedures);
+        ProceduresSelectListAdapter adapter = new ProceduresSelectListAdapter(this, procedures);
         adapter.setBackColor(ContextCompat.getColor(this, R.color.color_slategrey));
         adapter.setTextColor(Color.WHITE);
         listView.setAdapter(adapter);
@@ -198,8 +192,8 @@ public class SurgeryCodesActivity extends BaseActivity implements AIButton.AIBut
 
                 // Retrieve the information and display the results
                 RetrieveTask httpTask = new RetrieveTask(dataasked,
-                        CertificateManager.getSSlContext(SurgeryCodesActivity.this)); // the task to retrieve the information
-                httpTask.addListener(SurgeryCodesActivity.this);
+                        CertificateManager.getSSlContext(ProceduresSelectActivity.this)); // the task to retrieve the information
+                httpTask.addListener(ProceduresSelectActivity.this);
                 httpTask.execute();
             }
 

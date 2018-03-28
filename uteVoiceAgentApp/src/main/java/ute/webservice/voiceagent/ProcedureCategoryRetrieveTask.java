@@ -1,12 +1,9 @@
 package ute.webservice.voiceagent;
 
-import android.accounts.Account;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpPostHC4;
 import org.apache.http.client.methods.HttpGetHC4;
 import org.apache.http.entity.StringEntity;
 
@@ -16,14 +13,14 @@ import java.util.ArrayList;
 
 /**
  * <p>This task, when executed, retrieves all the categories, subcategories and specific surgery types.
- * To get the results, the caller must implement SurgeryCategoryRetrievalListener.</p>
+ * To get the results, the caller must implement ProcedureCategoryRetrievalListener.</p>
  *
  * <p>Here is an example of how to use this class:</p>
  *
- * public class Example implements SurgeryCategoryRetrievalListener {<br/>
+ * public class Example implements ProcedureCategoryRetrievalListener {<br/>
  *
  *     public getCategories(){
- *         SurgeryCategoryRetrieveTask task = new SurgeryCategoryRetrieveTask();
+ *         ProcedureCategoryRetrieveTask task = new ProcedureCategoryRetrieveTask();
  *         task.addListener(this);
  *         task.execute();
  *     }
@@ -38,16 +35,16 @@ import java.util.ArrayList;
  *
  * Created by Nathan Taylor on 3/21/2018.
  */
-public class SurgeryCategoryRetrieveTask extends AsyncTask<Void, Void, String> {
+public class ProcedureCategoryRetrieveTask extends AsyncTask<Void, Void, String> {
 
     /**
      * The list of listeners to notify when a result is obtained and processed.
      */
-    private ArrayList<SurgeryCategoryRetrievalListener> listeners;
+    private ArrayList<ProcedureCategoryRetrievalListener> listeners;
 
     private ParseResult PR;
 
-    public SurgeryCategoryRetrieveTask(){
+    public ProcedureCategoryRetrieveTask(){
         listeners = new ArrayList<>();
         PR = new ParseResult();
     }
@@ -89,12 +86,12 @@ public class SurgeryCategoryRetrieveTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String result){
-        SurgeryCategoryMap map = null;
+        ProcedureCategoryMap map = null;
         if (result != null && !result.isEmpty()){
             map = PR.parseCategories(result);
         }
 
-        for (SurgeryCategoryRetrievalListener listener : listeners){
+        for (ProcedureCategoryRetrievalListener listener : listeners){
             //listener.onCategoryRetrieval(map.getCategories(), map.getSubcategories(), map.getSurgeries());
             listener.onCategoryRetrieval(map.getCategories());
         }
@@ -104,9 +101,30 @@ public class SurgeryCategoryRetrieveTask extends AsyncTask<Void, Void, String> {
      * Subscribes the given listener to receive the results of a webservice call.
      * @param listener The listener to subscribe.
      */
-    public void addListener(SurgeryCategoryRetrievalListener listener){
+    public void addListener(ProcedureCategoryRetrievalListener listener){
         listeners.add(listener);
     }
 
 }
 
+/**
+ * An interface required by any Activity that will use ProcedureCategoryRetrieveTask.
+ * Created by Nathan Taylor on 3/21/2018.
+ */
+interface ProcedureCategoryRetrievalListener {
+
+//    /**
+//     * Provides all the categories, subcategories and specific surgery types listed on the server.
+//     * @param categories A ArrayList of all the main categories of surgery
+//     * @param subCategories A map from each main category of surgery to its subcategory
+//     * @param surgeryTypes A map from each subcategory to the specific surgery type.
+//     */
+//    void onCategoryRetrieval(ArrayList<String> categories, Map<String, ArrayList<String>> subCategories,
+//                             Map<String, ArrayList<String>> surgeryTypes);
+
+    /**
+     * Provides all the categories of procedures listed by the webservice.
+     * @param categories All surgery category procedures.
+     */
+    void onCategoryRetrieval(ArrayList<String> categories);
+}

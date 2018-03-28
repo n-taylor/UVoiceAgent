@@ -1,7 +1,5 @@
 package ute.webservice.voiceagent;
 
-import android.os.AsyncTask;
-
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -12,7 +10,7 @@ import java.util.regex.Pattern;
  * Created by Nathan Taylor on 3/23/2018.
  */
 
-public class ProcedureInfo implements SurgeryCategoryRetrievalListener, SurgeryCodeRetrievalListener{
+public class ProcedureInfo implements ProcedureCategoryRetrievalListener, ProcedureJsonRetrievalListener {
 
     private static boolean isRetrieving = false; // Determines whether the a call to the server is still in process.
     public final static String MISC_CATEGORY_TITLE = "OTHER";
@@ -190,7 +188,7 @@ public class ProcedureInfo implements SurgeryCategoryRetrievalListener, SurgeryC
 
     private void retrieve(){
         isRetrieving = true;
-        SurgeryCategoryRetrieveTask task = new SurgeryCategoryRetrieveTask();
+        ProcedureCategoryRetrieveTask task = new ProcedureCategoryRetrieveTask();
         task.addListener(this);
         task.execute();
     }
@@ -212,7 +210,7 @@ public class ProcedureInfo implements SurgeryCategoryRetrievalListener, SurgeryC
         if (categoryNames == null)
             return;
         if (currentCategory < categoryNames.size()) {
-            SurgeryCodeRetrieveTask task = new SurgeryCodeRetrieveTask();
+            ProcedureJsonRetrieveTask task = new ProcedureJsonRetrieveTask();
             task.addListener(this);
             task.execute(categoryNames.get(currentCategory++));
         }
