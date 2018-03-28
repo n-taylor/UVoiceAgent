@@ -42,6 +42,7 @@ public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonLi
 
     private ParseResult PR;
     private DataAsked dataasked;
+    private android.support.v7.widget.Toolbar setting_toolbar;
 
     private SharedData sessiondata;
     private String accountID;
@@ -51,6 +52,7 @@ public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_surgery);
+
         initializeToolbar();
         initializeButtons();
         initializeTextViews();
@@ -93,6 +95,16 @@ public class SurgeryActivity extends BaseActivity implements AIButton.AIButtonLi
     private void initializeToolbar(){
         Toolbar toolbar = (Toolbar) findViewById(R.id.setting_toolbar);
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+        public void onClick(View v) {
+                      finish();
+            }
+        });
     }
 
     /**

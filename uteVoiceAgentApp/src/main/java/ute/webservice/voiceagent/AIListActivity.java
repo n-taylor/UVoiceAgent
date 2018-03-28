@@ -25,8 +25,6 @@ import ai.api.model.AIError;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
 
-import static ute.webservice.voiceagent.Constants.CLINWEB_CENSUS_SPECFIC_QUERY;
-
 public class AIListActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener {
 
     private static String TAG = AIListActivity.class.getName();
@@ -39,6 +37,7 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
     private Button cancelButton;
     private AIButton aiButton;
     private TextView queryTextView;
+    private android.support.v7.widget.Toolbar setting_toolbar;
 
     private DataAsked dataAsked;
     private ParseResult PR;
@@ -57,6 +56,19 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aibutton_sample_accordion);
+
+        setting_toolbar = (Toolbar) findViewById(R.id.setting_toolbar);
+        setSupportActionBar(setting_toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        setting_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         // get the listview
         expListView = (ExpandableListView) findViewById(R.id.resultListView);
@@ -235,9 +247,6 @@ public class AIListActivity extends BaseActivity implements AIButton.AIButtonLis
         accountID = sessiondata.getKeyAccount();
         account_access = sessiondata.getKeyAccess();
 
-        //Set up action bar by toolbar
-        Toolbar settintTB= (Toolbar) findViewById(R.id.setting_toolbar);
-        setSupportActionBar(settintTB);
 
         final AIConfiguration config = new AIConfiguration(Config.ACCESS_TOKEN,
                 AIConfiguration.SupportedLanguages.English,
