@@ -177,13 +177,16 @@ public class ProceduresSecondLevelAdapter extends BaseExpandableListAdapter impl
             });
         }
 
-        if (ProcedureInfo.getExtremityHeaders(currentCategory, headerTitle).size() > 5){
-            convertView.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v){
-                    displaySurgeries(currentCategory, headerTitle);
-                }
-            });
+        ArrayList<String> headers = ProcedureInfo.getExtremityHeaders(currentCategory, headerTitle);
+        if (headers.size() > 5){
+            if (!ProcedureInfo.isExtremity(currentCategory, headerTitle, headers.get(0))) {
+                convertView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        displaySurgeries(currentCategory, headerTitle);
+                    }
+                });
+            }
         }
 
         return convertView;
