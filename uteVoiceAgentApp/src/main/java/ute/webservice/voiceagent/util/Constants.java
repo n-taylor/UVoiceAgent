@@ -37,6 +37,7 @@ public final class Constants {
 
     public final static String GET_SURGERY_COST = "getSurgeryCost";
     public final static String GET_CENSUS = "getCensus";
+    public final static String GET_ONCALL = "getOnCall";
 
     public HashMap<String, String> units = new HashMap<String, String>();
 

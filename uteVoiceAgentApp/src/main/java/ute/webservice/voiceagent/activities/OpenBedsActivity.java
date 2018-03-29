@@ -69,6 +69,14 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_openbeds);
 
+
+        sessiondata = new SharedData(getApplicationContext());
+        accountID = sessiondata.getKeyAccount();
+        account_access = sessiondata.getKeyAccess();
+
+        TextView userIDText = (TextView) findViewById(R.id.userText);
+        userIDText.setText(accountID);
+
         setting_toolbar = (Toolbar) findViewById(R.id.setting_toolbar);
         setSupportActionBar(setting_toolbar);
 
@@ -253,12 +261,6 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
         aiButton = (AIButton) findViewById(R.id.micButton);
         cancelButton = (Button) findViewById(R.id.cancelButton);
         queryTextView = (TextView) findViewById(R.id.querytextView);
-
-        //Open shared data
-        sessiondata = new SharedData(getApplicationContext());
-        accountID = sessiondata.getKeyAccount();
-        account_access = sessiondata.getKeyAccess();
-
 
         final AIConfiguration config = new AIConfiguration(Config.ACCESS_TOKEN,
                 AIConfiguration.SupportedLanguages.English,

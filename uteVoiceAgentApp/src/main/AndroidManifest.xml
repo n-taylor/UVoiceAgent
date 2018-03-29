@@ -65,6 +65,10 @@
             android:label="@string/title_activity_surgery"
             android:theme="@style/My_theme" />
         <activity
+            android:name=".activities.OnCallActivity"
+            android:label="@string/title_activity_oncall"
+            android:theme="@style/My_theme" />
+        <activity
             android:name=".activities.ProceduresSelectActivity"
             android:label="@string/title_activity_surgery_codes"
             android:theme="@style/AppTheme.NoActionBar"></activity>
