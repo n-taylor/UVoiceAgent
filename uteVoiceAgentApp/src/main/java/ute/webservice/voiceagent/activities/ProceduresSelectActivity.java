@@ -54,12 +54,25 @@ public class ProceduresSelectActivity extends BaseActivity implements AIButton.A
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_procedures_select);
+
+        sessiondata = new SharedData(getApplicationContext());
+        accountID = sessiondata.getKeyAccount();
+        account_access = sessiondata.getKeyAccess();
+
+        TextView userIDText = (TextView) findViewById(R.id.userText);
+        userIDText.setText(accountID);
+
+
         initializeToolbar();
         initializeButtons();
         initializeTextViews();
         initializeSharedData();
         initializeBundle();
         initializeListView();
+
+
+
+
     }
 
     /**

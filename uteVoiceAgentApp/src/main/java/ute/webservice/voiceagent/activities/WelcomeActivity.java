@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import org.w3c.dom.Text;
+
 import ai.api.android.AIConfiguration;
 import ai.api.android.GsonFactory;
 import ai.api.model.AIError;
@@ -72,14 +74,19 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
 
 
 
+
         //Open shared data
         sessiondata = new SharedData(getApplicationContext());
         accountID = sessiondata.getKeyAccount();
         account_access = sessiondata.getKeyAccess();
 
-        //Set up action bar by toolbar
+        TextView userIDText = (TextView) findViewById(R.id.userText);
+        userIDText.setText(accountID);
+
+                //Set up action bar by toolbar
         Toolbar settintTB= (Toolbar) findViewById(R.id.setting_toolbar);
         setSupportActionBar(settintTB);
+
         dataasked = new DataAsked();
 
         fetchProcedureInfo();
@@ -135,6 +142,14 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), ProceduresListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        oncallButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), OnCallActivity.class);
                 startActivity(intent);
             }
         });
@@ -261,6 +276,10 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
                 startActivity(intent);
             }
             else if (dataasked.getCurrentAction().equals(Constants.GET_SURGERY_COST)){
+                Intent intent = new Intent(this, ProceduresListActivity.class);
+                startActivity(intent);
+            }
+            else if (dataasked.getCurrentAction().equals(Constants.GET_ONCALL)){
                 Intent intent = new Intent(this, ProceduresListActivity.class);
                 startActivity(intent);
             }

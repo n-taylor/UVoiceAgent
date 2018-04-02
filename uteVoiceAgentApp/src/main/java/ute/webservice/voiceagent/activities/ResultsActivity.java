@@ -89,6 +89,9 @@ public class ResultsActivity extends BaseActivity implements AIButton.AIButtonLi
         accountID = sessiondata.getKeyAccount();
         account_access = sessiondata.getKeyAccess();
 
+        TextView userIDText = (TextView) findViewById(R.id.userText);
+        userIDText.setText(accountID);
+
         //Set up action bar by toolbar
         Toolbar settintTB= (Toolbar) findViewById(R.id.setting_toolbar);
         setSupportActionBar(settintTB);
