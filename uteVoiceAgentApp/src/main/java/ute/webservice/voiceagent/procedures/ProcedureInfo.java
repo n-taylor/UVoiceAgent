@@ -224,7 +224,7 @@ public class ProcedureInfo implements ProcedureCategoryRetrievalListener, Proced
 
             // Signal that the retrieving process has ended
             isRetrieving = false;
-            procedureTreeRoot.printTree();
+            //procedureTreeRoot.printTree();
             notifyListeners();
         }
     }

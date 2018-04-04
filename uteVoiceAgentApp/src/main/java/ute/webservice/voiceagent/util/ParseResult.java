@@ -1,5 +1,7 @@
 package ute.webservice.voiceagent.util;
 
+import android.util.Xml;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -9,6 +11,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
 import ai.api.model.AIResponse;
 import ai.api.model.Metadata;
@@ -22,9 +27,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Handle response from API.AI, and save parameters temporarily.
@@ -33,11 +41,19 @@ import java.util.HashMap;
 
 public class ParseResult {
 
+    private static String openingTags = "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n" +
+            "<procedureCall name=\"GetGroupsCurrAssignXml\" xmlns=\"http://xml.amcomsoft.com/api/request\">   \n" +
+            "<parameter name=\"ocmid\" null=\"false\">";
+
+    private static String closingTags = "</parameter>   \n" +
+            "<parameter name=\"tz\" null=\"true\"></parameter> \n" +
+            "</procedureCall> \n";
+
     //intent names, which matched to the names on API.AI.
     //TODO: load intent name from file/Constants, since this table may grow tremendously.
-    static final String intent_yes = "ReplyYes";
-    static final String intent_unknown = "Default Fallbck Intent";
-    static final String intent_sq = "surgery question";
+    private static final String intent_yes = "ReplyYes";
+    private static final String intent_unknown = "Default Fallbck Intent";
+    private static final String intent_sq = "surgery question";
 
     //parameters
     static final String param_surgery = "SurgeryCategory";
@@ -280,6 +296,168 @@ public class ParseResult {
             e.printStackTrace();
         }
         return list;
+    }
+
+    /**
+     * When a call for "GetGroupsCurrAssignXml" is made to spok and the xml is received, extracts
+     * the Messaging ID (MID) and name of each on-call personnel.
+     * @param in The input stream to pull the xml from
+     * @return A mapping whose key is the on-call MID and value is the name retrieved.
+     */
+    public HashMap<String, String> parseCurrentAssignments(InputStream in) throws XmlPullParserException, IOException{
+        try{
+            XmlPullParser parser = Xml.newPullParser();
+            parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
+            parser.setInput(in, null);
+            parser.nextTag();
+            parser.nextTag();
+            return readAssignments(parser);
+        }
+        finally {
+            in.close();
+        }
+    }
+
+    /**
+     * If the current tag is not an opening tag named "success," throws an XmlPullParserException.
+     * Otherwise, finds each assignment and adds its MID and name to a HashMap, which it will return.
+     *
+     * @param parser The XmlPullParser loaded with the input stream containing the XML to parse
+     * @return A HashMap mapping the MID to the name of each assignment.
+     */
+    private HashMap<String, String> readAssignments(XmlPullParser parser) throws XmlPullParserException, IOException{
+        HashMap<String, String> assignments = new HashMap<>();
+
+        parser.require(XmlPullParser.START_TAG, null, "success");
+        // move to <getGroupsCurrentAssignments>
+        while (parser.getName() != null && !parser.getName().equals("getGroupsCurrentAssignments")){
+            parser.next();
+            if (parser.getEventType() == parser.TEXT)
+                parser.next();
+        }
+        while (parser.next() != XmlPullParser.END_TAG){
+            if (parser.getEventType() != XmlPullParser.START_TAG) {
+                continue;
+            }
+            String name = parser.getName();
+            // Look for assignment tags
+            if (name.equals("assignment")){
+                assignments = addAssignment(parser, assignments);
+            }
+            else{
+                skip(parser); // skip this tag since it isn't an assignment.
+            }
+        }
+        return assignments;
+    }
+
+    /**
+     * Provided the parser is within an <assignment> tag, extracts the MID and name, adds them
+     * to the given HashMap and returns the same HashMap.
+     * If the parser is not currently at an <assignment> tag, throws an XmlPullParserException
+     * @param assignments The HashMap to add to.
+     * @return The given HashMap with the added assignment information.
+     */
+    private HashMap<String, String> addAssignment(XmlPullParser parser, HashMap<String, String> assignments) throws XmlPullParserException, IOException{
+        parser.require(XmlPullParser.START_TAG, null, "assignment");
+        String mid = null;
+        String name = null;
+        while (parser.next() != XmlPullParser.END_TAG){
+            if (parser.getEventType() != XmlPullParser.START_TAG){
+                continue;
+            }
+            String tagName = parser.getName();
+            if (tagName.equals("mid")){
+                mid = readMID(parser);
+            } else if (tagName.equalsIgnoreCase("name")){
+                name = readName(parser);
+            }
+            else {
+                skip(parser);
+            }
+        }
+        assignments.put(mid, name);
+        return assignments;
+    }
+
+    /**
+     * Reads the text inside an "mid" tag and advances the parser to the </mid> end tag.
+     * @param parser
+     * @return The text inside the "mid" tag
+     */
+    private String readMID(XmlPullParser parser) throws XmlPullParserException, IOException{
+        parser.require(XmlPullParser.START_TAG, null, "mid");
+        String mid = readText(parser);
+        parser.require(XmlPullParser.END_TAG, null, "mid");
+        return mid;
+    }
+
+    /**
+     * Reads the text inside an "name" tag and advances the parser to the </name> end tag.
+     * @param parser
+     * @return The text inside the "name" tag
+     */
+    private String readName(XmlPullParser parser) throws XmlPullParserException, IOException{
+        parser.require(XmlPullParser.START_TAG, null, "name");
+        String name = readText(parser);
+        parser.require(XmlPullParser.END_TAG, null, "name");
+        return name;
+    }
+
+    /**
+     *
+     * @param parser
+     * @return
+     */
+    private String readText(XmlPullParser parser) throws IOException, XmlPullParserException {
+        String result = "";
+        if (parser.next() == XmlPullParser.TEXT) {
+            result = parser.getText();
+            parser.nextTag();
+        }
+        return result;
+    }
+
+    private void skip(XmlPullParser parser) throws XmlPullParserException, IOException {
+        if (parser.getEventType() != XmlPullParser.START_TAG) {
+            throw new IllegalStateException();
+        }
+        int depth = 1;
+        while (depth != 0) {
+            switch (parser.next()) {
+                case XmlPullParser.END_TAG:
+                    depth--;
+                    break;
+                case XmlPullParser.START_TAG:
+                    depth++;
+                    break;
+            }
+        }
+    }
+
+    /**
+     * Creates the XML needed to send a request to get information about the current assignment to the
+     * group specified.
+     * @param OCMID The On-Call Messaging ID of the group about which to get information
+     * @return The completed string containing the XML request to be sent to the socket.
+     */
+    public static String getCurrentAssignmentsCall(String OCMID){
+        return openingTags + OCMID + closingTags;
+    }
+
+    /**
+     * Given the name of a groupName, extracts and returns the OCMID.
+     * The groupName string must be in this format: BODY DONATION [10000516]
+     * @return The OCMID as a string
+     */
+    public static String extractOCMID(String groupName){
+        String ocmid = "";
+        Pattern pattern = Pattern.compile("[A-Za-z\\s]+\\[(\\d+)\\]");
+        Matcher matcher = pattern.matcher(groupName);
+        if (matcher.find()) {
+            ocmid = matcher.group(0);
+        }
+        return ocmid;
     }
 }
 

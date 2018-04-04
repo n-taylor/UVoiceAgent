@@ -6,6 +6,7 @@ package ute.webservice.voiceagent.activities;
 
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -14,6 +15,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringReader;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +32,7 @@ import ai.api.model.AIError;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
 import ute.webservice.voiceagent.R;
+import ute.webservice.voiceagent.oncall.ClientTestEmulator;
 import ute.webservice.voiceagent.util.TTS;
 import ute.webservice.voiceagent.openbeds.ListAdapter;
 import ute.webservice.voiceagent.util.CertificateManager;
@@ -40,7 +47,6 @@ import ute.webservice.voiceagent.util.SharedData;
 
 
 public class OnCallActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener {
-
 
     private static String TAG = OpenBedsActivity.class.getName();
 
@@ -129,6 +135,52 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
         });
         dataAsked = new DataAsked();
 
+        AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                testCall();
+                return null;
+            }
+        };
+        task.execute();
+    }
+
+    /**
+     * Tries to make a set call to the webservice to get on call information and print the result
+     */
+    private void testCall(){
+        try {
+
+            // Open a socket to the server
+            Socket socket = new Socket("155.100.69.40", 9720);
+
+            // Wait for the server to accept connection before reading the xml file
+
+//            String group = ParseResult.extractOCMID("10000636");
+            String group = "10000636";
+            String toRead = ParseResult.getCurrentAssignmentsCall(group);
+            BufferedReader reader = new BufferedReader(new StringReader(toRead));
+            String line;
+            StringBuilder  stringBuilder = new StringBuilder();
+            while((line = reader.readLine() ) != null) {
+                stringBuilder.append(line);
+            }
+
+            // Send xml data to server
+
+            PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
+            writer.println(stringBuilder.toString());
+            //writer.close();
+            // Wait for server response
+            ClientTestEmulator.getSingleClientEmulator().readServerResponse(socket);
+            writer.close();
+
+        } catch (IOException | NumberFormatException ex) {
+            System.out.println("Error: " + ex);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     private void dummyListData() {
@@ -264,62 +316,26 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
         if (dataAsked.isIncomplete()){
             if (dataAsked.getCurrentAction().equals(Constants.GET_CENSUS)){
                 // TODO: Send to the activity that will prompt for a unit name
+                Intent intent = new Intent(this, OpenBedsActivity.class);
+                intent.putExtra("query", PR.get_ResolvedQuery());
+                intent.putExtra("result", result);
+                startActivity(intent);
             }
             else if (dataAsked.getCurrentAction().equals(Constants.GET_SURGERY_COST)){
-                // TODO: Send to the activity that will prompt for a surgery category
+                Intent intent = new Intent(this, ProceduresListActivity.class);
+                startActivity(intent);
+            }
+            else if (dataAsked.getCurrentAction().equals(Constants.GET_ONCALL)){
+                Intent intent = new Intent(this, ProceduresListActivity.class);
+                startActivity(intent);
             }
         }
         else {
             // open a ResultsActivity with the query and the corresponding result
             Intent intent = new Intent(this, ResultsActivity.class);
-
-
-            //if result is from button, extract
-            if (result.contains("[{"))
-            {
-                int aindex = result.indexOf("available");
-
-                aindex += 10;
-
-                int bindex = result.indexOf(",", aindex);
-
-                String sAnswer = result.substring(aindex+1,bindex);
-
-                int answer = Integer.parseInt(sAnswer);
-
-                String beds = "beds";
-
-                if (answer == 1)
-                {
-                    beds = "bed";
-                }
-
-                int sindex = result.indexOf("has");
-                result = result.substring(0,sindex)+"has "+sAnswer+" "+beds+" available";
-            }
-            intent.putExtra("query", query);
+            intent.putExtra("query", PR.get_ResolvedQuery());
             intent.putExtra("result", result);
             startActivity(intent);
         }
-    }
-
-    //launch census request via button
-    public void launchCensus(String room)
-    {
-
-        String roomx = room.replaceAll("\\s", "");
-
-        query = roomx;
-
-        dataAsked.setCensusUnit(roomx);
-        dataAsked.setCurrentAction("getCensus");
-        dataAsked.setCurrentReply(room + " has this many beds remaning:");
-        dataAsked.setIncomplete(false);
-        dataAsked.setCurrentSurgeryCategory("");
-        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(OnCallActivity.this)); // the task to retrieve the information
-        httpTask.addListener(OnCallActivity.this);
-        httpTask.execute();
     }
 }
