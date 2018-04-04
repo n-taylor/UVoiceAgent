@@ -333,9 +333,9 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
             }
         }
 
-//        Intent intent = new Intent(this, OnCallActivity.class);
-//        intent.putExtra("query", "Phone numbers");
-//        intent.putExtra("phoneNumMap", numbers);
-//        startActivity(intent);
+        Intent intent = new Intent(this, OnCallActivity.class);
+        intent.putExtra("query", "Phone numbers");
+        intent.putExtra("phoneNumMap", numbers);
+        startActivity(intent);
     }
 }

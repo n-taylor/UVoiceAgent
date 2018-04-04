@@ -64,13 +64,15 @@ public class OnCallListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public Object getChild(int i, int i1) {
-        if (i < 0 || i >= getGroupCount())
+    public Object getChild(int groupPosition, int childPosition) {
+        if (groupPosition < 0 || groupPosition >= getGroupCount())
+        return null;
+        String name = (String) getGroup(groupPosition);
+        ArrayList<String> nums = numbers.get(name);
+
+        if (childPosition < 0 || childPosition >= nums.size())
             return null;
-        ArrayList<String> nums = (ArrayList<String>)getGroup(i);
-        if (i1 < 0 || i1 >= nums.size())
-            return null;
-        return nums.get(i1);
+        return nums.get(childPosition);
     }
 
     @Override
