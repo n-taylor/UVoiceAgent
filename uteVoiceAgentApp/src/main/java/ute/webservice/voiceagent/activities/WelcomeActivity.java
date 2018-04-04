@@ -14,7 +14,8 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
-import org.w3c.dom.Text;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import ai.api.android.AIConfiguration;
 import ai.api.android.GsonFactory;
@@ -22,6 +23,8 @@ import ai.api.model.AIError;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
 import ute.webservice.voiceagent.R;
+import ute.webservice.voiceagent.oncall.util.OnCallRetrievalListener;
+import ute.webservice.voiceagent.oncall.util.OnCallRetrieveTask;
 import ute.webservice.voiceagent.util.TTS;
 import ute.webservice.voiceagent.procedures.ProcedureInfo;
 import ute.webservice.voiceagent.procedures.ProcedureInfoListener;
@@ -35,7 +38,7 @@ import ute.webservice.voiceagent.util.RetrievalListener;
 import ute.webservice.voiceagent.util.RetrieveTask;
 import ute.webservice.voiceagent.util.SharedData;
 
-public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener, ProcedureInfoListener {
+public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener, ProcedureInfoListener, OnCallRetrievalListener {
 
     private String TAG = WelcomeActivity.class.getName();
 
@@ -50,7 +53,7 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
     private ActionBar actionBar;
 
     private Gson gson = GsonFactory.getGson();
-    private DataAsked dataasked;
+    private DataAsked dataAsked;
     private ParseResult PR;
 
     SharedData sessiondata;
@@ -87,7 +90,7 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         Toolbar settintTB= (Toolbar) findViewById(R.id.setting_toolbar);
         setSupportActionBar(settintTB);
 
-        dataasked = new DataAsked();
+        dataAsked = new DataAsked();
 
         fetchProcedureInfo();
     }
@@ -221,18 +224,25 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
 
                 String query = PR.get_ResolvedQuery();
 
-                dataasked.setIncomplete(PR.get_ActionIncomplete());
-                dataasked.setCurrentReply(PR.get_reply());
-                dataasked.setCensusUnit(PR.getCensusUnit());
-                dataasked.setCurrentSurgeryCategory(PR.get_param_Surgery());
-                dataasked.setCurrentAction(PR.get_Action());
+                dataAsked.setIncomplete(PR.get_ActionIncomplete());
+                dataAsked.setCurrentReply(PR.get_reply());
+                dataAsked.setCensusUnit(PR.getCensusUnit());
+                dataAsked.setCurrentSurgeryCategory(PR.get_param_Surgery());
+                dataAsked.setCurrentAction(PR.get_Action());
                 Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                // Retrieve the information and display the results
-                RetrieveTask httpTask = new RetrieveTask(dataasked,
-                        CertificateManager.getSSlContext(WelcomeActivity.this)); // the task to retrieve the information
-                httpTask.addListener(WelcomeActivity.this);
-                httpTask.execute();
+                if (PR.get_Action().equalsIgnoreCase(Constants.GET_ONCALL)){
+                    OnCallRetrieveTask task = new OnCallRetrieveTask();
+                    String OCMID = ParseResult.extractOCMID(PR.get_reply());
+                    task.addListener(WelcomeActivity.this);
+                    task.execute(OCMID);
+                }
+                else {
+                    // Retrieve the information and display the results
+                    RetrieveTask httpTask = new RetrieveTask(dataAsked,
+                            CertificateManager.getSSlContext(WelcomeActivity.this)); // the task to retrieve the information
+                    httpTask.addListener(WelcomeActivity.this);
+                    httpTask.execute();
+                }
             }
 
         });
@@ -267,29 +277,32 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
      */
     @Override
     public void onRetrieval(String result) {
-        if (dataasked.isIncomplete()){
-            if (dataasked.getCurrentAction().equals(Constants.GET_CENSUS)){
+        if (dataAsked.isIncomplete()){
+            if (dataAsked.getCurrentAction().equals(Constants.GET_CENSUS)){
                 // TODO: Send to the activity that will prompt for a unit name
                 Intent intent = new Intent(this, OpenBedsActivity.class);
                 intent.putExtra("query", PR.get_ResolvedQuery());
                 intent.putExtra("result", result);
                 startActivity(intent);
             }
-            else if (dataasked.getCurrentAction().equals(Constants.GET_SURGERY_COST)){
+            else if (dataAsked.getCurrentAction().equals(Constants.GET_SURGERY_COST)){
                 Intent intent = new Intent(this, ProceduresListActivity.class);
                 startActivity(intent);
             }
-            else if (dataasked.getCurrentAction().equals(Constants.GET_ONCALL)){
+            else if (dataAsked.getCurrentAction().equals(Constants.GET_ONCALL)){
                 Intent intent = new Intent(this, ProceduresListActivity.class);
                 startActivity(intent);
             }
         }
         else {
-            // open a ResultsActivity with the query and the corresponding result
-            Intent intent = new Intent(this, ResultsActivity.class);
-            intent.putExtra("query", PR.get_ResolvedQuery());
-            intent.putExtra("result", result);
-            startActivity(intent);
+            if (dataAsked.getCurrentAction().equals(Constants.GET_CENSUS)
+                    || dataAsked.getCurrentAction().equalsIgnoreCase(Constants.GET_SURGERY_COST)) {
+                // open a ResultsActivity with the query and the corresponding result
+                Intent intent = new Intent(this, ResultsActivity.class);
+                intent.putExtra("query", PR.get_ResolvedQuery());
+                intent.putExtra("result", result);
+                startActivity(intent);
+            }
         }
     }
 
@@ -310,5 +323,19 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         oncallButton.setEnabled(true);
         welcomeTextView.setText(R.string.welcome_message);
         
+    }
+
+    @Override
+    public void onOnCallRetrieval(HashMap<String, ArrayList<String>> numbers) {
+        for (String name : numbers.keySet()){
+            for (String number : numbers.get(name)){
+                System.out.println(name + " -> " + number);
+            }
+        }
+
+//        Intent intent = new Intent(this, OnCallActivity.class);
+//        intent.putExtra("query", "Phone numbers");
+//        intent.putExtra("phoneNumMap", numbers);
+//        startActivity(intent);
     }
 }

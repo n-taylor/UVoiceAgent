@@ -32,6 +32,7 @@ public class RetrieveTask extends AsyncTask<Void,Integer,String> {
         } catch (Exception e) {
             this.exception = e;
         }
+
         return data;
     }
 

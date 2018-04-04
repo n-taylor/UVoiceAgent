@@ -30,6 +30,7 @@ import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.util.RetrievalListener;
 import ute.webservice.voiceagent.util.RetrieveTask;
 import ute.webservice.voiceagent.util.SharedData;
+import ute.webservice.voiceagent.util.TTS;
 
 public class ProceduresListActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener {
 
@@ -58,10 +59,6 @@ public class ProceduresListActivity extends BaseActivity implements AIButton.AIB
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_procedures_list);
-
-        sessiondata = new SharedData(getApplicationContext());
-        accountID = sessiondata.getKeyAccount();
-        account_access = sessiondata.getKeyAccess();
 
         TextView userIDText = (TextView) findViewById(R.id.userText);
         userIDText.setText(accountID);
@@ -143,7 +140,8 @@ public class ProceduresListActivity extends BaseActivity implements AIButton.AIB
         cancelButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                // TODO: Add action for cancel button here.
+                // stop any speech that is being played currently
+                TTS.stop();
             }
         });
     }

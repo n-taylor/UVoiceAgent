@@ -33,6 +33,7 @@ import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.oncall.ClientTestEmulator;
+import ute.webservice.voiceagent.oncall.OnCallListAdapter;
 import ute.webservice.voiceagent.util.TTS;
 import ute.webservice.voiceagent.openbeds.ListAdapter;
 import ute.webservice.voiceagent.util.CertificateManager;
@@ -45,15 +46,22 @@ import ute.webservice.voiceagent.util.RetrievalListener;
 import ute.webservice.voiceagent.util.RetrieveTask;
 import ute.webservice.voiceagent.util.SharedData;
 
-
+/**
+ * Before starting this activity, two items should be added to its intent's bundle:
+ *
+ * 1. A HashMap<String, ArrayList<String>> under the label phoneNumMap. This should be a mapping
+ *  of Names to a list of phone numbers.
+ *
+ * 2. A String under the label "query", which is the desired text to display at the top of the activity
+ */
 public class OnCallActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener {
 
     private static String TAG = OpenBedsActivity.class.getName();
 
-    ListAdapter listAdapter;
-    ExpandableListView expListView;
-    List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;
+    private ListAdapter listAdapter;
+    private ExpandableListView expListView;
+    private ArrayList<String> names;
+    private HashMap<String, ArrayList<String>> phoneNumbers;
 
     private Button cancelButton;
     private AIButton aiButton;
@@ -73,47 +81,49 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oncall);
 
+        extractBundle();
+        initializeSharedData();
+        initializeToolbar();
+        initializeButtons();
+        initializeListView();
+        initializeTextViews();
+    }
 
+    private void extractBundle(){
+        Bundle bundle = getIntent().getExtras();
+
+        // set the texts to the query and retrieved answer
+        if (bundle != null){
+            query = bundle.getString("query");
+            HashMap<String, ArrayList<String>> phoneNumMap = (HashMap<String, ArrayList<String>>)bundle.get("phoneNumMap");
+            names = new ArrayList<>();
+            names.addAll(phoneNumMap.keySet());
+            phoneNumbers = phoneNumMap;
+        }
+    }
+
+    private void initializeListView() {
+        expListView = (ExpandableListView)findViewById(R.id.on_call_ListView);
+        OnCallListAdapter adapter = new OnCallListAdapter(this, names, phoneNumbers);
+        adapter.setWidth(getResources().getDimensionPixelSize(R.dimen.surgery_list_width)-200);
+        expListView.setAdapter(adapter);
+    }
+
+    private void initializeSharedData() {
         sessiondata = new SharedData(getApplicationContext());
         accountID = sessiondata.getKeyAccount();
         account_access = sessiondata.getKeyAccess();
+        dataAsked = new DataAsked();
+    }
 
-        TextView userIDText = (TextView) findViewById(R.id.userText);
-        userIDText.setText(accountID);
+    private void initializeTextViews() {
+        this.queryTextView = (TextView)findViewById(R.id.on_call_querytextView);
+        queryTextView.setText(query);
+    }
 
-        setting_toolbar = (Toolbar) findViewById(R.id.setting_toolbar);
-        setSupportActionBar(setting_toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        setting_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-        // get the listview
-        expListView = (ExpandableListView) findViewById(R.id.resultListView);
-
-        // preparing list data
-
-        expListView.setBackgroundResource(R.drawable.menushape);
-
-        dummyListData();
-
-        listAdapter = new ListAdapter(this, listDataHeader, listDataChild);
-
-        // setting list adapter
-        expListView.setAdapter(listAdapter);
-
-
-
-        aiButton = (AIButton) findViewById(R.id.micButton);
-        cancelButton = (Button) findViewById(R.id.cancelButton);
-        queryTextView = (TextView) findViewById(R.id.querytextView);
-
+    private void initializeButtons() {
+        // configure the AI Button
+        aiButton = (AIButton)findViewById(R.id.micButton);
         final AIConfiguration config = new AIConfiguration(Config.ACCESS_TOKEN,
                 AIConfiguration.SupportedLanguages.English,
                 AIConfiguration.RecognitionEngine.System);
@@ -127,22 +137,32 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
         aiButton.setResultsListener(this);
 
         // set up the cancel button
+        cancelButton = (Button)findViewById(R.id.cancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+            @Override
+            public void onClick(View view) {
                 // stop any speech that is being played currently
                 TTS.stop();
             }
         });
-        dataAsked = new DataAsked();
+    }
 
-        AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
+    private void initializeToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.setting_toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            protected Void doInBackground(Void... voids) {
-                testCall();
-                return null;
+            public void onClick(View v) {
+                finish();
             }
-        };
-        task.execute();
+        });
+
+        TextView userIDText = (TextView) findViewById(R.id.userText);
+        userIDText.setText(accountID);
     }
 
     /**
@@ -156,8 +176,8 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
 
             // Wait for the server to accept connection before reading the xml file
 
-//            String group = ParseResult.extractOCMID("10000636");
-            String group = "10000636";
+            String group = ParseResult.extractOCMID("CARDIOLOGY - FETAL [10000636]");
+//            String group = "10000636";
             String toRead = ParseResult.getCurrentAssignmentsCall(group);
             BufferedReader reader = new BufferedReader(new StringReader(toRead));
             String line;
@@ -181,40 +201,6 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
         catch (Exception e){
             e.printStackTrace();
         }
-    }
-
-    private void dummyListData() {
-        listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<String>>();
-
-        // Adding child data
-        listDataHeader.add("1");
-        listDataHeader.add("2");
-        listDataHeader.add("3");
-
-        // Adding child data
-
-        List<String> one = new ArrayList<String>();
-        one.add("A");
-        one.add("B");
-        one.add("C");
-
-        List<String> two = new ArrayList<String>();
-        two.add("A");
-        two.add("B");
-        two.add("C");
-
-        List<String> three = new ArrayList<String>();
-        three.add("A");
-        three.add("B");
-        three.add("C");
-
-
-
-
-        listDataChild.put(listDataHeader.get(0), one);
-        listDataChild.put(listDataHeader.get(1), two);
-        listDataChild.put(listDataHeader.get(2), three);
     }
 
     @Override

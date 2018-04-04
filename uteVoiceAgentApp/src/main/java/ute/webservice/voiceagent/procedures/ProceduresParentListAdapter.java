@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import ute.webservice.voiceagent.R;
 
 /**
+ * This class defines the behavior of the top-level, or category, headers in the expandable list
+ * that displays the categories, subcategories and extremities of all the different available procedures.
  *
  * Created by Nathan Taylor on 3/20/2018.
  */

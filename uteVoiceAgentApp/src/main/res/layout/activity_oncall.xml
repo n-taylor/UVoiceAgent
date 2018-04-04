@@ -45,7 +45,7 @@
         android:paddingTop="16dp">
 
         <TextView
-            android:id="@+id/querytextView"
+            android:id="@+id/on_call_querytextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
@@ -64,11 +64,11 @@
 
 
         <ExpandableListView
-            android:id="@+id/resultListView"
-            android:layout_width="wrap_content"
+            android:id="@+id/on_call_ListView"
+            android:layout_width="@dimen/surgery_list_width"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/querytextView"/>
+            android:layout_below="@+id/on_call_querytextView"/>
 
 
 

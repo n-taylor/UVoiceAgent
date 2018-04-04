@@ -41,13 +41,20 @@ import java.util.regex.Pattern;
 
 public class ParseResult {
 
-    private static String openingTags = "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n" +
+    private static String currAssignOpeningTags = "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n" +
             "<procedureCall name=\"GetGroupsCurrAssignXml\" xmlns=\"http://xml.amcomsoft.com/api/request\">   \n" +
             "<parameter name=\"ocmid\" null=\"false\">";
 
-    private static String closingTags = "</parameter>   \n" +
+    private static String currAssignClosingTags = "</parameter>   \n" +
             "<parameter name=\"tz\" null=\"true\"></parameter> \n" +
             "</procedureCall> \n";
+
+    private static String phoneNumberOpeningTags = "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n" +
+            "<procedureCall name=\"GetPhoneNumber\" xmlns=\"http://xml.amcomsoft.com/api/request\">\n " +
+            "<parameter name=\"mid\" null=\"false\">";
+
+    private static String phoneNumberClosingTags = "</parameter> \n" +
+            "<parameter name=\"phone_number_type\" null=\"true\"></parameter> \n" + "</procedureCall>";
 
     //intent names, which matched to the names on API.AI.
     //TODO: load intent name from file/Constants, since this table may grow tremendously.
@@ -442,7 +449,7 @@ public class ParseResult {
      * @return The completed string containing the XML request to be sent to the socket.
      */
     public static String getCurrentAssignmentsCall(String OCMID){
-        return openingTags + OCMID + closingTags;
+        return currAssignOpeningTags + OCMID + currAssignClosingTags;
     }
 
     /**
@@ -452,12 +459,82 @@ public class ParseResult {
      */
     public static String extractOCMID(String groupName){
         String ocmid = "";
-        Pattern pattern = Pattern.compile("[A-Za-z\\s]+\\[(\\d+)\\]");
+        Pattern pattern = Pattern.compile("[A-Za-z\\s\\-]+\\[(\\d+)\\]");
         Matcher matcher = pattern.matcher(groupName);
         if (matcher.find()) {
-            ocmid = matcher.group(0);
+            ocmid = matcher.group(1);
         }
         return ocmid;
+    }
+
+    public static String getPhoneNumberCall(String MID){
+        return phoneNumberOpeningTags + MID + phoneNumberClosingTags;
+    }
+
+    /**
+     * After a call is written to the socket to get Phone numbers, this parses the response into
+     * a list of strings that contain each phone number associated with the MID used, prepended
+     * by the number type.
+     * @param in The input stream to read from.
+     * @return The list of phone numbers.
+     */
+    public ArrayList<String> parsePhoneNumbers(InputStream in) throws XmlPullParserException, IOException{
+        try{
+            XmlPullParser parser = Xml.newPullParser();
+            parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
+            parser.setInput(in, null);
+            parser.nextTag();
+            parser.nextTag();
+            return readNumbers(parser);
+        }
+        finally {
+            in.close();
+        }
+    }
+
+
+    private ArrayList<String> readNumbers(XmlPullParser parser) throws XmlPullParserException, IOException{
+        String numbersText = null;
+        parser.require(XmlPullParser.START_TAG, null, "success");
+        while (parser.next() != XmlPullParser.END_TAG){
+            if (parser.getEventType() != XmlPullParser.START_TAG) {
+                continue;
+            }
+            String name = parser.getName();
+            String attrType = parser.getAttributeValue(null, "name");
+            // Look for assignment tags
+            if (name.equals("parameter")){
+                if (attrType.equalsIgnoreCase("phone_number")){
+                    numbersText = readText(parser);
+                }
+                else{
+                    if (parser.next() != XmlPullParser.END_TAG)
+                        parser.next();
+                }
+            }
+            else{
+                skip(parser); // skip this tag since it isn't an assignment.
+            }
+        }
+
+        return extractNumbers(numbersText);
+    }
+
+    /**
+     * Given a string, looks for phone numbers and their types and places them into an ArrayList<String>
+     * @param text
+     * @return
+     */
+    private ArrayList<String> extractNumbers(String text){
+        ArrayList<String> numbers = new ArrayList<>();
+        Pattern pattern = Pattern.compile("(\\[[0-9]+\\]\\[[A-Z\\s]+\\])");
+        Matcher matcher = pattern.matcher(text);
+        if (matcher.find()){
+            for (int i = 1; i <= matcher.groupCount(); i++){
+                numbers.add(matcher.group(i));
+            }
+        }
+        return numbers;
     }
 }
 
