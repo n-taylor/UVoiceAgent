@@ -23,6 +23,8 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import android.widget.ExpandableListView;
 import android.widget.TextView;
@@ -87,8 +89,36 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
         initializeSharedData();
         initializeToolbar();
         initializeButtons();
-        //initializeListView();
+        initializeListView();
         initializeTextViews();
+        speak();
+    }
+
+    private void speak(){
+        int size = names.size();
+        String toSpeak = String.format(String.valueOf(size) + " result%s found.", (size != 1) ? "s" : "");
+        if (names.size() == 1){
+            toSpeak += " " + formatName(names.get(0));
+        }
+        TTS.speak(toSpeak);
+    }
+
+    /**
+     * Given a name in the format "Last, First" or "Last, First Middle", reformats it into "First Middle Last"
+     * If the string is not in that format, returns the string given.
+     * @param name The name to format
+     * @return The formatted name
+     */
+    private String formatName(String name){
+        String ordered = name;
+        Pattern pattern = Pattern.compile("(\\D+), [\\D\\s]+");
+        Matcher matcher = pattern.matcher(name);
+        if (matcher.find()){
+            String last = matcher.group(1);
+            ordered = name.replace(last + ", ", "");
+            ordered += " " + last;
+        }
+        return ordered;
     }
 
     private void extractBundle(){
@@ -120,6 +150,13 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
 
     private void initializeTextViews() {
         this.queryTextView = (TextView)findViewById(R.id.on_call_querytextView);
+        query = query.substring(0,1).toUpperCase() + query.substring(1).toLowerCase();
+        query = query.trim();
+
+        // see if there are 5 or more results
+        if (names.size() >= 5){
+            query += ": " + names.size() + " results found";
+        }
         queryTextView.setText(query);
     }
 
