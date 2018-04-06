@@ -521,7 +521,9 @@ public class ParseResult {
     }
 
     /**
-     * Given a string, looks for phone numbers and their types and places them into an ArrayList<String>
+     * Given a string, looks for phone numbers and their types and places them into an ArrayList<String>.
+     * Formats the number into this format: 888-888-8888 : TYPE
+     *
      * @param text
      * @return
      */
@@ -531,11 +533,37 @@ public class ParseResult {
         Matcher matcher = pattern.matcher(text);
         while (matcher.find()){
             for (int i = 1; i <= matcher.groupCount(); i++){
-                if (!numbers.contains(matcher.group(i)))
-                    numbers.add(matcher.group(i));
+                String toShow = formatNumber(matcher.group(i));
+                if (!numbers.contains(toShow))
+                    numbers.add(formatNumber(toShow));
             }
         }
         return numbers;
+    }
+
+    private String formatNumber(String number){
+        String formatted = number;
+        String phoneNum = "";
+        String type = "";
+        Pattern fullPattern = Pattern.compile("\\[(\\d+)\\]\\[(\\D+)\\]");
+        Matcher matcher = fullPattern.matcher(number);
+        if (matcher.find()){
+            phoneNum = matcher.group(1);
+            type = matcher.group(2);
+        }
+
+        if (phoneNum != null && !phoneNum.isEmpty() && type != null && !type.isEmpty()){
+            if (phoneNum.length() == 10){
+                phoneNum = phoneNum.substring(0,3) + "-" + phoneNum.substring(3,6) + "-" + phoneNum.substring(6);
+            }
+            else if (phoneNum.length() == 7){
+                phoneNum = phoneNum.substring(0,3) + "-" + phoneNum.substring(3);
+            }
+
+            formatted = phoneNum + " : " + type;
+        }
+
+        return formatted;
     }
 }
 
