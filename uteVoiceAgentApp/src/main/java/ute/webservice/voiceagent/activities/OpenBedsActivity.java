@@ -459,7 +459,7 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
     @Override
     public void onRetrieval(String result) {
 
-        super.onRetrieval(result, dataAsked, this, PR.get_ResolvedQuery());
+        super.onRetrieval(result, dataAsked, this, query);
 
 //        if (dataAsked.isIncomplete()){
 //            if (dataAsked.getCurrentAction().equals(Constants.GET_CENSUS)){
@@ -513,7 +513,7 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
 
         dataAsked.setCensusUnit(roomx);
         dataAsked.setCurrentAction("getCensus");
-        dataAsked.setCurrentReply(room + " has this many beds remaning:");
+        dataAsked.setCurrentReply(room + " has this many beds remaining:");
         dataAsked.setIncomplete(false);
         dataAsked.setCurrentSurgeryCategory("");
         // Log.d("OUTPUTRESPONSE", PR.get_reply());
