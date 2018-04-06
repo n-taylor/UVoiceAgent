@@ -538,6 +538,9 @@ public class ParseResult {
                     numbers.add(formatNumber(toShow));
             }
         }
+        if (numbers.size() < 1){
+            numbers.add("No phone numbers available");
+        }
         return numbers;
     }
 
