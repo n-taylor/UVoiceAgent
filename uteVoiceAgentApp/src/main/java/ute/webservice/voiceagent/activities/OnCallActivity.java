@@ -199,6 +199,7 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                TTS.stop();
                 finish();
             }
         });
@@ -340,6 +341,12 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
                 queryTextView.setText("");
             }
         });
+    }
+
+    @Override
+    public void onBackPressed(){
+        TTS.stop();
+        super.onBackPressed();
     }
 
     /**
