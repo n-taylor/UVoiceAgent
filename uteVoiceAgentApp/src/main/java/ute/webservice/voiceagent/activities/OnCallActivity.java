@@ -139,6 +139,9 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
         OnCallListAdapter adapter = new OnCallListAdapter(this, names, phoneNumbers);
         adapter.setWidth(getResources().getDimensionPixelSize(R.dimen.surgery_list_width)-200);
         expListView.setAdapter(adapter);
+        if (names.size() == 1){
+            expListView.expandGroup(0);
+        }
     }
 
     private void initializeSharedData() {
