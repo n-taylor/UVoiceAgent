@@ -1,6 +1,5 @@
 package ute.webservice.voiceagent.activities;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -14,11 +13,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import ai.api.android.AIConfiguration;
 import ai.api.model.AIError;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
+import ute.webservice.voiceagent.oncall.util.OnCallRetrievalListener;
+import ute.webservice.voiceagent.oncall.util.OnCallRetrieveTask;
 import ute.webservice.voiceagent.procedures.ProceduresSelectListAdapter;
 import ute.webservice.voiceagent.util.CertificateManager;
 import ute.webservice.voiceagent.util.Config;
@@ -31,7 +33,7 @@ import ute.webservice.voiceagent.util.RetrievalListener;
 import ute.webservice.voiceagent.util.RetrieveTask;
 import ute.webservice.voiceagent.util.SharedData;
 
-public class ProceduresSelectActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener {
+public class ProceduresSelectActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener, OnCallRetrievalListener {
 
     private static String TAG = ProceduresListActivity.class.getName();
 
@@ -44,7 +46,7 @@ public class ProceduresSelectActivity extends BaseActivity implements AIButton.A
     private String query;
 
     private ParseResult PR;
-    private DataAsked dataasked;
+    private DataAsked dataAsked;
 
     private SharedData sessiondata;
     private String accountID;
@@ -107,13 +109,13 @@ public class ProceduresSelectActivity extends BaseActivity implements AIButton.A
     }
 
     /**
-     * Sets up the sessiondata, dataasked and account data variables.
+     * Sets up the sessiondata, dataAsked and account data variables.
      */
     private void initializeSharedData(){
         sessiondata = new SharedData(getApplicationContext());
         accountID = sessiondata.getKeyAccount();
         account_access = sessiondata.getKeyAccess();
-        dataasked = new DataAsked();
+        dataAsked = new DataAsked();
     }
 
     /**
@@ -217,18 +219,26 @@ public class ProceduresSelectActivity extends BaseActivity implements AIButton.A
 
                 query = PR.get_ResolvedQuery();
 
-                dataasked.setIncomplete(PR.get_ActionIncomplete());
-                dataasked.setCurrentReply(PR.get_reply());
-                dataasked.setCensusUnit(PR.getCensusUnit());
-                dataasked.setCurrentSurgeryCategory(PR.get_param_Surgery());
-                dataasked.setCurrentAction(PR.get_Action());
+                dataAsked.setIncomplete(PR.get_ActionIncomplete());
+                dataAsked.setCurrentReply(PR.get_reply());
+                dataAsked.setCensusUnit(PR.getCensusUnit());
+                dataAsked.setCurrentSurgeryCategory(PR.get_param_Surgery());
+                dataAsked.setCurrentAction(PR.get_Action());
                 Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                // Retrieve the information and display the results
-                RetrieveTask httpTask = new RetrieveTask(dataasked,
-                        CertificateManager.getSSlContext(ProceduresSelectActivity.this)); // the task to retrieve the information
-                httpTask.addListener(ProceduresSelectActivity.this);
-                httpTask.execute();
+                if (PR.get_Action().equalsIgnoreCase(Constants.GET_ONCALL)){
+                    OnCallRetrieveTask task = new OnCallRetrieveTask();
+                    String OCMID = ParseResult.extractOCMID(PR.get_reply());
+                    task.addListener(ProceduresSelectActivity.this);
+                    task.execute(OCMID);
+                }
+                else {
+                    // Retrieve the information and display the results
+                    RetrieveTask httpTask = new RetrieveTask(dataAsked,
+                            CertificateManager.getSSlContext(ProceduresSelectActivity.this)); // the task to retrieve the information
+                    httpTask.addListener(ProceduresSelectActivity.this);
+                    httpTask.execute();
+                }
             }
 
         });
@@ -263,24 +273,32 @@ public class ProceduresSelectActivity extends BaseActivity implements AIButton.A
      */
     @Override
     public void onRetrieval(String result) {
-        if (dataasked.isIncomplete()){
-            if (dataasked.getCurrentAction().equals(Constants.GET_CENSUS)){
-                // TODO: Send to the activity that will prompt for a unit name
-                Intent intent = new Intent(this, OpenBedsActivity.class);
-                intent.putExtra("query", PR.get_ResolvedQuery());
-                intent.putExtra("result", result);
-                startActivity(intent);
-            }
-            else if (dataasked.getCurrentAction().equals(Constants.GET_SURGERY_COST)){
-                // TODO: Send to the activity that will prompt for a surgery category
-            }
-        }
-        else {
-            // open a ResultsActivity with the query and the corresponding result
-            Intent intent = new Intent(this, ResultsActivity.class);
-            intent.putExtra("query", query);
-            intent.putExtra("result", result);
-            startActivity(intent);
-        }
+
+        super.onRetrieval(result, dataAsked, this, PR.get_ResolvedQuery());
+
+//        if (dataAsked.isIncomplete()){
+//            if (dataAsked.getCurrentAction().equals(Constants.GET_CENSUS)){
+//                // TODO: Send to the activity that will prompt for a unit name
+//                Intent intent = new Intent(this, OpenBedsActivity.class);
+//                intent.putExtra("query", PR.get_ResolvedQuery());
+//                intent.putExtra("result", result);
+//                startActivity(intent);
+//            }
+//            else if (dataAsked.getCurrentAction().equals(Constants.GET_SURGERY_COST)){
+//                // TODO: Send to the activity that will prompt for a surgery category
+//            }
+//        }
+//        else {
+//            // open a ResultsActivity with the query and the corresponding result
+//            Intent intent = new Intent(this, ResultsActivity.class);
+//            intent.putExtra("query", query);
+//            intent.putExtra("result", result);
+//            startActivity(intent);
+//        }
+    }
+
+    @Override
+    public void onOnCallRetrieval(HashMap<String, ArrayList<String>> numbers) {
+        super.onCallRetrieval(numbers, this, PR.get_ResolvedQuery());
     }
 }

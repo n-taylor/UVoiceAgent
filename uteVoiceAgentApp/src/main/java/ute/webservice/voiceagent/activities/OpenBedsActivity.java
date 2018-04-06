@@ -25,6 +25,8 @@ import ai.api.model.AIError;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
 import ute.webservice.voiceagent.R;
+import ute.webservice.voiceagent.oncall.util.OnCallRetrievalListener;
+import ute.webservice.voiceagent.oncall.util.OnCallRetrieveTask;
 import ute.webservice.voiceagent.util.TTS;
 import ute.webservice.voiceagent.openbeds.ListAdapter;
 import ute.webservice.voiceagent.util.CertificateManager;
@@ -37,7 +39,7 @@ import ute.webservice.voiceagent.util.RetrievalListener;
 import ute.webservice.voiceagent.util.RetrieveTask;
 import ute.webservice.voiceagent.util.SharedData;
 
-public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener {
+public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener, OnCallRetrievalListener {
 
     private static String TAG = OpenBedsActivity.class.getName();
 
@@ -409,11 +411,19 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
                 dataAsked.setCurrentAction(PR.get_Action());
                 Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                // Retrieve the information and display the results
-                RetrieveTask httpTask = new RetrieveTask(dataAsked,
-                        CertificateManager.getSSlContext(OpenBedsActivity.this)); // the task to retrieve the information
-                httpTask.addListener(OpenBedsActivity.this);
-                httpTask.execute();
+                if (PR.get_Action().equalsIgnoreCase(Constants.GET_ONCALL)){
+                    OnCallRetrieveTask task = new OnCallRetrieveTask();
+                    String OCMID = ParseResult.extractOCMID(PR.get_reply());
+                    task.addListener(OpenBedsActivity.this);
+                    task.execute(OCMID);
+                }
+                else {
+                    // Retrieve the information and display the results
+                    RetrieveTask httpTask = new RetrieveTask(dataAsked,
+                            CertificateManager.getSSlContext(OpenBedsActivity.this)); // the task to retrieve the information
+                    httpTask.addListener(OpenBedsActivity.this);
+                    httpTask.execute();
+                }
             }
 
         });
@@ -448,46 +458,49 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
      */
     @Override
     public void onRetrieval(String result) {
-        if (dataAsked.isIncomplete()){
-            if (dataAsked.getCurrentAction().equals(Constants.GET_CENSUS)){
-                // TODO: Send to the activity that will prompt for a unit name
-            }
-            else if (dataAsked.getCurrentAction().equals(Constants.GET_SURGERY_COST)){
-                // TODO: Send to the activity that will prompt for a surgery category
-            }
-        }
-        else {
-            // open a ResultsActivity with the query and the corresponding result
-            Intent intent = new Intent(this, ResultsActivity.class);
 
+        super.onRetrieval(result, dataAsked, this, PR.get_ResolvedQuery());
 
-            //if result is from button, extract
-            if (result.contains("[{"))
-            {
-                int aindex = result.indexOf("available");
-
-                aindex += 10;
-
-                int bindex = result.indexOf(",", aindex);
-
-                String sAnswer = result.substring(aindex+1,bindex);
-
-                int answer = Integer.parseInt(sAnswer);
-
-                String beds = "beds";
-
-                if (answer == 1)
-                {
-                    beds = "bed";
-                }
-
-                int sindex = result.indexOf("has");
-                result = result.substring(0,sindex)+"has "+sAnswer+" "+beds+" available";
-            }
-            intent.putExtra("query", query);
-            intent.putExtra("result", result);
-            startActivity(intent);
-        }
+//        if (dataAsked.isIncomplete()){
+//            if (dataAsked.getCurrentAction().equals(Constants.GET_CENSUS)){
+//                // TODO: Send to the activity that will prompt for a unit name
+//            }
+//            else if (dataAsked.getCurrentAction().equals(Constants.GET_SURGERY_COST)){
+//                // TODO: Send to the activity that will prompt for a surgery category
+//            }
+//        }
+//        else {
+//            // open a ResultsActivity with the query and the corresponding result
+//            Intent intent = new Intent(this, ResultsActivity.class);
+//
+//
+//            //if result is from button, extract
+//            if (result.contains("[{"))
+//            {
+//                int aindex = result.indexOf("available");
+//
+//                aindex += 10;
+//
+//                int bindex = result.indexOf(",", aindex);
+//
+//                String sAnswer = result.substring(aindex+1,bindex);
+//
+//                int answer = Integer.parseInt(sAnswer);
+//
+//                String beds = "beds";
+//
+//                if (answer == 1)
+//                {
+//                    beds = "bed";
+//                }
+//
+//                int sindex = result.indexOf("has");
+//                result = result.substring(0,sindex)+"has "+sAnswer+" "+beds+" available";
+//            }
+//            intent.putExtra("query", query);
+//            intent.putExtra("result", result);
+//            startActivity(intent);
+//        }
     }
 
     //launch census request via button
@@ -508,5 +521,10 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
         RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(OpenBedsActivity.this)); // the task to retrieve the information
         httpTask.addListener(OpenBedsActivity.this);
         httpTask.execute();
+    }
+
+    @Override
+    public void onOnCallRetrieval(HashMap<String, ArrayList<String>> numbers) {
+        super.onCallRetrieval(numbers, this, PR.get_ResolvedQuery());
     }
 }

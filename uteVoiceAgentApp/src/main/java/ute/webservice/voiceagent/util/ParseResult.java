@@ -527,11 +527,12 @@ public class ParseResult {
      */
     private ArrayList<String> extractNumbers(String text){
         ArrayList<String> numbers = new ArrayList<>();
-        Pattern pattern = Pattern.compile("(\\[[0-9]+\\]\\[[A-Z\\s]+\\])");
+        Pattern pattern = Pattern.compile("(\\[[0-9]+\\]\\[[A-Z\\s\\-.]+\\])");
         Matcher matcher = pattern.matcher(text);
-        if (matcher.find()){
+        while (matcher.find()){
             for (int i = 1; i <= matcher.groupCount(); i++){
-                numbers.add(matcher.group(i));
+                if (!numbers.contains(matcher.group(i)))
+                    numbers.add(matcher.group(i));
             }
         }
         return numbers;

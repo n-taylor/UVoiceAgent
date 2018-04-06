@@ -55,6 +55,7 @@
         <activity
             android:name=".activities.ResultsActivity"
             android:label="@string/title_welcome_activity"
+            android:noHistory="true"
             android:theme="@style/My_theme" />
         <activity
             android:name=".activities.OpenBedsActivity"
@@ -67,6 +68,7 @@
         <activity
             android:name=".activities.OnCallActivity"
             android:label="@string/title_activity_oncall"
+            android:noHistory="true"
             android:theme="@style/My_theme" />
         <activity
             android:name=".activities.ProceduresSelectActivity"

@@ -13,16 +13,21 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import ai.api.android.AIConfiguration;
 import ai.api.android.GsonFactory;
 import ai.api.model.AIError;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
 import ute.webservice.voiceagent.R;
+import ute.webservice.voiceagent.oncall.util.OnCallRetrievalListener;
+import ute.webservice.voiceagent.oncall.util.OnCallRetrieveTask;
+import ute.webservice.voiceagent.util.Constants;
 import ute.webservice.voiceagent.util.TTS;
 import ute.webservice.voiceagent.util.CertificateManager;
 import ute.webservice.voiceagent.util.Config;
-import ute.webservice.voiceagent.util.Constants;
 import ute.webservice.voiceagent.util.DataAsked;
 import ute.webservice.voiceagent.util.LogoutTask;
 import ute.webservice.voiceagent.util.ParseResult;
@@ -30,7 +35,7 @@ import ute.webservice.voiceagent.util.RetrievalListener;
 import ute.webservice.voiceagent.util.RetrieveTask;
 import ute.webservice.voiceagent.util.SharedData;
 
-public class ResultsActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener {
+public class ResultsActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener, OnCallRetrievalListener {
 
     private String TAG = ResultsActivity.class.getName();
 
@@ -40,7 +45,7 @@ public class ResultsActivity extends BaseActivity implements AIButton.AIButtonLi
     private TextView resultsTextView;
 
     private Gson gson = GsonFactory.getGson();
-    private DataAsked dataasked;
+    private DataAsked dataAsked;
     private ParseResult PR;
 
     SharedData sessiondata;
@@ -129,7 +134,7 @@ public class ResultsActivity extends BaseActivity implements AIButton.AIButtonLi
         });
 
         //Save asked query
-        dataasked = new DataAsked();
+        dataAsked = new DataAsked();
 
         //this.loadCA();
 
@@ -235,18 +240,26 @@ public class ResultsActivity extends BaseActivity implements AIButton.AIButtonLi
 
                 String query = PR.get_ResolvedQuery();
 
-                dataasked.setIncomplete(PR.get_ActionIncomplete());
-                dataasked.setCurrentReply(PR.get_reply());
-                dataasked.setCensusUnit(PR.getCensusUnit());
-                dataasked.setCurrentSurgeryCategory(PR.get_param_Surgery());
-                dataasked.setCurrentAction(PR.get_Action());
+                dataAsked.setIncomplete(PR.get_ActionIncomplete());
+                dataAsked.setCurrentReply(PR.get_reply());
+                dataAsked.setCensusUnit(PR.getCensusUnit());
+                dataAsked.setCurrentSurgeryCategory(PR.get_param_Surgery());
+                dataAsked.setCurrentAction(PR.get_Action());
                 Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                // Retrieve the information and display the results
-                RetrieveTask httpTask = new RetrieveTask(dataasked,
-                        CertificateManager.getSSlContext(ResultsActivity.this)); // the task to retrieve the information
-                httpTask.addListener(ResultsActivity.this);
-                httpTask.execute();
+                if (PR.get_Action().equalsIgnoreCase(Constants.GET_ONCALL)){
+                    OnCallRetrieveTask task = new OnCallRetrieveTask();
+                    String OCMID = ParseResult.extractOCMID(PR.get_reply());
+                    task.addListener(ResultsActivity.this);
+                    task.execute(OCMID);
+                }
+                else {
+                    // Retrieve the information and display the results
+                    RetrieveTask httpTask = new RetrieveTask(dataAsked,
+                            CertificateManager.getSSlContext(ResultsActivity.this)); // the task to retrieve the information
+                    httpTask.addListener(ResultsActivity.this);
+                    httpTask.execute();
+                }
             }
 
         });
@@ -304,31 +317,39 @@ public class ResultsActivity extends BaseActivity implements AIButton.AIButtonLi
      */
     @Override
     public void onRetrieval(String result) {
-        if (dataasked.isIncomplete()){
-            if (dataasked.getCurrentAction().equals(Constants.GET_CENSUS)){
-                // TODO: Send to the activity that will prompt for a unit name
-            }
-            else if (dataasked.getCurrentAction().equals(Constants.GET_SURGERY_COST)){
-                // TODO: Send to the activity that will prompt for a surgery category
-            }
-        }
-        else {
-            // The query is complete as is, so display the results
-            query = PR.get_ResolvedQuery();
-            this.result = result;
-            if (result != null) {
-                resultsTextView.setText(result);
 
-                TTS.speak(result);
-            }
-            if (query != null)
-            queryTextView.setText(query);
-        }
+        super.onRetrieval(result, dataAsked, this, PR.get_ResolvedQuery());
+
+//        if (dataAsked.isIncomplete()){
+//            if (dataAsked.getCurrentAction().equals(Constants.GET_CENSUS)){
+//                // TODO: Send to the activity that will prompt for a unit name
+//            }
+//            else if (dataAsked.getCurrentAction().equals(Constants.GET_SURGERY_COST)){
+//                // TODO: Send to the activity that will prompt for a surgery category
+//            }
+//        }
+//        else {
+//            // The query is complete as is, so display the results
+//            query = PR.get_ResolvedQuery();
+//            this.result = result;
+//            if (result != null) {
+//                resultsTextView.setText(result);
+//
+//                TTS.speak(result);
+//            }
+//            if (query != null)
+//            queryTextView.setText(query);
+//        }
     }
 
     @Override
     public void onBackPressed(){
         TTS.stop();
         super.onBackPressed();
+    }
+
+    @Override
+    public void onOnCallRetrieval(HashMap<String, ArrayList<String>> numbers) {
+        super.onCallRetrieval(numbers, this, PR.get_ResolvedQuery());
     }
 }

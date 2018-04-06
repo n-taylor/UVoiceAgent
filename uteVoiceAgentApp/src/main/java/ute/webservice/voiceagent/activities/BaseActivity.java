@@ -20,6 +20,8 @@ package ute.webservice.voiceagent.activities;
  ***********************************************************************************************************************/
 
 import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,7 +30,15 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 
-public class BaseActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import ute.webservice.voiceagent.oncall.util.OnCallRetrievalListener;
+import ute.webservice.voiceagent.util.Constants;
+import ute.webservice.voiceagent.util.DataAsked;
+import ute.webservice.voiceagent.util.RetrievalListener;
+
+public abstract class BaseActivity extends AppCompatActivity {
 
     private AIApplication app;
 
@@ -105,5 +115,48 @@ public class BaseActivity extends AppCompatActivity {
                 return;
             }
         }
+    }
+
+    public void onRetrieval(String result, DataAsked dataAsked, Context context, String query){
+        if (dataAsked.isIncomplete()){
+            if (dataAsked.getCurrentAction().equals(Constants.GET_CENSUS)){
+                // TODO: Send to the activity that will prompt for a unit name
+                Intent intent = new Intent(context, OpenBedsActivity.class);
+                intent.putExtra("query", query);
+                intent.putExtra("result", result);
+                startActivity(intent);
+            }
+            else if (dataAsked.getCurrentAction().equals(Constants.GET_SURGERY_COST)){
+                Intent intent = new Intent(context, ProceduresListActivity.class);
+                startActivity(intent);
+            }
+            else if (dataAsked.getCurrentAction().equals(Constants.GET_ONCALL)){
+                Intent intent = new Intent(context, ProceduresListActivity.class);
+                startActivity(intent);
+            }
+        }
+        else {
+            if (dataAsked.getCurrentAction().equals(Constants.GET_CENSUS)
+                    || dataAsked.getCurrentAction().equalsIgnoreCase(Constants.GET_SURGERY_COST)) {
+                // open a ResultsActivity with the query and the corresponding result
+                Intent intent = new Intent(context, ResultsActivity.class);
+                intent.putExtra("query", query);
+                intent.putExtra("result", result);
+                startActivity(intent);
+            }
+        }
+    }
+
+    public void onCallRetrieval(HashMap<String, ArrayList<String>> numbers, Context context, String query){
+        for (String name : numbers.keySet()){
+            for (String number : numbers.get(name)){
+                System.out.println(name + " -> " + number);
+            }
+        }
+
+        Intent intent = new Intent(context, OnCallActivity.class);
+        intent.putExtra("query", query);
+        intent.putExtra("phoneNumMap", numbers);
+        startActivity(intent);
     }
 }

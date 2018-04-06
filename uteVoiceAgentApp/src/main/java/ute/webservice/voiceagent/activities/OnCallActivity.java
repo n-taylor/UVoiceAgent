@@ -34,6 +34,8 @@ import ai.api.ui.AIButton;
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.oncall.ClientTestEmulator;
 import ute.webservice.voiceagent.oncall.OnCallListAdapter;
+import ute.webservice.voiceagent.oncall.util.OnCallRetrievalListener;
+import ute.webservice.voiceagent.oncall.util.OnCallRetrieveTask;
 import ute.webservice.voiceagent.util.TTS;
 import ute.webservice.voiceagent.openbeds.ListAdapter;
 import ute.webservice.voiceagent.util.CertificateManager;
@@ -54,7 +56,7 @@ import ute.webservice.voiceagent.util.SharedData;
  *
  * 2. A String under the label "query", which is the desired text to display at the top of the activity
  */
-public class OnCallActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener {
+public class OnCallActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener, OnCallRetrievalListener {
 
     private static String TAG = OpenBedsActivity.class.getName();
 
@@ -260,11 +262,19 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
                 dataAsked.setCurrentAction(PR.get_Action());
                 Log.d("OUTPUTRESPONSE", PR.get_reply());
 
-                // Retrieve the information and display the results
-                RetrieveTask httpTask = new RetrieveTask(dataAsked,
-                        CertificateManager.getSSlContext(OnCallActivity.this)); // the task to retrieve the information
-                httpTask.addListener(OnCallActivity.this);
-                httpTask.execute();
+                if (PR.get_Action().equalsIgnoreCase(Constants.GET_ONCALL)){
+                    OnCallRetrieveTask task = new OnCallRetrieveTask();
+                    String OCMID = ParseResult.extractOCMID(PR.get_reply());
+                    task.addListener(OnCallActivity.this);
+                    task.execute(OCMID);
+                }
+                else {
+                    // Retrieve the information and display the results
+                    RetrieveTask httpTask = new RetrieveTask(dataAsked,
+                            CertificateManager.getSSlContext(OnCallActivity.this)); // the task to retrieve the information
+                    httpTask.addListener(OnCallActivity.this);
+                    httpTask.execute();
+                }
             }
 
         });
@@ -299,29 +309,37 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
      */
     @Override
     public void onRetrieval(String result) {
-        if (dataAsked.isIncomplete()){
-            if (dataAsked.getCurrentAction().equals(Constants.GET_CENSUS)){
-                // TODO: Send to the activity that will prompt for a unit name
-                Intent intent = new Intent(this, OpenBedsActivity.class);
-                intent.putExtra("query", PR.get_ResolvedQuery());
-                intent.putExtra("result", result);
-                startActivity(intent);
-            }
-            else if (dataAsked.getCurrentAction().equals(Constants.GET_SURGERY_COST)){
-                Intent intent = new Intent(this, ProceduresListActivity.class);
-                startActivity(intent);
-            }
-            else if (dataAsked.getCurrentAction().equals(Constants.GET_ONCALL)){
-                Intent intent = new Intent(this, ProceduresListActivity.class);
-                startActivity(intent);
-            }
-        }
-        else {
-            // open a ResultsActivity with the query and the corresponding result
-            Intent intent = new Intent(this, ResultsActivity.class);
-            intent.putExtra("query", PR.get_ResolvedQuery());
-            intent.putExtra("result", result);
-            startActivity(intent);
-        }
+
+        super.onRetrieval(result, dataAsked, this, PR.get_ResolvedQuery());
+
+//        if (dataAsked.isIncomplete()){
+//            if (dataAsked.getCurrentAction().equals(Constants.GET_CENSUS)){
+//                // TODO: Send to the activity that will prompt for a unit name
+//                Intent intent = new Intent(this, OpenBedsActivity.class);
+//                intent.putExtra("query", PR.get_ResolvedQuery());
+//                intent.putExtra("result", result);
+//                startActivity(intent);
+//            }
+//            else if (dataAsked.getCurrentAction().equals(Constants.GET_SURGERY_COST)){
+//                Intent intent = new Intent(this, ProceduresListActivity.class);
+//                startActivity(intent);
+//            }
+//            else if (dataAsked.getCurrentAction().equals(Constants.GET_ONCALL)){
+//                Intent intent = new Intent(this, ProceduresListActivity.class);
+//                startActivity(intent);
+//            }
+//        }
+//        else {
+//            // open a ResultsActivity with the query and the corresponding result
+//            Intent intent = new Intent(this, ResultsActivity.class);
+//            intent.putExtra("query", PR.get_ResolvedQuery());
+//            intent.putExtra("result", result);
+//            startActivity(intent);
+//        }
+    }
+
+    @Override
+    public void onOnCallRetrieval(HashMap<String, ArrayList<String>> numbers) {
+        super.onCallRetrieval(numbers, this, PR.get_ResolvedQuery());
     }
 }
