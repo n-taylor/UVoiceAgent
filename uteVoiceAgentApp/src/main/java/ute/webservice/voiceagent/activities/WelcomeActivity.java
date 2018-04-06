@@ -152,7 +152,12 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         oncallButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), OnCallActivity.class);
+                Intent intent = new Intent(view.getContext(), ResultsActivity.class);
+                intent.putExtra("query", oncallButton.getText().toString().toUpperCase());
+                String toShow = "For which message group are you searching? For example, say \"Attending Burn\" " +
+                        "or \"Dental\"";
+                intent.putExtra("result", toShow);
+                intent.putExtra("speak", false);
                 startActivity(intent);
             }
         });

@@ -87,7 +87,7 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
         initializeSharedData();
         initializeToolbar();
         initializeButtons();
-        initializeListView();
+        //initializeListView();
         initializeTextViews();
     }
 

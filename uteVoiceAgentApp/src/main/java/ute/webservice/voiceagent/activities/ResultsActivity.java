@@ -76,17 +76,23 @@ public class ResultsActivity extends BaseActivity implements AIButton.AIButtonLi
 
         Bundle bundle = getIntent().getExtras();
 
+        boolean speak = true;
+
         // set the texts to the query and retrieved answer
         if (bundle != null){
             query = bundle.getString("query");
             result = bundle.getString("result");
+            if (bundle.containsKey("speak")){
+                speak = bundle.getBoolean("speak");
+            }
         }
 
         if (query != null)
             queryTextView.setText(query);
         if (result != null) {
             resultsTextView.setText(result);
-            TTS.speak(result);
+            if (speak)
+                TTS.speak(result);
         }
 
         //Open shared data
