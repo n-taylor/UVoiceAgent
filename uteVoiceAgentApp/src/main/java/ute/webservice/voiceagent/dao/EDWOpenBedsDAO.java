@@ -2,8 +2,10 @@ package ute.webservice.voiceagent.dao;
 
 import android.util.Log;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGetHC4;
+import org.apache.http.entity.StringEntity;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -98,7 +100,7 @@ public class EDWOpenBedsDAO implements OpenBedsDAO {
                     Log.d(TAG, lineSrch);
                     responseString += lineSrch;
                 }
-                if (responseString.equals(const_value.ACCESS_DENIED)) {
+                if (responseString.equals(Constants.ACCESS_DENIED)) {
                     responseString = "You are not allowed to access.";
                 } else {
                     ArrayList<RoomStatus> formattedBeds = ParseResult.parseRooms(responseString);

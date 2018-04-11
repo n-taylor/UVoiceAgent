@@ -25,6 +25,7 @@ import ai.api.ui.AIButton;
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.oncall.util.OnCallRetrievalListener;
 import ute.webservice.voiceagent.oncall.util.OnCallRetrieveTask;
+import ute.webservice.voiceagent.util.Controller;
 import ute.webservice.voiceagent.util.TTS;
 import ute.webservice.voiceagent.procedures.ProcedureInfo;
 import ute.webservice.voiceagent.procedures.ProcedureInfoListener;
@@ -41,6 +42,7 @@ import ute.webservice.voiceagent.util.SharedData;
 public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener, ProcedureInfoListener, OnCallRetrievalListener {
 
     private String TAG = WelcomeActivity.class.getName();
+
 
     private AIButton aiButton;
     private Button cancelButton;
@@ -74,7 +76,6 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         setContentView(R.layout.activity_welcome);
 
         initializeButtons();
-
 
 
 
@@ -221,36 +222,38 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
      */
     @Override
     public void onResult(final AIResponse response) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
 
-                PR = new ParseResult(response);
-
-                String query = PR.get_ResolvedQuery();
-
-                dataAsked.setIncomplete(PR.get_ActionIncomplete());
-                dataAsked.setCurrentReply(PR.get_reply());
-                dataAsked.setCensusUnit(PR.getCensusUnit());
-                dataAsked.setCurrentSurgeryCategory(PR.get_param_Surgery());
-                dataAsked.setCurrentAction(PR.get_Action());
-                Log.d("OUTPUTRESPONSE", PR.get_reply());
-                if (PR.get_Action().equalsIgnoreCase(Constants.GET_ONCALL)){
-                    OnCallRetrieveTask task = new OnCallRetrieveTask();
-                    String OCMID = ParseResult.extractOCMID(PR.get_reply());
-                    task.addListener(WelcomeActivity.this);
-                    task.execute(OCMID);
-                }
-                else {
-                    // Retrieve the information and display the results
-                    RetrieveTask httpTask = new RetrieveTask(dataAsked,
-                            CertificateManager.getSSlContext(WelcomeActivity.this)); // the task to retrieve the information
-                    httpTask.addListener(WelcomeActivity.this);
-                    httpTask.execute();
-                }
-            }
-
-        });
+        Controller.processDialogFlowResponse(this, response);
+//        runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                PR = new ParseResult(response);
+//
+//                String query = PR.get_ResolvedQuery();
+//
+//                dataAsked.setIncomplete(PR.get_ActionIncomplete());
+//                dataAsked.setCurrentReply(PR.get_reply());
+//                dataAsked.setCensusUnit(PR.getCensusUnit());
+//                dataAsked.setCurrentSurgeryCategory(PR.get_param_Surgery());
+//                dataAsked.setCurrentAction(PR.get_Action());
+//                Log.d("OUTPUTRESPONSE", PR.get_reply());
+//                if (PR.get_Action().equalsIgnoreCase(Constants.GET_ONCALL)){
+//                    OnCallRetrieveTask task = new OnCallRetrieveTask();
+//                    String OCMID = ParseResult.extractOCMID(PR.get_reply());
+//                    task.addListener(WelcomeActivity.this);
+//                    task.execute(OCMID);
+//                }
+//                else {
+//                    // Retrieve the information and display the results
+//                    RetrieveTask httpTask = new RetrieveTask(dataAsked,
+//                            CertificateManager.getSSlContext(WelcomeActivity.this)); // the task to retrieve the information
+//                    httpTask.addListener(WelcomeActivity.this);
+//                    httpTask.execute();
+//                }
+//            }
+//
+//        });
     }
 
     @Override
