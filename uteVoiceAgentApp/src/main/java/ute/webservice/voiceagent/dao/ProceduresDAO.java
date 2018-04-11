@@ -2,6 +2,8 @@ package ute.webservice.voiceagent.dao;
 
 import java.util.ArrayList;
 
+import ute.webservice.voiceagent.procedures.ProcedureInfoListener;
+
 /**
  * Created by Nathan Taylor on 4/11/2018.
  */
@@ -53,4 +55,9 @@ public interface ProceduresDAO {
      * @return True if the given node is an extremity. False if it does not exist or is not an extremity.
      */
     boolean isExtremity(String category, String subcategory, String description);
+
+    /**
+     * Subscribes the given listener so when procedure information is retrieved, the listener will be notified.
+     */
+    void addListener(ProcedureInfoListener listener);
 }

@@ -43,6 +43,7 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
 
     private String TAG = WelcomeActivity.class.getName();
 
+    private Controller controller;
 
     private AIButton aiButton;
     private Button cancelButton;
@@ -75,8 +76,8 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
+        controller = Controller.getController();
         initializeButtons();
-
 
 
         //Open shared data
@@ -93,7 +94,7 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
 
         dataAsked = new DataAsked();
 
-        fetchProcedureInfo();
+        controller.onActivityCreated(this);
     }
 
     private void fetchProcedureInfo(){
@@ -128,51 +129,43 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         // set up the cancel button
         cancelButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                // stop any speech that is being played currently
-                TTS.stop();
+                controller.onCancelPressed();
             }
         });
 
         bedButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), OpenBedsActivity.class);
-                // intent.putExtra("query", PR.get_ResolvedQuery());
-                startActivity(intent);
-
+                controller.onBedButtonPressed(WelcomeActivity.this);
             }
         });
 
         surgeryButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), ProceduresListActivity.class);
-                startActivity(intent);
+                controller.onProcedureButtonPressed(view.getContext());
             }
         });
 
         oncallButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), ResultsActivity.class);
-                intent.putExtra("query", oncallButton.getText().toString().toUpperCase());
-                String toShow = "For which message group are you searching? For example, say \"Attending Burn\" " +
-                        "or \"Dental\"";
-                intent.putExtra("result", toShow);
-                intent.putExtra("speak", false);
-                startActivity(intent);
+                controller.onOnCallButtonPressed(view.getContext());
             }
         });
 
-        if (ProcedureInfo.needsData()) {
-            // disable everything
-            cancelButton.setEnabled(false);
-            aiButton.setEnabled(false);
-            bedButton.setEnabled(false);
-            surgeryButton.setEnabled(false);
-            equipButton.setEnabled(false);
-            oncallButton.setEnabled(false);
-            welcomeTextView.setText("Loading...");
-        }
+    }
+
+    public void enableComponents(boolean enable){
+        cancelButton.setEnabled(enable);
+        aiButton.setEnabled(enable);
+        bedButton.setEnabled(enable);
+        surgeryButton.setEnabled(enable);
+        equipButton.setEnabled(enable);
+        oncallButton.setEnabled(enable);
+    }
+
+    public void setWelcomeText(String text){
+        welcomeTextView.setText(text);
     }
 
     @Override

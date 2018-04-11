@@ -10,6 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import ute.webservice.voiceagent.procedures.ProcedureCategoryMap;
+import ute.webservice.voiceagent.procedures.ProcedureInfoListener;
 import ute.webservice.voiceagent.procedures.ProcedureNode;
 import ute.webservice.voiceagent.procedures.util.ProcedureCategoryRetrievalListener;
 import ute.webservice.voiceagent.procedures.util.ProcedureCategoryRetrieveTask;
@@ -29,9 +30,11 @@ public class EDWProceduresDAO implements ProceduresDAO, ProcedureCategoryRetriev
     private static ProcedureNode procedureTreeRoot;
     private boolean isRetrieving;
     private ArrayList<String> categoryNames;
+    private ArrayList<ProcedureInfoListener> listeners;
 
     public EDWProceduresDAO(){
         categoryNames = new ArrayList<>();
+        listeners = new ArrayList<>();
     }
 
     /**
@@ -190,7 +193,6 @@ public class EDWProceduresDAO implements ProceduresDAO, ProcedureCategoryRetriev
     @Override
     public void fetchCategories() {
         retrieve();
-
     }
 
     private void retrieve(){
@@ -226,6 +228,13 @@ public class EDWProceduresDAO implements ProceduresDAO, ProcedureCategoryRetriev
             // Signal that the retrieving process has ended
             isRetrieving = false;
             //procedureTreeRoot.printTree();
+            notifyListeners();
+        }
+    }
+
+    private void notifyListeners(){
+        for (ProcedureInfoListener listener : listeners){
+            listener.onInfoRetrieval();
         }
     }
 
@@ -289,5 +298,9 @@ public class EDWProceduresDAO implements ProceduresDAO, ProcedureCategoryRetriev
     @Override
     public boolean needsData() {
         return procedureTreeRoot == null;
+    }
+
+    public void addListener(ProcedureInfoListener listener){
+        listeners.add(listener);
     }
 }

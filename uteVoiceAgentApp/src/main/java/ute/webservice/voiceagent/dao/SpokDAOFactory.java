@@ -5,4 +5,8 @@ package ute.webservice.voiceagent.dao;
  */
 
 public class SpokDAOFactory extends DAOFactory {
+
+    public OnCallDAO getOnCallDAO(){
+        return new SpokOnCallDAO();
+    }
 }

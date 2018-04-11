@@ -10,13 +10,20 @@ import java.util.HashMap;
 import java.util.List;
 
 import ai.api.model.AIResponse;
+import ute.webservice.voiceagent.R;
+import ute.webservice.voiceagent.activities.BaseActivity;
 import ute.webservice.voiceagent.activities.OnCallActivity;
 import ute.webservice.voiceagent.activities.OpenBedsActivity;
 import ute.webservice.voiceagent.activities.ProceduresListActivity;
 import ute.webservice.voiceagent.activities.ResultsActivity;
+import ute.webservice.voiceagent.activities.WelcomeActivity;
 import ute.webservice.voiceagent.dao.DAOFactory;
 import ute.webservice.voiceagent.dao.EDWDAOFactory;
+import ute.webservice.voiceagent.dao.EDWProceduresDAO;
+import ute.webservice.voiceagent.dao.OnCallDAO;
 import ute.webservice.voiceagent.dao.OpenBedsDAO;
+import ute.webservice.voiceagent.dao.ProceduresDAO;
+import ute.webservice.voiceagent.procedures.ProcedureInfoListener;
 
 /**
  * This class separates the model from the view. It provides a static method for each
@@ -25,20 +32,26 @@ import ute.webservice.voiceagent.dao.OpenBedsDAO;
  * Created by Nathan Taylor on 4/11/2018.
  */
 
-public class Controller {
+public class Controller implements ProcedureInfoListener{
+
+    private WelcomeActivity welcomeActivity;
 
     private static OpenBedsDAO openBedsDAO;
+    private static ProceduresDAO proceduresDAO;
+    private static OnCallDAO onCallDAO;
 
-    /**
-     *
-     */
-    private Controller(){
+    private static final String WELCOME_MESSAGE = "What do you want to know?";
 
+    private static Controller controller;
+
+    public static Controller getController(){
+        if (controller == null)
+            controller = new Controller();
+        return controller;
     }
 
     public static void processDialogFlowResponse(Context context, AIResponse response){
 
-        Class senderClass = context.getClass();
         ParseResult parseResult = new ParseResult(response);
 
         boolean complete = parseResult.actionIsComplete();
@@ -63,7 +76,7 @@ public class Controller {
                     displayOpenBeds(context, unit, query);
             }
             else if (action.equals(Constants.GET_SURGERY_COST)){
-                // TODO: Implement
+                // Not implemented yet
             }
             else if (action.equals(Constants.GET_ONCALL)){
                 // TODO: Implement
@@ -157,5 +170,68 @@ public class Controller {
             intent.putExtra("speak", false);
             from.startActivity(intent);
         }
+    }
+
+    private static ProceduresDAO getProceduresDAO(){
+        if (proceduresDAO == null){
+            EDWDAOFactory daoFactory = (EDWDAOFactory)DAOFactory.getDAOFactory(DAOFactory.EDW);
+            proceduresDAO = daoFactory.getProceduresDAO();
+        }
+        return proceduresDAO;
+    }
+
+    private Controller(){
+
+    }
+
+    /**
+     * To be called when a cancel button is pressed.
+     */
+    public void onCancelPressed(){
+        TTS.stop();
+    }
+
+    /**
+     * To be called when an Open Beds button is pressed.
+     */
+    public void onBedButtonPressed(Context context){
+        openNewActivity(context, OpenBedsActivity.class);
+    }
+
+    /**
+     * To be called when a Procedure button is pressed.
+     * @param context
+     */
+    public void onProcedureButtonPressed(Context context){
+        openNewActivity(context, ProceduresListActivity.class);
+    }
+
+    public void onOnCallButtonPressed(Context context){
+        openNewActivity(context, OnCallActivity.class);
+    }
+
+    /**
+     * To be called when an activity is created.
+     * If the context calling it is a WelcomeActivity, loads the procedure category data.
+     */
+    public void onActivityCreated(BaseActivity activity){
+        if (activity instanceof WelcomeActivity){
+            if (getProceduresDAO().needsData()){
+                welcomeActivity = (WelcomeActivity)activity;
+                welcomeActivity.enableComponents(false);
+                welcomeActivity.setWelcomeText("Loading...");
+                getProceduresDAO().addListener(this);
+                getProceduresDAO().fetchCategories();
+            }
+        }
+    }
+
+    /**
+     * Gets called when the ProceduresDAO finishes fetching all the data from EDW
+     */
+    @Override
+    public void onInfoRetrieval(){
+        welcomeActivity.setWelcomeText(WELCOME_MESSAGE);
+        welcomeActivity.enableComponents(true);
     }
 }
