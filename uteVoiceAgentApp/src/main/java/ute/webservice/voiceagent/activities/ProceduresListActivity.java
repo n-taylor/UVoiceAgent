@@ -25,6 +25,7 @@ import ute.webservice.voiceagent.procedures.ProceduresParentListAdapter;
 import ute.webservice.voiceagent.util.CertificateManager;
 import ute.webservice.voiceagent.util.Config;
 import ute.webservice.voiceagent.util.Constants;
+import ute.webservice.voiceagent.util.Controller;
 import ute.webservice.voiceagent.util.DataAsked;
 import ute.webservice.voiceagent.util.LogoutTask;
 import ute.webservice.voiceagent.util.ParseResult;
@@ -195,6 +196,8 @@ public class ProceduresListActivity extends BaseActivity implements AIButton.AIB
      */
     @Override
     public void onResult(final AIResponse response) {
+
+        Controller.processDialogFlowResponse(this, response);
         runOnUiThread(new Runnable() {
             @Override
             public void run() {

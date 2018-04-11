@@ -145,6 +145,14 @@ public class ParseResult {
     }
 
     /**
+     * Determines if the current action is complete
+     * @return
+     */
+    public boolean actionIsComplete(){
+        return !result.isActionIncomplete();
+    }
+
+    /**
      * Get intent name, which is defined on API.AI agent.
      * @return  intent name
      */
