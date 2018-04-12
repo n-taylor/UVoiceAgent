@@ -23,6 +23,8 @@ import ute.webservice.voiceagent.dao.EDWProceduresDAO;
 import ute.webservice.voiceagent.dao.OnCallDAO;
 import ute.webservice.voiceagent.dao.OpenBedsDAO;
 import ute.webservice.voiceagent.dao.ProceduresDAO;
+import ute.webservice.voiceagent.dao.SpokDAOFactory;
+import ute.webservice.voiceagent.dao.SpokOnCallDAO;
 import ute.webservice.voiceagent.procedures.ProcedureInfoListener;
 
 /**
@@ -58,8 +60,9 @@ public class Controller implements ProcedureInfoListener{
         String action = parseResult.get_Action();
         String unit = parseResult.getCensusUnit();
         String query = parseResult.get_ResolvedQuery();
+        String reply = parseResult.get_reply();
 
-        if(!complete || unit == null || unit.isEmpty()){
+        if(!complete || (action.equals(Constants.GET_CENSUS) && (unit == null || unit.isEmpty()))){
             if (action.equals(Constants.GET_ONCALL))
                 openNewActivity(context, OnCallActivity.class);
             else if (action.equals(Constants.GET_SURGERY_COST))
@@ -79,9 +82,28 @@ public class Controller implements ProcedureInfoListener{
                 // Not implemented yet
             }
             else if (action.equals(Constants.GET_ONCALL)){
-                // TODO: Implement
+                String OCMID = ParseResult.extractOCMID(reply);
+                displayPhoneNumbers(context, OCMID, query);
             }
         }
+    }
+
+    private static void displayPhoneNumbers(final Context context, final String OCMID, final String query){
+        AsyncTask<Void, Void, HashMap<String, ArrayList<String>>> task = new AsyncTask<Void, Void, HashMap<String, ArrayList<String>>>() {
+            @Override
+            protected HashMap<String, ArrayList<String>> doInBackground(Void... voids) {
+                return getOnCallDAO().getPhoneNumbers(OCMID);
+            }
+
+            @Override
+            protected void onPostExecute(HashMap<String, ArrayList<String>> numbers){
+                Intent intent = new Intent(context, OnCallActivity.class);
+                intent.putExtra("query", query);
+                intent.putExtra("phoneNumMap", numbers);
+                context.startActivity(intent);
+            }
+        };
+        task.execute();
     }
 
     private static void displayOpenBeds(final Context context, final String unit, final String query){
@@ -143,6 +165,14 @@ public class Controller implements ProcedureInfoListener{
             openBedsDAO = edwFactory.getOpenBedsDAO();
         }
         return openBedsDAO;
+    }
+
+    private static OnCallDAO getOnCallDAO(){
+        if (onCallDAO == null){
+            SpokDAOFactory daoFactory = (SpokDAOFactory) DAOFactory.getDAOFactory(DAOFactory.SPOK);
+            onCallDAO = daoFactory.getOnCallDAO();
+        }
+        return onCallDAO;
     }
 
     /**
@@ -208,6 +238,15 @@ public class Controller implements ProcedureInfoListener{
 
     public void onOnCallButtonPressed(Context context){
         openNewActivity(context, OnCallActivity.class);
+    }
+
+    /**
+     * To be called when the logout button is pressed
+     */
+    public void onLogoutPressed(BaseActivity activity){
+        // Create an LogoutTask and execute it to logout
+        LogoutTask httpTask = new LogoutTask(activity);
+        httpTask.execute();
     }
 
     /**

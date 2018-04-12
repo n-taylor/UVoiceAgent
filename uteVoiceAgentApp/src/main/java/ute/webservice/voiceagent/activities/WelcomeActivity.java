@@ -199,9 +199,7 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
                 return true;
 
             case R.id.action_logout:
-                // Create an LogoutTask and execute it to logout
-                LogoutTask httpTask = new LogoutTask(this);
-                httpTask.execute();
+                controller.onLogoutPressed(this);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
