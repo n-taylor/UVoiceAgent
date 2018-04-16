@@ -19,21 +19,14 @@ import ai.api.model.AIError;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
 import ute.webservice.voiceagent.oncall.util.OnCallRetrievalListener;
-import ute.webservice.voiceagent.oncall.util.OnCallRetrieveTask;
-import ute.webservice.voiceagent.procedures.ProcedureInfo;
 import ute.webservice.voiceagent.procedures.ProceduresParentListAdapter;
-import ute.webservice.voiceagent.util.CertificateManager;
 import ute.webservice.voiceagent.util.Config;
-import ute.webservice.voiceagent.util.Constants;
 import ute.webservice.voiceagent.util.Controller;
 import ute.webservice.voiceagent.util.DataAsked;
-import ute.webservice.voiceagent.util.LogoutTask;
 import ute.webservice.voiceagent.util.ParseResult;
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.util.RetrievalListener;
-import ute.webservice.voiceagent.util.RetrieveTask;
 import ute.webservice.voiceagent.util.SharedData;
-import ute.webservice.voiceagent.util.TTS;
 
 public class ProceduresListActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener, OnCallRetrievalListener {
 
@@ -42,6 +35,7 @@ public class ProceduresListActivity extends BaseActivity implements AIButton.AIB
     private AIButton aiButton;
     private Button cancelButton;
     private TextView queryTextView;
+    private TextView userIDText;
 
     ProceduresParentListAdapter listAdapter;
     ExpandableListView listView;
@@ -63,13 +57,11 @@ public class ProceduresListActivity extends BaseActivity implements AIButton.AIB
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_procedures_list);
 
-        TextView userIDText = (TextView) findViewById(R.id.userText);
-        userIDText.setText(accountID);
 
         initializeToolbar();
         initializeButtons();
-        initializeTextViews();
         initializeSharedData();
+        initializeTextViews();
         initializeListView();
     }
 
@@ -78,11 +70,7 @@ public class ProceduresListActivity extends BaseActivity implements AIButton.AIB
      */
     private void initializeListView(){
         listView = (ExpandableListView)findViewById(R.id.surgeryListView);
-        if (listView != null){
-            ProceduresParentListAdapter adapter = new ProceduresParentListAdapter(this, ProcedureInfo.getCategoryNames());
-            adapter.setWidth(getResources().getDimensionPixelSize(R.dimen.surgery_list_width)-200);
-            listView.setAdapter(adapter);
-        }
+        Controller.getController().initializeProceduresExpandableList(this, listView);
     }
 
     /**
@@ -90,6 +78,9 @@ public class ProceduresListActivity extends BaseActivity implements AIButton.AIB
      */
     private void initializeTextViews(){
         queryTextView = (TextView)findViewById(R.id.querytextView);
+
+        userIDText = (TextView) findViewById(R.id.userText);
+        userIDText.setText(accountID);
     }
 
     /**
@@ -143,8 +134,7 @@ public class ProceduresListActivity extends BaseActivity implements AIButton.AIB
         cancelButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                // stop any speech that is being played currently
-                TTS.stop();
+                Controller.getController().onCancelPressed();
             }
         });
     }
@@ -180,9 +170,7 @@ public class ProceduresListActivity extends BaseActivity implements AIButton.AIB
                 return true;
 
             case R.id.action_logout:
-                // Create an LogoutTask and execute it to logout
-                LogoutTask httpTask = new LogoutTask(this);
-                httpTask.execute();
+                Controller.getController().onLogoutPressed(this);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -198,37 +186,37 @@ public class ProceduresListActivity extends BaseActivity implements AIButton.AIB
     public void onResult(final AIResponse response) {
 
         Controller.processDialogFlowResponse(this, response);
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-
-                PR = new ParseResult(response);
-
-                query = PR.get_ResolvedQuery();
-
-                dataAsked.setIncomplete(PR.get_ActionIncomplete());
-                dataAsked.setCurrentReply(PR.get_reply());
-                dataAsked.setCensusUnit(PR.getCensusUnit());
-                dataAsked.setCurrentSurgeryCategory(PR.get_param_Surgery());
-                dataAsked.setCurrentAction(PR.get_Action());
-                Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                if (PR.get_Action().equalsIgnoreCase(Constants.GET_ONCALL)){
-                    OnCallRetrieveTask task = new OnCallRetrieveTask();
-                    String OCMID = ParseResult.extractOCMID(PR.get_reply());
-                    task.addListener(ProceduresListActivity.this);
-                    task.execute(OCMID);
-                }
-                else {
-                    // Retrieve the information and display the results
-                    RetrieveTask httpTask = new RetrieveTask(dataAsked,
-                            CertificateManager.getSSlContext(ProceduresListActivity.this)); // the task to retrieve the information
-                    httpTask.addListener(ProceduresListActivity.this);
-                    httpTask.execute();
-                }
-            }
-
-        });
+//        runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                PR = new ParseResult(response);
+//
+//                query = PR.get_ResolvedQuery();
+//
+//                dataAsked.setIncomplete(PR.get_ActionIncomplete());
+//                dataAsked.setCurrentReply(PR.get_reply());
+//                dataAsked.setCensusUnit(PR.getCensusUnit());
+//                dataAsked.setCurrentSurgeryCategory(PR.get_param_Surgery());
+//                dataAsked.setCurrentAction(PR.get_Action());
+//                Log.d("OUTPUTRESPONSE", PR.get_reply());
+//
+//                if (PR.get_Action().equalsIgnoreCase(Constants.GET_ONCALL)){
+//                    OnCallRetrieveTask task = new OnCallRetrieveTask();
+//                    String OCMID = ParseResult.extractOCMID(PR.get_reply());
+//                    task.addListener(ProceduresListActivity.this);
+//                    task.execute(OCMID);
+//                }
+//                else {
+//                    // Retrieve the information and display the results
+//                    RetrieveTask httpTask = new RetrieveTask(dataAsked,
+//                            CertificateManager.getSSlContext(ProceduresListActivity.this)); // the task to retrieve the information
+//                    httpTask.addListener(ProceduresListActivity.this);
+//                    httpTask.execute();
+//                }
+//            }
+//
+//        });
     }
 
     @Override

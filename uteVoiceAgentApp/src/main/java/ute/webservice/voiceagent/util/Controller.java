@@ -3,11 +3,13 @@ package ute.webservice.voiceagent.util;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.widget.ExpandableListView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Locale;
 
 import ai.api.model.AIResponse;
 import ute.webservice.voiceagent.R;
@@ -19,13 +21,15 @@ import ute.webservice.voiceagent.activities.ResultsActivity;
 import ute.webservice.voiceagent.activities.WelcomeActivity;
 import ute.webservice.voiceagent.dao.DAOFactory;
 import ute.webservice.voiceagent.dao.EDWDAOFactory;
-import ute.webservice.voiceagent.dao.EDWProceduresDAO;
 import ute.webservice.voiceagent.dao.OnCallDAO;
 import ute.webservice.voiceagent.dao.OpenBedsDAO;
 import ute.webservice.voiceagent.dao.ProceduresDAO;
 import ute.webservice.voiceagent.dao.SpokDAOFactory;
-import ute.webservice.voiceagent.dao.SpokOnCallDAO;
 import ute.webservice.voiceagent.procedures.ProcedureInfoListener;
+import ute.webservice.voiceagent.procedures.ProceduresParentListAdapter;
+import ute.webservice.voiceagent.procedures.ProceduresSecondLevelAdapter;
+import ute.webservice.voiceagent.procedures.util.ProcedureCostRetrievalListener;
+import ute.webservice.voiceagent.procedures.util.ProcedureCostRetrieveTask;
 
 /**
  * This class separates the model from the view. It provides a static method for each
@@ -34,9 +38,10 @@ import ute.webservice.voiceagent.procedures.ProcedureInfoListener;
  * Created by Nathan Taylor on 4/11/2018.
  */
 
-public class Controller implements ProcedureInfoListener{
+public class Controller implements ProcedureInfoListener, ProcedureCostRetrievalListener {
 
     private WelcomeActivity welcomeActivity;
+    private Context lastContext; // To store the last context passed to the controller
 
     private static OpenBedsDAO openBedsDAO;
     private static ProceduresDAO proceduresDAO;
@@ -54,14 +59,17 @@ public class Controller implements ProcedureInfoListener{
 
     public static void processDialogFlowResponse(Context context, AIResponse response){
 
+        // Parse the result
         ParseResult parseResult = new ParseResult(response);
 
+        // Store the result information
         boolean complete = parseResult.actionIsComplete();
         String action = parseResult.get_Action();
         String unit = parseResult.getCensusUnit();
         String query = parseResult.get_ResolvedQuery();
         String reply = parseResult.get_reply();
 
+        // If there is more information needed to display a result, take the user to the appropriate activity
         if(!complete || (action.equals(Constants.GET_CENSUS) && (unit == null || unit.isEmpty()))){
             if (action.equals(Constants.GET_ONCALL))
                 openNewActivity(context, OnCallActivity.class);
@@ -70,6 +78,7 @@ public class Controller implements ProcedureInfoListener{
             else
                 openNewActivity(context, OpenBedsActivity.class);
         }
+        // Otherwise, retrieve the necessary information and display it to the user
         else {
             if (action.equals(Constants.GET_CENSUS)){
                 if (unit.equals("All")){
@@ -154,7 +163,7 @@ public class Controller implements ProcedureInfoListener{
         task.execute();
     }
 
-    private static OpenBedsDAO getOpenBedsDAO(){
+    public static OpenBedsDAO getOpenBedsDAO(){
         if (openBedsDAO == null){
             DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.EDW);
             EDWDAOFactory edwFactory = null;
@@ -167,7 +176,7 @@ public class Controller implements ProcedureInfoListener{
         return openBedsDAO;
     }
 
-    private static OnCallDAO getOnCallDAO(){
+    public static OnCallDAO getOnCallDAO(){
         if (onCallDAO == null){
             SpokDAOFactory daoFactory = (SpokDAOFactory) DAOFactory.getDAOFactory(DAOFactory.SPOK);
             onCallDAO = daoFactory.getOnCallDAO();
@@ -202,7 +211,7 @@ public class Controller implements ProcedureInfoListener{
         }
     }
 
-    private static ProceduresDAO getProceduresDAO(){
+    public static ProceduresDAO getProceduresDAO(){
         if (proceduresDAO == null){
             EDWDAOFactory daoFactory = (EDWDAOFactory)DAOFactory.getDAOFactory(DAOFactory.EDW);
             proceduresDAO = daoFactory.getProceduresDAO();
@@ -269,8 +278,77 @@ public class Controller implements ProcedureInfoListener{
      * Gets called when the ProceduresDAO finishes fetching all the data from EDW
      */
     @Override
-    public void onInfoRetrieval(){
+    public void onProcedureInfoRetrieval(){
         welcomeActivity.setWelcomeText(WELCOME_MESSAGE);
         welcomeActivity.enableComponents(true);
+    }
+
+    /**
+     * Should get called when the Procedures Activity has been started to initialize the list view.
+     * @param listView The view to initialize.
+     */
+    public void initializeProceduresExpandableList(Context context, ExpandableListView listView){
+        if (listView != null){
+            ProceduresParentListAdapter adapter = new ProceduresParentListAdapter(context, getProceduresDAO().getCategoryNames());
+            adapter.setWidth(context.getResources().getDimensionPixelSize(R.dimen.surgery_list_width)-200);
+            listView.setAdapter(adapter);
+        }
+    }
+
+    /**
+     * Constructs a ProceduresSecondLevelAdapter with the correct data.
+     * @param context The context of the activity the adapter is to modify/display
+     * @param category The category of that the second level adapter will be under
+     */
+    public ProceduresSecondLevelAdapter getSecondLevelAdapter(Context context, String category){
+        return new ProceduresSecondLevelAdapter(context, getProceduresDAO().getSubCategoryHeaders(category));
+    }
+
+    /**
+     * Gets the subcategory header for the specified category and index
+     */
+    public String getProceduresSecondLevelHeader(String category, int index){
+        return getProceduresDAO().getSubCategoryHeaders(category).get(index);
+    }
+
+    /**
+     * Gets the list of third-level headers under the given category and subcategory. Null if doesn't exist.
+     */
+    public ArrayList<String> getProceduresThirdLevelHeaders(String category, String subCategory){
+        return getProceduresDAO().getExtremityHeaders(category, subCategory);
+    }
+
+    /**
+     * Given a cost and procedure description, removes the code on the description and
+     * displays it with its associated cost.
+     * @param cost The estimated cost of a procedure.
+     * @param description The description of the procedure.
+     */
+    public void displayProcedureCost(Context context, int cost, String description){
+        String value = NumberFormat.getNumberInstance(Locale.US).format(cost);
+        value = String.format("The estimated patient cost of this procedure is $%s", value);
+
+        // Start the results activity
+        Intent intent = new Intent(context, ResultsActivity.class);
+        intent.putExtra("query", getProceduresDAO().removeCode(description));
+        intent.putExtra("result", value);
+        context.startActivity(intent);
+    }
+
+    /**
+     * Given a procedure's full description, retrieves the cost of the given procedure and displays it.
+     * @param context
+     * @param description The full description (including the code) of the procedure.
+     */
+    public void displayProcedureCost(Context context, String description){
+        this.lastContext = context;
+        ProcedureCostRetrieveTask task = new ProcedureCostRetrieveTask();
+        task.addListener(this);
+        task.execute(getProceduresDAO().getCode(description), description);
+    }
+
+    @Override
+    public void onCostRetrieval(int cost, String description) {
+        displayProcedureCost(lastContext, cost, description);
     }
 }

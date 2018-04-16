@@ -13,6 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import ute.webservice.voiceagent.R;
+import ute.webservice.voiceagent.util.Controller;
 
 /**
  * This class defines the behavior of the top-level, or category, headers in the expandable list
@@ -51,7 +52,8 @@ public class ProceduresParentListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return ProcedureInfo.getSubCategoryHeaders(categoryHeaders.get(groupPosition)).get(childPosition);
+//        return ProcedureInfo.getSubCategoryHeaders(categoryHeaders.get(groupPosition)).get(childPosition);
+        return Controller.getController().getProceduresSecondLevelHeader(categoryHeaders.get(groupPosition), childPosition);
     }
     @Override
     public long getChildId(int groupPosition, int childPosition) {
@@ -65,8 +67,7 @@ public class ProceduresParentListAdapter extends BaseExpandableListAdapter {
         final CustomExpListView secondLevelExpListView = new CustomExpListView(this.context);
         String parentNode = (String) getGroup(groupPosition);
 
-        ProceduresSecondLevelAdapter secondLevel = new ProceduresSecondLevelAdapter(this.context,
-                ProcedureInfo.getSubCategoryHeaders(parentNode));
+        ProceduresSecondLevelAdapter secondLevel = Controller.getController().getSecondLevelAdapter(context, parentNode);
         if (setMidColor)
             secondLevel.setMidColor(midColor);
         if (setBottomColor)

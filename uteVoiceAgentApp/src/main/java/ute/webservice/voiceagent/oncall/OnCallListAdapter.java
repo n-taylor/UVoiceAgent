@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import ute.webservice.voiceagent.R;
-import ute.webservice.voiceagent.procedures.ProcedureInfo;
+import ute.webservice.voiceagent.util.Controller;
 
 /**
  * Created by Nathan Taylor on 4/4/2018.
@@ -139,7 +139,7 @@ public class OnCallListAdapter extends BaseExpandableListAdapter {
         TextView childTextView = (TextView) convertView
                 .findViewById(R.id.listItem);
         //txtListChild.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
-        childTextView.setText(ProcedureInfo.removeCode(childText));
+        childTextView.setText(Controller.getProceduresDAO().removeCode(childText));
         childTextView.setWidth(width);
         if (setMidTextColor)
             childTextView.setTextColor(midTextColor);

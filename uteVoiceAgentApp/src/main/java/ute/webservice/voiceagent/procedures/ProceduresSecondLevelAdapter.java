@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.Locale;
 
 import ute.webservice.voiceagent.activities.ProceduresSelectActivity;
+import ute.webservice.voiceagent.dao.ProceduresDAO;
+import ute.webservice.voiceagent.util.Controller;
 import ute.webservice.voiceagent.util.ParseResult;
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.activities.ResultsActivity;
@@ -26,7 +28,7 @@ import ute.webservice.voiceagent.procedures.util.ProcedureCostRetrieveTask;
  * Created by Nathan Taylor on 3/20/2018.
  */
 
-public class ProceduresSecondLevelAdapter extends BaseExpandableListAdapter implements ProcedureCostRetrievalListener {
+public class ProceduresSecondLevelAdapter extends BaseExpandableListAdapter {
 
     private Context context;
     private ArrayList<String> subcategoryHeaders;
@@ -58,7 +60,7 @@ public class ProceduresSecondLevelAdapter extends BaseExpandableListAdapter impl
     public Object getChild(int groupPosition, int childPosition)
     {
         String subcategory = (String)getGroup(groupPosition);
-        return ProcedureInfo.getExtremityHeaders(currentCategory, subcategory).get(childPosition);
+        return Controller.getProceduresDAO().getExtremityHeaders(currentCategory, subcategory).get(childPosition);
     }
     @Override
     public long getChildId(int groupPosition, int childPosition)
@@ -87,7 +89,7 @@ public class ProceduresSecondLevelAdapter extends BaseExpandableListAdapter impl
         TextView thirdLevelTextView = (TextView) convertView
                 .findViewById(R.id.listItem);
         //txtListChild.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
-        thirdLevelTextView.setText(ProcedureInfo.removeCode(childText));
+        thirdLevelTextView.setText(Controller.getProceduresDAO().removeCode(childText));
         thirdLevelTextView.setWidth(width);
         if (setBottomTextColor)
             thirdLevelTextView.setTextColor(bottomTextColor);
@@ -95,12 +97,12 @@ public class ProceduresSecondLevelAdapter extends BaseExpandableListAdapter impl
             thirdLevelTextView.setTextColor(Color.BLACK);
 
         final String subcategoryText = (String)getGroup(groupPosition);
-        if (!ProcedureInfo.isExtremity(currentCategory, subcategoryText, childText)){
+        if (!Controller.getProceduresDAO().isExtremity(currentCategory, subcategoryText, childText)){
             // Display the cost of procedure using the description/child text
             convertView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
-                    displayCost(childText);
+                    Controller.getController().displayProcedureCost(v.getContext(), childText);
                 }
             });
         }
@@ -120,7 +122,7 @@ public class ProceduresSecondLevelAdapter extends BaseExpandableListAdapter impl
     public int getChildrenCount(int groupPosition)
     {
         try {
-            return ProcedureInfo.getExtremityHeaders(currentCategory, (String)getGroup(groupPosition)).size();
+            return Controller.getProceduresDAO().getExtremityHeaders(currentCategory, (String)getGroup(groupPosition)).size();
         } catch (Exception e) {
             return 0;
         }
@@ -168,18 +170,18 @@ public class ProceduresSecondLevelAdapter extends BaseExpandableListAdapter impl
             secondLevelTextView.setTextColor(Color.WHITE);
 
         // If the current category is other, then display the cost of the surgery
-        if (currentCategory.equals(ProcedureInfo.MISC_CATEGORY_TITLE)){
+        if (currentCategory.equals(ProceduresDAO.MISC_CATEGORY)){
             convertView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
-                    displayCost(headerTitle);
+                    Controller.getController().displayProcedureCost(v.getContext(), headerTitle);
                 }
             });
         }
 
-        ArrayList<String> headers = ProcedureInfo.getExtremityHeaders(currentCategory, headerTitle);
+        ArrayList<String> headers = Controller.getProceduresDAO().getExtremityHeaders(currentCategory, headerTitle);
         if (headers.size() > 5){
-            if (!ProcedureInfo.isExtremity(currentCategory, headerTitle, headers.get(0))) {
+            if (!Controller.getProceduresDAO().isExtremity(currentCategory, headerTitle, headers.get(0))) {
                 convertView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -248,57 +250,16 @@ public class ProceduresSecondLevelAdapter extends BaseExpandableListAdapter impl
      * Displays all the procedures related to the extremity given.
      */
     private void displaySurgeries(String category, String subCategory, String extremity){
-        ArrayList<String> procedures = ProcedureInfo.getExtremityProcedureDescriptions(category, subCategory, extremity);
+        ArrayList<String> procedures = Controller.getProceduresDAO().getProcedureDescriptionsByExtremity(category, subCategory, extremity);
         Intent intent = new Intent(context, ProceduresSelectActivity.class);
         intent.putExtra("procedures", procedures);
         context.startActivity(intent);
     }
 
     private void displaySurgeries(String category, String subcategory){
-        ArrayList<String> procedures = ProcedureInfo.getExtremityHeaders(category, subcategory);
+        ArrayList<String> procedures = Controller.getProceduresDAO().getExtremityHeaders(category, subcategory);
         Intent intent = new Intent(context, ProceduresSelectActivity.class);
         intent.putExtra("procedures", procedures);
-        context.startActivity(intent);
-    }
-
-    private void displayCost(String description){
-        ProcedureCostRetrieveTask task = new ProcedureCostRetrieveTask();
-        task.addListener(this);
-        task.execute(ProcedureInfo.getCode(description), description);
-    }
-
-    /**
-     * Displays the results in the results activity.
-     * @param cost The cost of the given procedure.
-     */
-    @Override
-    public void onCostRetrieval(int cost, String description) {
-        String value = NumberFormat.getNumberInstance(Locale.US).format(cost);
-        value = String.format("The estimated patient cost of this procedure is $" + value);
-        startResultsActivity(ProcedureInfo.removeCode(description), value);
-    }
-
-    /**
-     * Creates an intent and starts the surgery codes activity.
-     * @param message The message to display in the new activity.
-     * @param codes The codes and their associated descriptions.
-     */
-    private void startSurgeryCodesActivity(String message, HashMap<String, String> codes){
-        Intent intent = new Intent(context, ProceduresSelectActivity.class);
-        intent.putExtra("message", message);
-        intent.putExtra("codes", codes);
-        context.startActivity(intent);
-    }
-
-    /**
-     * Creates an intent and starts the result activity.
-     * @param query The query to display in the results activity
-     * @param result The result message to display in the results activity.
-     */
-    private void startResultsActivity(String query, String result){
-        Intent intent = new Intent(context, ResultsActivity.class);
-        intent.putExtra("query", query);
-        intent.putExtra("result", result);
         context.startActivity(intent);
     }
 

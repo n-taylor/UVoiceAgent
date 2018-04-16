@@ -17,13 +17,14 @@ import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.activities.ResultsActivity;
 import ute.webservice.voiceagent.procedures.util.ProcedureCostRetrievalListener;
 import ute.webservice.voiceagent.procedures.util.ProcedureCostRetrieveTask;
+import ute.webservice.voiceagent.util.Controller;
 
 /**
  * The Adapter for the list view with specific surgeries.
  * Created by Nathan Taylor on 3/22/2018.
  */
 
-public class ProceduresSelectListAdapter extends ArrayAdapter<String> implements ProcedureCostRetrievalListener {
+public class ProceduresSelectListAdapter extends ArrayAdapter<String> {
 
     private Context context;
     private ArrayList<String> procedures;
@@ -54,7 +55,7 @@ public class ProceduresSelectListAdapter extends ArrayAdapter<String> implements
             convertView.setBackgroundColor(backColor);
         // Lookup view for the description
         TextView textView = (TextView)convertView.findViewById(R.id.listHeader);
-        textView.setText(ProcedureInfo.removeCode(description));
+        textView.setText(Controller.getProceduresDAO().removeCode(description));
         if (setTextColor)
             textView.setTextColor(textColor);
         else
@@ -64,21 +65,10 @@ public class ProceduresSelectListAdapter extends ArrayAdapter<String> implements
         convertView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                displayCost(description);
+                Controller.getController().displayProcedureCost(v.getContext(), description);
             }
         });
         return convertView;
-    }
-
-    /**
-     * Determines the code associated with the given description, gets the cost of procedure and
-     * displays it in the results activity.
-     * @param description The description of the procedure.
-     */
-    private void displayCost(String description){
-        ProcedureCostRetrieveTask task = new ProcedureCostRetrieveTask();
-        task.addListener(this);
-        task.execute(ProcedureInfo.getCode(description), description);
     }
 
     /**
@@ -97,18 +87,5 @@ public class ProceduresSelectListAdapter extends ArrayAdapter<String> implements
     public void setTextColor(int color){
         setTextColor = true;
         textColor = color;
-    }
-
-    /**
-     * Displays the results in the results activity.
-     * @param cost The cost of the given procedure.
-     */
-    @Override
-    public void onCostRetrieval(int cost, String description) {
-        Intent intent = new Intent(context, ResultsActivity.class);
-        String value = NumberFormat.getNumberInstance(Locale.US).format(cost);
-        intent.putExtra("query", ProcedureInfo.removeCode(description));
-        intent.putExtra("result", "The estimated patient cost of this procedure is $" + value);
-        context.startActivity(intent);
     }
 }

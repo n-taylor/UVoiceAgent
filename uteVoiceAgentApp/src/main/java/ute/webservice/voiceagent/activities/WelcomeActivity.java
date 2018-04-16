@@ -1,7 +1,6 @@
 package ute.webservice.voiceagent.activities;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
@@ -24,19 +23,12 @@ import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.oncall.util.OnCallRetrievalListener;
-import ute.webservice.voiceagent.oncall.util.OnCallRetrieveTask;
 import ute.webservice.voiceagent.util.Controller;
-import ute.webservice.voiceagent.util.TTS;
-import ute.webservice.voiceagent.procedures.ProcedureInfo;
 import ute.webservice.voiceagent.procedures.ProcedureInfoListener;
-import ute.webservice.voiceagent.util.CertificateManager;
 import ute.webservice.voiceagent.util.Config;
-import ute.webservice.voiceagent.util.Constants;
 import ute.webservice.voiceagent.util.DataAsked;
-import ute.webservice.voiceagent.util.LogoutTask;
 import ute.webservice.voiceagent.util.ParseResult;
 import ute.webservice.voiceagent.util.RetrievalListener;
-import ute.webservice.voiceagent.util.RetrieveTask;
 import ute.webservice.voiceagent.util.SharedData;
 
 public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener, ProcedureInfoListener, OnCallRetrievalListener {
@@ -95,14 +87,6 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         dataAsked = new DataAsked();
 
         controller.onActivityCreated(this);
-    }
-
-    private void fetchProcedureInfo(){
-        if (ProcedureInfo.needsData()) {
-            ProcedureInfo PI = ProcedureInfo.fetchData();
-            if (PI != null)
-                PI.addListener(this);
-        }
     }
 
     private void initializeButtons(){
@@ -316,7 +300,7 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
     /**
      * Enable the buttons and change the welcome text to its proper message.
      */
-    public void onInfoRetrieval(){
+    public void onProcedureInfoRetrieval(){
         cancelButton.setEnabled(true);
         aiButton.setEnabled(true);
         bedButton.setEnabled(true);

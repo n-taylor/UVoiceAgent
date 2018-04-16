@@ -1,31 +1,23 @@
 package ute.webservice.voiceagent.dao;
 
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGetHC4;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import ute.webservice.voiceagent.procedures.ProcedureCategoryMap;
 import ute.webservice.voiceagent.procedures.ProcedureInfoListener;
 import ute.webservice.voiceagent.procedures.ProcedureNode;
 import ute.webservice.voiceagent.procedures.util.ProcedureCategoryRetrievalListener;
 import ute.webservice.voiceagent.procedures.util.ProcedureCategoryRetrieveTask;
 import ute.webservice.voiceagent.procedures.util.ProcedureJsonRetrievalListener;
 import ute.webservice.voiceagent.procedures.util.ProcedureJsonRetrieveTask;
-import ute.webservice.voiceagent.util.AccountCheck;
-import ute.webservice.voiceagent.util.Constants;
 import ute.webservice.voiceagent.util.ParseResult;
+
 
 /**
  * Created by Nathan Taylor on 4/11/2018.
  */
 
 public class EDWProceduresDAO implements ProceduresDAO, ProcedureCategoryRetrievalListener, ProcedureJsonRetrievalListener {
-    public final static String MISC_CATEGORY_TITLE = "OTHER";
 
     private static ProcedureNode procedureTreeRoot;
     private boolean isRetrieving;
@@ -42,7 +34,7 @@ public class EDWProceduresDAO implements ProceduresDAO, ProcedureCategoryRetriev
      * @param description The description to truncate.
      * @return The truncated string. If there is no code to remove, the given description is returned.
      */
-    public static String removeCode(String description){
+    public String removeCode(String description){
         Pattern pattern = Pattern.compile("(\\s-\\s[0-9]+)");
         Matcher matcher = pattern.matcher(description);
         String toShow = description;
@@ -234,7 +226,7 @@ public class EDWProceduresDAO implements ProceduresDAO, ProcedureCategoryRetriev
 
     private void notifyListeners(){
         for (ProcedureInfoListener listener : listeners){
-            listener.onInfoRetrieval();
+            listener.onProcedureInfoRetrieval();
         }
     }
 
@@ -266,8 +258,8 @@ public class EDWProceduresDAO implements ProceduresDAO, ProcedureCategoryRetriev
                     // if the procedure does not belong to a subcategory, add it to the "other" category
                     String currentSubCategory = "";
                     if (procedure[2].isEmpty()) {
-                        currentNode.ensureChildCategory(MISC_CATEGORY_TITLE);
-                        currentNode = currentNode.goTo(MISC_CATEGORY_TITLE);
+                        currentNode.ensureChildCategory(MISC_CATEGORY);
+                        currentNode = currentNode.goTo(MISC_CATEGORY);
                     }
                     else {
                         currentNode.ensureChildCategory(procedure[2]);

@@ -9,6 +9,9 @@ import ute.webservice.voiceagent.procedures.ProcedureInfoListener;
  */
 
 public interface ProceduresDAO {
+
+    String MISC_CATEGORY = "OTHER";
+
     /**
      * If the data is not yet available, returns null. Otherwise, returns a list of the top-level category names.
      */
@@ -60,4 +63,13 @@ public interface ProceduresDAO {
      * Subscribes the given listener so when procedure information is retrieved, the listener will be notified.
      */
     void addListener(ProcedureInfoListener listener);
+
+    /**
+     * Given a full procedure description in the format
+     * [DESCRIPTION] - [CODE]
+     * Removes the code and dash so only the description remains.
+     *
+     * @return The description without its code
+     */
+    String removeCode(String description);
 }
