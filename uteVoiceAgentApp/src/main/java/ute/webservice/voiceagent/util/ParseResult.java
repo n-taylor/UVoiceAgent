@@ -99,6 +99,7 @@ public class ParseResult {
      */
     public ParseResult(){
         GsonBuilder gBuilder = new GsonBuilder();
+        gBuilder.registerTypeAdapter(RoomStatus.class, new RoomStatusDeserializer());
         gBuilder.registerTypeAdapter(ProcedureCategoryMap.class, new ProcedureCategoryDeserializer());
         gBuilder.registerTypeAdapter(new TypeToken<HashMap<String, String>>(){}.getType(), new ProcedureCodeDeserializer());
         gBuilder.registerTypeAdapter(new TypeToken<Integer>(){}.getType(), new ProcedureCostDeserializer());

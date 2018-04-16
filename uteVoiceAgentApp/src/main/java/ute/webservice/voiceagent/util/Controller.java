@@ -1,5 +1,6 @@
 package ute.webservice.voiceagent.util;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -350,5 +351,44 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
     @Override
     public void onCostRetrieval(int cost, String description) {
         displayProcedureCost(lastContext, cost, description);
+    }
+
+    /**
+     * Given a valid unit name, retrieves the current number of available beds in that unit and
+     * displays the results in the results activity.
+     * If the unit name is not valid, does nothing.
+     *
+     * @param unit The unit to query.
+     */
+    public void displayOpenBedCount(Context context, final String unit){
+        this.lastContext = context;
+        final String trimmedUnit = unit.replace(" ", "");
+
+        @SuppressLint("StaticFieldLeak")
+        AsyncTask<Void, Void, Integer> task = new AsyncTask<Void, Void, Integer>() {
+            @Override
+            protected Integer doInBackground(Void... voids) {
+                return Controller.getOpenBedsDAO().getOpenBedCount(trimmedUnit);
+            }
+
+            @Override
+            protected void onPostExecute(Integer count){
+                Controller.getController().displayOpenBedCount(unit, count);
+            }
+        };
+        task.execute();
+    }
+
+    /**
+     * Displays in the results activity that the given number of beds are available for the given unit.
+     * @param unit The unit containing the number of available beds
+     * @param openBeds The number of available beds
+     */
+    public void displayOpenBedCount(String unit, int openBeds){
+        String message = String.format(Locale.US, "%1$s has %2$d available bed%3$s", unit, openBeds, (openBeds == 1)?"":"s");
+        Intent intent = new Intent(lastContext, ResultsActivity.class);
+        intent.putExtra("query", unit);
+        intent.putExtra("result", message);
+        lastContext.startActivity(intent);
     }
 }

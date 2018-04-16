@@ -1,6 +1,5 @@
 package ute.webservice.voiceagent.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -27,6 +26,7 @@ import ai.api.ui.AIButton;
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.oncall.util.OnCallRetrievalListener;
 import ute.webservice.voiceagent.oncall.util.OnCallRetrieveTask;
+import ute.webservice.voiceagent.util.Controller;
 import ute.webservice.voiceagent.util.TTS;
 import ute.webservice.voiceagent.openbeds.ListAdapter;
 import ute.webservice.voiceagent.util.CertificateManager;
@@ -45,8 +45,8 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
 
     ListAdapter listAdapter;
     ExpandableListView expListView;
-    List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;
+    List<String> unitGroups;
+    HashMap<String, List<String>> units;
     
     private Button cancelButton;
     private AIButton aiButton;
@@ -60,11 +60,6 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
     SharedData sessiondata;
     private String accountID;
     private int account_access;
-
-    //CA variables
-//    private CertificateFactory cf = null;
-//    private Certificate ca;
-//    private SSLContext sslContext = null;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +71,18 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
         accountID = sessiondata.getKeyAccount();
         account_access = sessiondata.getKeyAccess();
 
+        initializeToolbar();
+        initializeExpandableList();
+        initializeButtons();
+
+        dataAsked = new DataAsked();
+
+    }
+
+    /**
+     * Initializes the components of the toolbar
+     */
+    private void initializeToolbar(){
         TextView userIDText = (TextView) findViewById(R.id.userText);
         userIDText.setText(accountID);
 
@@ -91,175 +98,12 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
                 finish();
             }
         });
+    }
 
-        // get the listview
-        expListView = (ExpandableListView) findViewById(R.id.resultListView);
-
-        // preparing list data
-        dummyListData();
-
-        expListView.setBackgroundResource(R.drawable.menushape);
-
-        listAdapter = new ListAdapter(this, listDataHeader, listDataChild);
-
-        // setting list adapter
-        expListView.setAdapter(listAdapter);
-
-        //
-        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
-                if (i == 0) {
-                    if (i1 == 0) {
-                        launchCensus("2A");
-                    }
-                    else if (i1 == 1)
-                    {
-                        launchCensus("2B");
-                    }
-                    else if (i1 == 2)
-                    {
-                        launchCensus("2 EAST");
-                    }
-                    else if (i1 == 3) {
-                        launchCensus("2 NORTH");
-                    }
-                    else if (i1 == 4)
-                    {
-                        launchCensus("2 SOUTH");
-                    }
-
-                    else if (i1 == 5)
-                    {
-                        query = "3NORTH";
-                        launchCensus("3 NORTH");
-                    }
-                    else if (i1 == 6)
-                    {
-                        launchCensus("3 SOUTH");
-                    }
-                    else if (i1 == 7)
-                    {
-                        query = "4NORTH";
-                        launchCensus("4 NORTH");
-                    }
-                    else if (i1 == 8)
-                    {
-                        launchCensus("4 SOUTH");
-                    }
-                }
-                else if  (i == 1) {
-                    if (i1 == 0) {
-                        launchCensus("5STB");
-                    }
-                    else if (i1 == 1)
-                    {
-                        launchCensus("5W");
-                    }
-                    else if (i1 == 2)
-                    {
-                        launchCensus("AIMA");
-                    }
-                    else if (i1 == 3)
-                    {
-                        launchCensus("AIMB");
-                    }
-                    else if (i1 == 4)
-                    {
-                        launchCensus("BRN");
-                    }
-                    else if (i1 == 5)
-                    {
-                        launchCensus("CVICU");
-                    }
-                    else if (i1 == 6)
-                    {
-                        launchCensus("CVMU");
-                    }
-                    else if (i1 == 7)
-                    {
-                        launchCensus("ICN");
-                    }
-                    else if (i1 == 8)
-                    {
-                        launchCensus("IMR");
-                    }
-                    else if (i1 == 9)
-                    {
-                        launchCensus("LND");
-                    }
-                    else if (i1 == 10)
-                    {
-                        launchCensus("MICU");
-                    }
-                    else if (i1 == 11)
-                    {
-                        launchCensus("MNBC");
-                    }
-                    else if (i1 == 12)
-                    {
-                        launchCensus("NAC");
-                    }
-                    else if (i1 == 13)
-                    {
-                        launchCensus("NCCU");
-                    }
-                    else if (i1 == 14)
-                    {
-                        launchCensus("NICU");
-                    }
-                    else if (i1 == 15)
-                    {
-                        launchCensus("NNCCN");
-                    }
-                    else if (i1 == 16)
-                    {
-                        launchCensus("NSY");
-                    }
-                    else if (i1 == 17)
-                    {
-                        launchCensus("OBGY");
-                    }
-                    else if (i1 == 18)
-                    {
-                        launchCensus("OTSS");
-                    }
-                    else if (i1 == 19)
-                    {
-                        launchCensus("SICU");
-                    }
-                    else if (i1 == 20)
-                    {
-                        launchCensus("SSTU");
-                    }
-                    else if (i1 == 21)
-                    {
-                        launchCensus("WP5");
-                    }
-                }
-                else if (i ==2)
-                {
-                    if (i1 == 0)
-                    {
-                        launchCensus("HCBMT");
-                    }
-                    else if (i1 == 1)
-                    {
-                        launchCensus("HCH4");
-                    }
-                    else if (i1 == 2)
-                    {
-                        launchCensus("HCH5");
-                    }
-                    else if (i1 == 3)
-                    {
-                        launchCensus("HCICU");
-                    }
-                }
-                return false;
-            }
-        });
-
+    /**
+     * Initializes the button components
+     */
+    private void initializeButtons(){
         aiButton = (AIButton) findViewById(R.id.micButton);
         cancelButton = (Button) findViewById(R.id.cancelButton);
         queryTextView = (TextView) findViewById(R.id.querytextView);
@@ -279,39 +123,65 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
         // set up the cancel button
         cancelButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                // stop any speech that is being played currently
-                TTS.stop();
+                Controller.getController().onCancelPressed();
             }
         });
-        dataAsked = new DataAsked();
-
-        //this.loadCA();
-
     }
+
+    /**
+     * Initializes the list and sets it up to retrieve the appropriate data when clicked
+     */
+    private void initializeExpandableList(){
+        initializeUnitLists();
+
+        // get the listview
+        expListView = (ExpandableListView) findViewById(R.id.resultListView);
+
+        // preparing list data
+        initializeUnitLists();
+
+        expListView.setBackgroundResource(R.drawable.menushape);
+
+        listAdapter = new ListAdapter(this, unitGroups, units);
+
+        // setting list adapter
+        expListView.setAdapter(listAdapter);
+
+        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View view, int groupPosition, int childPosition, long id) {
+                String group = unitGroups.get(groupPosition);
+                String unit = units.get(group).get(childPosition);
+                Controller.getController().displayOpenBedCount(view.getContext(), unit);
+                return true;
+            }
+        });
+    }
+
     /*
      * Preparing the list data
      */
-    private void dummyListData() {
-        listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<String>>();
+    private void initializeUnitLists() {
+        unitGroups = new ArrayList<String>();
+        units = new HashMap<String, List<String>>();
 
         // Adding child data
-        listDataHeader.add("U Neuro Institute");
-        listDataHeader.add("University Hospitals");
-        listDataHeader.add("Huntsman Cancer Institute");
+        unitGroups.add("U Neuro Institute");
+        unitGroups.add("University Hospitals");
+        unitGroups.add("Huntsman Cancer Institute");
 
         // Adding child data
 
         List<String> UNI = new ArrayList<String>();
         UNI.add("2A");
         UNI.add("2B");
-        UNI.add("2EAST");
-        UNI.add("2NORTH");
-        UNI.add("2SOUTH");
-        UNI.add("3NORTH");
-        UNI.add("3SOUTH");
-        UNI.add("4NORTH");
-        UNI.add("4SOUTH");
+        UNI.add("2 EAST");
+        UNI.add("2 NORTH");
+        UNI.add("2 SOUTH");
+        UNI.add("3 NORTH");
+        UNI.add("3 SOUTH");
+        UNI.add("4 NORTH");
+        UNI.add("4 SOUTH");
 
         List<String> UH = new ArrayList<String>();
         UH.add("5STB");
@@ -344,9 +214,9 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
         HC.add("HCICU");
       
 
-        listDataChild.put(listDataHeader.get(0), UNI);
-        listDataChild.put(listDataHeader.get(1), UH);
-        listDataChild.put(listDataHeader.get(2), HC);
+        units.put(unitGroups.get(0), UNI);
+        units.put(unitGroups.get(1), UH);
+        units.put(unitGroups.get(2), HC);
     }
 
     @Override
