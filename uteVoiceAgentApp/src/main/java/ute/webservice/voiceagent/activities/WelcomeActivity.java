@@ -31,7 +31,7 @@ import ute.webservice.voiceagent.util.ParseResult;
 import ute.webservice.voiceagent.util.RetrievalListener;
 import ute.webservice.voiceagent.util.SharedData;
 
-public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener, ProcedureInfoListener, OnCallRetrievalListener {
+public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonListener {
 
     private String TAG = WelcomeActivity.class.getName();
 
@@ -253,45 +253,6 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         });
     }
 
-    /**
-     * If the query needs to be more specific (i.e. a surgery type or unit name), open the
-     * appropriate Activity. Else open the activity to display the results.
-     * @param result the result of what what retrieved from the server
-     */
-    @Override
-    public void onRetrieval(String result) {
-
-        super.onRetrieval(result, dataAsked, this, PR.get_ResolvedQuery());
-
-//        if (dataAsked.isIncomplete()){
-//            if (dataAsked.getCurrentAction().equals(Constants.GET_CENSUS)){
-//                // TODO: Send to the activity that will prompt for a unit name
-//                Intent intent = new Intent(this, OpenBedsActivity.class);
-//                intent.putExtra("query", PR.get_ResolvedQuery());
-//                intent.putExtra("result", result);
-//                startActivity(intent);
-//            }
-//            else if (dataAsked.getCurrentAction().equals(Constants.GET_SURGERY_COST)){
-//                Intent intent = new Intent(this, ProceduresListActivity.class);
-//                startActivity(intent);
-//            }
-//            else if (dataAsked.getCurrentAction().equals(Constants.GET_ONCALL)){
-//                Intent intent = new Intent(this, ProceduresListActivity.class);
-//                startActivity(intent);
-//            }
-//        }
-//        else {
-//            if (dataAsked.getCurrentAction().equals(Constants.GET_CENSUS)
-//                    || dataAsked.getCurrentAction().equalsIgnoreCase(Constants.GET_SURGERY_COST)) {
-//                // open a ResultsActivity with the query and the corresponding result
-//                Intent intent = new Intent(this, ResultsActivity.class);
-//                intent.putExtra("query", PR.get_ResolvedQuery());
-//                intent.putExtra("result", result);
-//                startActivity(intent);
-//            }
-//        }
-    }
-
     @Override
     public void onBackPressed() {
         // do nothing
@@ -309,22 +270,5 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         oncallButton.setEnabled(true);
         welcomeTextView.setText(R.string.welcome_message);
         
-    }
-
-    @Override
-    public void onOnCallRetrieval(HashMap<String, ArrayList<String>> numbers) {
-
-        super.onCallRetrieval(numbers, this, PR.get_ResolvedQuery());
-
-//        for (String name : numbers.keySet()){
-//            for (String number : numbers.get(name)){
-//                System.out.println(name + " -> " + number);
-//            }
-//        }
-//
-//        Intent intent = new Intent(this, OnCallActivity.class);
-//        intent.putExtra("query", PR.get_ResolvedQuery());
-//        intent.putExtra("phoneNumMap", numbers);
-//        startActivity(intent);
     }
 }

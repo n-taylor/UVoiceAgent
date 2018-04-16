@@ -40,7 +40,7 @@ public class EDWOpenBedsDAO implements OpenBedsDAO {
     @Override
     public int getOpenBedCount(String unit) {
         int openBeds = -1;
-        String trimmedUnit = unit.replace(" ", "");
+        String trimmedUnit = unit.replace(" ", "").toUpperCase();
         String url = CLINWEB_OPEN_BEDS_SPECFIC_QUERY + trimmedUnit;
 
         try {

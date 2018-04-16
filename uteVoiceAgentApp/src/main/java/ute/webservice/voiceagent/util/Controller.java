@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -42,6 +43,7 @@ import ute.webservice.voiceagent.procedures.util.ProcedureCostRetrieveTask;
 public class Controller implements ProcedureInfoListener, ProcedureCostRetrievalListener {
 
     private WelcomeActivity welcomeActivity;
+    private TextView statusText; // A text view to use to show current status while a process is ongoing
     private Context lastContext; // To store the last context passed to the controller
 
     private static OpenBedsDAO openBedsDAO;
@@ -98,7 +100,26 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         }
     }
 
+    private static void displayOpenBeds(final Context context, final String unit, final String query){
+        final String trimmedUnit = unit.replace(" ", "");
+
+        @SuppressLint("StaticFieldLeak")
+        AsyncTask<Void, Void, Integer> task = new AsyncTask<Void, Void, Integer>() {
+            @Override
+            protected Integer doInBackground(Void... voids) {
+                return Controller.getOpenBedsDAO().getOpenBedCount(trimmedUnit);
+            }
+
+            @Override
+            protected void onPostExecute(Integer count){
+                Controller.getController().displayOpenBedCount(context, unit, query, count);
+            }
+        };
+        task.execute();
+    }
+
     private static void displayPhoneNumbers(final Context context, final String OCMID, final String query){
+        @SuppressLint("StaticFieldLeak")
         AsyncTask<Void, Void, HashMap<String, ArrayList<String>>> task = new AsyncTask<Void, Void, HashMap<String, ArrayList<String>>>() {
             @Override
             protected HashMap<String, ArrayList<String>> doInBackground(Void... voids) {
@@ -116,28 +137,9 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         task.execute();
     }
 
-    private static void displayOpenBeds(final Context context, final String unit, final String query){
-        AsyncTask<Void, Void, Integer> task = new AsyncTask<Void, Void, Integer>() {
-            @Override
-            protected Integer doInBackground(Void... voids) {
-                return getOpenBedsDAO().getOpenBedCount(unit);
-            }
-
-            @Override
-            protected void onPostExecute(Integer beds){
-                String toShow = unit + String.format(" has %1$d bed%2$s available\n", beds, (beds == 1)?"":"s");
-                // Open a results activity with the information
-                Intent intent = new Intent(context, ResultsActivity.class);
-                intent.putExtra("query", query);
-                intent.putExtra("result", toShow);
-                context.startActivity(intent);
-            }
-        };
-        task.execute();
-    }
-
 
     private static void displayAllOpenBeds(final Context context, final String query){
+        @SuppressLint("StaticFieldLeak")
         AsyncTask<Void, Void, HashMap<String, Integer>> task = new AsyncTask<Void, Void, HashMap<String, Integer>>() {
             @Override
             protected HashMap<String, Integer> doInBackground(Void... voids) {
@@ -358,37 +360,25 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
      * displays the results in the results activity.
      * If the unit name is not valid, does nothing.
      *
+     * If statusText is not null, also changes the text of the provided text view to show a message that data is being retrieved during
+     * the retrieval process. The text is reverted to its previous message once the data is obtained.
+     *
      * @param unit The unit to query.
      */
     public void displayOpenBedCount(Context context, final String unit){
-        this.lastContext = context;
-        final String trimmedUnit = unit.replace(" ", "");
-
-        @SuppressLint("StaticFieldLeak")
-        AsyncTask<Void, Void, Integer> task = new AsyncTask<Void, Void, Integer>() {
-            @Override
-            protected Integer doInBackground(Void... voids) {
-                return Controller.getOpenBedsDAO().getOpenBedCount(trimmedUnit);
-            }
-
-            @Override
-            protected void onPostExecute(Integer count){
-                Controller.getController().displayOpenBedCount(unit, count);
-            }
-        };
-        task.execute();
+        Controller.displayOpenBeds(context, unit, unit);
     }
 
     /**
-     * Displays in the results activity that the given number of beds are available for the given unit.
-     * @param unit The unit containing the number of available beds
+     * Displays in the results activity that the given number of beds are available for the given unit or query.
+     * @param query The query or unit containing the number of available beds
      * @param openBeds The number of available beds
      */
-    public void displayOpenBedCount(String unit, int openBeds){
+    private void displayOpenBedCount(Context context, String unit, String query, int openBeds){
         String message = String.format(Locale.US, "%1$s has %2$d available bed%3$s", unit, openBeds, (openBeds == 1)?"":"s");
-        Intent intent = new Intent(lastContext, ResultsActivity.class);
-        intent.putExtra("query", unit);
+        Intent intent = new Intent(context, ResultsActivity.class);
+        intent.putExtra("query", query);
         intent.putExtra("result", message);
-        lastContext.startActivity(intent);
+        context.startActivity(intent);
     }
 }

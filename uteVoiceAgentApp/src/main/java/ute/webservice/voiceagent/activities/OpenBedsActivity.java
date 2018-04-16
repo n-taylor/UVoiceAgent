@@ -39,7 +39,7 @@ import ute.webservice.voiceagent.util.RetrievalListener;
 import ute.webservice.voiceagent.util.RetrieveTask;
 import ute.webservice.voiceagent.util.SharedData;
 
-public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener, OnCallRetrievalListener {
+public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonListener {
 
     private static String TAG = OpenBedsActivity.class.getName();
 
@@ -72,8 +72,8 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
         account_access = sessiondata.getKeyAccess();
 
         initializeToolbar();
-        initializeExpandableList();
         initializeButtons();
+        initializeExpandableList();
 
         dataAsked = new DataAsked();
 
@@ -147,6 +147,8 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
         // setting list adapter
         expListView.setAdapter(listAdapter);
 
+        final TextView statusView = this.queryTextView;
+
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View view, int groupPosition, int childPosition, long id) {
@@ -184,7 +186,6 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
         UNI.add("4 SOUTH");
 
         List<String> UH = new ArrayList<String>();
-        UH.add("5STB");
         UH.add("5W");
         UH.add("AIMA");
         UH.add("AIMB");
@@ -266,37 +267,7 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
      */
     @Override
     public void onResult(final AIResponse response) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-
-                PR = new ParseResult(response);
-
-                query = PR.get_ResolvedQuery();
-
-                dataAsked.setIncomplete(PR.get_ActionIncomplete());
-                dataAsked.setCurrentReply(PR.get_reply());
-                dataAsked.setCensusUnit(PR.getCensusUnit());
-                dataAsked.setCurrentSurgeryCategory(PR.get_param_Surgery());
-                dataAsked.setCurrentAction(PR.get_Action());
-                Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-                if (PR.get_Action().equalsIgnoreCase(Constants.GET_ONCALL)){
-                    OnCallRetrieveTask task = new OnCallRetrieveTask();
-                    String OCMID = ParseResult.extractOCMID(PR.get_reply());
-                    task.addListener(OpenBedsActivity.this);
-                    task.execute(OCMID);
-                }
-                else {
-                    // Retrieve the information and display the results
-                    RetrieveTask httpTask = new RetrieveTask(dataAsked,
-                            CertificateManager.getSSlContext(OpenBedsActivity.this)); // the task to retrieve the information
-                    httpTask.addListener(OpenBedsActivity.this);
-                    httpTask.execute();
-                }
-            }
-
-        });
+        Controller.processDialogFlowResponse(this, response);
     }
 
     @Override
@@ -319,82 +290,5 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
                 queryTextView.setText("");
             }
         });
-    }
-
-    /**
-     * If the query needs to be more specific (i.e. a surgery type or unit name), open the
-     * appropriate Activity. Else open the activity to display the results.
-     * @param result the result of what what retrieved from the server
-     */
-    @Override
-    public void onRetrieval(String result) {
-
-        super.onRetrieval(result, dataAsked, this, query);
-
-//        if (dataAsked.isIncomplete()){
-//            if (dataAsked.getCurrentAction().equals(Constants.GET_CENSUS)){
-//                // TODO: Send to the activity that will prompt for a unit name
-//            }
-//            else if (dataAsked.getCurrentAction().equals(Constants.GET_SURGERY_COST)){
-//                // TODO: Send to the activity that will prompt for a surgery category
-//            }
-//        }
-//        else {
-//            // open a ResultsActivity with the query and the corresponding result
-//            Intent intent = new Intent(this, ResultsActivity.class);
-//
-//
-//            //if result is from button, extract
-//            if (result.contains("[{"))
-//            {
-//                int aindex = result.indexOf("available");
-//
-//                aindex += 10;
-//
-//                int bindex = result.indexOf(",", aindex);
-//
-//                String sAnswer = result.substring(aindex+1,bindex);
-//
-//                int answer = Integer.parseInt(sAnswer);
-//
-//                String beds = "beds";
-//
-//                if (answer == 1)
-//                {
-//                    beds = "bed";
-//                }
-//
-//                int sindex = result.indexOf("has");
-//                result = result.substring(0,sindex)+"has "+sAnswer+" "+beds+" available";
-//            }
-//            intent.putExtra("query", query);
-//            intent.putExtra("result", result);
-//            startActivity(intent);
-//        }
-    }
-
-    //launch census request via button
-    public void launchCensus(String room)
-    {
-
-        String roomx = room.replaceAll("\\s", "");
-
-        query = roomx;
-
-        dataAsked.setCensusUnit(roomx);
-        dataAsked.setCurrentAction("getCensus");
-        dataAsked.setCurrentReply(room + " has this many beds remaining:");
-        dataAsked.setIncomplete(false);
-        dataAsked.setCurrentSurgeryCategory("");
-        // Log.d("OUTPUTRESPONSE", PR.get_reply());
-
-        RetrieveTask httpTask = new RetrieveTask(dataAsked, CertificateManager.getSSlContext(OpenBedsActivity.this)); // the task to retrieve the information
-        httpTask.addListener(OpenBedsActivity.this);
-        httpTask.execute();
-    }
-
-    @Override
-    public void onOnCallRetrieval(HashMap<String, ArrayList<String>> numbers) {
-        super.onCallRetrieval(numbers, this, PR.get_ResolvedQuery());
     }
 }

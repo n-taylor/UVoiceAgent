@@ -28,7 +28,7 @@ import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.util.RetrievalListener;
 import ute.webservice.voiceagent.util.SharedData;
 
-public class ProceduresListActivity extends BaseActivity implements AIButton.AIButtonListener, RetrievalListener, OnCallRetrievalListener {
+public class ProceduresListActivity extends BaseActivity implements AIButton.AIButtonListener {
 
     private static String TAG = ProceduresListActivity.class.getName();
 
@@ -184,39 +184,7 @@ public class ProceduresListActivity extends BaseActivity implements AIButton.AIB
      */
     @Override
     public void onResult(final AIResponse response) {
-
         Controller.processDialogFlowResponse(this, response);
-//        runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//                PR = new ParseResult(response);
-//
-//                query = PR.get_ResolvedQuery();
-//
-//                dataAsked.setIncomplete(PR.get_ActionIncomplete());
-//                dataAsked.setCurrentReply(PR.get_reply());
-//                dataAsked.setCensusUnit(PR.getCensusUnit());
-//                dataAsked.setCurrentSurgeryCategory(PR.get_param_Surgery());
-//                dataAsked.setCurrentAction(PR.get_Action());
-//                Log.d("OUTPUTRESPONSE", PR.get_reply());
-//
-//                if (PR.get_Action().equalsIgnoreCase(Constants.GET_ONCALL)){
-//                    OnCallRetrieveTask task = new OnCallRetrieveTask();
-//                    String OCMID = ParseResult.extractOCMID(PR.get_reply());
-//                    task.addListener(ProceduresListActivity.this);
-//                    task.execute(OCMID);
-//                }
-//                else {
-//                    // Retrieve the information and display the results
-//                    RetrieveTask httpTask = new RetrieveTask(dataAsked,
-//                            CertificateManager.getSSlContext(ProceduresListActivity.this)); // the task to retrieve the information
-//                    httpTask.addListener(ProceduresListActivity.this);
-//                    httpTask.execute();
-//                }
-//            }
-//
-//        });
     }
 
     @Override
@@ -239,41 +207,5 @@ public class ProceduresListActivity extends BaseActivity implements AIButton.AIB
                 queryTextView.setText("");
             }
         });
-    }
-
-    /**
-     * If the query needs to be more specific (i.e. a surgery type or unit name), open the
-     * appropriate Activity. Else open the activity to display the results.
-     * @param result the result of what what retrieved from the server
-     */
-    @Override
-    public void onRetrieval(String result) {
-
-        super.onRetrieval(result, dataAsked, this, PR.get_ResolvedQuery());
-
-//        if (dataAsked.isIncomplete()){
-//            if (dataAsked.getCurrentAction().equals(Constants.GET_CENSUS)){
-//                // TODO: Send to the activity that will prompt for a unit name
-//                Intent intent = new Intent(this, OpenBedsActivity.class);
-//                intent.putExtra("query", PR.get_ResolvedQuery());
-//                intent.putExtra("result", result);
-//                startActivity(intent);
-//            }
-//            else if (dataAsked.getCurrentAction().equals(Constants.GET_SURGERY_COST)){
-//                // TODO: Send to the activity that will prompt for a surgery category
-//            }
-//        }
-//        else {
-//            // open a ResultsActivity with the query and the corresponding result
-//            Intent intent = new Intent(this, ResultsActivity.class);
-//            intent.putExtra("query", query);
-//            intent.putExtra("result", result);
-//            startActivity(intent);
-//        }
-    }
-
-    @Override
-    public void onOnCallRetrieval(HashMap<String, ArrayList<String>> numbers) {
-        super.onCallRetrieval(numbers, this, PR.get_ResolvedQuery());
     }
 }
