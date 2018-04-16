@@ -1,5 +1,7 @@
 package ute.webservice.voiceagent.dao;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -13,5 +15,5 @@ public interface OnCallDAO {
      * @param OCMID
      * @return
      */
-    HashMap<String, ArrayList<String>> getPhoneNumbers(String OCMID);
+    HashMap<String, ArrayList<String>> getPhoneNumbers(Context context, String OCMID);
 }
