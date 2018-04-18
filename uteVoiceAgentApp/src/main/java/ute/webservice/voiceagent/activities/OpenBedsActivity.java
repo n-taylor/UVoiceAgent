@@ -200,7 +200,6 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
         UH.add("NAC");
         UH.add("NCCU");
         UH.add("NICU");
-        UH.add("NNCCN");
         UH.add("NSY");
         UH.add("OBGY");
         UH.add("OTSS");

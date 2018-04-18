@@ -213,7 +213,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
             intent = new Intent(from, ResultsActivity.class);
             intent.putExtra("query", "On Call Finder");
             String toShow = "For which message group are you searching? For example, say \"Attending Burn\" " +
-                    "or \"Dental\"";
+                    "or \"On call Dental\"";
             intent.putExtra("result", toShow);
             intent.putExtra("speak", false);
             from.startActivity(intent);
@@ -381,7 +381,12 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
      * @param openBeds The number of available beds
      */
     private void displayOpenBedCount(Context context, String unit, String query, int openBeds){
-        String message = String.format(Locale.US, "%1$s has %2$d available bed%3$s", unit, openBeds, (openBeds == 1)?"":"s");
+        String message = "";
+        if (openBeds < 0){
+            message = "The unit '" + unit + "' is not recognized";
+        }
+        else
+            message = String.format(Locale.US, "%1$s has %2$d available bed%3$s", unit, openBeds, (openBeds == 1)?"":"s");
         Intent intent = new Intent(context, ResultsActivity.class);
         intent.putExtra("query", query);
         intent.putExtra("result", message);
