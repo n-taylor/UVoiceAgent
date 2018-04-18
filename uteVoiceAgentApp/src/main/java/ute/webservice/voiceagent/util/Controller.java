@@ -129,7 +129,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         AsyncTask<Void, Void, HashMap<String, ArrayList<String>>> task = new AsyncTask<Void, Void, HashMap<String, ArrayList<String>>>() {
             @Override
             protected HashMap<String, ArrayList<String>> doInBackground(Void... voids) {
-                return getOnCallDAO().getPhoneNumbers(OCMID);
+                return getOnCallDAO().getPhoneNumbers(context, OCMID);
             }
 
             @Override

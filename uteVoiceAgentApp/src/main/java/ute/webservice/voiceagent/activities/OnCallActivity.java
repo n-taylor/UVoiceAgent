@@ -86,13 +86,15 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oncall);
 
-        extractBundle();
+        boolean success = extractBundle();
         initializeSharedData();
         initializeToolbar();
         initializeButtons();
-        initializeListView();
-        initializeTextViews();
-        speak();
+        if (success) {
+            initializeListView();
+            initializeTextViews();
+            speak();
+        }
     }
 
     private void speak(){
@@ -122,17 +124,27 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
         return ordered;
     }
 
-    private void extractBundle(){
+    private boolean extractBundle(){
         Bundle bundle = getIntent().getExtras();
 
         // set the texts to the query and retrieved answer
         if (bundle != null){
             query = bundle.getString("query");
             HashMap<String, ArrayList<String>> phoneNumMap = (HashMap<String, ArrayList<String>>)bundle.get("phoneNumMap");
+
+            if (phoneNumMap == null) {
+                Intent intent = new Intent(this, ResultsActivity.class);
+                intent.putExtra("query", "Error");
+                intent.putExtra("result", "Not connected to Clinical Wifi");
+                this.startActivity(intent);
+            return false;
+            }
+
             names = new ArrayList<>();
             names.addAll(phoneNumMap.keySet());
             phoneNumbers = phoneNumMap;
         }
+        return true;
     }
 
     private void initializeListView() {

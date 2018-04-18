@@ -1,5 +1,8 @@
 package ute.webservice.voiceagent.dao;
 
+import android.content.Context;
+import android.content.Intent;
+
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.BufferedReader;
@@ -10,7 +13,10 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import ute.webservice.voiceagent.activities.ResultsActivity;
 import ute.webservice.voiceagent.util.ParseResult;
+
+import static ute.webservice.voiceagent.util.TTS.stop;
 
 /**
  * Created by Nathan Taylor on 4/11/2018.
@@ -32,17 +38,22 @@ public class SpokOnCallDAO implements OnCallDAO {
      * @return
      */
     @Override
-    public HashMap<String, ArrayList<String>> getPhoneNumbers(String OCMID) {
+    public HashMap<String, ArrayList<String>> getPhoneNumbers(Context context, String OCMID) {
         HashMap<String, String> mids = getMIDs(OCMID);
+
+        if (mids == null)
+        {
+            return null;
+        }
         HashMap<String, ArrayList<String>> numbers = getNumbers(mids);
         return numbers;
     }
 
-    private HashMap<String, ArrayList<String>> getNumbers(HashMap<String, String> mids){
+    private HashMap<String, ArrayList<String>> getNumbers(HashMap<String, String> mids) {
         try {
             HashMap<String, ArrayList<String>> numbers = new HashMap<>();
 
-            for (String mid : mids.keySet()){
+            for (String mid : mids.keySet()) {
 
                 Socket socket = new Socket("155.100.69.40", 9720);
 
@@ -50,8 +61,8 @@ public class SpokOnCallDAO implements OnCallDAO {
                 String toRead = ParseResult.getPhoneNumberCall(mid);
                 BufferedReader reader = new BufferedReader(new StringReader(toRead));
                 String line;
-                StringBuilder  stringBuilder = new StringBuilder();
-                while((line = reader.readLine() ) != null) {
+                StringBuilder stringBuilder = new StringBuilder();
+                while ((line = reader.readLine()) != null) {
                     stringBuilder.append(line);
                 }
 
@@ -69,13 +80,11 @@ public class SpokOnCallDAO implements OnCallDAO {
 
             return numbers;
 
-        } catch (XmlPullParserException | IOException ex)
-        {
+        } catch (XmlPullParserException | IOException ex) {
             ex.printStackTrace();
+            return null;
         }
-        return null;
     }
-
     private HashMap<String, String> getMIDs(String OCMID){
         try {
             Socket socket = new Socket("155.100.69.40", 9720);
