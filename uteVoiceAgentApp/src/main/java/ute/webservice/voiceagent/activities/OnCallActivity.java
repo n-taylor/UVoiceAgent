@@ -289,7 +289,7 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
 
     @Override
     public void onResult(final AIResponse response) {
-        Controller.processDialogFlowResponse(this, response);
+        Controller.processDialogFlowResponse(this, response, queryTextView);
     }
 
     @Override

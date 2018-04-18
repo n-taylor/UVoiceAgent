@@ -153,7 +153,7 @@ public class ResultsActivity extends BaseActivity implements AIButton.AIButtonLi
      */
     @Override
     public void onResult(final AIResponse response) {
-        Controller.processDialogFlowResponse(this, response);
+        Controller.processDialogFlowResponse(this, response, queryTextView);
     }
 
     @Override

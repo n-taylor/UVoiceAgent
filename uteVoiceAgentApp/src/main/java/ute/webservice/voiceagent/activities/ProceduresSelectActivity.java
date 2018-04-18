@@ -212,7 +212,7 @@ public class ProceduresSelectActivity extends BaseActivity implements AIButton.A
      */
     @Override
     public void onResult(final AIResponse response) {
-        Controller.processDialogFlowResponse(this, response);
+        Controller.processDialogFlowResponse(this, response, queryTextView);
     }
 
     @Override

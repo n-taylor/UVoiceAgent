@@ -60,7 +60,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         return controller;
     }
 
-    public static void processDialogFlowResponse(Context context, AIResponse response){
+    public static void processDialogFlowResponse(Context context, AIResponse response, TextView textView){
 
         // Parse the result
         ParseResult parseResult = new ParseResult(response);
@@ -96,6 +96,12 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
             else if (action.equals(Constants.GET_ONCALL)){
                 String OCMID = ParseResult.extractOCMID(reply);
                 displayPhoneNumbers(context, OCMID, query);
+            }
+            else if (action.equals(Constants.ACTION_UNKNOWN)){
+                if (textView != null) {
+                    String apology = "Sorry, '" + query + "' is not a known command";
+                    textView.setText(apology);
+                }
             }
         }
     }

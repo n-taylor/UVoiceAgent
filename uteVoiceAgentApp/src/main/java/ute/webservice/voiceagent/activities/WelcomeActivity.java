@@ -198,7 +198,7 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
     @Override
     public void onResult(final AIResponse response) {
 
-        Controller.processDialogFlowResponse(this, response);
+        Controller.processDialogFlowResponse(this, response, welcomeTextView);
 //        runOnUiThread(new Runnable() {
 //            @Override
 //            public void run() {

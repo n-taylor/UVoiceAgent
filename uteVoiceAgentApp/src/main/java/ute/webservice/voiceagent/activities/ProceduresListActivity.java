@@ -184,7 +184,7 @@ public class ProceduresListActivity extends BaseActivity implements AIButton.AIB
      */
     @Override
     public void onResult(final AIResponse response) {
-        Controller.processDialogFlowResponse(this, response);
+        Controller.processDialogFlowResponse(this, response, queryTextView);
     }
 
     @Override

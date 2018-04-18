@@ -267,7 +267,7 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
      */
     @Override
     public void onResult(final AIResponse response) {
-        Controller.processDialogFlowResponse(this, response);
+        Controller.processDialogFlowResponse(this, response, queryTextView);
     }
 
     @Override

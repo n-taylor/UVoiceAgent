@@ -21,7 +21,6 @@ import ute.webservice.voiceagent.activities.BaseActivity;
 /**
  * This class manages the certificates and SSLContext that the activities in this
  * application will use.
- * Created by Nathan Taylor on 3/20/2018.
  */
 
 public class CertificateManager {
