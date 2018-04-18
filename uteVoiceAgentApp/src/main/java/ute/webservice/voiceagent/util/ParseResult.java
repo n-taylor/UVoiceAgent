@@ -347,6 +347,12 @@ public class ParseResult {
         parser.require(XmlPullParser.START_TAG, null, "success");
         // move to <getGroupsCurrentAssignments>
         while (parser.getName() != null && !parser.getName().equals("getGroupsCurrentAssignments")){
+
+            // If the parser has reached the end tag "</success>", then return null
+            if (parser.getName().equals("success") && parser.getEventType() == parser.END_TAG)
+                return null;
+
+            // Keep moving to find getGroupsCurrentAssignments
             parser.next();
             if (parser.getEventType() == parser.TEXT)
                 parser.next();

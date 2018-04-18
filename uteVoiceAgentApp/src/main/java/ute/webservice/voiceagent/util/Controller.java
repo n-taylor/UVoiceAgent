@@ -51,6 +51,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
     private static OnCallDAO onCallDAO;
 
     private static final String WELCOME_MESSAGE = "What do you want to know?";
+    public static final String NOT_A_CURRENT_ASSIGNMENT = "The area requested has no current assignments";
 
     private static Controller controller;
 
@@ -134,10 +135,18 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
 
             @Override
             protected void onPostExecute(HashMap<String, ArrayList<String>> numbers){
-                Intent intent = new Intent(context, OnCallActivity.class);
-                intent.putExtra("query", query);
-                intent.putExtra("phoneNumMap", numbers);
-                context.startActivity(intent);
+                if (numbers != null) {
+                    Intent intent = new Intent(context, OnCallActivity.class);
+                    intent.putExtra("query", query);
+                    intent.putExtra("phoneNumMap", numbers);
+                    context.startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(context, ResultsActivity.class);
+                    intent.putExtra("query", query);
+                    intent.putExtra("result", Controller.NOT_A_CURRENT_ASSIGNMENT);
+                    context.startActivity(intent);
+                }
             }
         };
         task.execute();
