@@ -149,7 +149,7 @@ public class ProceduresSecondLevelAdapter extends BaseExpandableListAdapter {
                              View convertView, ViewGroup parent)
     {
         final String headerTitle = (String) getGroup(groupPosition);
-        if (convertView == null) {
+//        if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.list_group_second, parent, false);
@@ -159,7 +159,7 @@ public class ProceduresSecondLevelAdapter extends BaseExpandableListAdapter {
                 convertView.setBackgroundColor(midColor);
             else
                 convertView.setBackgroundColor(Color.GRAY);
-        }
+//        }
         TextView secondLevelTextView = (TextView) convertView
                 .findViewById(R.id.listHeaderSecond);
         secondLevelTextView.setText(headerTitle);
@@ -180,6 +180,9 @@ public class ProceduresSecondLevelAdapter extends BaseExpandableListAdapter {
         }
 
         ArrayList<String> headers = Controller.getProceduresDAO().getExtremityHeaders(currentCategory, headerTitle);
+        if (headers.size() <= 5){
+            return convertView;
+        }
         if (headers.size() > 5){
             if (!Controller.getProceduresDAO().isExtremity(currentCategory, headerTitle, headers.get(0))) {
                 convertView.setOnClickListener(new View.OnClickListener() {

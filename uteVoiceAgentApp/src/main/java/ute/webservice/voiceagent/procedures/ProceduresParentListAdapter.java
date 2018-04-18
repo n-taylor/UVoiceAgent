@@ -52,7 +52,6 @@ public class ProceduresParentListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-//        return ProcedureInfo.getSubCategoryHeaders(categoryHeaders.get(groupPosition)).get(childPosition);
         return Controller.getController().getProceduresSecondLevelHeader(categoryHeaders.get(groupPosition), childPosition);
     }
     @Override
