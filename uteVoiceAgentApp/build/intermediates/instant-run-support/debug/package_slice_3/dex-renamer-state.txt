@@ -1,4 +1,0 @@
-#Fri Mar 16 13:12:21 MDT 2018
-base.0=C\:\\Clone\\UVoiceAgent\\uteVoiceAgentApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_3
-renamed.0=classes.dex
-file.0=C\:\\Clone\\UVoiceAgent\\uteVoiceAgentApp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_3\\classes.dex
