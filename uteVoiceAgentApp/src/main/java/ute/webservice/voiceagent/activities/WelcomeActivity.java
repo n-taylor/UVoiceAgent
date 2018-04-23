@@ -92,6 +92,8 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         dataAsked = new DataAsked();
 
         controller.onActivityCreated(this);
+        
+        extractBundle();
     }
 
     private void initializeButtons(){
@@ -142,7 +144,6 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
             }
         });
 
-        extractBundle();
     }
 
     public void enableComponents(boolean enable){
