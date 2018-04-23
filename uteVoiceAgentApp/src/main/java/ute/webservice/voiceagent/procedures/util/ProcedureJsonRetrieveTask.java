@@ -104,10 +104,6 @@ public class ProcedureJsonRetrieveTask extends AsyncTask<String, Void, String> {
                 while ((lineSrch = rdSrch.readLine()) != null) {
                     responseString += lineSrch;
                 }
-
-                if (responseString.equals(Constants.ACCESS_DENIED)) {
-                    responseString = "You are not allowed to access.";
-                }
                 rdSrch.close();
             }
             response.close();

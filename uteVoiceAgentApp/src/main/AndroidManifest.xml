@@ -22,6 +22,7 @@
             android:name=".activities.LoginActivity"
             android:label="@string/app_title"
             android:theme="@style/My_theme"
+            android:noHistory="true"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

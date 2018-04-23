@@ -52,6 +52,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
 
     private static final String WELCOME_MESSAGE = "What do you want to know?";
     public static final String NOT_A_CURRENT_ASSIGNMENT = "The area requested has no current assignments";
+    public static final String PARTIAL_QUERY_MESSAGE = "What do you want to know about ";
 
     private static Controller controller;
 
@@ -99,10 +100,27 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                 displayPhoneNumbers(context, OCMID, query);
             }
             else if (action.equals(Constants.ACTION_UNKNOWN)){
-                if (textView != null) {
-                    String apology = "Sorry, '" + query + "' is not a known command";
-                    textView.setText(apology);
+                String message = "Sorry, '" + query + "' is not a known command";
+                if (context.getClass() != WelcomeActivity.class) {
+                    Intent intent = getController().welcomeActivity.getIntent();
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("message", message);
+                    context.startActivity(intent);
                 }
+                else
+                    getController().welcomeActivity.setWelcomeText(message);
+            }
+            else if (action.equals(Constants.PARTIAL_ACTION)){
+                String toDisplay = PARTIAL_QUERY_MESSAGE + query + "?";
+                // If the current activity is the welcome activity, just update the welcome message
+                if (getController().welcomeActivity != null && context.getClass() != WelcomeActivity.class) {
+                    Intent intent = getController().welcomeActivity.getIntent();
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("message", toDisplay);
+                    context.startActivity(intent);
+                }
+                else
+                    getController().welcomeActivity.setWelcomeText(toDisplay);
             }
         }
     }
@@ -272,8 +290,8 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
      */
     public void onLogoutPressed(BaseActivity activity){
         // Create an LogoutTask and execute it to logout
-        LogoutTask httpTask = new LogoutTask(activity);
-        httpTask.execute();
+        //LogoutTask httpTask = new LogoutTask(activity);
+        logout();
     }
 
     /**
@@ -293,12 +311,26 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
     }
 
     /**
-     * Gets called when the ProceduresDAO finishes fetching all the data from EDW
+     * Gets called when the ProceduresDAO finishes fetching all the data from EDW.
+     * If this is called and the data has still not been retrieved, the user needs to login again
      */
     @Override
     public void onProcedureInfoRetrieval(){
-        welcomeActivity.setWelcomeText(WELCOME_MESSAGE);
-        welcomeActivity.enableComponents(true);
+        if (!getProceduresDAO().needsData()) {
+            welcomeActivity.setWelcomeText(WELCOME_MESSAGE);
+            welcomeActivity.enableComponents(true);
+        }
+        else{
+            logout();
+        }
+    }
+
+    /**
+     * Logs the user out and returns them to the login page
+     */
+    private void logout(){
+        LogoutTask httpTask = new LogoutTask(welcomeActivity);
+        httpTask.execute();
     }
 
     /**

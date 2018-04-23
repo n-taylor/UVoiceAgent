@@ -10,13 +10,13 @@ import ute.webservice.voiceagent.procedures.util.ProcedureCategoryRetrievalListe
 import ute.webservice.voiceagent.procedures.util.ProcedureCategoryRetrieveTask;
 import ute.webservice.voiceagent.procedures.util.ProcedureJsonRetrievalListener;
 import ute.webservice.voiceagent.procedures.util.ProcedureJsonRetrieveTask;
+import ute.webservice.voiceagent.util.Constants;
 import ute.webservice.voiceagent.util.ParseResult;
 
 
 /**
  * Created by Nathan Taylor on 4/11/2018.
  */
-
 public class EDWProceduresDAO implements ProceduresDAO, ProcedureCategoryRetrievalListener, ProcedureJsonRetrievalListener {
 
     private static ProcedureNode procedureTreeRoot;
@@ -207,6 +207,7 @@ public class EDWProceduresDAO implements ProceduresDAO, ProcedureCategoryRetriev
     }
 
     private int currentCategory = 0;
+
     private void fetchNextCategory(){
         if (categoryNames == null)
             return;
@@ -243,6 +244,12 @@ public class EDWProceduresDAO implements ProceduresDAO, ProcedureCategoryRetriev
      * @param jsonResponse
      */
     public void onCodeRetrieval (String jsonResponse){
+
+        // If access has been denied, notify the listeners - everything will be null
+        if (jsonResponse.equals(Constants.ACCESS_DENIED)){
+            notifyListeners();
+            return;
+        }
         ArrayList<String[]> procedures;
         procedures = new ParseResult().parseAllProcedures(jsonResponse);
         if (procedures != null){

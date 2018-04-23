@@ -31,6 +31,11 @@ import ute.webservice.voiceagent.util.ParseResult;
 import ute.webservice.voiceagent.util.RetrievalListener;
 import ute.webservice.voiceagent.util.SharedData;
 
+/**
+ * The activity that displays the possible actions the app can take.
+ *
+ * To display a message at the top of the activity, insert a string into the bundle under the key "message".
+ */
 public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonListener {
 
     private String TAG = WelcomeActivity.class.getName();
@@ -137,6 +142,7 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
             }
         });
 
+        extractBundle();
     }
 
     public void enableComponents(boolean enable){
@@ -146,6 +152,23 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         surgeryButton.setEnabled(enable);
         equipButton.setEnabled(enable);
         oncallButton.setEnabled(enable);
+    }
+
+    /**
+     * Checks if the welcome message has been set in the bundle
+     */
+    private void extractBundle(){
+        try {
+            Bundle bundle = getIntent().getExtras();
+            if (bundle != null) {
+                String message = (String) bundle.get("message");
+                if (message != null)
+                    setWelcomeText(message);
+            }
+        }
+        catch (ClassCastException e){
+            setWelcomeText("There was a problem parsing the welcome message");
+        }
     }
 
     public void setWelcomeText(String text){
