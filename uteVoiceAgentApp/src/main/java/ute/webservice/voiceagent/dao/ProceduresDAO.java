@@ -72,4 +72,9 @@ public interface ProceduresDAO {
      * @return The description without its code
      */
     String removeCode(String description);
+
+    /**
+     * If the procedure cost data has been retrieved, prints all available procedures to the console
+     */
+    void printProcedures();
 }

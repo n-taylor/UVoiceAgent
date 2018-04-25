@@ -93,7 +93,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                     displayOpenBeds(context, unit, query);
             }
             else if (action.equals(Constants.GET_SURGERY_COST)){
-                // Not implemented yet
+                getController().displayProcedureCost(context, reply);
             }
             else if (action.equals(Constants.GET_ONCALL)){
                 String OCMID = ParseResult.extractOCMID(reply);
@@ -319,6 +319,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         if (!getProceduresDAO().needsData()) {
             welcomeActivity.setWelcomeText(WELCOME_MESSAGE);
             welcomeActivity.enableComponents(true);
+            getProceduresDAO().printProcedures();
         }
         else{
             logout();

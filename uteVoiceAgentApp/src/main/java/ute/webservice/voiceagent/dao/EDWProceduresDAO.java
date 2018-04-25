@@ -15,6 +15,7 @@ import ute.webservice.voiceagent.util.ParseResult;
 
 
 /**
+ * This DAO gives access to information about cost of procedures from EDW.
  * Created by Nathan Taylor on 4/11/2018.
  */
 public class EDWProceduresDAO implements ProceduresDAO, ProcedureCategoryRetrievalListener, ProcedureJsonRetrievalListener {
@@ -301,5 +302,16 @@ public class EDWProceduresDAO implements ProceduresDAO, ProcedureCategoryRetriev
 
     public void addListener(ProcedureInfoListener listener){
         listeners.add(listener);
+    }
+
+    /**
+     * If the list of procedures has been populated, prints all the available procedures to the console.
+     */
+    public void printProcedures(){
+        if (procedureTreeRoot != null)   {
+            procedureTreeRoot.printTree();
+        }
+        else
+            System.out.println("Procedure data has not been retrieved yet");
     }
 }

@@ -110,9 +110,8 @@ public class ProcedureJsonRetrieveTask extends AsyncTask<String, Void, String> {
             return responseString;
         }
         catch (Exception e){
-            e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
     /**

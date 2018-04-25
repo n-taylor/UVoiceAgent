@@ -81,7 +81,6 @@ public class SpokOnCallDAO implements OnCallDAO {
             return numbers;
 
         } catch (XmlPullParserException | IOException ex) {
-            ex.printStackTrace();
             return null;
         }
     }
@@ -111,8 +110,7 @@ public class SpokOnCallDAO implements OnCallDAO {
 
         } catch (XmlPullParserException | IOException ex)
         {
-            ex.printStackTrace();
+            return null;
         }
-        return null;
     }
 }

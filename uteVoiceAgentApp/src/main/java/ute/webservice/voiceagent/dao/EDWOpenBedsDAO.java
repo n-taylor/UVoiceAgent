@@ -72,7 +72,7 @@ public class EDWOpenBedsDAO implements OpenBedsDAO {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            return -1;
         }
         return openBeds;
     }
@@ -116,7 +116,7 @@ public class EDWOpenBedsDAO implements OpenBedsDAO {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            return null;
         }
 
         return openBeds;
