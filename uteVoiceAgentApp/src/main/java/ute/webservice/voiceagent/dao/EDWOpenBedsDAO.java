@@ -60,7 +60,7 @@ public class EDWOpenBedsDAO implements OpenBedsDAO {
                 }
 
                 if (responseString.equals(Constants.ACCESS_DENIED)) {
-                    responseString = "You are not allowed to access.";
+                    return Constants.ACCESS_DENIED_INT;
                 } else {
                     ArrayList<RoomStatus> rooms = ParseResult.parseRooms(responseString);
 

@@ -54,7 +54,11 @@ public class ProcedureCostRetrieveTask extends AsyncTask<String, Void, String> {
      */
     @Override
     protected void onPostExecute(String result){
-        int cost = PR.parseSurgeryCost(result);
+        int cost = 0;
+        if (result.equals(Constants.ACCESS_DENIED))
+            cost = Constants.ACCESS_DENIED_INT;
+        else
+            cost = PR.parseSurgeryCost(result);
         for (ProcedureCostRetrievalListener listener : listeners){
             listener.onCostRetrieval(cost, description);
         }
@@ -83,7 +87,7 @@ public class ProcedureCostRetrieveTask extends AsyncTask<String, Void, String> {
                 }
 
                 if (responseString.equals(Constants.ACCESS_DENIED)) {
-                    responseString = "You are not allowed to access.";
+                    return Constants.ACCESS_DENIED;
                 }
                 rdSrch.close();
             }

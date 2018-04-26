@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringReader;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -29,6 +30,9 @@ public class SpokOnCallDAO implements OnCallDAO {
     public SpokOnCallDAO(){
         PR = new ParseResult();
     }
+
+    private final int timeout = 5000;
+    private static String IPAddress = "155.100.69.40";
 
 
     /**
@@ -55,7 +59,9 @@ public class SpokOnCallDAO implements OnCallDAO {
 
             for (String mid : mids.keySet()) {
 
-                Socket socket = new Socket("155.100.69.40", 9720);
+                Socket socket = new Socket(IPAddress, 9720);
+
+                socket.setSoTimeout(timeout);
 
                 // Create the XML string to send
                 String toRead = ParseResult.getPhoneNumberCall(mid);
@@ -86,7 +92,8 @@ public class SpokOnCallDAO implements OnCallDAO {
     }
     private HashMap<String, String> getMIDs(String OCMID){
         try {
-            Socket socket = new Socket("155.100.69.40", 9720);
+            Socket socket = new Socket(IPAddress, 9720);
+            socket.setSoTimeout(timeout);
             String toRead = ParseResult.getCurrentAssignmentsCall(OCMID);
             BufferedReader reader = new BufferedReader(new StringReader(toRead));
             String line;

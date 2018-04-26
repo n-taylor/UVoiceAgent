@@ -47,12 +47,33 @@ public class EDWProceduresDAO implements ProceduresDAO, ProcedureCategoryRetriev
     }
 
     /**
+     * Given a procedure description, extracts the procedure code if it is appended to the description.
+     * Otherwise, returns null
+     * @param description The procedure description; may or may not contain the procedure code
+     */
+    public String extractCode(String description){
+        String code = null;
+        Pattern pattern = Pattern.compile("[A-Za-z]+\\s*-\\s*([0-9]+)");
+        Matcher match = pattern.matcher(description);
+        if (match.find()){
+            code = match.group(1);
+        }
+        return code;
+    }
+
+    /**
      * Retrieves the code associated with the first found instance of the given description.
      * @param description The description of the procedure to find.
      * @return The code of the given procedure, or null if the given description is not a registered procedure.
      */
-    public String getCode(String description){
-        return procedureTreeRoot.findCode(description);
+    public String getCode(String description) {
+        String code = extractCode(description);
+        if (code != null){
+            return code;
+        }
+        else {
+            return procedureTreeRoot.findCode(description);
+        }
     }
 
     /**

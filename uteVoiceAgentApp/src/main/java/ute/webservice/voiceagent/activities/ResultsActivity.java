@@ -56,11 +56,6 @@ public class ResultsActivity extends BaseActivity implements AIButton.AIButtonLi
     //Progress bar
     private ProgressDialog progress;
 
-    //CA variables
-//    private CertificateFactory cf = null;
-//    private Certificate ca;
-//    private SSLContext sslContext = null;
-
     private String query;
     private String result;
 
@@ -75,6 +70,29 @@ public class ResultsActivity extends BaseActivity implements AIButton.AIButtonLi
         resultsTextView = (TextView) findViewById(R.id.result_textView);
         resultsTextView.setMovementMethod(new ScrollingMovementMethod());
 
+        extractBundle();
+
+        //Open shared data
+        sessiondata = new SharedData(getApplicationContext());
+        accountID = sessiondata.getKeyAccount();
+        account_access = sessiondata.getKeyAccess();
+
+        initializeToolbar();
+
+        initializeButtons();
+
+
+        //Save asked query
+        dataAsked = new DataAsked();
+
+
+    }
+
+    /**
+     * Extracts objects from the bundle to determine what the query and results text views display
+     * and what is spoken.
+     */
+    private void extractBundle(){
         Bundle bundle = getIntent().getExtras();
 
         boolean speak = true;
@@ -95,12 +113,12 @@ public class ResultsActivity extends BaseActivity implements AIButton.AIButtonLi
             if (speak)
                 TTS.speak(result);
         }
+    }
 
-        //Open shared data
-        sessiondata = new SharedData(getApplicationContext());
-        accountID = sessiondata.getKeyAccount();
-        account_access = sessiondata.getKeyAccess();
-
+    /**
+     * Sets up the toolbar
+     */
+    private void initializeToolbar(){
         TextView userIDText = (TextView) findViewById(R.id.userText);
         userIDText.setText(accountID);
 
@@ -118,8 +136,12 @@ public class ResultsActivity extends BaseActivity implements AIButton.AIButtonLi
                 finish();
             }
         });
+    }
 
-
+    /**
+     * Initializes the microphone and cancel buttons
+     */
+    private void initializeButtons(){
         final AIConfiguration config = new AIConfiguration(Config.ACCESS_TOKEN,
                 AIConfiguration.SupportedLanguages.English,
                 AIConfiguration.RecognitionEngine.System);
@@ -139,11 +161,6 @@ public class ResultsActivity extends BaseActivity implements AIButton.AIButtonLi
                 TTS.stop();
             }
         });
-
-        //Save asked query
-        dataAsked = new DataAsked();
-
-
     }
 
     /**

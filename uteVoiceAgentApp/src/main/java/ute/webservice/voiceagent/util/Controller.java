@@ -138,7 +138,11 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
 
             @Override
             protected void onPostExecute(Integer count){
-                Controller.getController().displayOpenBedCount(context, unit, query, count);
+                String toDisplay = unit;
+                if (unit.equals("5W") || unit.equals("5 W")){
+                    toDisplay = "5 West";
+                }
+                Controller.getController().displayOpenBedCount(context, toDisplay, query, count);
             }
         };
         task.execute();
@@ -377,13 +381,20 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
      * @param description The description of the procedure.
      */
     public void displayProcedureCost(Context context, int cost, String description){
-        String value = NumberFormat.getNumberInstance(Locale.US).format(cost);
-        value = String.format("The estimated patient cost of this procedure is $%s", value);
+        String message = NumberFormat.getNumberInstance(Locale.US).format(cost);
+        if (cost > 0)
+            message = String.format("The estimated patient cost of this procedure is $%s", message);
+        else if (cost == Constants.ACCESS_DENIED_INT){
+            message = Constants.SESSION_EXPIRED_MESSAGE;
+        }
+        else {
+            message = "There was a problem retrieving the cost of this procedure. Please try again.";
+        }
 
         // Start the results activity
         Intent intent = new Intent(context, ResultsActivity.class);
         intent.putExtra("query", getProceduresDAO().removeCode(description));
-        intent.putExtra("result", value);
+        intent.putExtra("result", message);
         context.startActivity(intent);
     }
 
@@ -425,7 +436,10 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
      */
     private void displayOpenBedCount(Context context, String unit, String query, int openBeds){
         String message = "";
-        if (openBeds < 0){
+        if (openBeds == Constants.ACCESS_DENIED_INT){
+            message = Constants.SESSION_EXPIRED_MESSAGE;
+        }
+        else if (openBeds < 0){
             message = "The unit '" + unit + "' is not recognized";
         }
         else
