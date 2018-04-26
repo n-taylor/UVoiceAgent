@@ -107,8 +107,9 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                     intent.putExtra("message", message);
                     context.startActivity(intent);
                 }
-                else
+                else {
                     getController().welcomeActivity.setWelcomeText(message);
+                }
             }
             else if (action.equals(Constants.PARTIAL_ACTION)){
                 String toDisplay = PARTIAL_QUERY_MESSAGE + query + "?";
