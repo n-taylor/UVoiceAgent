@@ -9,21 +9,20 @@
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
-    <application android:networkSecurityConfig="@xml/network_security_config"
+    <application
         android:name=".activities.AIApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_title"
-
-        >
+        android:networkSecurityConfig="@xml/network_security_config">
         <activity
             android:name=".activities.LoginActivity"
             android:label="@string/app_title"
-            android:theme="@style/My_theme"
             android:noHistory="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/My_theme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,8 +33,8 @@
             android:name=".activities.AIButtonActivity"
             android:label="@string/title_activity_aibutton_sample"
             android:parentActivityName=".activities.LoginActivity"
-            android:theme="@style/My_theme"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/My_theme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ute.webservice.voiceagent.activities.LoginActivity" />
@@ -44,8 +43,8 @@
             android:name=".activities.AISettingsActivity"
             android:label="@string/action_settings"
             android:parentActivityName=".activities.LoginActivity"
-            android:theme="@style/My_theme"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/My_theme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ute.webservice.voiceagent.activities.LoginActivity" />
@@ -54,8 +53,8 @@
             android:name=".activities.WelcomeActivity"
             android:label="@string/title_welcome_activity"
             android:parentActivityName=".activities.LoginActivity"
-            android:theme="@style/My_theme"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/My_theme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ute.webservice.voiceagent.activities.LoginActivity" />
@@ -64,29 +63,35 @@
             android:name=".activities.ResultsActivity"
             android:label="@string/title_welcome_activity"
             android:noHistory="true"
-            android:theme="@style/My_theme"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/My_theme" />
         <activity
             android:name=".activities.OpenBedsActivity"
             android:label="Voice Agent"
-            android:theme="@style/My_theme"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/My_theme" />
         <activity
             android:name=".activities.ProceduresListActivity"
             android:label="@string/title_activity_surgery"
-            android:theme="@style/My_theme"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/My_theme" />
         <activity
             android:name=".activities.OnCallActivity"
             android:label="@string/title_activity_oncall"
             android:noHistory="true"
-            android:theme="@style/My_theme"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/My_theme" />
         <activity
             android:name=".activities.ProceduresSelectActivity"
             android:label="@string/title_activity_surgery_codes"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/My_theme" />
+        <activity
+            android:name=".OnCallListActivity"
+            android:label="@string/title_activity_oncall"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/My_theme" />
     </application>
 
 </manifest>
