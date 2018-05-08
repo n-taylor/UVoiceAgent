@@ -191,7 +191,7 @@ public class LoginActivity extends BaseActivity {
             //authentication = acnt.isAccountCorrect(strings);
 
             try {
-                authentication = acnt.isAuthenticated(strings);
+                authentication = acnt.isAuthenticated(strings, LoginActivity.this);
             }
             catch (Exception e){
                 e.printStackTrace();

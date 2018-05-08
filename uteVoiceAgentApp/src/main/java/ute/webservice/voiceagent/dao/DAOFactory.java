@@ -9,6 +9,7 @@ public abstract class DAOFactory {
 
     public static final int EDW = 0;
     public static final int SPOK = 1;
+    public static final int CISCO = 2;
 
     public static DAOFactory getDAOFactory(int type){
         switch (type){
@@ -16,6 +17,8 @@ public abstract class DAOFactory {
                 return new EDWDAOFactory();
             case SPOK:
                 return new SpokDAOFactory();
+            case CISCO:
+                return new CiscoDAOFactory();
             default:
                 return null;
         }

@@ -3,21 +3,35 @@ package ute.webservice.voiceagent.util;
 import android.util.Log;
 
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpException;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpResponseInterceptor;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGetHC4;
 import org.apache.http.client.methods.HttpPostHC4;
+import org.apache.http.conn.ManagedHttpClientConnection;
+import org.apache.http.conn.ssl.AllowAllHostnameVerifier;
+import org.apache.http.conn.ssl.AllowAllHostnameVerifierHC4;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.protocol.HttpContext;
+import org.apache.http.protocol.HttpCoreContext;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateFactory;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.net.ssl.SSLSession;
+
+import ute.webservice.voiceagent.activities.BaseActivity;
+import ute.webservice.voiceagent.activities.WelcomeActivity;
 import ute.webservice.voiceagent.util.Constants;
 
 //import static ai.api.android.AIDataService.TAG;
@@ -32,6 +46,7 @@ public class AccountCheck {
     //SharedData sessiondata = new SharedData(getApplicationContext());
     public static CloseableHttpClient httpclient = null;
     private static final String TAG = "AccountCheck";
+    public static final String PEER_CERTIFICATES = "PEER_CERTIFICATES";
 
     private HashMap<String,String> account_map = new HashMap<String, String>();
     private HashMap<String,Integer> admin_map = new HashMap<String, Integer>();
@@ -111,12 +126,12 @@ public class AccountCheck {
      * @param param
      * @return
      */
-    public boolean isAuthenticated(String[] param) throws Exception {
+    public boolean isAuthenticated(String[] param, BaseActivity activity) throws Exception {
         //SSLConnectionSocketFactory factory = new SSLConnectionSocketFactory(sslContext);
         BasicCookieStore cookieStore = new BasicCookieStore();
-        //CloseableHttpClient httpclient = HttpClients.custom()
          httpclient = HttpClients.custom()
                 .setDefaultCookieStore(cookieStore)
+//                .setSslcontext(CertificateManager.getSSlContext(activity, "ca.cer"))
                 .build();
         //System.out.println("set SSL ");
         String responseString="";

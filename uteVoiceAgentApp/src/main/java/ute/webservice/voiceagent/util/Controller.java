@@ -21,12 +21,15 @@ import ute.webservice.voiceagent.activities.OpenBedsActivity;
 import ute.webservice.voiceagent.activities.ProceduresListActivity;
 import ute.webservice.voiceagent.activities.ResultsActivity;
 import ute.webservice.voiceagent.activities.WelcomeActivity;
+import ute.webservice.voiceagent.dao.CiscoDAOFactory;
 import ute.webservice.voiceagent.dao.DAOFactory;
 import ute.webservice.voiceagent.dao.EDWDAOFactory;
+import ute.webservice.voiceagent.dao.LocationDAO;
 import ute.webservice.voiceagent.dao.OnCallDAO;
 import ute.webservice.voiceagent.dao.OpenBedsDAO;
 import ute.webservice.voiceagent.dao.ProceduresDAO;
 import ute.webservice.voiceagent.dao.SpokDAOFactory;
+import ute.webservice.voiceagent.location.ClientLocation;
 import ute.webservice.voiceagent.procedures.ProcedureInfoListener;
 import ute.webservice.voiceagent.procedures.ProceduresParentListAdapter;
 import ute.webservice.voiceagent.procedures.ProceduresSecondLevelAdapter;
@@ -49,6 +52,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
     private static OpenBedsDAO openBedsDAO;
     private static ProceduresDAO proceduresDAO;
     private static OnCallDAO onCallDAO;
+    private static LocationDAO locationDAO;
 
     private static final String WELCOME_MESSAGE = "What do you want to know?";
     public static final String NOT_A_CURRENT_ASSIGNMENT = "The area requested has no current assignments";
@@ -260,6 +264,17 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         return proceduresDAO;
     }
 
+    /**
+     * If necessary, creates a singleton instance of the LocationDAO and returns it.
+     */
+    public static LocationDAO getLocationDAO(){
+        if (locationDAO == null){
+            CiscoDAOFactory daoFactory = (CiscoDAOFactory)DAOFactory.getDAOFactory(DAOFactory.CISCO);
+            locationDAO = daoFactory.getLocationDAO();
+        }
+        return locationDAO;
+    }
+
     private Controller(){
 
     }
@@ -288,6 +303,41 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
 
     public void onOnCallButtonPressed(Context context){
         openNewActivity(context, OnCallActivity.class);
+    }
+
+    /**
+     * Call when the equipment finder button gets pressed.
+     * Currently displays the location of Nathan's laptop
+     */
+    public void onEquipmentFinderButtonPressed(Context context){
+        displayClientLocation("f8:34:41:bf:ab:ee",context);
+    }
+
+    private static void displayClientLocation(String id, final Context context){
+        @SuppressLint("StaticFieldLeak")
+        AsyncTask<String, Void, ClientLocation> task = new AsyncTask<String, Void, ClientLocation>() {
+            @Override
+            protected ClientLocation doInBackground(String... strings) {
+                ClientLocation location = null;
+                try {
+                    location = getLocationDAO().getClientLocation(strings[0],context);
+                    System.out.println("Coordinates: (" + location.getMapCoordinate().getX() + ", " + location.getMapCoordinate().getY() + ")");
+                }
+                catch (Exception e){
+
+                }
+                return location;
+            }
+
+            @Override
+            protected void onPostExecute(ClientLocation location){
+                float x = location.getMapCoordinate().getX();
+                float y = location.getMapCoordinate().getY();
+                String message = "Coordinates: (" + x + ", " + y + ")";
+                System.out.println(message);
+            }
+        };
+        task.execute(id);
     }
 
     /**

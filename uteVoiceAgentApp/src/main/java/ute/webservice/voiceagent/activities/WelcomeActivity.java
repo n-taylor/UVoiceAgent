@@ -144,6 +144,13 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
             }
         });
 
+        equipButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                controller.onEquipmentFinderButtonPressed(view.getContext());
+            }
+        });
+
     }
 
     public void enableComponents(boolean enable){
@@ -223,36 +230,6 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
     public void onResult(final AIResponse response) {
 
         Controller.processDialogFlowResponse(this, response, welcomeTextView);
-//        runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//                PR = new ParseResult(response);
-//
-//                String query = PR.get_ResolvedQuery();
-//
-//                dataAsked.setIncomplete(PR.get_ActionIncomplete());
-//                dataAsked.setCurrentReply(PR.get_reply());
-//                dataAsked.setCensusUnit(PR.getCensusUnit());
-//                dataAsked.setCurrentSurgeryCategory(PR.get_param_Surgery());
-//                dataAsked.setCurrentAction(PR.get_Action());
-//                Log.d("OUTPUTRESPONSE", PR.get_reply());
-//                if (PR.get_Action().equalsIgnoreCase(Constants.GET_ONCALL)){
-//                    OnCallRetrieveTask task = new OnCallRetrieveTask();
-//                    String OCMID = ParseResult.extractOCMID(PR.get_reply());
-//                    task.addListener(WelcomeActivity.this);
-//                    task.execute(OCMID);
-//                }
-//                else {
-//                    // Retrieve the information and display the results
-//                    RetrieveTask httpTask = new RetrieveTask(dataAsked,
-//                            CertificateManager.getSSlContext(WelcomeActivity.this)); // the task to retrieve the information
-//                    httpTask.addListener(WelcomeActivity.this);
-//                    httpTask.execute();
-//                }
-//            }
-//
-//        });
     }
 
     @Override

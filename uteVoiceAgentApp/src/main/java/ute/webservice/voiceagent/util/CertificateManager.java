@@ -1,6 +1,9 @@
 package ute.webservice.voiceagent.util;
 
+import android.content.Context;
+
 import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,7 +40,7 @@ public class CertificateManager {
      * @param activity
      * @return
      */
-    public static SSLContext getSSlContext(BaseActivity activity){
+    public static SSLContext getSSlContext(Context context, String fileName){
         if (sslContext != null)
             return sslContext;
         else{
@@ -53,7 +56,9 @@ public class CertificateManager {
             // From https://www.washington.edu/itconnect/security/ca/load-der.crt
             InputStream caInput = null;
             try {
-                caInput = new BufferedInputStream(activity.getBaseContext().getAssets().open("ca.cer"));
+                InputStream is = context.getResources().getAssets().open(fileName);
+                caInput = new BufferedInputStream(is);
+//                caInput = new BufferedInputStream(activity.getBaseContext().getAssets().open("mse-park.crt"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
