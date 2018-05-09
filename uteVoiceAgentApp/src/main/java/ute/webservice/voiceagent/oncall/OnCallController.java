@@ -32,7 +32,6 @@ import ute.webservice.voiceagent.util.Controller;
 public class OnCallController extends Controller {
 
     private static ArrayList<String> areas;
-    private static String fileName = "oncall_areas.txt";
 
     /**
      * Given a search string, populates the list view with all the On Call areas containing the search parameter.
@@ -64,13 +63,13 @@ public class OnCallController extends Controller {
 
         try {
             StringBuilder contents = new StringBuilder();
-            InputStream input = context.getResources().openRawResource(R.raw.oncall_areas);
+            InputStream input = context.getResources().openRawResource(R.raw.oncall_semicolon);
             BufferedReader reader = new BufferedReader(new InputStreamReader(input));
             String line;
             while((line = reader.readLine()) != null){
                 contents.append(line);
             }
-            String[] areaNames = contents.toString().split(",");
+            String[] areaNames = contents.toString().split(";");
             list = new ArrayList<String>(Arrays.asList(areaNames));
             reader.close();
         }
