@@ -49,7 +49,7 @@ public class AreasAdapter extends ArrayAdapter<String> {
             convertView.setBackgroundColor(backColor);
         // Lookup view for the description
         TextView textView = (TextView)convertView.findViewById(R.id.listHeader);
-        textView.setText(description);
+        textView.setText(OnCallController.removeCode(description));
         if (setTextColor)
             textView.setTextColor(textColor);
         else

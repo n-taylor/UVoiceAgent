@@ -115,4 +115,13 @@ public class OnCallController extends Controller {
         populateListView(activity.getBaseContext(), activity.getListView(), activity.getSearchText());
     }
 
+    /**
+     * Given an on-call area description, removes the code. That is, given the format
+     * 'AREA NAME [12345]'
+     * returns 'AREA NAME'
+     */
+    public static String removeCode(String description){
+        return description.replaceAll("\\[\\d+\\]", "").trim();
+    }
+
 }
