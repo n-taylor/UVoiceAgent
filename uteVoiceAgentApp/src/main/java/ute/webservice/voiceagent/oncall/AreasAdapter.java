@@ -59,7 +59,7 @@ public class AreasAdapter extends ArrayAdapter<String> {
         convertView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-
+                OnCallController.onAreaPressed(context, description);
             }
         });
         return convertView;

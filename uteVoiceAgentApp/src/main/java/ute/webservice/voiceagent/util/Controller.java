@@ -154,7 +154,15 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         task.execute();
     }
 
-    private static void displayPhoneNumbers(final Context context, final String OCMID, final String query){
+    /**
+     * Given an OCMID, displays the on-call professional and their associated phone numbers.
+     * This method is done asynchronously.
+     *
+     * @param context The context used to start a new activity
+     * @param OCMID The OCMID of the on-call area
+     * @param query The user's query (e.g. "Who is on call in the burn unit?")
+     */
+    public static void displayPhoneNumbers(final Context context, final String OCMID, final String query){
         @SuppressLint("StaticFieldLeak")
         AsyncTask<Void, Void, HashMap<String, ArrayList<String>>> task = new AsyncTask<Void, Void, HashMap<String, ArrayList<String>>>() {
             @Override
@@ -308,7 +316,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
      * Currently displays the location of Nathan's laptop
      */
     public void onEquipmentFinderButtonPressed(Context context){
-        displayClientLocation("f8:34:41:bf:ab:ee",context);
+        //displayClientLocation("f8:34:41:bf:ab:ee",context);
     }
 
     private static void displayClientLocation(String id, final Context context){

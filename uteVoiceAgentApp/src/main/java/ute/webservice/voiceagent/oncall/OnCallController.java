@@ -17,6 +17,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.activities.OnCallListActivity;
@@ -122,6 +124,41 @@ public class OnCallController extends Controller {
      */
     public static String removeCode(String description){
         return description.replaceAll("\\[\\d+\\]", "").trim();
+    }
+
+    /**
+     * Given an on-call description, extracts and returns the code embedded. That is, for
+     * 'AREA NAME [12345]'
+     * returns '12345'
+     *
+     * Returns null if a match is not found.
+     */
+    public static String extractOCMID(String description){
+        String code = null;
+        Pattern pattern = Pattern.compile(".\\[(\\d+)\\]");
+        Matcher matcher = pattern.matcher(description);
+        if (matcher.find()){
+            code = matcher.group(1);
+        }
+        return code;
+    }
+
+    /**
+     * This should get called when an on-call area is selected from the OnCallListActivity.
+     * Does nothing if the description is null or empty or if the code is not included.
+     *
+     * @param description The full description (including the code) of the on-call area
+     */
+    public static void onAreaPressed(Context context, String description){
+        if (description == null || description.isEmpty()){
+            return;
+        }
+        String ocmid = extractOCMID(description);
+        if (ocmid == null || ocmid.isEmpty())
+            return;
+
+        // Get the phone numbers of the on-call area
+        displayPhoneNumbers(context, ocmid, removeCode(description));
     }
 
 }
