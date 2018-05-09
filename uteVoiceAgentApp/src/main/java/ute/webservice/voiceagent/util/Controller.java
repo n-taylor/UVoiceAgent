@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import ai.api.model.AIResponse;
 import ute.webservice.voiceagent.R;
@@ -55,6 +57,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
     private static OnCallDAO onCallDAO;
     private static LocationDAO locationDAO;
 
+    private static final int zerosThreshold = 5;
     private static final String WELCOME_MESSAGE = "What do you want to know?";
     public static final String NOT_A_CURRENT_ASSIGNMENT = "The area requested has no current assignments";
     public static final String PARTIAL_QUERY_MESSAGE = "What do you want to know about ";
@@ -167,6 +170,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         AsyncTask<Void, Void, HashMap<String, ArrayList<String>>> task = new AsyncTask<Void, Void, HashMap<String, ArrayList<String>>>() {
             @Override
             protected HashMap<String, ArrayList<String>> doInBackground(Void... voids) {
+                // Get all the phone numbers
                 return getOnCallDAO().getPhoneNumbers(context, OCMID);
             }
 

@@ -549,7 +549,7 @@ public class ParseResult {
         while (matcher.find()){
             for (int i = 1; i <= matcher.groupCount(); i++){
                 String toShow = formatNumber(matcher.group(i));
-                if (!numbers.contains(toShow))
+                if (!numbers.contains(toShow) && !isZero(matcher.group(i)))
                     numbers.add(formatNumber(toShow));
             }
         }
@@ -557,6 +557,24 @@ public class ParseResult {
             numbers.add("No phone numbers available");
         }
         return numbers;
+    }
+
+    /**
+     * Given a phone number in the following format, determines if the number is all zeros:
+     * [12345] [TYPE]
+     * @param phoneNumber
+     * @return
+     */
+    private boolean isZero(String phoneNumber) {
+        Pattern pattern = Pattern.compile("\\[([0-9]+)\\]\\[[A-Z\\s\\-.]+\\]");
+        Matcher matcher = pattern.matcher(phoneNumber);
+        while (matcher.find()){
+            String number = matcher.group(1);
+            long num = Long.parseLong(number);
+            if (num == 0)
+                return true;
+        }
+        return false;
     }
 
     private String formatNumber(String number){
