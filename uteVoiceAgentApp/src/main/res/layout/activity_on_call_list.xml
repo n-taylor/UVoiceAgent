@@ -65,22 +65,22 @@
 
             android:text="@string/on_call_list_message" />
 
+        <Button
+            android:id="@+id/search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/query_text"
+            android:text="@string/search_onCall_button_label" />
+
         <EditText
             android:id="@+id/searchOnCall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/query_text"
-            android:layout_toEndOf="@id/searchButton"
+            android:layout_toEndOf="@+id/search_button"
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="@string/search_onCall_label" />
-
-        <Button
-            android:id="@+id/searchButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/query_text"
-            android:text="@string/search_onCall_button_label" />
 
 
         <ListView
@@ -88,7 +88,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/searchOnCall"
-            android:id="@+id/listView" />
+            android:id="@+id/search_list_view" />
 
 
     </RelativeLayout>

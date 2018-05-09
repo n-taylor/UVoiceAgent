@@ -17,6 +17,7 @@ import ai.api.model.AIResponse;
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.activities.BaseActivity;
 import ute.webservice.voiceagent.activities.OnCallActivity;
+import ute.webservice.voiceagent.activities.OnCallListActivity;
 import ute.webservice.voiceagent.activities.OpenBedsActivity;
 import ute.webservice.voiceagent.activities.ProceduresListActivity;
 import ute.webservice.voiceagent.activities.ResultsActivity;
@@ -57,6 +58,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
     private static final String WELCOME_MESSAGE = "What do you want to know?";
     public static final String NOT_A_CURRENT_ASSIGNMENT = "The area requested has no current assignments";
     public static final String PARTIAL_QUERY_MESSAGE = "What do you want to know about ";
+    public static final String ON_CALL_LIST_MESSAGE = "For which area are you looking?";
 
     private static Controller controller;
 
@@ -245,13 +247,9 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         else if (to.equals(OpenBedsActivity.class)){
             from.startActivity(intent);
         }
-        else if (to.equals(OnCallActivity.class)){
-            intent = new Intent(from, ResultsActivity.class);
-            intent.putExtra("query", "On Call Finder");
-            String toShow = "For which message group are you searching? For example, say \"Attending Burn\" " +
-                    "or \"On call Dental\"";
-            intent.putExtra("result", toShow);
-            intent.putExtra("speak", false);
+        else if (to.equals(OnCallListActivity.class)){
+            intent = new Intent(from, OnCallListActivity.class);
+            intent.putExtra("query", ON_CALL_LIST_MESSAGE);
             from.startActivity(intent);
         }
     }
@@ -275,7 +273,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         return locationDAO;
     }
 
-    private Controller(){
+    protected Controller(){
 
     }
 
@@ -302,7 +300,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
     }
 
     public void onOnCallButtonPressed(Context context){
-        openNewActivity(context, OnCallActivity.class);
+        openNewActivity(context, OnCallListActivity.class);
     }
 
     /**
