@@ -33,10 +33,8 @@ import android.support.v7.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import ute.webservice.voiceagent.oncall.util.OnCallRetrievalListener;
 import ute.webservice.voiceagent.util.Constants;
 import ute.webservice.voiceagent.util.DataAsked;
-import ute.webservice.voiceagent.util.RetrievalListener;
 
 public abstract class BaseActivity extends AppCompatActivity {
 

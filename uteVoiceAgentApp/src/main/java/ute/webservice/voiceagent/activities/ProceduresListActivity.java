@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,14 +17,12 @@ import ai.api.android.AIConfiguration;
 import ai.api.model.AIError;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
-import ute.webservice.voiceagent.oncall.util.OnCallRetrievalListener;
 import ute.webservice.voiceagent.procedures.ProceduresParentListAdapter;
 import ute.webservice.voiceagent.util.Config;
 import ute.webservice.voiceagent.util.Controller;
 import ute.webservice.voiceagent.util.DataAsked;
 import ute.webservice.voiceagent.util.ParseResult;
 import ute.webservice.voiceagent.R;
-import ute.webservice.voiceagent.util.RetrievalListener;
 import ute.webservice.voiceagent.util.SharedData;
 
 public class ProceduresListActivity extends BaseActivity implements AIButton.AIButtonListener {
@@ -33,9 +30,7 @@ public class ProceduresListActivity extends BaseActivity implements AIButton.AIB
     private static String TAG = ProceduresListActivity.class.getName();
 
     private AIButton aiButton;
-    private Button cancelButton;
     private TextView queryTextView;
-    private TextView userIDText;
 
     ProceduresParentListAdapter listAdapter;
     ExpandableListView listView;
@@ -45,12 +40,9 @@ public class ProceduresListActivity extends BaseActivity implements AIButton.AIB
     private String query;
 
     private ParseResult PR;
-    private DataAsked dataAsked;
     private android.support.v7.widget.Toolbar setting_toolbar;
 
-    private SharedData sessiondata;
     private String accountID;
-    private int account_access;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +71,7 @@ public class ProceduresListActivity extends BaseActivity implements AIButton.AIB
     private void initializeTextViews(){
         queryTextView = (TextView)findViewById(R.id.querytextView);
 
-        userIDText = (TextView) findViewById(R.id.userText);
+        TextView userIDText = (TextView) findViewById(R.id.userText);
         userIDText.setText(accountID);
     }
 
@@ -87,10 +79,10 @@ public class ProceduresListActivity extends BaseActivity implements AIButton.AIB
      * Sets up the sessiondata, dataAsked and account data variables.
      */
     private void initializeSharedData(){
-        sessiondata = new SharedData(getApplicationContext());
+        SharedData sessiondata = new SharedData(getApplicationContext());
         accountID = sessiondata.getKeyAccount();
-        account_access = sessiondata.getKeyAccess();
-        dataAsked = new DataAsked();
+        int account_access = sessiondata.getKeyAccess();
+        DataAsked dataAsked = new DataAsked();
     }
 
     /**
@@ -130,7 +122,7 @@ public class ProceduresListActivity extends BaseActivity implements AIButton.AIB
         aiButton.setResultsListener(this);
 
         // set up the cancel button
-        cancelButton = (Button)findViewById(R.id.cancelButton);
+        Button cancelButton = (Button) findViewById(R.id.cancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {

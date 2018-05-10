@@ -1,7 +1,6 @@
 package ute.webservice.voiceagent.dao;
 
 import android.content.Context;
-import android.content.Intent;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -10,14 +9,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringReader;
 import java.net.Socket;
-import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import ute.webservice.voiceagent.activities.ResultsActivity;
 import ute.webservice.voiceagent.util.ParseResult;
-
-import static ute.webservice.voiceagent.util.TTS.stop;
 
 /**
  * Created by Nathan Taylor on 4/11/2018.

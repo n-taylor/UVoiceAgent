@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGetHC4;
-import org.apache.http.entity.StringEntity;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

@@ -12,7 +12,6 @@ import javax.net.ssl.SSLContext;
  */
 public class RetrieveTask extends AsyncTask<Void,Integer,String> {
 
-    private Exception exception;
     private DataAsked dataAsked;
     private SSLContext sslContext;
 
@@ -30,7 +29,7 @@ public class RetrieveTask extends AsyncTask<Void,Integer,String> {
         try {
             data = dataAsked.getHttpClientReply(sslContext);
         } catch (Exception e) {
-            this.exception = e;
+            Exception exception = e;
         }
 
         return data;

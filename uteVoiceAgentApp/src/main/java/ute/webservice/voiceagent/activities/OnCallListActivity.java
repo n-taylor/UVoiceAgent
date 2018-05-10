@@ -2,15 +2,11 @@ package ute.webservice.voiceagent.activities;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.Layout;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -33,24 +29,18 @@ public class OnCallListActivity extends BaseActivity implements AIButton.AIButto
     private static String TAG = OnCallListActivity.class.getName();
 
     private AIButton aiButton;
-    private Button cancelButton;
     private TextView queryTextView;
-    private TextView userIDText;
     private ListView listView;
-    private Button searchButton;
     private EditText searchBar;
 
     private String query;
 
     private ParseResult PR;
-    private DataAsked dataAsked;
     private android.support.v7.widget.Toolbar setting_toolbar;
 
     private OnCallController controller;
 
-    private SharedData sessiondata;
     private String accountID;
-    private int account_access;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +78,7 @@ public class OnCallListActivity extends BaseActivity implements AIButton.AIButto
         queryTextView = (TextView)findViewById(R.id.query_text);
         searchBar = (EditText)findViewById(R.id.searchOnCall);
 
-        userIDText = (TextView) findViewById(R.id.userText);
+        TextView userIDText = (TextView) findViewById(R.id.userText);
         userIDText.setText(accountID);
     }
 
@@ -96,10 +86,10 @@ public class OnCallListActivity extends BaseActivity implements AIButton.AIButto
      * Sets up the sessiondata, dataAsked and account data variables.
      */
     private void initializeSharedData(){
-        sessiondata = new SharedData(getApplicationContext());
+        SharedData sessiondata = new SharedData(getApplicationContext());
         accountID = sessiondata.getKeyAccount();
-        account_access = sessiondata.getKeyAccess();
-        dataAsked = new DataAsked();
+        int account_access = sessiondata.getKeyAccess();
+        DataAsked dataAsked = new DataAsked();
     }
 
     /**
@@ -139,7 +129,7 @@ public class OnCallListActivity extends BaseActivity implements AIButton.AIButto
         aiButton.setResultsListener(this);
 
         // set up the cancel button
-        cancelButton = (Button)findViewById(R.id.cancelButton);
+        Button cancelButton = (Button) findViewById(R.id.cancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -148,7 +138,7 @@ public class OnCallListActivity extends BaseActivity implements AIButton.AIButto
         });
 
         // set up the search button
-        searchButton = (Button)findViewById(R.id.search_button);
+        Button searchButton = (Button) findViewById(R.id.search_button);
         searchButton.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View view) {

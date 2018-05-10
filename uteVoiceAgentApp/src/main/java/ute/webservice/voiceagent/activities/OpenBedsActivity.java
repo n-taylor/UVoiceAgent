@@ -24,19 +24,12 @@ import ai.api.model.AIError;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
 import ute.webservice.voiceagent.R;
-import ute.webservice.voiceagent.oncall.util.OnCallRetrievalListener;
-import ute.webservice.voiceagent.oncall.util.OnCallRetrieveTask;
 import ute.webservice.voiceagent.util.Controller;
-import ute.webservice.voiceagent.util.TTS;
 import ute.webservice.voiceagent.openbeds.ListAdapter;
-import ute.webservice.voiceagent.util.CertificateManager;
 import ute.webservice.voiceagent.util.Config;
-import ute.webservice.voiceagent.util.Constants;
 import ute.webservice.voiceagent.util.DataAsked;
 import ute.webservice.voiceagent.util.LogoutTask;
 import ute.webservice.voiceagent.util.ParseResult;
-import ute.webservice.voiceagent.util.RetrievalListener;
-import ute.webservice.voiceagent.util.RetrieveTask;
 import ute.webservice.voiceagent.util.SharedData;
 
 public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonListener {
@@ -47,20 +40,16 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
     ExpandableListView expListView;
     List<String> unitGroups;
     HashMap<String, List<String>> units;
-    
-    private Button cancelButton;
+
     private AIButton aiButton;
     private TextView queryTextView;
-    private android.support.v7.widget.Toolbar setting_toolbar;
 
-    private DataAsked dataAsked;
     private ParseResult PR;
     private String query;
 
     SharedData sessiondata;
     private String accountID;
-    private int account_access;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,13 +58,13 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
 
         sessiondata = new SharedData(getApplicationContext());
         accountID = sessiondata.getKeyAccount();
-        account_access = sessiondata.getKeyAccess();
+        int account_access = sessiondata.getKeyAccess();
 
         initializeToolbar();
         initializeButtons();
         initializeExpandableList();
 
-        dataAsked = new DataAsked();
+        DataAsked dataAsked = new DataAsked();
 
     }
 
@@ -86,7 +75,7 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
         TextView userIDText = (TextView) findViewById(R.id.userText);
         userIDText.setText(accountID);
 
-        setting_toolbar = (Toolbar) findViewById(R.id.setting_toolbar);
+        Toolbar setting_toolbar = (Toolbar) findViewById(R.id.setting_toolbar);
         setSupportActionBar(setting_toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -105,7 +94,7 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
      */
     private void initializeButtons(){
         aiButton = (AIButton) findViewById(R.id.micButton);
-        cancelButton = (Button) findViewById(R.id.cancelButton);
+        Button cancelButton = (Button) findViewById(R.id.cancelButton);
         queryTextView = (TextView) findViewById(R.id.querytextView);
 
         final AIConfiguration config = new AIConfiguration(Config.ACCESS_TOKEN,

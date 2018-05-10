@@ -8,13 +8,8 @@
 
     <string name="title_activity_aibutton_sample">Voice Agent</string>
     <string name="title_welcome_activity">Voice Agent</string>
-    <string name="title_login_activity">Voice Agent Login</string>
-
-    <string name="title_app_widget">Voice Assistant</string>
-    <string name="non_empty_query">Query should not be empty</string>
 
     <string name="use_bluetooth_headset">Use Bluetooth headset</string>
-    <string name="VoiceAssistant">Voice  Assistant</string>
 
     <string name="cancel">Cancel</string>
     <string name="bed_finder_label">Open Bed Finder</string>
@@ -22,8 +17,9 @@
     <string name="equipment_locator_label">Equipment Finder</string>
     <string name="on_call_label">On-call Finder</string>
 
+    <string name="image_alt_text">Image</string>
+
     <string name="welcome_message">What do you want to know?</string>
-    <string name="title_activity_results">ResultsActivity</string>
 
     <string name="open_beds_message">For which unit do you want the open bed availability?</string>
     <string name="title_activity_surgery">Voice Agent</string>

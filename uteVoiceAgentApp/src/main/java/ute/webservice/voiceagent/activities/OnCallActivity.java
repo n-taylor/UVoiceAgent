@@ -6,7 +6,6 @@ package ute.webservice.voiceagent.activities;
 
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -22,7 +21,6 @@ import java.io.StringReader;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,19 +34,13 @@ import ai.api.ui.AIButton;
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.oncall.ClientTestEmulator;
 import ute.webservice.voiceagent.oncall.OnCallListAdapter;
-import ute.webservice.voiceagent.oncall.util.OnCallRetrievalListener;
-import ute.webservice.voiceagent.oncall.util.OnCallRetrieveTask;
 import ute.webservice.voiceagent.util.Controller;
 import ute.webservice.voiceagent.util.TTS;
 import ute.webservice.voiceagent.openbeds.ListAdapter;
-import ute.webservice.voiceagent.util.CertificateManager;
 import ute.webservice.voiceagent.util.Config;
-import ute.webservice.voiceagent.util.Constants;
 import ute.webservice.voiceagent.util.DataAsked;
 import ute.webservice.voiceagent.util.LogoutTask;
 import ute.webservice.voiceagent.util.ParseResult;
-import ute.webservice.voiceagent.util.RetrievalListener;
-import ute.webservice.voiceagent.util.RetrieveTask;
 import ute.webservice.voiceagent.util.SharedData;
 
 /**
@@ -64,22 +56,18 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
     private static String TAG = OpenBedsActivity.class.getName();
 
     private ListAdapter listAdapter;
-    private ExpandableListView expListView;
     private ArrayList<String> names;
     private HashMap<String, ArrayList<String>> phoneNumbers;
 
-    private Button cancelButton;
     private AIButton aiButton;
     private TextView queryTextView;
     private android.support.v7.widget.Toolbar setting_toolbar;
 
-    private DataAsked dataAsked;
     private ParseResult PR;
     private String query;
 
     SharedData sessiondata;
     private String accountID;
-    private int account_access;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,7 +136,7 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
     }
 
     private void initializeListView() {
-        expListView = (ExpandableListView)findViewById(R.id.on_call_ListView);
+        ExpandableListView expListView = (ExpandableListView) findViewById(R.id.on_call_ListView);
         OnCallListAdapter adapter = new OnCallListAdapter(this, names, phoneNumbers);
         adapter.setWidth(getResources().getDimensionPixelSize(R.dimen.surgery_list_width)-200);
         expListView.setAdapter(adapter);
@@ -160,8 +148,8 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
     private void initializeSharedData() {
         sessiondata = new SharedData(getApplicationContext());
         accountID = sessiondata.getKeyAccount();
-        account_access = sessiondata.getKeyAccess();
-        dataAsked = new DataAsked();
+        int account_access = sessiondata.getKeyAccess();
+        DataAsked dataAsked = new DataAsked();
     }
 
     private void initializeTextViews() {
@@ -192,7 +180,7 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
         aiButton.setResultsListener(this);
 
         // set up the cancel button
-        cancelButton = (Button)findViewById(R.id.cancelButton);
+        Button cancelButton = (Button) findViewById(R.id.cancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {

@@ -11,7 +11,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import ute.webservice.voiceagent.R;
-import ute.webservice.voiceagent.util.Controller;
 
 /**
  * The adapter for the list of areas in the OnCallListActivity
@@ -21,7 +20,6 @@ import ute.webservice.voiceagent.util.Controller;
 public class AreasAdapter extends ArrayAdapter<String> {
 
     private Context context;
-    private ArrayList<String> areas;
 
     private int backColor;
     private int textColor;
@@ -31,7 +29,7 @@ public class AreasAdapter extends ArrayAdapter<String> {
     public AreasAdapter(Context context, ArrayList<String> areas){
         super(context, 0, areas);
         this.context = context;
-        this.areas = areas;
+        ArrayList<String> areas1 = areas;
     }
 
     @Override

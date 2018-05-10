@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGetHC4;
-import org.apache.http.entity.StringEntity;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -43,10 +42,9 @@ import ute.webservice.voiceagent.util.ParseResult;
 public class ProcedureJsonRetrieveTask extends AsyncTask<String, Void, String> {
 
     private ArrayList<ProcedureJsonRetrievalListener> listeners;
-    private ParseResult PR;
 
     public ProcedureJsonRetrieveTask(){
-        PR = new ParseResult();
+        ParseResult PR = new ParseResult();
         listeners = new ArrayList<>();
     }
 

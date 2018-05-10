@@ -27,6 +27,7 @@ public class SharedData {
         this._context = context;
         sPref = _context.getSharedPreferences(FILE_NAME,PRIVATE_MODE);
         editor = sPref.edit();
+        editor.apply();
     }
 
     /**

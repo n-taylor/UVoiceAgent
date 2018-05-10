@@ -10,19 +10,13 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Locale;
 
 import ute.webservice.voiceagent.activities.ProceduresSelectActivity;
 import ute.webservice.voiceagent.dao.ProceduresDAO;
 import ute.webservice.voiceagent.util.Controller;
 import ute.webservice.voiceagent.util.ParseResult;
 import ute.webservice.voiceagent.R;
-import ute.webservice.voiceagent.activities.ResultsActivity;
-import ute.webservice.voiceagent.procedures.util.ProcedureCostRetrievalListener;
-import ute.webservice.voiceagent.procedures.util.ProcedureCostRetrieveTask;
 
 /**
  * Created by Nathan Taylor on 3/20/2018.
@@ -47,13 +41,11 @@ public class ProceduresSecondLevelAdapter extends BaseExpandableListAdapter {
 
     private int width = 1000;
 
-    private ParseResult PR;
-
     public ProceduresSecondLevelAdapter(Context context, ArrayList<String> subcategoryHeaders){
         this.context = context;
         this.subcategoryHeaders = new ArrayList<>();
         this.subcategoryHeaders.addAll(subcategoryHeaders);
-        PR = new ParseResult();
+        ParseResult PR = new ParseResult();
     }
 
     @Override

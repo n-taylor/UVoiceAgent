@@ -2,7 +2,6 @@
 <resources>
     <color name="view_alpha_background">#4Db4b4b4</color>
     <color name="divider_color">#cfcfcf</color>
-    <color name="Dark_Red">#c20000</color>
     <color name="color_softgreen">#7ddfa2</color>
     <color name="color_slategrey">#89979c</color>
     <color name="Soft_Red">#d74d4f</color>

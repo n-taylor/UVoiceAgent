@@ -1,5 +1,7 @@
 package ute.webservice.voiceagent.openbeds;
 
+import java.util.Locale;
+
 /**
  * Created by nith on 10/19/17.
  */
@@ -17,7 +19,7 @@ public class RoomStatus{
 
     @Override
     public String toString() {
-        return String.format("%1$s has %2$d available bed%3$s ", this.unit, this.availableBeds, ((this.availableBeds == 1)?"":"s"));
+        return String.format(Locale.US, "%1$s has %2$d available bed%3$s ", this.unit, this.availableBeds, ((this.availableBeds == 1)?"":"s"));
         //return "Unit " + this.unit + " has " + this.availableBeds + " available beds ";
     }
 

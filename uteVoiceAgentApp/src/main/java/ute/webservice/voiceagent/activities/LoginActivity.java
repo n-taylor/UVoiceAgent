@@ -31,8 +31,6 @@ public class LoginActivity extends BaseActivity {
     private EditText passwordEditText;
     SharedData sessiondata;
 
-    private ActionBar actionBar;
-
     public static final String TAG = LoginActivity.class.getName();
 
     @Override
@@ -40,7 +38,7 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         setSupportActionBar((Toolbar) findViewById(R.id.setting_toolbar));
-        actionBar = getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
 
         sessiondata = new SharedData(getApplicationContext());
         idEditText = (EditText) findViewById(R.id.inputAccount);

@@ -1,10 +1,6 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/color_softgreen</item>
-    </style>
 
     <style name="SettingsSection">
         <item name="android:layout_width">match_parent</item>
@@ -26,19 +22,6 @@
         <item name="colorPrimary">@color/color_softgreen</item>
         <item name="colorAccent">@color/color_slategrey</item>
         <item name="android:statusBarColor">?attr/actionModeSplitBackground</item>
-    </style>
-
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-    <style name="Red_theme" parent="My_theme">
-        <item name="colorAccent">@color/Dark_Red</item>
     </style>
 
 </resources>

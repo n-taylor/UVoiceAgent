@@ -3,7 +3,6 @@ package ute.webservice.voiceagent.util;
 import android.content.Context;
 
 import java.io.BufferedInputStream;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,8 +17,6 @@ import java.security.cert.X509Certificate;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManagerFactory;
-
-import ute.webservice.voiceagent.activities.BaseActivity;
 
 /**
  * This class manages the certificates and SSLContext that the activities in this

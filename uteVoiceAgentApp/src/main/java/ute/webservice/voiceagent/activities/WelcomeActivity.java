@@ -13,22 +13,16 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import ai.api.android.AIConfiguration;
 import ai.api.android.GsonFactory;
 import ai.api.model.AIError;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
 import ute.webservice.voiceagent.R;
-import ute.webservice.voiceagent.oncall.util.OnCallRetrievalListener;
 import ute.webservice.voiceagent.util.Controller;
-import ute.webservice.voiceagent.procedures.ProcedureInfoListener;
 import ute.webservice.voiceagent.util.Config;
 import ute.webservice.voiceagent.util.DataAsked;
 import ute.webservice.voiceagent.util.ParseResult;
-import ute.webservice.voiceagent.util.RetrievalListener;
 import ute.webservice.voiceagent.util.SharedData;
 
 /**
@@ -53,12 +47,9 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
     private ActionBar actionBar;
 
     private Gson gson = GsonFactory.getGson();
-    private DataAsked dataAsked;
     private ParseResult PR;
 
     SharedData sessiondata;
-    private String accountID;
-    private int account_access;
 
     //Progress bar
     private ProgressDialog progress;
@@ -79,8 +70,8 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
 
         //Open shared data
         sessiondata = new SharedData(getApplicationContext());
-        accountID = sessiondata.getKeyAccount();
-        account_access = sessiondata.getKeyAccess();
+        String accountID = sessiondata.getKeyAccount();
+        int account_access = sessiondata.getKeyAccess();
 
         TextView userIDText = (TextView) findViewById(R.id.userText);
         userIDText.setText(accountID);
@@ -89,7 +80,7 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         Toolbar settintTB= (Toolbar) findViewById(R.id.setting_toolbar);
         setSupportActionBar(settintTB);
 
-        dataAsked = new DataAsked();
+        DataAsked dataAsked = new DataAsked();
 
         controller.onActivityCreated(this);
 

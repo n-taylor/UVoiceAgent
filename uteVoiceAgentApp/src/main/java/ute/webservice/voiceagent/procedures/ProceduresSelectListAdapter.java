@@ -1,7 +1,6 @@
 package ute.webservice.voiceagent.procedures;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,14 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.text.NumberFormat;
-import java.util.Locale;
 import java.util.ArrayList;
 
 import ute.webservice.voiceagent.R;
-import ute.webservice.voiceagent.activities.ResultsActivity;
-import ute.webservice.voiceagent.procedures.util.ProcedureCostRetrievalListener;
-import ute.webservice.voiceagent.procedures.util.ProcedureCostRetrieveTask;
 import ute.webservice.voiceagent.util.Controller;
 
 /**
@@ -27,7 +21,6 @@ import ute.webservice.voiceagent.util.Controller;
 public class ProceduresSelectListAdapter extends ArrayAdapter<String> {
 
     private Context context;
-    private ArrayList<String> procedures;
 
     private int backColor;
     private int textColor;
@@ -37,7 +30,7 @@ public class ProceduresSelectListAdapter extends ArrayAdapter<String> {
     public ProceduresSelectListAdapter(Context context, ArrayList<String> descriptions){
         super(context, 0, descriptions);
         this.context = context;
-        this.procedures = descriptions;
+        ArrayList<String> procedures = descriptions;
     }
 
     @Override

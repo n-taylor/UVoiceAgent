@@ -12,7 +12,6 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import ute.webservice.voiceagent.oncall.ClientTestEmulator;
 import ute.webservice.voiceagent.util.ParseResult;
 
 /**

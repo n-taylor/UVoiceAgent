@@ -13,25 +13,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import ai.api.android.AIConfiguration;
 import ai.api.model.AIError;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
-import ute.webservice.voiceagent.oncall.util.OnCallRetrievalListener;
-import ute.webservice.voiceagent.oncall.util.OnCallRetrieveTask;
 import ute.webservice.voiceagent.procedures.ProceduresSelectListAdapter;
-import ute.webservice.voiceagent.util.CertificateManager;
 import ute.webservice.voiceagent.util.Config;
-import ute.webservice.voiceagent.util.Constants;
 import ute.webservice.voiceagent.util.Controller;
 import ute.webservice.voiceagent.util.DataAsked;
 import ute.webservice.voiceagent.util.LogoutTask;
 import ute.webservice.voiceagent.util.ParseResult;
 import ute.webservice.voiceagent.R;
-import ute.webservice.voiceagent.util.RetrievalListener;
-import ute.webservice.voiceagent.util.RetrieveTask;
 import ute.webservice.voiceagent.util.SharedData;
 
 public class ProceduresSelectActivity extends BaseActivity implements AIButton.AIButtonListener {
@@ -39,15 +32,12 @@ public class ProceduresSelectActivity extends BaseActivity implements AIButton.A
     private static String TAG = ProceduresListActivity.class.getName();
 
     private AIButton aiButton;
-    private Button cancelButton;
     private TextView queryTextView;
-    private ListView listView;
     private ArrayList<String> procedures;
 
     private String query;
 
     private ParseResult PR;
-    private DataAsked dataAsked;
 
     private SharedData sessiondata;
     private String accountID;
@@ -82,7 +72,7 @@ public class ProceduresSelectActivity extends BaseActivity implements AIButton.A
      * Initializes the list view and populates it with the descriptions in the Map codes.
      */
     private void initializeListView(){
-        listView = (ListView)findViewById(R.id.surgery_codes_list_view);
+        ListView listView = (ListView) findViewById(R.id.surgery_codes_list_view);
         ProceduresSelectListAdapter adapter = new ProceduresSelectListAdapter(this, procedures);
         adapter.setBackColor(ContextCompat.getColor(this, R.color.color_slategrey));
         adapter.setTextColor(Color.WHITE);
@@ -116,7 +106,7 @@ public class ProceduresSelectActivity extends BaseActivity implements AIButton.A
         sessiondata = new SharedData(getApplicationContext());
         accountID = sessiondata.getKeyAccount();
         account_access = sessiondata.getKeyAccess();
-        dataAsked = new DataAsked();
+        DataAsked dataAsked = new DataAsked();
     }
 
     /**
@@ -156,7 +146,7 @@ public class ProceduresSelectActivity extends BaseActivity implements AIButton.A
         aiButton.setResultsListener(this);
 
         // set up the cancel button
-        cancelButton = (Button)findViewById(R.id.cancelButton);
+        Button cancelButton = (Button) findViewById(R.id.cancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {

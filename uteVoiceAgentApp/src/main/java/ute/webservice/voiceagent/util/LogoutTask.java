@@ -14,7 +14,6 @@ import ute.webservice.voiceagent.login.LoginAlertDialog;
 public class LogoutTask extends AsyncTask<Void,Void,Boolean> {
 
     private Exception exception;
-    private AccountCheck acnt;
     private BaseActivity activity;
 
     public LogoutTask(BaseActivity activity){
@@ -23,7 +22,7 @@ public class LogoutTask extends AsyncTask<Void,Void,Boolean> {
 
     @Override
     protected Boolean doInBackground(Void... voids) {
-        acnt= new AccountCheck();
+        AccountCheck acnt = new AccountCheck();
         boolean authentication=false;
 
         try {

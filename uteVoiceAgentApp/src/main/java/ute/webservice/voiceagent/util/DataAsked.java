@@ -26,6 +26,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import javax.net.ssl.SSLContext;
 
@@ -75,9 +76,9 @@ public class DataAsked {
         surgeries.put("UPPER GI ENDOSCOPY,BIOPSY".toLowerCase().replace(",", " ").replace("gi", "GI"),"43239");
 
         //Initialize administration group
-        Admin_group.put(Constants.ACCESS_LEVEL_ADMIN,new HashSet<>(Arrays.asList(const_value.SURGERY_HERNIA,const_value.SURGERY_BYPASS)));
-        Admin_group.put(Constants.ACCESS_LEVEL_HIGH,new HashSet<>(Arrays.asList(const_value.SURGERY_BYPASS)));
-        Admin_group.put(Constants.ACCESS_LEVEL_LOW,new HashSet<>(Arrays.asList(const_value.SURGERY_HERNIA)));
+        Admin_group.put(Constants.ACCESS_LEVEL_ADMIN,new HashSet<>(Arrays.asList(Constants.SURGERY_HERNIA, Constants.SURGERY_BYPASS)));
+        Admin_group.put(Constants.ACCESS_LEVEL_HIGH,new HashSet<>(Arrays.asList(Constants.SURGERY_BYPASS)));
+        Admin_group.put(Constants.ACCESS_LEVEL_LOW,new HashSet<>(Arrays.asList(Constants.SURGERY_HERNIA)));
 
         //this.loadCA();
     }
@@ -233,7 +234,7 @@ public class DataAsked {
         boolean surgery = false;
         if (this.surgeries.containsKey(this.Surgery_type)) {
             currCPTCODE = this.surgeries.get(this.Surgery_type);
-            newUrlWithCPT = const_value.CLINWEB_PRICE_QUERY + "" + currCPTCODE;//.toUpperCase().replace(" ", "");
+            newUrlWithCPT = Constants.CLINWEB_PRICE_QUERY + "" + currCPTCODE;//.toUpperCase().replace(" ", "");
             surgery = true;
         }
         else if(this.censusUnit.length() > 0) {
@@ -242,7 +243,7 @@ public class DataAsked {
             }
             else{
                 currCPTCODE = this.censusUnit.toUpperCase().replace(" ", "");
-                newUrlWithCPT = const_value.CLINWEB_CENSUS_SPECFIC_QUERY+ "" + currCPTCODE;
+                newUrlWithCPT = Constants.CLINWEB_CENSUS_SPECFIC_QUERY + "" + currCPTCODE;
                 surgery = false;
             }
         }
@@ -264,7 +265,7 @@ public class DataAsked {
                         responseString += lineSrch;
                     }
 
-                    if (responseString.equals(const_value.ACCESS_DENIED)) {
+                    if (responseString.equals(Constants.ACCESS_DENIED)) {
                         responseString = "You are not allowed to access.";
                     } else {
                     if (surgery) {
@@ -281,7 +282,7 @@ public class DataAsked {
 
                         for(RoomStatus r : rooms) {
                             int beds =r.getAvailableBeds();
-                            responseString = String.format("\n%1$s has %2$d bed%3$s available", this.censusUnit, beds, (beds == 1)?"":"s");
+                            responseString = String.format(Locale.US, "\n%1$s has %2$d bed%3$s available", this.censusUnit, beds, (beds == 1)?"":"s");
                             //responseString = "\n" + this.censusUnit + " has " + r.getAvailableBeds() + " beds available";
                         }
                         return responseString;
@@ -304,7 +305,7 @@ public class DataAsked {
 
         String responseString="";
         try {
-            HttpPostHC4 httpPost = new HttpPostHC4(const_value.CLINWEB_CENSUS_QUERY);
+            HttpPostHC4 httpPost = new HttpPostHC4(Constants.CLINWEB_CENSUS_QUERY);
             //Prepare Parameters
             //String  JSON_STRING = "{\"questionType\":\"price\",\"surgery\":\"hernia repair surgery\"}";
             String  JSON_STRING = "{\"unit\":\"2EAST\",\"surgery\":\"hernia repair surgery\"}";
@@ -327,7 +328,7 @@ public class DataAsked {
                         Log.d(TAG, lineSrch);
                         responseString+=lineSrch;
                     }
-                    if(responseString.equals(const_value.ACCESS_DENIED)){
+                    if(responseString.equals(Constants.ACCESS_DENIED)){
                         responseString = "You are not allowed to access.";
                     }
                     else{
@@ -339,14 +340,8 @@ public class DataAsked {
             } catch(Exception e){
                 e.printStackTrace();
             }
-        } finally {
-            /*
-            try {
-                AccountCheck.httpclient.close();
-            }catch (IOException e) {
-                e.printStackTrace();
-            }
-            */
+        } catch (Exception e){
+            e.printStackTrace();
         }
         this.clear_params();
         return responseString;
@@ -359,7 +354,7 @@ public class DataAsked {
 
         try {
 
-            HttpGetHC4 getRequest = new HttpGetHC4(const_value.CLINWEB_CENSUS_QUERY);
+            HttpGetHC4 getRequest = new HttpGetHC4(Constants.CLINWEB_CENSUS_QUERY);
             CloseableHttpResponse response3 = AccountCheck.httpclient.execute(getRequest);
             HttpEntity entity = response3.getEntity();
             if (entity != null) {
@@ -371,7 +366,7 @@ public class DataAsked {
                     Log.d(TAG, lineSrch);
                     responseString += lineSrch;
                 }
-                if (responseString.equals(const_value.ACCESS_DENIED)) {
+                if (responseString.equals(Constants.ACCESS_DENIED)) {
                     responseString = "You are not allowed to access.";
                 } else {
                     ArrayList<RoomStatus> formattedBeds = ParseResult.parseRooms(responseString);

@@ -12,8 +12,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import ai.api.model.AIResponse;
 import ute.webservice.voiceagent.R;
@@ -210,7 +208,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                 for (String unit : keys){
                     int beds = openBeds.get(unit);
                     toShow += unit;
-                    toShow += String.format(" has %1$d bed%2$s available\n", beds, (beds == 1)?"":"s");
+                    toShow += String.format(Locale.US, " has %1$d bed%2$s available\n", beds, (beds == 1)?"":"s");
                 }
                 // Open a results activity with the information
                 Intent intent = new Intent(context, ResultsActivity.class);
@@ -334,7 +332,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                     System.out.println("Coordinates: (" + location.getMapCoordinate().getX() + ", " + location.getMapCoordinate().getY() + ")");
                 }
                 catch (Exception e){
-
+                    e.printStackTrace();
                 }
                 return location;
             }

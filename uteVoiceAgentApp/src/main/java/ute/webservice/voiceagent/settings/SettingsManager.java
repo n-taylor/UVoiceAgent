@@ -45,7 +45,7 @@ public class SettingsManager {
     public void setUseBluetooth(final boolean useBluetooth) {
         this.useBluetooth = useBluetooth;
 
-        prefs.edit().putBoolean(PREF_USE_BLUETOOTH, useBluetooth).commit();
+        prefs.edit().putBoolean(PREF_USE_BLUETOOTH, useBluetooth).apply();
         final BluetoothController controller = ((AIApplication) context.getApplicationContext()).getBluetoothController();
         if (useBluetooth) {
             controller.start();

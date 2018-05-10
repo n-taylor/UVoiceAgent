@@ -3,20 +3,13 @@ package ute.webservice.voiceagent.oncall;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -122,7 +115,7 @@ public class OnCallController extends Controller {
      * returns 'AREA NAME'
      */
     public static String removeCode(String description){
-        return description.replaceAll("\\[\\d+\\]", "").trim();
+        return description.replaceAll("\\[\\d+]", "").trim();
     }
 
     /**
@@ -134,7 +127,7 @@ public class OnCallController extends Controller {
      */
     public static String extractOCMID(String description){
         String code = null;
-        Pattern pattern = Pattern.compile(".\\[(\\d+)\\]");
+        Pattern pattern = Pattern.compile(".\\[(\\d+)]");
         Matcher matcher = pattern.matcher(description);
         if (matcher.find()){
             code = matcher.group(1);

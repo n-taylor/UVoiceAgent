@@ -41,21 +41,6 @@ import java.util.regex.Pattern;
 
 public class ParseResult {
 
-    private static String currAssignOpeningTags = "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n" +
-            "<procedureCall name=\"GetGroupsCurrAssignXml\" xmlns=\"http://xml.amcomsoft.com/api/request\">   \n" +
-            "<parameter name=\"ocmid\" null=\"false\">";
-
-    private static String currAssignClosingTags = "</parameter>   \n" +
-            "<parameter name=\"tz\" null=\"true\"></parameter> \n" +
-            "</procedureCall> \n";
-
-    private static String phoneNumberOpeningTags = "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n" +
-            "<procedureCall name=\"GetPhoneNumber\" xmlns=\"http://xml.amcomsoft.com/api/request\">\n " +
-            "<parameter name=\"mid\" null=\"false\">";
-
-    private static String phoneNumberClosingTags = "</parameter> \n" +
-            "<parameter name=\"phone_number_type\" null=\"true\"></parameter> \n" + "</procedureCall>";
-
     //intent names, which matched to the names on API.AI.
     //TODO: load intent name from file/Constants, since this table may grow tremendously.
     private static final String intent_yes = "ReplyYes";
@@ -67,10 +52,8 @@ public class ParseResult {
     static final String param_question_type = "questionType";
 
     private static Gson gson;
-    private AIResponse response = null;
 
     private Result result = null;
-    private Status status = null;
     private Metadata metadata = null;
     private HashMap<String, JsonElement> params;
 
@@ -79,9 +62,9 @@ public class ParseResult {
      * @param received_response
      */
     public ParseResult(AIResponse received_response) {
-        this.response = received_response;
-        this.result = this.response.getResult();
-        this.status = this.response.getStatus();
+        AIResponse response = received_response;
+        this.result = response.getResult();
+        Status status = response.getStatus();
         this.metadata = this.result.getMetadata();
         this.params = this.result.getParameters();
 
@@ -349,12 +332,12 @@ public class ParseResult {
         while (parser.getName() != null && !parser.getName().equals("getGroupsCurrentAssignments")){
 
             // If the parser has reached the end tag "</success>", then return null
-            if (parser.getName().equals("success") && parser.getEventType() == parser.END_TAG)
+            if (parser.getName().equals("success") && parser.getEventType() == XmlPullParser.END_TAG)
                 return null;
 
             // Keep moving to find getGroupsCurrentAssignments
             parser.next();
-            if (parser.getEventType() == parser.TEXT)
+            if (parser.getEventType() == XmlPullParser.TEXT)
                 parser.next();
         }
         while (parser.next() != XmlPullParser.END_TAG){
@@ -464,6 +447,12 @@ public class ParseResult {
      * @return The completed string containing the XML request to be sent to the socket.
      */
     public static String getCurrentAssignmentsCall(String OCMID){
+        String currAssignClosingTags = "</parameter>   \n" +
+                "<parameter name=\"tz\" null=\"true\"></parameter> \n" +
+                "</procedureCall> \n";
+        String currAssignOpeningTags = "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n" +
+                "<procedureCall name=\"GetGroupsCurrAssignXml\" xmlns=\"http://xml.amcomsoft.com/api/request\">   \n" +
+                "<parameter name=\"ocmid\" null=\"false\">";
         return currAssignOpeningTags + OCMID + currAssignClosingTags;
     }
 
@@ -474,7 +463,7 @@ public class ParseResult {
      */
     public static String extractOCMID(String groupName){
         String ocmid = "";
-        Pattern pattern = Pattern.compile("[A-Za-z\\s\\-]+\\[(\\d+)\\]");
+        Pattern pattern = Pattern.compile("[A-Za-z\\s\\-]+\\[(\\d+)]");
         Matcher matcher = pattern.matcher(groupName);
         if (matcher.find()) {
             ocmid = matcher.group(1);
@@ -483,6 +472,11 @@ public class ParseResult {
     }
 
     public static String getPhoneNumberCall(String MID){
+        String phoneNumberClosingTags = "</parameter> \n" +
+                "<parameter name=\"phone_number_type\" null=\"true\"></parameter> \n" + "</procedureCall>";
+        String phoneNumberOpeningTags = "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n" +
+                "<procedureCall name=\"GetPhoneNumber\" xmlns=\"http://xml.amcomsoft.com/api/request\">\n " +
+                "<parameter name=\"mid\" null=\"false\">";
         return phoneNumberOpeningTags + MID + phoneNumberClosingTags;
     }
 
@@ -544,7 +538,7 @@ public class ParseResult {
      */
     private ArrayList<String> extractNumbers(String text){
         ArrayList<String> numbers = new ArrayList<>();
-        Pattern pattern = Pattern.compile("(\\[[0-9]+\\]\\[[A-Z\\s\\-.]+\\])");
+        Pattern pattern = Pattern.compile("(\\[[0-9]+]\\[[A-Z\\s\\-.]+])");
         Matcher matcher = pattern.matcher(text);
         while (matcher.find()){
             for (int i = 1; i <= matcher.groupCount(); i++){
@@ -566,7 +560,7 @@ public class ParseResult {
      * @return
      */
     private boolean isZero(String phoneNumber) {
-        Pattern pattern = Pattern.compile("\\[([0-9]+)\\]\\[[A-Z\\s\\-.]+\\]");
+        Pattern pattern = Pattern.compile("\\[([0-9]+)]\\[[A-Z\\s\\-.]+]");
         Matcher matcher = pattern.matcher(phoneNumber);
         while (matcher.find()){
             String number = matcher.group(1);
@@ -581,7 +575,7 @@ public class ParseResult {
         String formatted = number;
         String phoneNum = "";
         String type = "";
-        Pattern fullPattern = Pattern.compile("\\[(\\d+)\\]\\[(\\D+)\\]");
+        Pattern fullPattern = Pattern.compile("\\[(\\d+)]\\[(\\D+)]");
         Matcher matcher = fullPattern.matcher(number);
         if (matcher.find()){
             phoneNum = matcher.group(1);

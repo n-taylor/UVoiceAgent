@@ -17,11 +17,11 @@
         app:popupTheme="@style/My_theme">
 
         <ImageView
-            android:id="@+id/userIcon"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/user_icon"
-            android:layout_gravity="right"/>
+            android:layout_gravity="right"
+            android:contentDescription="@string/image_alt_text"/>
 
 
         <TextView
@@ -40,7 +40,6 @@
 
 
     <RelativeLayout
-        android:id="@+id/top_container"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentStart="true"
@@ -70,16 +69,15 @@
             tools:ignore="RtlHardcoded" />
 
         <RelativeLayout
-            android:id="@+id/midlayout"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:layout_below="@id/welcome_message">
 
         <RelativeLayout
-            android:id="@+id/button_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true">
+            android:layout_centerInParent="true"
+            tools:ignore="UselessParent">
 
 
             <Button

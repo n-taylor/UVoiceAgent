@@ -65,7 +65,6 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
     private final String openingMessage = "I can give you the cost of a procedure or I can give you the census of a hospital room.";
 
     private AIButton aiButton;
-    private Button cancelButton;
     private TextView resultTextView;
     private TextView queryTextView;
 
@@ -74,8 +73,6 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
     private ParseResult PR;
 
     SharedData sessiondata;
-    private String accountID;
-    private int account_access;
 
     //Progress bar
     private ProgressDialog progress;
@@ -98,12 +95,12 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
         resultTextView.setGravity(Gravity.RIGHT);
         queryTextView = (TextView) findViewById(R.id.querytextView);
         aiButton = (AIButton) findViewById(R.id.micButton);
-        cancelButton = (Button) findViewById(R.id.cancelButton);
+        Button cancelButton = (Button) findViewById(R.id.cancelButton);
 
         //Open shared data
         sessiondata = new SharedData(getApplicationContext());
-        accountID = sessiondata.getKeyAccount();
-        account_access = sessiondata.getKeyAccess();
+        String accountID = sessiondata.getKeyAccount();
+        int account_access = sessiondata.getKeyAccess();
 
         //Set up action bar by toolbar
         Toolbar settintTB= (Toolbar) findViewById(R.id.setting_toolbar);
@@ -133,7 +130,7 @@ public class AIButtonActivity extends BaseActivity implements AIButton.AIButtonL
         dataasked = new DataAsked();
 
         //Welcome message
-        resultTextView.setText(Html.fromHtml("<b>Welcome, "+accountID+"! <br/>" + openingMessage + "</b>"));
+        resultTextView.setText(Html.fromHtml("<b>Welcome, "+ accountID +"! <br/>" + openingMessage + "</b>"));
         //TTS.setVoice(new Voice("Voice", Voice.QUALITY_VERY_HIGH, Voice.LATENCY_NORMAL, false, ));
         this.loadCA();
 
