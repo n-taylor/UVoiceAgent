@@ -47,6 +47,13 @@ public class SpokOnCallDAO implements OnCallDAO {
             testNumsMap.put("Nathan", testNums);
             return testNumsMap;
         }
+        else if (OCMID.equals("001")){
+            HashMap<String, ArrayList<String>> testNumsMap = new HashMap<>();
+            ArrayList<String> testNums = new ArrayList<>();
+            testNums.add("801-560-0488 : Test Number");
+            testNumsMap.put("Aaron", testNums);
+            return testNumsMap;
+        }
         HashMap<String, String> mids = getMIDs(OCMID); // maps MID -> Name
 
         if (mids == null)
