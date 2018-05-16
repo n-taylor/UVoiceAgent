@@ -38,7 +38,7 @@ public class SpokOnCallDAO implements OnCallDAO {
      */
     @Override
     public HashMap<String, ArrayList<String>> getPhoneNumbers(Context context, String OCMID) {
-        HashMap<String, String> mids = getMIDs(OCMID);
+        HashMap<String, String> mids = getMIDs(OCMID); // maps MID -> Name
 
         if (mids == null)
         {
@@ -48,6 +48,12 @@ public class SpokOnCallDAO implements OnCallDAO {
         return numbers;
     }
 
+    /**
+     * Given a mapping of MIDs to Names, makes a call to retrieve the phone numbers associated
+     * with the MID.
+     * @param mids MID -> Name
+     * @return A mapping of Names to phone numbers
+     */
     private HashMap<String, ArrayList<String>> getNumbers(HashMap<String, String> mids) {
         try {
             HashMap<String, ArrayList<String>> numbers = new HashMap<>();
@@ -72,7 +78,8 @@ public class SpokOnCallDAO implements OnCallDAO {
                 PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
                 writer.println(stringBuilder.toString());
 
-                numbers.put(mids.get(mid), PR.parsePhoneNumbers(socket.getInputStream()));
+                ArrayList<String> phoneNumbers = PR.parsePhoneNumbers(socket.getInputStream());
+                numbers.put(mids.get(mid), phoneNumbers);
 
                 writer.close();
                 if (!socket.isClosed())
@@ -85,6 +92,12 @@ public class SpokOnCallDAO implements OnCallDAO {
             return null;
         }
     }
+
+    private ArrayList<String> appendPagers(ArrayList<String> numbers){
+
+        return null;
+    }
+
     private HashMap<String, String> getMIDs(String OCMID){
         try {
             Socket socket = new Socket(IPAddress, 9720);

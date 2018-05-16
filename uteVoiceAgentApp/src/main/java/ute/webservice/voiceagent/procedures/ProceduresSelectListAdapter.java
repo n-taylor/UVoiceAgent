@@ -27,14 +27,14 @@ public class ProceduresSelectListAdapter extends ArrayAdapter<String> {
     private boolean setBackColor = false;
     private boolean setTextColor = false;
 
-    public ProceduresSelectListAdapter(Context context, ArrayList<String> descriptions){
+    public ProceduresSelectListAdapter (Context context, ArrayList<String> descriptions) {
         super(context, 0, descriptions);
         this.context = context;
         ArrayList<String> procedures = descriptions;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView (int position, View convertView, ViewGroup parent) {
 
         // Inflate the view if an existing view is not already being used
         if (convertView == null){
