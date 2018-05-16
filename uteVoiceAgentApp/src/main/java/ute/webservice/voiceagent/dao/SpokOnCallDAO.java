@@ -40,6 +40,13 @@ public class SpokOnCallDAO implements OnCallDAO {
      */
     @Override
     public HashMap<String, ArrayList<String>> getPhoneNumbers(Context context, String OCMID) {
+        if (OCMID.equals("000")){
+            HashMap<String, ArrayList<String>> testNumsMap = new HashMap<>();
+            ArrayList<String> testNums = new ArrayList<>();
+            testNums.add("801-420-8471 : Test Number");
+            testNumsMap.put("Nathan", testNums);
+            return testNumsMap;
+        }
         HashMap<String, String> mids = getMIDs(OCMID); // maps MID -> Name
 
         if (mids == null)

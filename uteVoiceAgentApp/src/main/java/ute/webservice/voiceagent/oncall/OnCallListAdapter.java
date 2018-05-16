@@ -1,8 +1,10 @@
 package ute.webservice.voiceagent.oncall;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.util.Controller;
@@ -125,17 +129,16 @@ public class OnCallListAdapter extends BaseExpandableListAdapter {
     {
         final String childText = (String) getChild(groupPosition, childPosition);
 
-        if (convertView == null) {
-            LayoutInflater layoutInflater = (LayoutInflater) this.context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.list_items, parent, false);
+        LayoutInflater layoutInflater = (LayoutInflater) this.context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        convertView = layoutInflater.inflate(R.layout.list_items, parent, false);
 
-            // DEFINE BACKGROUND COLOR HERE
-            if (setMidColor)
-                convertView.setBackgroundColor(midColor);
-            else
-                convertView.setBackgroundColor(Color.WHITE);
-        }
+        // DEFINE BACKGROUND COLOR HERE
+        if (setMidColor)
+            convertView.setBackgroundColor(midColor);
+        else
+            convertView.setBackgroundColor(Color.WHITE);
+
         TextView childTextView = (TextView) convertView
                 .findViewById(R.id.listItem);
         //txtListChild.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
@@ -145,7 +148,31 @@ public class OnCallListAdapter extends BaseExpandableListAdapter {
             childTextView.setTextColor(midTextColor);
         else
             childTextView.setTextColor(Color.BLACK);
+
+        if (!childText.toLowerCase().contains("pager")){
+            convertView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view) {
+                    String number = extractPhoneNumber(childText);
+                    Intent callIntent = new Intent(Intent.ACTION_DIAL);
+
+                    callIntent.setData(Uri.parse("tel:+1" + number));
+                    context.startActivity(callIntent);
+                }
+            });
+        }
+
         return convertView;
+    }
+
+    private String extractPhoneNumber(String description){
+        String number = "";
+        Pattern pattern = Pattern.compile("([\\d-]+)\\s*:");
+        Matcher matcher = pattern.matcher(description);
+        if (matcher.find()){
+            number = matcher.group(1);
+        }
+        return number;
     }
 
     @Override
