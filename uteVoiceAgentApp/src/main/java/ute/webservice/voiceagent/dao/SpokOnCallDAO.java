@@ -2,6 +2,7 @@ package ute.webservice.voiceagent.dao;
 
 import android.content.Context;
 
+import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.BufferedReader;
@@ -12,6 +13,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import ute.webservice.voiceagent.oncall.util.SpokParser;
 import ute.webservice.voiceagent.util.ParseResult;
 
 /**
@@ -79,6 +81,7 @@ public class SpokOnCallDAO implements OnCallDAO {
                 writer.println(stringBuilder.toString());
 
                 ArrayList<String> phoneNumbers = PR.parsePhoneNumbers(socket.getInputStream());
+                phoneNumbers = appendPagers(phoneNumbers, mid);
                 numbers.put(mids.get(mid), phoneNumbers);
 
                 writer.close();
@@ -93,9 +96,40 @@ public class SpokOnCallDAO implements OnCallDAO {
         }
     }
 
-    private ArrayList<String> appendPagers(ArrayList<String> numbers){
+    /**
+     * Given a list of phone numbers, uses the given socket to make a call to the Spok webservice to retrieve any pager IDs
+     * associated with the given mid.
+     * @param numbers
+     * @return an empty ArrayList<String> if an error occurs
+     */
+    private ArrayList<String> appendPagers(ArrayList<String> numbers, String mid){
+        try {
 
-        return null;
+            Socket socket = new Socket(IPAddress, 9720);
+
+            socket.setSoTimeout(timeout);
+
+            // Create the XML string to send
+            String toRead = SpokParser.getPagerIdCall(mid);
+            BufferedReader reader = new BufferedReader(new StringReader(toRead));
+            String line;
+            StringBuilder stringBuilder = new StringBuilder();
+            while ((line = reader.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+
+            // Send xml data to server
+            PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
+            writer.println(stringBuilder.toString());
+
+            ArrayList<String> pagerIds = SpokParser.parsePagerIdResponse(socket.getInputStream());
+            numbers.addAll(pagerIds);
+        }
+        catch (IOException | XmlPullParserException ex){
+            ex.printStackTrace();
+            return numbers;
+        }
+        return numbers;
     }
 
     private HashMap<String, String> getMIDs(String OCMID){
