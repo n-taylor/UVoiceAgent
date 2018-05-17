@@ -153,26 +153,12 @@ public class OnCallListAdapter extends BaseExpandableListAdapter {
             convertView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
-                    String number = extractPhoneNumber(childText);
-                    Intent callIntent = new Intent(Intent.ACTION_DIAL);
-
-                    callIntent.setData(Uri.parse("tel:+1" + number));
-                    context.startActivity(callIntent);
+                    OnCallController.onPhoneNumberPressed(context, childText);
                 }
             });
         }
 
         return convertView;
-    }
-
-    private String extractPhoneNumber(String description){
-        String number = "";
-        Pattern pattern = Pattern.compile("([\\d-]+)\\s*:");
-        Matcher matcher = pattern.matcher(description);
-        if (matcher.find()){
-            number = matcher.group(1);
-        }
-        return number;
     }
 
     @Override

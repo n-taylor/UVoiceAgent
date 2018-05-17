@@ -1,7 +1,9 @@
 package ute.webservice.voiceagent.oncall;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.widget.ListView;
 
@@ -25,6 +27,11 @@ import ute.webservice.voiceagent.util.Controller;
 public class OnCallController extends Controller {
 
     private static ArrayList<String> areas;
+
+    /**
+     * Provides the base number that extensions build off of.
+     */
+    private static String hospitalBasePhoneNumber = "8015810000";
 
     /**
      * Given a search string, populates the list view with all the On Call areas containing the search parameter.
@@ -133,6 +140,38 @@ public class OnCallController extends Controller {
             code = matcher.group(1);
         }
         return code;
+    }
+
+    /**
+     * To be called when the user presses a phone number
+     * @param context
+     */
+    public static void onPhoneNumberPressed(Context context, String phoneDescrption){
+        String number = extractPhoneNumber(phoneDescrption);
+        Intent callIntent = new Intent(Intent.ACTION_DIAL);
+
+        String toDial = "tel:+1";
+        // If the number extracted is not a full number, append it as an extension to the base phone number
+        if (number.length() < 7){
+            number = hospitalBasePhoneNumber.substring(0, hospitalBasePhoneNumber.length() - number.length()) + number;
+        }
+        else if (number.replace("-", "").length() == 7){
+            number = "801-" + number;
+        }
+        toDial += number;
+
+        callIntent.setData(Uri.parse(toDial));
+        context.startActivity(callIntent);
+    }
+
+    private static String extractPhoneNumber(String description){
+        String number = "";
+        Pattern pattern = Pattern.compile("([\\d-]+)\\s*:");
+        Matcher matcher = pattern.matcher(description);
+        if (matcher.find()){
+            number = matcher.group(1);
+        }
+        return number;
     }
 
     /**
