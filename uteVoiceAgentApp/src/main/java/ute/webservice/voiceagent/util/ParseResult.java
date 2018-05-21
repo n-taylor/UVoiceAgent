@@ -19,6 +19,7 @@ import ai.api.model.AIResponse;
 import ai.api.model.Metadata;
 import ai.api.model.Result;
 import ai.api.model.Status;
+import ute.webservice.voiceagent.oncall.OnCallController;
 import ute.webservice.voiceagent.openbeds.RoomStatus;
 import ute.webservice.voiceagent.procedures.SurgeryInfo;
 import ute.webservice.voiceagent.procedures.ProcedureCategoryMap;
@@ -548,7 +549,7 @@ public class ParseResult {
             }
         }
         if (numbers.size() < 1){
-            numbers.add("No phone numbers available");
+            numbers.add(OnCallController.NO_NUMBERS_AVAILABLE_LABEL);
         }
         return numbers;
     }

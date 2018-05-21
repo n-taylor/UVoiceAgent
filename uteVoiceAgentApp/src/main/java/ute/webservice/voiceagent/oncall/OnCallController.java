@@ -28,6 +28,8 @@ public class OnCallController extends Controller {
 
     private static ArrayList<String> areas;
 
+    public static String NO_NUMBERS_AVAILABLE_LABEL = "No phone numbers available";
+
     /**
      * Provides the base number that extensions build off of.
      */

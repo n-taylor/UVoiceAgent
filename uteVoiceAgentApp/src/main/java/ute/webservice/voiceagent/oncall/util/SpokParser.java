@@ -23,7 +23,7 @@ public class SpokParser {
             + "\n <parameter name=\"mid\" null=\"false\">";
     private static final String CLOSE_TAGS_GET_PAGER_ID = "</parameter>   \n</procedureCall>";
 
-    private static final String REGEX_PAGER_ID = "\\[(.+)]\\s*\\[(\\d+)]";
+    private static final String REGEX_PAGER_ID = "\\[(.+)]\\s*\\[(\\d*)]";
 
     /**
      * Given an mid, returns the xml formatted call that will retrieve the Pager IDs associated with the mid
@@ -86,7 +86,8 @@ public class SpokParser {
             Pattern pattern = Pattern.compile(REGEX_PAGER_ID);
             Matcher matcher = pattern.matcher(id);
             if (matcher.find()){
-                descriptions.add(matcher.group(1) + " : PAGER " + matcher.group(2));
+                String order = matcher.group(2);
+                descriptions.add(matcher.group(1) + " : PAGER " + (descriptions.size() + 1));
             }
         }
         return descriptions;

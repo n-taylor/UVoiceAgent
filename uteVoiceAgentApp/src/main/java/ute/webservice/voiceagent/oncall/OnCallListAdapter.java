@@ -149,7 +149,7 @@ public class OnCallListAdapter extends BaseExpandableListAdapter {
         else
             childTextView.setTextColor(Color.BLACK);
 
-        if (!childText.toLowerCase().contains("pager")){
+        if (!childText.toLowerCase().contains("pager") && !childText.equals(OnCallController.NO_NUMBERS_AVAILABLE_LABEL)){
             convertView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
