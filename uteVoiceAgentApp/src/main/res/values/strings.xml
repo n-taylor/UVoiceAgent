@@ -26,6 +26,7 @@
     <string name="surgery_message">For which procedure do you want the estimated patient price?</string>
     <string name="title_activity_surgery_codes">Voice Agent</string>
     <string name="title_activity_oncall">Voice Agent</string>
+    <string name="title_activity_equipmentfind">Voice Agent</string>
     <string name="on_call_message">On Call string Here</string>
     <string name="on_call_list_message">For which area are you looking?</string>
     <string name="search_onCall_label">Search for a specific area</string>

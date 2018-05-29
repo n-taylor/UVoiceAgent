@@ -16,6 +16,7 @@ import java.util.Locale;
 import ai.api.model.AIResponse;
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.activities.BaseActivity;
+import ute.webservice.voiceagent.activities.EquipmentFindActivity;
 import ute.webservice.voiceagent.activities.OnCallActivity;
 import ute.webservice.voiceagent.activities.OnCallListActivity;
 import ute.webservice.voiceagent.activities.OpenBedsActivity;
@@ -251,17 +252,15 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
             return;
 
         Intent intent = new Intent(from, to);
-        if (to.equals(ProceduresListActivity.class)){
-            from.startActivity(intent);
-        }
-        else if (to.equals(OpenBedsActivity.class)){
-            from.startActivity(intent);
-        }
-        else if (to.equals(OnCallListActivity.class)){
+        if (to.equals(OnCallListActivity.class)){
             intent = new Intent(from, OnCallListActivity.class);
             intent.putExtra("query", ON_CALL_LIST_MESSAGE);
             from.startActivity(intent);
         }
+        else
+         {
+             from.startActivity(intent);
+         }
     }
 
     public static ProceduresDAO getProceduresDAO(){
@@ -318,7 +317,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
      * Currently displays the location of Nathan's laptop
      */
     public void onEquipmentFinderButtonPressed(Context context){
-        displayClientLocation("f8:34:41:bf:ab:ee",context);
+        displayClientLocation("f4:8c:50:15:3d:b7",context);
     }
 
     private static void displayClientLocation(String id, final Context context){
@@ -345,6 +344,10 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
             }
         };
         task.execute(id);
+
+        openNewActivity(context, EquipmentFindActivity.class);
+
+
     }
 
     /**
