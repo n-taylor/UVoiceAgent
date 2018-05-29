@@ -34,7 +34,7 @@ public class CertificateManager {
 
     /**
      * Gets the current SSLContext. If one has not been set yet, creates a new SSLContext and
-     * @param activity
+     * @param context
      * @return
      */
     public static SSLContext getSSlContext(Context context, String fileName){

@@ -20,7 +20,7 @@ import ute.webservice.voiceagent.util.Constants;
  * A Data Access Object for CISCO location services.
  * Created by Nathan Taylor on 5/3/2018.
  */
-
+    
 public class CiscoLocationDAO implements LocationDAO {
 
     private static final String USER_PASSWORD_PREFIX = "https://ITS-Innovation-VoiceApp:K75wz9PBp1AaCqeNfGMKVI5R@";
@@ -48,7 +48,7 @@ public class CiscoLocationDAO implements LocationDAO {
             BasicCookieStore cookieStore = new BasicCookieStore();
             CloseableHttpClient httpclient = HttpClients.custom()
                     .setDefaultCookieStore(cookieStore)
-                   .setSslcontext(CertificateManager.getSSlContext(context, "mse-park.crt"))
+                   .setSslcontext(CertificateManager.getSSlContext(context, "mse-parknetutahedu.crt"))
                     .build();
             CloseableHttpResponse httpResponse = httpclient.execute(getRequest);
             HttpEntity entity = httpResponse.getEntity();

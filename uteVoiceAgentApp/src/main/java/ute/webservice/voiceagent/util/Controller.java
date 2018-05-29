@@ -318,7 +318,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
      * Currently displays the location of Nathan's laptop
      */
     public void onEquipmentFinderButtonPressed(Context context){
-        //displayClientLocation("f8:34:41:bf:ab:ee",context);
+        displayClientLocation("f8:34:41:bf:ab:ee",context);
     }
 
     private static void displayClientLocation(String id, final Context context){
