@@ -9,7 +9,7 @@ public class ClientLocationBuilder {
 
     private MapCoordinate mapCoordinate;
 
-    private MapInfo mapInfo;
+    private MapDimension mapDimension;
 
     private String imageName;
 
@@ -28,71 +28,87 @@ public class ClientLocationBuilder {
     private boolean isGuestUser;
 
     public ClientLocation create(){
-        return new ClientLocation(mapCoordinate, mapInfo, imageName, floorRefId, mapHierarchy, apMacAddress, band, confidenceFactor,
+        return new ClientLocation(mapCoordinate, mapDimension, imageName, floorRefId, mapHierarchy, apMacAddress, band, confidenceFactor,
                 currentlyTracked, dot11Status, ipAddress, macAddress, userName, ssId, isGuestUser);
     }
 
-    public void setMapCoordinate(float x, float y){
+    public ClientLocationBuilder setMapCoordinate(float x, float y){
         mapCoordinate = new MapCoordinate(x, y);
+        return this;
     }
 
-    public void setMapCoordinate(float x, float y, String unit){
+    public ClientLocationBuilder setMapCoordinate(float x, float y, String unit){
         mapCoordinate = new MapCoordinate(x, y, unit);
+        return this;
     }
 
-    public void setMapInfo(MapInfo mapInfo) {
-        this.mapInfo = mapInfo;
+    public ClientLocationBuilder setMapDimension(MapDimension mapDimension) {
+        this.mapDimension = mapDimension;
+        return this;
     }
 
-    public void setImageName(String imageName) {
+    public ClientLocationBuilder setImageName(String imageName) {
         this.imageName = imageName;
+        return this;
     }
 
-    public void setFloorRefId(long floorRefId) {
+    public ClientLocationBuilder setFloorRefId(long floorRefId) {
         this.floorRefId = floorRefId;
+        return this;
     }
 
-    public void setMapHierarchy(String mapHierarchy) {
+    public ClientLocationBuilder setMapHierarchy(String mapHierarchy) {
         this.mapHierarchy = mapHierarchy;
+        return this;
     }
 
-    public void setApMacAddress(String apMacAddress) {
+    public ClientLocationBuilder setApMacAddress(String apMacAddress) {
         this.apMacAddress = apMacAddress;
+        return this;
     }
 
-    public void setBand(String band) {
+    public ClientLocationBuilder setBand(String band) {
         this.band = band;
+        return this;
     }
 
-    public void setConfidenceFactor(float confidenceFactor) {
+    public ClientLocationBuilder setConfidenceFactor(float confidenceFactor) {
         this.confidenceFactor = confidenceFactor;
+        return this;
     }
 
-    public void setCurrentlyTracked(boolean currentlyTracked) {
+    public ClientLocationBuilder setCurrentlyTracked(boolean currentlyTracked) {
         this.currentlyTracked = currentlyTracked;
+        return this;
     }
 
-    public void setDot11Status(String dot11Status) {
+    public ClientLocationBuilder setDot11Status(String dot11Status) {
         this.dot11Status = dot11Status;
+        return this;
     }
 
-    public void setIpAddress(String ipAddress) {
+    public ClientLocationBuilder setIpAddress(String ipAddress) {
         this.ipAddress = ipAddress;
+        return this;
     }
 
-    public void setMacAddress(String macAddress) {
+    public ClientLocationBuilder setMacAddress(String macAddress) {
         this.macAddress = macAddress;
+        return this;
     }
 
-    public void setUserName(String userName) {
+    public ClientLocationBuilder setUserName(String userName) {
         this.userName = userName;
+        return this;
     }
 
-    public void setSsId(String ssId) {
+    public ClientLocationBuilder setSsId(String ssId) {
         this.ssId = ssId;
+        return this;
     }
 
-    public void setGuestUser(boolean guestUser) {
+    public ClientLocationBuilder setGuestUser(boolean guestUser) {
         isGuestUser = guestUser;
+        return this;
     }
 }

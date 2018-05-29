@@ -329,7 +329,6 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                 ClientLocation location = null;
                 try {
                     location = getLocationDAO().getClientLocation(strings[0],context);
-                    System.out.println("Coordinates: (" + location.getMapCoordinate().getX() + ", " + location.getMapCoordinate().getY() + ")");
                 }
                 catch (Exception e){
                     e.printStackTrace();

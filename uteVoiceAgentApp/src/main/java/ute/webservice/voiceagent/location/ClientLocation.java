@@ -9,7 +9,7 @@ public class ClientLocation {
 
     private MapCoordinate mapCoordinate;
 
-    private MapInfo mapInfo;
+    private MapDimension mapDimension;
 
     private String imageName;
 
@@ -45,11 +45,11 @@ public class ClientLocation {
      * @param ssId
      * @param isGuestUser
      */
-    public ClientLocation(MapCoordinate coordinate, MapInfo info, String imageName, long floorRefId, String mapHierarchy,
+    public ClientLocation(MapCoordinate coordinate, MapDimension info, String imageName, long floorRefId, String mapHierarchy,
                           String apMacAddress, String band, float confidenceFactor, boolean currentlyTracked, String dot11Status,
                           String ipAddress, String macAddress, String userName, String ssId, boolean isGuestUser){
         this.mapCoordinate = coordinate;
-        this.mapInfo = info;
+        this.mapDimension = info;
         this.imageName = imageName;
         this.floorRefId = floorRefId;
         this.mapHierarchy = mapHierarchy;
@@ -69,8 +69,8 @@ public class ClientLocation {
         return mapCoordinate;
     }
 
-    public MapInfo getMapInfo() {
-        return mapInfo;
+    public MapDimension getMapDimension() {
+        return mapDimension;
     }
 
     public String getImageName() {

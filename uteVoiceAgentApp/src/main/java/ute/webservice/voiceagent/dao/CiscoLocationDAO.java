@@ -2,6 +2,10 @@ package ute.webservice.voiceagent.dao;
 
 import android.content.Context;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGetHC4;
@@ -13,6 +17,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 import ute.webservice.voiceagent.location.ClientLocation;
+import ute.webservice.voiceagent.location.ClientLocationBuilder;
+import ute.webservice.voiceagent.location.MapCoordinate;
+import ute.webservice.voiceagent.location.MapDimension;
 import ute.webservice.voiceagent.util.CertificateManager;
 import ute.webservice.voiceagent.util.Constants;
 
@@ -20,7 +27,7 @@ import ute.webservice.voiceagent.util.Constants;
  * A Data Access Object for CISCO location services.
  * Created by Nathan Taylor on 5/3/2018.
  */
-    
+
 public class CiscoLocationDAO implements LocationDAO {
 
     private static final String USER_PASSWORD_PREFIX = "https://ITS-Innovation-VoiceApp:K75wz9PBp1AaCqeNfGMKVI5R@";
@@ -82,8 +89,47 @@ public class CiscoLocationDAO implements LocationDAO {
     }
 
     private ClientLocation parseJsonClientLocation(String json){
+        // Convert the string into a JsonObject
+        JsonElement jsonElement = new JsonParser().parse(json);
+        JsonObject top = jsonElement.getAsJsonObject().getAsJsonObject("WirelessClientLocation");
 
-        return null;
+        // Use a Client Location Builder
+        ClientLocationBuilder locationBuilder = new ClientLocationBuilder();
+        locationBuilder = locationBuilder.setMacAddress(top.get("macAddress").getAsString())
+                .setCurrentlyTracked(top.get("currentlyTracked").getAsBoolean())
+                .setConfidenceFactor(top.get("confidenceFactor").getAsFloat())
+                .setIpAddress(top.get("ipAddress").getAsString())
+                .setUserName(top.get("userName").getAsString())
+                .setSsId(top.get("ssId").getAsString())
+                .setBand(top.get("band").getAsString())
+                .setApMacAddress(top.get("apMacAddress").getAsString())
+                .setGuestUser(top.get("isGuestUser").getAsBoolean())
+                .setDot11Status(top.get("dot11Status").getAsString());
+
+        // Add Map Info
+        JsonObject current = top.getAsJsonObject("MapInfo");
+        locationBuilder = locationBuilder
+                .setMapHierarchy(current.get("mapHierarchyString").getAsString())
+                .setFloorRefId(current.get("floorRefId").getAsLong());
+        JsonObject child = current.getAsJsonObject("Dimension");
+        MapDimension mapDimension = new MapDimension(child.get("height").getAsFloat(), child.get("length").getAsFloat(),
+                child.get("width").getAsFloat(), child.get("offsetX").getAsFloat(), child.get("offsetY").getAsFloat(),
+                child.get("unit").getAsString());
+        locationBuilder.setMapDimension(mapDimension);
+
+        child = current.getAsJsonObject("Image");
+        locationBuilder.setImageName(child.get("imageName").getAsString());
+
+        // Add Map Coordinate data
+        current = top.getAsJsonObject("MapCoordinate");
+        locationBuilder.setMapCoordinate(current.get("x").getAsFloat(),
+                current.get("y").getAsFloat(), current.get("unit").getAsString());
+
+        // Add Statistics data
+        // TODO: Add statistics data
+
+
+        return locationBuilder.create();
     }
 }
 

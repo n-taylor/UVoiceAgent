@@ -5,7 +5,7 @@ package ute.webservice.voiceagent.location;
  * Created by Nathan Taylor on 5/3/2018.
  */
 
-public class MapInfo {
+public class MapDimension {
     private float height;
     private float length;
     private float width;
@@ -13,7 +13,7 @@ public class MapInfo {
     private float offsetY;
     private String unit;
 
-    public MapInfo (float height, float length, float width, float offsetX, float offsetY, String unit){
+    public MapDimension(float height, float length, float width, float offsetX, float offsetY, String unit){
         this.height = height;
         this.length = length;
         this.width = width;
