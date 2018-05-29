@@ -89,47 +89,51 @@ public class CiscoLocationDAO implements LocationDAO {
     }
 
     private ClientLocation parseJsonClientLocation(String json){
-        // Convert the string into a JsonObject
-        JsonElement jsonElement = new JsonParser().parse(json);
-        JsonObject top = jsonElement.getAsJsonObject().getAsJsonObject("WirelessClientLocation");
+        try {
+            // Convert the string into a JsonObject
+            JsonElement jsonElement = new JsonParser().parse(json);
+            JsonObject top = jsonElement.getAsJsonObject().getAsJsonObject("WirelessClientLocation");
 
-        // Use a Client Location Builder
-        ClientLocationBuilder locationBuilder = new ClientLocationBuilder();
-        locationBuilder = locationBuilder.setMacAddress(top.get("macAddress").getAsString())
-                .setCurrentlyTracked(top.get("currentlyTracked").getAsBoolean())
-                .setConfidenceFactor(top.get("confidenceFactor").getAsFloat())
-                .setIpAddress(top.get("ipAddress").getAsString())
-                .setUserName(top.get("userName").getAsString())
-                .setSsId(top.get("ssId").getAsString())
-                .setBand(top.get("band").getAsString())
-                .setApMacAddress(top.get("apMacAddress").getAsString())
-                .setGuestUser(top.get("isGuestUser").getAsBoolean())
-                .setDot11Status(top.get("dot11Status").getAsString());
+            // Use a Client Location Builder
+            ClientLocationBuilder locationBuilder = new ClientLocationBuilder();
+            locationBuilder = locationBuilder.setMacAddress(top.get("macAddress").getAsString())
+                    .setCurrentlyTracked(top.get("currentlyTracked").getAsBoolean())
+                    .setConfidenceFactor(top.get("confidenceFactor").getAsFloat())
+                    .setIpAddress(top.get("ipAddress").getAsString())
+                    .setUserName(top.get("userName").getAsString())
+                    .setSsId(top.get("ssId").getAsString())
+                    .setBand(top.get("band").getAsString())
+                    .setApMacAddress(top.get("apMacAddress").getAsString())
+                    .setGuestUser(top.get("isGuestUser").getAsBoolean())
+                    .setDot11Status(top.get("dot11Status").getAsString());
 
-        // Add Map Info
-        JsonObject current = top.getAsJsonObject("MapInfo");
-        locationBuilder = locationBuilder
-                .setMapHierarchy(current.get("mapHierarchyString").getAsString())
-                .setFloorRefId(current.get("floorRefId").getAsLong());
-        JsonObject child = current.getAsJsonObject("Dimension");
-        MapDimension mapDimension = new MapDimension(child.get("height").getAsFloat(), child.get("length").getAsFloat(),
-                child.get("width").getAsFloat(), child.get("offsetX").getAsFloat(), child.get("offsetY").getAsFloat(),
-                child.get("unit").getAsString());
-        locationBuilder.setMapDimension(mapDimension);
+            // Add Map Info
+            JsonObject current = top.getAsJsonObject("MapInfo");
+            locationBuilder = locationBuilder
+                    .setMapHierarchy(current.get("mapHierarchyString").getAsString())
+                    .setFloorRefId(current.get("floorRefId").getAsLong());
+            JsonObject child = current.getAsJsonObject("Dimension");
+            MapDimension mapDimension = new MapDimension(child.get("height").getAsFloat(), child.get("length").getAsFloat(),
+                    child.get("width").getAsFloat(), child.get("offsetX").getAsFloat(), child.get("offsetY").getAsFloat(),
+                    child.get("unit").getAsString());
+            locationBuilder.setMapDimension(mapDimension);
 
-        child = current.getAsJsonObject("Image");
-        locationBuilder.setImageName(child.get("imageName").getAsString());
+            child = current.getAsJsonObject("Image");
+            locationBuilder.setImageName(child.get("imageName").getAsString());
 
-        // Add Map Coordinate data
-        current = top.getAsJsonObject("MapCoordinate");
-        locationBuilder.setMapCoordinate(current.get("x").getAsFloat(),
-                current.get("y").getAsFloat(), current.get("unit").getAsString());
+            // Add Map Coordinate data
+            current = top.getAsJsonObject("MapCoordinate");
+            locationBuilder.setMapCoordinate(current.get("x").getAsFloat(),
+                    current.get("y").getAsFloat(), current.get("unit").getAsString());
 
-        // Add Statistics data
-        // TODO: Add statistics data
+            // Add Statistics data
+            // TODO: Add statistics data
 
 
-        return locationBuilder.create();
+            return locationBuilder.create();
+        } catch (Exception ex){
+            return null;
+        }
     }
 }
 
