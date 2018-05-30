@@ -1,6 +1,12 @@
 package ute.webservice.voiceagent.dao;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.location.Location;
+import android.os.AsyncTask;
+import android.os.Environment;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -9,19 +15,28 @@ import com.google.gson.JsonParser;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGetHC4;
+import org.apache.http.entity.HttpEntityWrapperHC4;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import ute.webservice.voiceagent.location.ClientLocation;
 import ute.webservice.voiceagent.location.ClientLocationBuilder;
-import ute.webservice.voiceagent.location.MapCoordinate;
+import ute.webservice.voiceagent.location.LocationController;
 import ute.webservice.voiceagent.location.MapDimension;
 import ute.webservice.voiceagent.util.CertificateManager;
 import ute.webservice.voiceagent.util.Constants;
+import ute.webservice.voiceagent.util.Controller;
 
 /**
  * A Data Access Object for CISCO location services.
@@ -32,7 +47,10 @@ public class CiscoLocationDAO implements LocationDAO {
 
     private static final String USER_PASSWORD_PREFIX = "https://ITS-Innovation-VoiceApp:K75wz9PBp1AaCqeNfGMKVI5R@";
     private static final String GET_CLIENT_LOCATION = "mse-park.net.utah.edu/api/contextaware/v1/location/clients/";
+    private static final String GET_FLOOR_PLAN = "mse-park.net.utah.edu/api/contextaware/v1/maps/imagesource/";
     private static final String RETURN_TYPE = ".json";
+
+    private CloseableHttpClient httpClient;
 
     public CiscoLocationDAO(){
 
@@ -53,11 +71,11 @@ public class CiscoLocationDAO implements LocationDAO {
         try {
             HttpGetHC4 getRequest = new HttpGetHC4(request);
             BasicCookieStore cookieStore = new BasicCookieStore();
-            CloseableHttpClient httpclient = HttpClients.custom()
+            httpClient = HttpClients.custom()
                     .setDefaultCookieStore(cookieStore)
                    .setSslcontext(CertificateManager.getSSlContext(context, "mse-parknetutahedu.crt"))
                     .build();
-            CloseableHttpResponse httpResponse = httpclient.execute(getRequest);
+            CloseableHttpResponse httpResponse = httpClient.execute(getRequest);
             HttpEntity entity = httpResponse.getEntity();
 
             if (entity != null){
@@ -99,11 +117,11 @@ public class CiscoLocationDAO implements LocationDAO {
             locationBuilder = locationBuilder.setMacAddress(top.get("macAddress").getAsString())
                     .setCurrentlyTracked(top.get("currentlyTracked").getAsBoolean())
                     .setConfidenceFactor(top.get("confidenceFactor").getAsFloat())
-                    .setIpAddress(top.get("ipAddress").getAsString())
-                    .setUserName(top.get("userName").getAsString())
-                    .setSsId(top.get("ssId").getAsString())
+                    //.setIpAddress(top.get("ipAddress").getAsString())
+                    //.setUserName(top.get("userName").getAsString())
+                    //.setSsId(top.get("ssId").getAsString())
                     .setBand(top.get("band").getAsString())
-                    .setApMacAddress(top.get("apMacAddress").getAsString())
+                    //.setApMacAddress(top.get("apMacAddress").getAsString())
                     .setGuestUser(top.get("isGuestUser").getAsBoolean())
                     .setDot11Status(top.get("dot11Status").getAsString());
 
@@ -133,6 +151,67 @@ public class CiscoLocationDAO implements LocationDAO {
             return locationBuilder.create();
         } catch (Exception ex){
             return null;
+        }
+    }
+
+    public void getFloorPlanImage(Context context, String imageName){
+        String url = USER_PASSWORD_PREFIX + GET_FLOOR_PLAN + imageName;
+        GetImageTask task = new GetImageTask(context, url, httpClient);
+        task.execute();
+    }
+
+    private static class GetImageTask extends AsyncTask<Void, Void, Bitmap> {
+
+        private String url;
+        private ProgressDialog progressDialog;
+        private CloseableHttpClient httpClient;
+        private Context context;
+
+        GetImageTask(Context context, String url, CloseableHttpClient httpClient){
+            this.context = context;
+            this.url = url;
+            this.httpClient = httpClient;
+
+            // Create a progressdialog
+            progressDialog = new ProgressDialog(context);
+            // Set progressdialog title
+            progressDialog.setTitle("Downloading Floor Plan");
+            // Set progressdialog message
+            progressDialog.setMessage("Loading...");
+            progressDialog.setIndeterminate(false);
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            // Show progress dialog
+            progressDialog.show();
+        }
+
+
+        @Override
+        protected Bitmap doInBackground(Void... voids) {
+
+            Bitmap bitmap = null;
+
+            try {
+                HttpGetHC4 request = new HttpGetHC4(url);
+                CloseableHttpResponse response = httpClient.execute(request);
+                HttpEntityWrapperHC4 entity = new HttpEntityWrapperHC4(response.getEntity());
+                bitmap = BitmapFactory.decodeStream(entity.getContent());
+                return bitmap;
+            } catch (IOException ex){
+                ex.printStackTrace();
+            }
+            return bitmap;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            // Close progressdialog
+            progressDialog.dismiss();
+            LocationController.startActivity(context, result);
         }
     }
 }

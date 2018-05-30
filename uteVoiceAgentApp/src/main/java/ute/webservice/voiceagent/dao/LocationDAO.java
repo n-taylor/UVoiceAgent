@@ -18,4 +18,6 @@ public interface LocationDAO {
      */
     ClientLocation getClientLocation(String ID, Context context) throws InvalidResponseException, AccessDeniedException;
 
+    void getFloorPlanImage(Context context, String imageName);
+
 }
