@@ -18,6 +18,7 @@ import android.view.ScaleGestureDetector;
 import android.widget.ImageView;
 
 import ute.webservice.voiceagent.R;
+import ute.webservice.voiceagent.location.LocationController;
 import ute.webservice.voiceagent.util.SharedData;
 
 /**
@@ -25,6 +26,8 @@ import ute.webservice.voiceagent.util.SharedData;
  */
 
 public class EquipmentFindActivity extends BaseActivity {
+
+    public static final String BITMAP_KEY = "bitmap";
 
 
     SharedData sessiondata;
@@ -42,10 +45,10 @@ public class EquipmentFindActivity extends BaseActivity {
 
         sessiondata = new SharedData(getApplicationContext());
 
-
         mImageView=(ImageView)findViewById(R.id.map);
         mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
     }
+
     @Override
     public boolean onTouchEvent(MotionEvent motionEvent) {
         mScaleGestureDetector.onTouchEvent(motionEvent);
@@ -88,21 +91,24 @@ class MapImageView extends AppCompatImageView {
 
 
         Drawable d = getResources().getDrawable(R.drawable.testfloor);
-        Bitmap B = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.testfloor);
+        //Bitmap B = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.testfloor);
+        Bitmap B = LocationController.getImage();
+        if (B != null) {
 
-        B = B.createScaledBitmap(B,canvas.getWidth(), canvas.getHeight(),true);
+            B = B.createScaledBitmap(B, canvas.getWidth(), canvas.getHeight(), true);
 
 
-        d.setBounds(canvas.getClipBounds().left, canvas.getClipBounds().top, canvas.getClipBounds().right, canvas.getClipBounds().bottom);
+            d.setBounds(canvas.getClipBounds().left, canvas.getClipBounds().top, canvas.getClipBounds().right, canvas.getClipBounds().bottom);
 
 
-        Paint paint = new Paint();
+            Paint paint = new Paint();
 
-        paint.setStyle(Paint.Style.FILL);
-        paint.setColor(Color.RED);
+            paint.setStyle(Paint.Style.FILL);
+            paint.setColor(Color.RED);
 
-        canvas.drawBitmap(B,0,0,null);
-        canvas.drawCircle(500.0f, 500.0f, 200.0f, paint);
+            canvas.drawBitmap(B, 0, 0, null);
+            canvas.drawCircle(500.0f, 500.0f, 20.0f, paint);
+        }
     }
 }
 

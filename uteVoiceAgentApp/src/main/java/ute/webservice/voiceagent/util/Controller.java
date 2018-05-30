@@ -386,9 +386,20 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         };
         task.execute(id);
 
-        openNewActivity(context, EquipmentFindActivity.class);
+        //openNewActivity(context, EquipmentFindActivity.class);
 
 
+    }
+
+    /**
+     * Displays an image in the EquipmentFindActivity
+     * @param context used to open a new activity
+     * @param bitmap the image to display
+     */
+    public static void displayFloorMap(Context context, Bitmap bitmap){
+        Intent intent = new Intent(context, EquipmentFindActivity.class);
+        intent.putExtra(EquipmentFindActivity.BITMAP_KEY, bitmap);
+        context.getApplicationContext().startActivity(intent);
     }
 
     private static String getMacAddr() {

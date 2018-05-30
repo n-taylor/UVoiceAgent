@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Environment;
 
@@ -31,9 +32,11 @@ import javax.net.ssl.HttpsURLConnection;
 
 import ute.webservice.voiceagent.location.ClientLocation;
 import ute.webservice.voiceagent.location.ClientLocationBuilder;
+import ute.webservice.voiceagent.location.LocationController;
 import ute.webservice.voiceagent.location.MapDimension;
 import ute.webservice.voiceagent.util.CertificateManager;
 import ute.webservice.voiceagent.util.Constants;
+import ute.webservice.voiceagent.util.Controller;
 
 /**
  * A Data Access Object for CISCO location services.
@@ -114,11 +117,11 @@ public class CiscoLocationDAO implements LocationDAO {
             locationBuilder = locationBuilder.setMacAddress(top.get("macAddress").getAsString())
                     .setCurrentlyTracked(top.get("currentlyTracked").getAsBoolean())
                     .setConfidenceFactor(top.get("confidenceFactor").getAsFloat())
-                    .setIpAddress(top.get("ipAddress").getAsString())
-                    .setUserName(top.get("userName").getAsString())
-                    .setSsId(top.get("ssId").getAsString())
+                    //.setIpAddress(top.get("ipAddress").getAsString())
+                    //.setUserName(top.get("userName").getAsString())
+                    //.setSsId(top.get("ssId").getAsString())
                     .setBand(top.get("band").getAsString())
-                    .setApMacAddress(top.get("apMacAddress").getAsString())
+                    //.setApMacAddress(top.get("apMacAddress").getAsString())
                     .setGuestUser(top.get("isGuestUser").getAsBoolean())
                     .setDot11Status(top.get("dot11Status").getAsString());
 
@@ -162,8 +165,10 @@ public class CiscoLocationDAO implements LocationDAO {
         private String url;
         private ProgressDialog progressDialog;
         private CloseableHttpClient httpClient;
+        private Context context;
 
         GetImageTask(Context context, String url, CloseableHttpClient httpClient){
+            this.context = context;
             this.url = url;
             this.httpClient = httpClient;
 
@@ -206,6 +211,7 @@ public class CiscoLocationDAO implements LocationDAO {
         protected void onPostExecute(Bitmap result) {
             // Close progressdialog
             progressDialog.dismiss();
+            LocationController.startActivity(context, result);
         }
     }
 }
