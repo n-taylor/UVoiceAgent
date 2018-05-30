@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -19,6 +20,8 @@ import android.widget.ImageView;
 
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.location.LocationController;
+import ute.webservice.voiceagent.location.MapCoordinate;
+import ute.webservice.voiceagent.location.MapDimension;
 import ute.webservice.voiceagent.util.SharedData;
 
 /**
@@ -167,15 +170,18 @@ class MapImageView extends AppCompatImageView {
             translateY = 0;
         } else if ((translateY * -1) > (scaleFactor - 1) * canvas.getHeight()) {
             translateY = (1 - scaleFactor) * canvas.getHeight();
+
         }*/
 
-        canvas.translate(translateX / scaleFactor, translateY / scaleFactor);
-        Drawable d = getResources().getDrawable(R.drawable.testfloor);
-        //Bitmap B = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.testfloor);
-        Bitmap B = LocationController.getImage();
-        if (B != null) {
 
-            //B = B.createScaledBitmap(B, B.getWidth(), B.getHeight(), true);
+
+        canvas.translate(translateX / scaleFactor, translateY / scaleFactor);
+
+        //Drawable d = getResources().getDrawable(R.drawable.testfloor);
+        //Bitmap B = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.testfloor);
+
+        Bitmap B = LocationController.getInstance().getImage();
+        if (B != null) {
 
             Paint paint = new Paint();
 
@@ -183,7 +189,12 @@ class MapImageView extends AppCompatImageView {
             paint.setColor(Color.RED);
 
             canvas.drawBitmap(B, 0, 0, null);
-            canvas.drawCircle(500.0f, 500.0f, 200.0f, paint);
+
+            MapCoordinate userLoc = LocationController.getInstance().getUserLocation();
+            if (userLoc != null){
+                drawScaledCircle(canvas, userLoc.getX(), userLoc.getY(), 20.0f, paint);
+            }
+            //canvas.drawCircle(500.0f, 500.0f, 20.0f, paint);
 
             canvas.restore();
         }
@@ -198,6 +209,24 @@ class MapImageView extends AppCompatImageView {
 
             return true;
         }
+    }
+
+    private void drawScaledCircle(Canvas canvas, float x, float y, float radius, Paint paint){
+        // Get the dimensions of the floor map
+        MapDimension dimension = LocationController.getInstance().getDimensions();
+        float mapWidth = dimension.getWidth();
+        float mapHeight = dimension.getLength();
+
+        // Determine position ratios
+        float ratX = x / mapWidth;
+        float ratY = y / mapHeight;
+
+        // Convert to position relative to the view size
+        float posX = canvas.getWidth() * ratX;
+        float posY = canvas.getHeight() * ratY;
+
+        // Draw the dot
+        canvas.drawCircle(posX, posY, radius, paint);
     }
 }
 

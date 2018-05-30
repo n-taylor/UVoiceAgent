@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Point;
 import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
 import android.view.View;
@@ -41,6 +42,7 @@ import ute.webservice.voiceagent.dao.OpenBedsDAO;
 import ute.webservice.voiceagent.dao.ProceduresDAO;
 import ute.webservice.voiceagent.dao.SpokDAOFactory;
 import ute.webservice.voiceagent.location.ClientLocation;
+import ute.webservice.voiceagent.location.LocationController;
 import ute.webservice.voiceagent.location.MapCoordinate;
 import ute.webservice.voiceagent.location.MapDimension;
 import ute.webservice.voiceagent.procedures.ProcedureInfoListener;
@@ -378,6 +380,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
 
                     Toast.makeText(context, message, Toast.LENGTH_LONG).show();
                     getLocationDAO().getFloorPlanImage(context, location.getImageName());
+                    LocationController.getInstance().setClientLocation(location);
                 }
                 else {
                     Toast.makeText(context, getMacAddr(), Toast.LENGTH_SHORT).show();
