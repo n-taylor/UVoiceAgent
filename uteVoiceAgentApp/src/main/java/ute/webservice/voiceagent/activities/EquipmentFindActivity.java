@@ -1,9 +1,12 @@
 package ute.webservice.voiceagent.activities;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -81,17 +84,24 @@ class MapImageView extends AppCompatImageView {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+
+
+
         Drawable d = getResources().getDrawable(R.drawable.testfloor);
+        Bitmap B = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.testfloor);
+
+        B = B.createScaledBitmap(B,canvas.getWidth(), canvas.getHeight(),true);
+
 
         d.setBounds(canvas.getClipBounds().left, canvas.getClipBounds().top, canvas.getClipBounds().right, canvas.getClipBounds().bottom);
-        d.draw(canvas);
+
 
         Paint paint = new Paint();
 
         paint.setStyle(Paint.Style.FILL);
         paint.setColor(Color.RED);
 
-
+        canvas.drawBitmap(B,0,0,null);
         canvas.drawCircle(500.0f, 500.0f, 200.0f, paint);
     }
 }
