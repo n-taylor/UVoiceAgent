@@ -80,21 +80,100 @@ class MapImageView extends AppCompatImageView {
     }
 
 
+    private static float MIN_ZOOM = 1f;
+    private static float MAX_ZOOM = 5f;
+
+    private float scaleFactor = 1.f;
+    private ScaleGestureDetector detector = new ScaleGestureDetector(getContext(), new ScaleListener());
+
+    private static int NONE = 0;
+    private static int DRAG = 1;
+    private static int ZOOM = 2;
+
+    private int mode;
+
+    private float startX = 0f;
+    private float startY = 0f;
+
+    private float translateX = 0f;
+    private float translateY = 0f;
+
+    private float previousTranslateX = 0f;
+    private float previousTranslateY = 0f;
+    private boolean dragged = false;
+
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction() & MotionEvent.ACTION_MASK) {
+            case MotionEvent.ACTION_DOWN:
+                mode = DRAG;
+
+                startX = event.getX() - previousTranslateX;
+                startY = event.getY() - previousTranslateY;
+                break;
+            case MotionEvent.ACTION_MOVE:
+                translateX = event.getX() - startX;
+                translateY = event.getY() - startY;
+
+                double distance = Math.sqrt(Math.pow(event.getX() - (startX + previousTranslateX), 2) +
+                        Math.pow(event.getY() - (startY + previousTranslateY), 2)
+                );
+                if(distance > 0) {
+                    dragged = true;
+                }
+                break;
+            case MotionEvent.ACTION_POINTER_DOWN:
+                mode = ZOOM;
+                break;
+            case MotionEvent.ACTION_UP:
+                mode = NONE;
+                dragged = false;
+                previousTranslateX = translateX;
+                previousTranslateY = translateY;
+                break;
+            case MotionEvent.ACTION_POINTER_UP:
+                mode = DRAG;
+                previousTranslateX = translateX;
+                previousTranslateY = translateY;
+                break;
+        }
+        detector.onTouchEvent(event);
+        if ((mode == DRAG && scaleFactor != 1f && dragged) || mode == ZOOM) {
+            invalidate();
+        }
+        return true;
+    }
+
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+            canvas.save();
+            canvas.scale(scaleFactor, scaleFactor);
 
+            if((translateX * -1) < 0) {
+                translateX = 0;
+            }
+            else if((translateX * -1) > (scaleFactor - 1) * canvas.getWidth()) {
+                translateX = (1 - scaleFactor) * canvas.getWidth();
+            }
 
+            if(translateY * -1 < 0) {
+                translateY = 0;
+            }
+            else if((translateY * -1) > (scaleFactor - 1) * canvas.getHeight()) {
+                translateY = (1 - scaleFactor) * canvas.getHeight();
+            }
 
+            canvas.translate(translateX / scaleFactor, translateY / scaleFactor);
         Drawable d = getResources().getDrawable(R.drawable.testfloor);
         Bitmap B = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.testfloor);
 
         B = B.createScaledBitmap(B,canvas.getWidth(), canvas.getHeight(),true);
 
-
         d.setBounds(canvas.getClipBounds().left, canvas.getClipBounds().top, canvas.getClipBounds().right, canvas.getClipBounds().bottom);
-
 
         Paint paint = new Paint();
 
@@ -103,6 +182,20 @@ class MapImageView extends AppCompatImageView {
 
         canvas.drawBitmap(B,0,0,null);
         canvas.drawCircle(500.0f, 500.0f, 200.0f, paint);
+
+        canvas.restore();
+    }
+
+    private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+        @Override
+        public boolean onScale(ScaleGestureDetector detector) {
+
+            scaleFactor *= detector.getScaleFactor();
+
+            scaleFactor = Math.max(MIN_ZOOM, Math.min(scaleFactor, MAX_ZOOM));
+
+            return true;
+        }
     }
 }
 
