@@ -138,7 +138,7 @@ public class WelcomeActivity extends BaseActivity implements AIButton.AIButtonLi
         equipButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                controller.onEquipmentFinderButtonPressed(view.getContext());
+                controller.onEquipmentFinderButtonPressed(WelcomeActivity.this, view.getContext());
             }
         });
 
