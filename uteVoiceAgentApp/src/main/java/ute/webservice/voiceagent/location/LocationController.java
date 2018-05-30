@@ -3,6 +3,10 @@ package ute.webservice.voiceagent.location;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.location.Location;
+
+import java.util.ArrayList;
 
 import ute.webservice.voiceagent.activities.EquipmentFindActivity;
 import ute.webservice.voiceagent.util.Controller;
@@ -15,16 +19,41 @@ import ute.webservice.voiceagent.util.Controller;
 
 public class LocationController extends Controller {
 
-    private static Bitmap bitmap;
+    private Bitmap bitmap;
+
+    private ClientLocation clientLocation;
+
+    private static LocationController instance;
+
+    private LocationController(){}
+
+    public static LocationController getInstance(){
+        if (instance == null){
+            instance = new LocationController();
+        }
+        return instance;
+    }
 
     public static void startActivity(Context context, Bitmap bitmap){
-        LocationController.bitmap = bitmap;
+        LocationController.getInstance().bitmap = bitmap;
         Intent intent = new Intent(context, EquipmentFindActivity.class);
         context.startActivity(intent);
     }
 
-    public static Bitmap getImage(){
+    public Bitmap getImage(){
         return bitmap;
+    }
+
+    public void setClientLocation(ClientLocation location){
+        clientLocation = location;
+    }
+
+    public MapCoordinate getUserLocation(){
+        return clientLocation.getMapCoordinate();
+    }
+
+    public MapDimension getDimensions(){
+        return clientLocation.getMapDimension();
     }
 
 }
