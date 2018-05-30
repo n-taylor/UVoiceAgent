@@ -6,11 +6,14 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.net.NetworkInterface;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 import ai.api.model.AIResponse;
@@ -317,7 +320,10 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
      * Currently displays the location of Nathan's laptop
      */
     public void onEquipmentFinderButtonPressed(Context context){
-        displayClientLocation("f4:8c:50:15:3d:b7",context);
+
+        displayClientLocation("f8:34:41:bf:ab:ee",context); // Hardcoded mac address for testing with an emulator
+//        displayClientLocation(getMacAddr().toLowerCase(Locale.US), context); // This line for use without an emulator
+
     }
 
     private static void displayClientLocation(String id, final Context context){
@@ -337,10 +343,17 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
 
             @Override
             protected void onPostExecute(ClientLocation location){
-                float x = location.getMapCoordinate().getX();
-                float y = location.getMapCoordinate().getY();
-                String message = "Coordinates: (" + x + ", " + y + ")";
-                System.out.println(message);
+                if (location != null) {
+                    float x = location.getMapCoordinate().getX();
+                    float y = location.getMapCoordinate().getY();
+                    String message = "Coordinates: (" + x + ", " + y + ")";
+                    System.out.println(message);
+
+                    Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(context, getMacAddr(), Toast.LENGTH_SHORT).show();
+                }
             }
         };
         task.execute(id);
@@ -348,6 +361,32 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         openNewActivity(context, EquipmentFindActivity.class);
 
 
+    }
+
+    private static String getMacAddr() {
+        try {
+            List<NetworkInterface> all = Collections.list(NetworkInterface.getNetworkInterfaces());
+            for (NetworkInterface nif : all) {
+                if (!nif.getName().equalsIgnoreCase("wlan0")) continue;
+
+                byte[] macBytes = nif.getHardwareAddress();
+                if (macBytes == null) {
+                    return "";
+                }
+
+                StringBuilder res1 = new StringBuilder();
+                for (byte b : macBytes) {
+                    res1.append(String.format("%02X:",b));
+                }
+
+                if (res1.length() > 0) {
+                    res1.deleteCharAt(res1.length() - 1);
+                }
+                return res1.toString();
+            }
+        } catch (Exception ex) {
+        }
+        return "02:00:00:00:00:00";
     }
 
     /**
