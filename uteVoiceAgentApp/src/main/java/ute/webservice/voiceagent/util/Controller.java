@@ -1,9 +1,15 @@
 package ute.webservice.voiceagent.util;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.support.v4.app.ActivityCompat;
+import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +41,8 @@ import ute.webservice.voiceagent.dao.OpenBedsDAO;
 import ute.webservice.voiceagent.dao.ProceduresDAO;
 import ute.webservice.voiceagent.dao.SpokDAOFactory;
 import ute.webservice.voiceagent.location.ClientLocation;
+import ute.webservice.voiceagent.location.MapCoordinate;
+import ute.webservice.voiceagent.location.MapDimension;
 import ute.webservice.voiceagent.procedures.ProcedureInfoListener;
 import ute.webservice.voiceagent.procedures.ProceduresParentListAdapter;
 import ute.webservice.voiceagent.procedures.ProceduresSecondLevelAdapter;
@@ -64,6 +72,11 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
     public static final String NOT_A_CURRENT_ASSIGNMENT = "The area requested has no current assignments";
     public static final String PARTIAL_QUERY_MESSAGE = "What do you want to know about ";
     public static final String ON_CALL_LIST_MESSAGE = "For which area are you looking?";
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
 
     private static Controller controller;
 
@@ -315,13 +328,27 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         openNewActivity(context, OnCallListActivity.class);
     }
 
+    public static void verifyStoragePermissions(Activity activity) {
+        // Check if we have write permission
+        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            // We don't have permission so prompt the user
+            ActivityCompat.requestPermissions(
+                    activity,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+        }
+    }
+
     /**
      * Call when the equipment finder button gets pressed.
      * Currently displays the location of Nathan's laptop
      */
-    public void onEquipmentFinderButtonPressed(Context context){
-
-        displayClientLocation("f8:34:41:bf:ab:ee",context); // Hardcoded mac address for testing with an emulator
+    public void onEquipmentFinderButtonPressed(Activity activity, Context context){
+        verifyStoragePermissions(activity);
+        displayClientLocation("f8:34:41:bf:ab:ee", context); // Hardcoded mac address for testing with an emulator
 //        displayClientLocation(getMacAddr().toLowerCase(Locale.US), context); // This line for use without an emulator
 
     }
@@ -350,6 +377,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                     System.out.println(message);
 
                     Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                    getLocationDAO().getFloorPlanImage(context, location.getImageName());
                 }
                 else {
                     Toast.makeText(context, getMacAddr(), Toast.LENGTH_SHORT).show();
