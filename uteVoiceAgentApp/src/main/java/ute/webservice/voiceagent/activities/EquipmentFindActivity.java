@@ -50,6 +50,7 @@ public class EquipmentFindActivity extends BaseActivity {
 
         mImageView=(ImageView)findViewById(R.id.map);
         mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
+        mImageView.setImageResource(R.drawable.white);
     }
 
     @Override
@@ -86,7 +87,7 @@ class MapImageView extends AppCompatImageView {
     }
 
 
-    private static float MIN_ZOOM = 1f;
+    private static float MIN_ZOOM = 0.1f;
     private static float MAX_ZOOM = 5f;
 
     private float scaleFactor = 1.f;
@@ -159,7 +160,7 @@ class MapImageView extends AppCompatImageView {
         canvas.save();
         canvas.scale(scaleFactor, scaleFactor);
 
-        if ((translateX * -1) < 0) {
+        /*if ((translateX * -1) < 0) {
             translateX = 0;
         } else if ((translateX * -1) > (scaleFactor - 1) * canvas.getWidth()) {
             translateX = (1 - scaleFactor) * canvas.getWidth();
@@ -169,7 +170,11 @@ class MapImageView extends AppCompatImageView {
             translateY = 0;
         } else if ((translateY * -1) > (scaleFactor - 1) * canvas.getHeight()) {
             translateY = (1 - scaleFactor) * canvas.getHeight();
-        }
+
+        }*/
+
+
+
         canvas.translate(translateX / scaleFactor, translateY / scaleFactor);
 
         //Drawable d = getResources().getDrawable(R.drawable.testfloor);
@@ -177,11 +182,6 @@ class MapImageView extends AppCompatImageView {
 
         Bitmap B = LocationController.getInstance().getImage();
         if (B != null) {
-
-            //B = B.createScaledBitmap(B, canvas.getWidth(), canvas.getHeight(), true);
-
-//            d.setBounds(canvas.getClipBounds().left, canvas.getClipBounds().top, canvas.getClipBounds().right,
-//                    canvas.getClipBounds().bottom);
 
             Paint paint = new Paint();
 
