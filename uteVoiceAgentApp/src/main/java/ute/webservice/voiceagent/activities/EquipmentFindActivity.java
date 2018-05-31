@@ -178,7 +178,7 @@ class MapImageView extends AppCompatImageView {
         Bitmap B = LocationController.getInstance().getImage();
         if (B != null) {
 
-            B = B.createScaledBitmap(B, canvas.getWidth(), canvas.getHeight(), true);
+            //B = B.createScaledBitmap(B, canvas.getWidth(), canvas.getHeight(), true);
 
 //            d.setBounds(canvas.getClipBounds().left, canvas.getClipBounds().top, canvas.getClipBounds().right,
 //                    canvas.getClipBounds().bottom);
