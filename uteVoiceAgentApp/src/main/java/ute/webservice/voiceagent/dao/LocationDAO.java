@@ -2,6 +2,8 @@ package ute.webservice.voiceagent.dao;
 
 import android.content.Context;
 
+import ute.webservice.voiceagent.exceptions.AccessDeniedException;
+import ute.webservice.voiceagent.exceptions.InvalidResponseException;
 import ute.webservice.voiceagent.location.ClientLocation;
 
 /**

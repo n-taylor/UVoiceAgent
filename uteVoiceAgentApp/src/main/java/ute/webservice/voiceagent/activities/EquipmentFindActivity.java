@@ -74,6 +74,8 @@ public class EquipmentFindActivity extends BaseActivity {
 
 class MapImageView extends AppCompatImageView {
 
+    private boolean beginning = true;
+
     public MapImageView(Context context) {
         super(context);
     }
@@ -156,11 +158,15 @@ class MapImageView extends AppCompatImageView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        Bitmap B = LocationController.getInstance().getImage();
+
+        if (beginning){
+            scaleFactor = (float)canvas.getWidth() / (float)B.getWidth();
+            beginning = false;
+        }
 
         canvas.save();
         canvas.scale(scaleFactor, scaleFactor);
-
-        Bitmap B = LocationController.getInstance().getImage();
 
         float scaledWidth = B.getWidth() *scaleFactor;
         float scaledHeight= B.getHeight() *scaleFactor;
@@ -186,7 +192,6 @@ class MapImageView extends AppCompatImageView {
         //Drawable d = getResources().getDrawable(R.drawable.testfloor);
         //Bitmap B = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.testfloor);
 
-
         if (B != null) {
 
             Paint paint = new Paint();
@@ -198,7 +203,7 @@ class MapImageView extends AppCompatImageView {
 
             MapCoordinate userLoc = LocationController.getInstance().getUserLocation();
             if (userLoc != null){
-                drawScaledCircle(canvas, userLoc.getX(), userLoc.getY(), 20.0f, paint);
+                drawScaledCircle(canvas, B, userLoc.getX(), userLoc.getY(), 20.0f, paint);
             }
             //canvas.drawCircle(500.0f, 500.0f, 20.0f, paint);
 
@@ -217,7 +222,7 @@ class MapImageView extends AppCompatImageView {
         }
     }
 
-    private void drawScaledCircle(Canvas canvas, float x, float y, float radius, Paint paint){
+    private void drawScaledCircle(Canvas canvas, Bitmap image, float x, float y, float radius, Paint paint){
         // Get the dimensions of the floor map
         MapDimension dimension = LocationController.getInstance().getDimensions();
         float mapWidth = dimension.getWidth();
@@ -228,8 +233,8 @@ class MapImageView extends AppCompatImageView {
         float ratY = y / mapHeight;
 
         // Convert to position relative to the view size
-        float posX = canvas.getWidth() * ratX;
-        float posY = canvas.getHeight() * ratY;
+        float posX = image.getWidth() * ratX;
+        float posY = image.getHeight() * ratY;
 
         // Draw the dot
         canvas.drawCircle(posX, posY, radius, paint);
