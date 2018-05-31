@@ -14,24 +14,40 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
+import ai.api.android.AIConfiguration;
+import ai.api.model.AIError;
+import ai.api.model.AIResponse;
+import ai.api.ui.AIButton;
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.location.LocationController;
 import ute.webservice.voiceagent.location.MapCoordinate;
 import ute.webservice.voiceagent.location.MapDimension;
+import ute.webservice.voiceagent.util.Config;
+import ute.webservice.voiceagent.util.Controller;
+import ute.webservice.voiceagent.util.DataAsked;
 import ute.webservice.voiceagent.util.SharedData;
 
 /**
  * Created by u0450254 on 5/29/2018.
  */
 
-public class EquipmentFindActivity extends BaseActivity {
+public class EquipmentFindActivity extends BaseActivity implements AIButton.AIButtonListener {
+
+    private static final String TAG = EquipmentFindActivity.class.toString();
 
     public static final String BITMAP_KEY = "bitmap";
 
+    private AIButton aiButton;
+    private String accountID;
 
     SharedData sessiondata;
 
@@ -51,6 +67,134 @@ public class EquipmentFindActivity extends BaseActivity {
         mImageView=(ImageView)findViewById(R.id.map);
         mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
         mImageView.setImageResource(R.drawable.white);
+
+        initializeToolbar();
+        initializeButtons();
+        initializeSharedData();
+    }
+
+    /**
+     * Sets up the sessiondata, dataAsked and account data variables.
+     */
+    private void initializeSharedData(){
+        SharedData sessiondata = new SharedData(getApplicationContext());
+        accountID = sessiondata.getKeyAccount();
+        int account_access = sessiondata.getKeyAccess();
+        DataAsked dataAsked = new DataAsked();
+    }
+
+    /**
+     * Sets up the toolbar elements for this activity
+     */
+    private void initializeToolbar(){
+        Toolbar toolbar = (Toolbar) findViewById(R.id.setting_toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    /**
+     * Sets up the AI button and cancel button for this activity.
+     */
+    private void initializeButtons(){
+        // configure the AI Button
+        aiButton = (AIButton)findViewById(R.id.micButton);
+        final AIConfiguration config = new AIConfiguration(Config.ACCESS_TOKEN,
+                AIConfiguration.SupportedLanguages.English,
+                AIConfiguration.RecognitionEngine.System);
+
+        config.setRecognizerStartSound(getResources().openRawResourceFd(R.raw.test_start));
+        config.setRecognizerStopSound(getResources().openRawResourceFd(R.raw.test_stop));
+        config.setRecognizerCancelSound(getResources().openRawResourceFd(R.raw.test_cancel));
+
+        // set up the microphone/AI button
+        aiButton.initialize(config);
+        aiButton.setResultsListener(this);
+
+        // set up the cancel button
+        Button cancelButton = (Button) findViewById(R.id.cancelButton);
+        cancelButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Controller.getController().onCancelPressed();
+            }
+        });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        // use this method to disconnect from speech recognition service
+        // Not destroying the SpeechRecognition object in onPause method would block other apps from using SpeechRecognition service
+        aiButton.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // use this method to reinit connection to recognition service
+        aiButton.resume();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(final Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_aibutton_sample, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+        final int id = item.getItemId();
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                return true;
+
+            case R.id.action_logout:
+                Controller.getController().onLogoutPressed(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    /**
+     * Show response from the API.AI server,
+     * If parameters are enough and user said "Yes", try to get data from webservice.
+     * @param response
+     */
+    @Override
+    public void onResult(final AIResponse response) {
+        Controller.processDialogFlowResponse(this, response, null);
+    }
+
+    @Override
+    public void onError(final AIError error) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Log.d(TAG, "onError");
+            }
+        });
+    }
+
+    @Override
+    public void onCancelled() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Log.d(TAG, "onCancelled");
+            }
+        });
     }
 
     @Override
