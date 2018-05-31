@@ -318,7 +318,49 @@ class MapImageView extends AppCompatImageView {
         System.out.println("TX: "+translateX);
         System.out.println("TX2: "+scaledWidth);
 
-        if (translateX > 0) {
+        // TEST ------------------------------------------------------------
+
+        if (scaledWidth < canvas.getWidth()){
+            // If the map is more narrow than the view, don't allow it to move past the edges
+            if (translateX < 0){
+                translateX = 0;
+            }
+            else if ((translateX + scaledWidth) > canvas.getWidth()){
+                translateX = canvas.getWidth() - scaledWidth;
+            }
+        }
+        else {
+            // If the map is wider than the view, don't allow the edge to move into the view
+            if (translateX > 0){
+                translateX = 0;
+            }
+            else if ((translateX + scaledWidth) < canvas.getWidth()){
+                translateX = canvas.getWidth() - scaledWidth;
+            }
+        }
+
+        if (scaledHeight < canvas.getHeight()){
+            // If the map is shorter than the view, don't allow it to move past the edges
+            if (translateY < 0){
+                translateY = 0;
+            }
+            else if ((translateY + scaledHeight) > canvas.getHeight()){
+                translateY = canvas.getHeight() - scaledHeight;
+            }
+        }
+        else {
+            // If the map is taller than the view, don't allow its edge to move into the view
+            if (translateY > 0){
+                translateY = 0;
+            }
+            else if ((translateY + scaledHeight) < canvas.getHeight()){
+                translateY = canvas.getHeight() - scaledHeight;
+            }
+        }
+
+        // TEST --------------------------------------------------------------
+
+        /*if (translateX > 0) {
             translateX = 0;
         }
         else if (translateX + scaledWidth < canvas.getWidth()){
@@ -327,9 +369,13 @@ class MapImageView extends AppCompatImageView {
         if (translateY > 0) {
             translateY = 0;
         }
-        else if (translateY + scaledHeight < canvas.getHeight()){
-            translateY = canvas.getHeight() - scaledHeight;
+        else if (scaledHeight < canvas.getHeight() && (translateY + scaledHeight + (canvas.getHeight() - scaledHeight)) < canvas.getHeight())
+        {
+
         }
+        else if ((translateY + scaledHeight) > canvas.getHeight()){
+            translateY = canvas.getHeight() - scaledHeight;
+        }*/
 
         canvas.translate(translateX / scaleFactor, translateY / scaleFactor);
 

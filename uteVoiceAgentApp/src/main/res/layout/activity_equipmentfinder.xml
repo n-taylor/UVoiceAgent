@@ -22,7 +22,8 @@
         android:id="@+id/top_container_equipment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_container">
+        android:layout_above="@+id/bottom_container"
+        android:layout_below="@+id/setting_toolbar">
 
         <ute.webservice.voiceagent.activities.MapImageView
             android:id="@+id/map"
