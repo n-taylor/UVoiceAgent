@@ -74,6 +74,8 @@ public class EquipmentFindActivity extends BaseActivity {
 
 class MapImageView extends AppCompatImageView {
 
+    private boolean beginning = true;
+
     public MapImageView(Context context) {
         super(context);
     }
@@ -156,6 +158,12 @@ class MapImageView extends AppCompatImageView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        Bitmap B = LocationController.getInstance().getImage();
+
+        if (beginning){
+            scaleFactor = (float)canvas.getWidth() / (float)B.getWidth();
+            beginning = false;
+        }
 
         canvas.save();
         canvas.scale(scaleFactor, scaleFactor);
@@ -180,7 +188,6 @@ class MapImageView extends AppCompatImageView {
         //Drawable d = getResources().getDrawable(R.drawable.testfloor);
         //Bitmap B = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.testfloor);
 
-        Bitmap B = LocationController.getInstance().getImage();
         if (B != null) {
 
             Paint paint = new Paint();
