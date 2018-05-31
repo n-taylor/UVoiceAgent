@@ -160,27 +160,33 @@ class MapImageView extends AppCompatImageView {
         canvas.save();
         canvas.scale(scaleFactor, scaleFactor);
 
-        /*if ((translateX * -1) < 0) {
+        Bitmap B = LocationController.getInstance().getImage();
+
+        float scaledWidth = B.getWidth() *scaleFactor;
+        float scaledHeight= B.getHeight() *scaleFactor;
+
+        System.out.println("TX: "+translateX);
+        System.out.println("TX2: "+scaledWidth);
+
+        if (translateX > 0) {
             translateX = 0;
-        } else if ((translateX * -1) > (scaleFactor - 1) * canvas.getWidth()) {
-            translateX = (1 - scaleFactor) * canvas.getWidth();
         }
-
-        if (translateY * -1 < 0) {
+        else if (translateX + scaledWidth < canvas.getWidth()){
+            translateX = canvas.getWidth() - scaledWidth;
+        }
+        if (translateY > 0) {
             translateY = 0;
-        } else if ((translateY * -1) > (scaleFactor - 1) * canvas.getHeight()) {
-            translateY = (1 - scaleFactor) * canvas.getHeight();
-
-        }*/
-
-
+        }
+        else if (translateY + scaledHeight < canvas.getHeight()){
+            translateY = canvas.getHeight() - scaledHeight;
+        }
 
         canvas.translate(translateX / scaleFactor, translateY / scaleFactor);
 
         //Drawable d = getResources().getDrawable(R.drawable.testfloor);
         //Bitmap B = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.testfloor);
 
-        Bitmap B = LocationController.getInstance().getImage();
+
         if (B != null) {
 
             Paint paint = new Paint();
