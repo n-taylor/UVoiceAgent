@@ -161,6 +161,8 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
         unitGroups.add("University Hospitals");
         unitGroups.add("Huntsman Cancer Institute");
 
+        unitGroups.add(ListAdapter.ALL_OPEN_BEDS);
+
         // Adding child data
 
         List<String> UNI = new ArrayList<String>();

@@ -12,8 +12,11 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
 import ute.webservice.voiceagent.R;
+import ute.webservice.voiceagent.util.Controller;
 
 public class ListAdapter extends BaseExpandableListAdapter {
+
+    public static final String ALL_OPEN_BEDS = "All Units";
 
     private Context _context;
     private List<String> _listDataHeader; // header titles
@@ -82,18 +85,26 @@ public class ListAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
         String headerTitle = (String) getGroup(groupPosition);
-        if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) this._context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.list_group, null);
-        }
+
+        LayoutInflater infalInflater = (LayoutInflater) this._context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        convertView = infalInflater.inflate(R.layout.list_group, null);
+
 
         TextView lblListHeader = (TextView) convertView
                 .findViewById(R.id.listHeader);
         lblListHeader.setTypeface(null, Typeface.BOLD);
         lblListHeader.setText(headerTitle);
 
+        if (headerTitle.equals(ALL_OPEN_BEDS)){
+            convertView.setOnClickListener(new View.OnClickListener(){
 
+                @Override
+                public void onClick(View view) {
+                    Controller.displayAllOpenBeds(_context, ALL_OPEN_BEDS);
+                }
+            });
+        }
 
         if (groupPosition == 1)
         {

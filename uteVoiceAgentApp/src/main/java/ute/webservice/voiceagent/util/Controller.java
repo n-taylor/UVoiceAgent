@@ -3,6 +3,7 @@ package ute.webservice.voiceagent.util;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -155,8 +156,23 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
     private static void displayOpenBeds(final Context context, final String unit, final String query){
         final String trimmedUnit = unit.replace(" ", "");
 
+
         @SuppressLint("StaticFieldLeak")
         AsyncTask<Void, Void, Integer> task = new AsyncTask<Void, Void, Integer>() {
+
+            ProgressDialog progressDialog;
+
+            @Override
+            protected void onPreExecute(){
+                super.onPreExecute();
+
+                // Create the progress dialog
+                progressDialog = new ProgressDialog(context);
+                progressDialog.setTitle("Loading");
+                progressDialog.setIndeterminate(false);
+                progressDialog.show();
+            }
+
             @Override
             protected Integer doInBackground(Void... voids) {
                 return Controller.getOpenBedsDAO().getOpenBedCount(trimmedUnit);
@@ -168,6 +184,9 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                 if (unit.equals("5W") || unit.equals("5 W")){
                     toDisplay = "5 West";
                 }
+
+                progressDialog.dismiss(); // Close the progress dialog
+
                 Controller.getController().displayOpenBedCount(context, toDisplay, query, count);
             }
         };
@@ -211,9 +230,20 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
     }
 
 
-    private static void displayAllOpenBeds(final Context context, final String query){
+    public static void displayAllOpenBeds(final Context context, final String query){
         @SuppressLint("StaticFieldLeak")
         AsyncTask<Void, Void, HashMap<String, Integer>> task = new AsyncTask<Void, Void, HashMap<String, Integer>>() {
+
+            ProgressDialog progressDialog;
+
+            @Override
+            protected void onPreExecute(){
+                progressDialog = new ProgressDialog(context);
+                progressDialog.setTitle("Loading");
+                progressDialog.setIndeterminate(false);
+                progressDialog.show();
+            }
+
             @Override
             protected HashMap<String, Integer> doInBackground(Void... voids) {
                 return getOpenBedsDAO().getAllOpenBedCounts();
@@ -229,6 +259,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                     toShow += unit;
                     toShow += String.format(Locale.US, " has %1$d bed%2$s available\n", beds, (beds == 1)?"":"s");
                 }
+                progressDialog.dismiss();
                 // Open a results activity with the information
                 Intent intent = new Intent(context, ResultsActivity.class);
                 intent.putExtra("query", query);
