@@ -9,6 +9,8 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.AppCompatImageView;
@@ -23,11 +25,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import java.util.Date;
+import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import ai.api.android.AIConfiguration;
 import ai.api.model.AIError;
 import ai.api.model.AIResponse;
 import ai.api.ui.AIButton;
 import ute.webservice.voiceagent.R;
+import ute.webservice.voiceagent.location.ClientLocation;
 import ute.webservice.voiceagent.location.LocationController;
 import ute.webservice.voiceagent.location.MapCoordinate;
 import ute.webservice.voiceagent.location.MapDimension;
@@ -35,6 +43,9 @@ import ute.webservice.voiceagent.util.Config;
 import ute.webservice.voiceagent.util.Controller;
 import ute.webservice.voiceagent.util.DataAsked;
 import ute.webservice.voiceagent.util.SharedData;
+
+import static android.net.wifi.WifiConfiguration.Status.strings;
+import static ute.webservice.voiceagent.util.Controller.getLocationDAO;
 
 /**
  * Created by u0450254 on 5/29/2018.
@@ -50,6 +61,8 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
     private String accountID;
 
     SharedData sessiondata;
+
+    Context context = this;
 
     private ScaleGestureDetector mScaleGestureDetector;
     private float mScaleFactor = 1.0f;
@@ -71,7 +84,37 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
         initializeToolbar();
         initializeButtons();
         initializeSharedData();
+
+        TimerTask repeatedTask = new TimerTask() {
+            public void run() {
+                redrawTask();
+                mImageView.invalidate();
+            }
+
+        };
+        Timer timer = new Timer("Timer");
+
+        long delay  = 5000L;
+        long period = 5000L;
+        timer.scheduleAtFixedRate(repeatedTask, delay, period);
+
     }
+
+    private void redrawTask()
+    {
+        ClientLocation location = null;
+        try {
+           // location = getLocationDAO().getClientLocation("f8:34:41:bf:ab:ee",this);
+            location = getLocationDAO().getClientLocation(Controller.getMacAddr().toLowerCase(Locale.US), context);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+
+        }
+        LocationController.getInstance().setClientLocation(location);
+
+    }
+
 
     /**
      * Sets up the sessiondata, dataAsked and account data variables.
@@ -231,7 +274,6 @@ class MapImageView extends AppCompatImageView {
     public MapImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
-
 
     private static float MIN_ZOOM = 0.1f;
     private static float MAX_ZOOM = 5f;
