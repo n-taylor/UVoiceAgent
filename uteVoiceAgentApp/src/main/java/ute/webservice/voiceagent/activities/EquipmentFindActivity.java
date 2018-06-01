@@ -88,7 +88,13 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
         TimerTask repeatedTask = new TimerTask() {
             public void run() {
                 redrawTask();
-                mImageView.invalidate();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mImageView.invalidate();
+                    }
+                });
+               // mImageView.invalidate();
             }
 
         };
@@ -104,7 +110,7 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
     {
         ClientLocation location = null;
         try {
-           // location = getLocationDAO().getClientLocation("f8:34:41:bf:ab:ee",this);
+//            location = getLocationDAO().getClientLocation("f8:34:41:bf:ab:ee",this);
             location = getLocationDAO().getClientLocation(Controller.getMacAddr().toLowerCase(Locale.US), context);
         }
         catch (Exception e){

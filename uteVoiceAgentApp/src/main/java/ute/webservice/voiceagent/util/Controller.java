@@ -384,7 +384,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
     public void onEquipmentFinderButtonPressed(Activity activity, Context context) {
 //        verifyStoragePermissions(activity);
 
-       // displayClientLocation("f8:34:41:bf:ab:ee", context); // Hardcoded mac address for testing with an emulator
+//        displayClientLocation("f8:34:41:bf:ab:ee", context); // Hardcoded mac address for testing with an emulator
      displayClientLocation(getMacAddr().toLowerCase(Locale.US), context); // This line for use without an emulator
 
     }
@@ -456,7 +456,8 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                 if (res1.length() > 0) {
                     res1.deleteCharAt(res1.length() - 1);
                 }
-                return res1.toString();
+//                return res1.toString();
+              return "f8:34:41:bf:ab:ee";
             }
         } catch (Exception ex) {
         }
