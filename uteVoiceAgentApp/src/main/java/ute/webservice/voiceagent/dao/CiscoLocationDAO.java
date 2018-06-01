@@ -4,10 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.Rect;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -30,7 +27,11 @@ import ute.webservice.voiceagent.exceptions.InvalidResponseException;
 import ute.webservice.voiceagent.location.ClientLocation;
 import ute.webservice.voiceagent.location.ClientLocationBuilder;
 import ute.webservice.voiceagent.location.LocationController;
+import ute.webservice.voiceagent.location.MapCoordinate;
+import ute.webservice.voiceagent.location.TagLocation;
 import ute.webservice.voiceagent.location.MapDimension;
+import ute.webservice.voiceagent.location.TagLocationBuilder;
+import ute.webservice.voiceagent.location.VendorData;
 import ute.webservice.voiceagent.util.CertificateManager;
 import ute.webservice.voiceagent.util.Constants;
 
@@ -110,17 +111,90 @@ public class CiscoLocationDAO implements LocationDAO {
         return null;
     }
 
-    public void getTagLocation(String ID, Context context) throws AccessDeniedException, InvalidResponseException{
+    public TagLocation getTagLocation(String ID, Context context) throws AccessDeniedException, InvalidResponseException{
         String request = USER_PASSWORD_PREFIX + GET_TAG_LOCATION + ID.trim() + RETURN_TYPE;
-        String response = "";
+        StringBuilder response = new StringBuilder();
 
         try{
+            HttpGetHC4 getRequest = new HttpGetHC4(request);
 
+            CloseableHttpResponse httpResponse = getHttpClient(context).execute(getRequest);
+            HttpEntity entity = httpResponse.getEntity();
+
+            if (entity != null){
+                BufferedReader reader = new BufferedReader(new InputStreamReader(entity.getContent()));
+                String line = "";
+
+                while ((line = reader.readLine()) != null){
+                    response.append(line);
+                }
+
+                if (response.toString().equalsIgnoreCase(Constants.ACCESS_DENIED)){
+                    throw new AccessDeniedException();
+                }
+                else if (response.toString().isEmpty()){
+                    throw new InvalidResponseException("No response was obtained from the server.");
+                }
+                else {
+                    return parseJsonTagLocation(response.toString());
+                }
+            }
         }
         catch (AccessDeniedException e) { throw e; }
         catch (Exception e){
             e.printStackTrace();
             throw new InvalidResponseException();
+        }
+
+        return null;
+    }
+
+    private TagLocation parseJsonTagLocation(String json){
+        try {
+            // Convert the string into a JsonObject
+            JsonElement jsonElement = new JsonParser().parse(json);
+            JsonObject top = jsonElement.getAsJsonObject().getAsJsonObject("TagLocation");
+
+            // Use a Tag Location Builder
+            TagLocationBuilder locationBuilder = new TagLocationBuilder()
+                    .setMacAddress(top.get("macAddress").getAsString())
+                    .setCurrentlyTracked(top.get("currentlyTracked").getAsBoolean())
+                    .setConfidenceFactor(top.get("confidenceFactor").getAsFloat())
+                    .setLastBeaconTime(top.get("lastBeaconTime").getAsString())
+                    .setLastBeaconSequenceNumber(top.get("lastBeaconSequenceNumber").getAsInt());
+
+            // Get Map Info
+            JsonObject current = top.getAsJsonObject("MapInfo");
+            locationBuilder.setMapHierarchy(current.get("mapHierarchyString").getAsString())
+                    .setFloorRefId(current.get("floorRefId").getAsLong());
+            JsonObject child = current.getAsJsonObject("Dimension");
+            MapDimension dimension = new MapDimension(child.get("height").getAsFloat(),
+                    child.get("length").getAsFloat(), child.get("width").getAsFloat(),
+                    child.get("offsetX").getAsFloat(), child.get("offsetY").getAsFloat(),
+                    child.get("unit").getAsString());
+            locationBuilder.setMapDimension(dimension);
+            child = current.getAsJsonObject("Image");
+            locationBuilder.setImageName(child.get("imageName").getAsString());
+
+            // Get Map Coordinate
+            current = top.getAsJsonObject("MapCoordinate");
+            MapCoordinate coordinate = new MapCoordinate(current.get("x").getAsFloat(),
+                    current.get("y").getAsFloat(), current.get("unit").getAsString());
+            locationBuilder.setMapCoordinate(coordinate);
+
+            // Get the VendorData
+            current = top.getAsJsonObject("VendorData");
+            VendorData vendorData = new VendorData(current.get("vendorId").getAsLong(),
+                    current.get("elementId").getAsInt(), current.get("data").getAsString(),
+                    current.get("lastReceivedTime").getAsString(), current.get("lastReceivedSeqNum").getAsInt());
+            locationBuilder.setVendorData(vendorData);
+
+            return locationBuilder.create();
+
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+            return null;
         }
     }
 

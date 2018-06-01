@@ -26,6 +26,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -39,6 +40,7 @@ import ute.webservice.voiceagent.location.ClientLocation;
 import ute.webservice.voiceagent.location.LocationController;
 import ute.webservice.voiceagent.location.MapCoordinate;
 import ute.webservice.voiceagent.location.MapDimension;
+import ute.webservice.voiceagent.location.TagLocation;
 import ute.webservice.voiceagent.util.Config;
 import ute.webservice.voiceagent.util.Controller;
 import ute.webservice.voiceagent.util.DataAsked;
@@ -269,16 +271,23 @@ class MapImageView extends AppCompatImageView {
 
     private boolean beginning = true;
 
+    private Bitmap B;
+    private Paint clientPaint;
+    private Paint tagPaint;
+
     public MapImageView(Context context) {
         super(context);
+        initializeValues();
     }
 
     public MapImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        initializeValues();
     }
 
     public MapImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initializeValues();
     }
 
     private static float MIN_ZOOM = 0.1f;
@@ -303,6 +312,17 @@ class MapImageView extends AppCompatImageView {
     private float previousTranslateY = 0f;
     private boolean dragged = false;
 
+    private void initializeValues(){
+        B = LocationController.getInstance().getImage();
+
+        clientPaint = new Paint();
+        clientPaint.setStyle(Paint.Style.FILL);
+        clientPaint.setColor(Color.RED);
+
+        tagPaint = new Paint();
+        tagPaint.setStyle(Paint.Style.FILL);
+        tagPaint.setColor(Color.BLUE);
+    }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -350,7 +370,6 @@ class MapImageView extends AppCompatImageView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Bitmap B = LocationController.getInstance().getImage();
 
         if (beginning){
             scaleFactor = (float)canvas.getWidth() / (float)B.getWidth();
@@ -432,16 +451,20 @@ class MapImageView extends AppCompatImageView {
 
         if (B != null) {
 
-            Paint paint = new Paint();
-
-            paint.setStyle(Paint.Style.FILL);
-            paint.setColor(Color.RED);
-
             canvas.drawBitmap(B, 0, 0, null);
 
             MapCoordinate userLoc = LocationController.getInstance().getUserLocation();
             if (userLoc != null){
-                drawScaledCircle(canvas, B, userLoc.getX(), userLoc.getY(), 20.0f, paint);
+                drawScaledCircle(canvas, B, userLoc.getX(), userLoc.getY(), 20.0f, clientPaint);
+            }
+
+            HashMap<String, TagLocation> tags = LocationController.getInstance().getTagLocations();
+            for (String key : tags.keySet()){
+                TagLocation loc = tags.get(key);
+                if (loc != null){
+                    MapCoordinate coordinate = loc.getMapCoordinate();
+                    drawScaledCircle(canvas, B, coordinate.getX(), coordinate.getY(), 20.0f, tagPaint);
+                }
             }
             //canvas.drawCircle(500.0f, 500.0f, 20.0f, paint);
 

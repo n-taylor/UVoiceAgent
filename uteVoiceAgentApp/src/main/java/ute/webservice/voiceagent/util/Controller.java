@@ -8,12 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
-import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,8 +42,6 @@ import ute.webservice.voiceagent.dao.ProceduresDAO;
 import ute.webservice.voiceagent.dao.SpokDAOFactory;
 import ute.webservice.voiceagent.location.ClientLocation;
 import ute.webservice.voiceagent.location.LocationController;
-import ute.webservice.voiceagent.location.MapCoordinate;
-import ute.webservice.voiceagent.location.MapDimension;
 import ute.webservice.voiceagent.procedures.ProcedureInfoListener;
 import ute.webservice.voiceagent.procedures.ProceduresParentListAdapter;
 import ute.webservice.voiceagent.procedures.ProceduresSecondLevelAdapter;
@@ -385,8 +379,8 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
 //        verifyStoragePermissions(activity);
 
 //        displayClientLocation("f8:34:41:bf:ab:ee", context); // Hardcoded mac address for testing with an emulator
-     displayClientLocation(getMacAddr().toLowerCase(Locale.US), context); // This line for use without an emulator
-
+        displayClientLocation(getMacAddr().toLowerCase(Locale.US), context); // This line for use without an emulator
+        LocationController.getInstance().findTagLocation("00:12:b8:0d:0a:2b", context);
     }
 
     public static void displayClientLocation(String id, final Context context){
@@ -456,8 +450,8 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                 if (res1.length() > 0) {
                     res1.deleteCharAt(res1.length() - 1);
                 }
-//                return res1.toString();
-              return "f8:34:41:bf:ab:ee";
+                return res1.toString();
+//              return "f8:34:41:bf:ab:ee";
             }
         } catch (Exception ex) {
         }
