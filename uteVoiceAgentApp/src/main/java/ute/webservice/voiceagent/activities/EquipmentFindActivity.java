@@ -114,12 +114,14 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
         try {
 //            location = getLocationDAO().getClientLocation("f8:34:41:bf:ab:ee",this);
             location = getLocationDAO().getClientLocation(Controller.getMacAddr().toLowerCase(Locale.US), context);
+
         }
         catch (Exception e){
             e.printStackTrace();
 
         }
         LocationController.getInstance().setClientLocation(location);
+        LocationController.getInstance().findTagLocation("00:12:b8:0d:0a:2b", context);
 
     }
 
