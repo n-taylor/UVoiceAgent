@@ -4,8 +4,10 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -197,14 +199,15 @@ public class CiscoLocationDAO implements LocationDAO {
                 return bitmap;
             } catch (IOException ex){
                 ex.printStackTrace();
+                return null;
             }
-            return bitmap;
         }
 
         @Override
         protected void onPostExecute(Bitmap result) {
             // Close progressdialog
             progressDialog.dismiss();
+
             LocationController.startActivity(context, result);
         }
     }

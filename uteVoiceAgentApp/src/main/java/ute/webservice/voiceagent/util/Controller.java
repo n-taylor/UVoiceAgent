@@ -379,7 +379,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
      * Call when the equipment finder button gets pressed.
      * Currently displays the location of Nathan's laptop
      */
-    public void onEquipmentFinderButtonPressed(Activity activity, Context context){
+    public void onEquipmentFinderButtonPressed(Activity activity, Context context) {
 //        verifyStoragePermissions(activity);
         displayClientLocation("f8:34:41:bf:ab:ee", context); // Hardcoded mac address for testing with an emulator
 //        displayClientLocation(getMacAddr().toLowerCase(Locale.US), context); // This line for use without an emulator
