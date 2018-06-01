@@ -43,6 +43,7 @@ public class CiscoLocationDAO implements LocationDAO {
 
     private static final String USER_PASSWORD_PREFIX = "https://ITS-Innovation-VoiceApp:K75wz9PBp1AaCqeNfGMKVI5R@";
     private static final String GET_CLIENT_LOCATION = "mse-park.net.utah.edu/api/contextaware/v1/location/clients/";
+    private static final String GET_TAG_LOCATION = "mse-park.net.utah.edu/api/contextaware/v1/location/tags/";
     private static final String GET_FLOOR_PLAN = "mse-park.net.utah.edu/api/contextaware/v1/maps/imagesource/";
     private static final String RETURN_TYPE = ".json";
 
@@ -50,6 +51,17 @@ public class CiscoLocationDAO implements LocationDAO {
 
     public CiscoLocationDAO(){
 
+    }
+
+    private CloseableHttpClient getHttpClient(Context context){
+        if (httpClient == null){
+            BasicCookieStore cookieStore = new BasicCookieStore();
+            httpClient = HttpClients.custom()
+                    .setDefaultCookieStore(cookieStore)
+                    .setSslcontext(CertificateManager.getSSlContext(context, "mse-parknetutahedu.crt"))
+                    .build();
+        }
+        return httpClient;
     }
 
 
@@ -66,12 +78,8 @@ public class CiscoLocationDAO implements LocationDAO {
 
         try {
             HttpGetHC4 getRequest = new HttpGetHC4(request);
-            BasicCookieStore cookieStore = new BasicCookieStore();
-            httpClient = HttpClients.custom()
-                    .setDefaultCookieStore(cookieStore)
-                   .setSslcontext(CertificateManager.getSSlContext(context, "mse-parknetutahedu.crt"))
-                    .build();
-            CloseableHttpResponse httpResponse = httpClient.execute(getRequest);
+
+            CloseableHttpResponse httpResponse = getHttpClient(context).execute(getRequest);
             HttpEntity entity = httpResponse.getEntity();
 
             if (entity != null){
@@ -100,6 +108,20 @@ public class CiscoLocationDAO implements LocationDAO {
         }
 
         return null;
+    }
+
+    public void getTagLocation(String ID, Context context) throws AccessDeniedException, InvalidResponseException{
+        String request = USER_PASSWORD_PREFIX + GET_TAG_LOCATION + ID.trim() + RETURN_TYPE;
+        String response = "";
+
+        try{
+
+        }
+        catch (AccessDeniedException e) { throw e; }
+        catch (Exception e){
+            e.printStackTrace();
+            throw new InvalidResponseException();
+        }
     }
 
     private ClientLocation parseJsonClientLocation(String json){
