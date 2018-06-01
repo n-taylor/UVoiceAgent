@@ -47,6 +47,8 @@ public class LocationController extends Controller {
         return bitmap;
     }
 
+    public String getImageName() { return clientLocation.getImageName(); }
+
     public void setClientLocation(ClientLocation location){
         clientLocation = location;
     }

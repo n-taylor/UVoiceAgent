@@ -34,6 +34,7 @@ import java.util.TimerTask;
 import ai.api.android.AIConfiguration;
 import ai.api.model.AIError;
 import ai.api.model.AIResponse;
+import ai.api.model.Location;
 import ai.api.ui.AIButton;
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.location.ClientLocation;
@@ -463,7 +464,7 @@ class MapImageView extends AppCompatImageView {
             HashMap<String, TagLocation> tags = LocationController.getInstance().getTagLocations();
             for (String key : tags.keySet()){
                 TagLocation loc = tags.get(key);
-                if (loc != null){
+                if (loc != null && LocationController.getInstance().getImageName().equals(loc.getImageName())){
                     MapCoordinate coordinate = loc.getMapCoordinate();
                     drawScaledCircle(canvas, B, coordinate.getX(), coordinate.getY(), 20.0f, tagPaint);
                 }
