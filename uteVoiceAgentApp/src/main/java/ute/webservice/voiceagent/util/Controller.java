@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Point;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
 import android.view.View;
@@ -381,12 +383,13 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
      */
     public void onEquipmentFinderButtonPressed(Activity activity, Context context){
 //        verifyStoragePermissions(activity);
-        displayClientLocation("f8:34:41:bf:ab:ee", context); // Hardcoded mac address for testing with an emulator
-//        displayClientLocation(getMacAddr().toLowerCase(Locale.US), context); // This line for use without an emulator
+
+       // displayClientLocation("f8:34:41:bf:ab:ee", context); // Hardcoded mac address for testing with an emulator
+     displayClientLocation(getMacAddr().toLowerCase(Locale.US), context); // This line for use without an emulator
 
     }
 
-    private static void displayClientLocation(String id, final Context context){
+    public static void displayClientLocation(String id, final Context context){
         @SuppressLint("StaticFieldLeak")
         AsyncTask<String, Void, ClientLocation> task = new AsyncTask<String, Void, ClientLocation>() {
             @Override
@@ -421,8 +424,6 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         task.execute(id);
 
         //openNewActivity(context, EquipmentFindActivity.class);
-
-
     }
 
     /**
@@ -436,7 +437,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         context.getApplicationContext().startActivity(intent);
     }
 
-    private static String getMacAddr() {
+    public static String getMacAddr() {
         try {
             List<NetworkInterface> all = Collections.list(NetworkInterface.getNetworkInterfaces());
             for (NetworkInterface nif : all) {
