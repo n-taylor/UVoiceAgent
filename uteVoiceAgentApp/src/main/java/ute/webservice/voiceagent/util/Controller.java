@@ -373,7 +373,6 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
 
     /**
      * Call when the equipment finder button gets pressed.
-     * Currently displays the location of Nathan's laptop
      */
     public void onEquipmentFinderButtonPressed(Activity activity, Context context) {
 //        verifyStoragePermissions(activity);
@@ -383,6 +382,13 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         LocationController.getInstance().findTagLocation("00:12:b8:0d:0a:2b", context);
     }
 
+    /**
+     * Retrieves the location of the client with the given ID, and displays it in the Equipment find activity
+     * with a map of the floor plan.
+     *
+     * @param id The mac address of the client
+     * @param context used to start a new activity
+     */
     public static void displayClientLocation(String id, final Context context){
         @SuppressLint("StaticFieldLeak")
         AsyncTask<String, Void, ClientLocation> task = new AsyncTask<String, Void, ClientLocation>() {
@@ -431,6 +437,10 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         context.getApplicationContext().startActivity(intent);
     }
 
+    /**
+     *
+     * @return the mac address of the current device. An emulator returns 02:00:00:00:00:00.
+     */
     public static String getMacAddr() {
         try {
             List<NetworkInterface> all = Collections.list(NetworkInterface.getNetworkInterfaces());

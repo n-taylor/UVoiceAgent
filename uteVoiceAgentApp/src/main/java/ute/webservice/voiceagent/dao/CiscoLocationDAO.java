@@ -48,6 +48,8 @@ public class CiscoLocationDAO implements LocationDAO {
     private static final String GET_FLOOR_PLAN = "mse-park.net.utah.edu/api/contextaware/v1/maps/imagesource/";
     private static final String RETURN_TYPE = ".json";
 
+    private static final int bitmap_scale = 2;
+
     private CloseableHttpClient httpClient;
 
     public CiscoLocationDAO(){
@@ -292,6 +294,7 @@ public class CiscoLocationDAO implements LocationDAO {
                 CloseableHttpResponse response = httpClient.execute(request);
                 HttpEntityWrapperHC4 entity = new HttpEntityWrapperHC4(response.getEntity());
                 bitmap = BitmapFactory.decodeStream(entity.getContent());
+                bitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth()/bitmap_scale, bitmap.getHeight()/bitmap_scale, true);
                 return bitmap;
             } catch (IOException ex){
                 ex.printStackTrace();

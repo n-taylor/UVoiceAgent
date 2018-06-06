@@ -61,6 +61,11 @@ public class LocationController extends Controller {
         return clientLocation.getMapDimension();
     }
 
+    /**
+     * Updates the location of the tag associated with the given ID.
+     * @param id
+     * @param context
+     */
     public void findTagLocation(String id, Context context){
         GetTagLocationTask task = new GetTagLocationTask(id, context);
         task.execute();
