@@ -107,6 +107,8 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
 
         };
         timer = new Timer("Timer");
+
+        timer.scheduleAtFixedRate(repeatedTask, timerDelay, timerPeriod);
     }
 
     private void redrawTask()
@@ -123,7 +125,6 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
         }
         LocationController.getInstance().setClientLocation(location);
         LocationController.getInstance().findTagLocation("00:12:b8:0d:0a:2b", context);
-
     }
 
 
@@ -200,6 +201,20 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
         super.onResume();
 
         // Start the timer again
+        repeatedTask = new TimerTask() {
+            public void run() {
+                redrawTask();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mImageView.invalidate();
+                    }
+                });
+                // mImageView.invalidate();
+            }
+
+        };
+        timer = new Timer("Timer");
 
         timer.scheduleAtFixedRate(repeatedTask, timerDelay, timerPeriod);
 
@@ -392,8 +407,8 @@ class MapImageView extends AppCompatImageView {
         float scaledWidth = B.getWidth() *scaleFactor;
         float scaledHeight= B.getHeight() *scaleFactor;
 
-        System.out.println("TX: "+translateX);
-        System.out.println("TX2: "+scaledWidth);
+//        System.out.println("TX: "+translateX);
+//        System.out.println("TX2: "+scaledWidth);
 
         // TEST ------------------------------------------------------------
 

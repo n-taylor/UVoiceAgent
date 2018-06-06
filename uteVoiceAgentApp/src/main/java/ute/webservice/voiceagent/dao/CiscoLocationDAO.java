@@ -2,6 +2,7 @@ package ute.webservice.voiceagent.dao;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -22,6 +23,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.exceptions.AccessDeniedException;
 import ute.webservice.voiceagent.exceptions.InvalidResponseException;
 import ute.webservice.voiceagent.location.ClientLocation;
@@ -47,6 +49,9 @@ public class CiscoLocationDAO implements LocationDAO {
     private static final String GET_TAG_LOCATION = "mse-park.net.utah.edu/api/contextaware/v1/location/tags/";
     private static final String GET_FLOOR_PLAN = "mse-park.net.utah.edu/api/contextaware/v1/maps/imagesource/";
     private static final String RETURN_TYPE = ".json";
+
+    private static final int MAX_WIDTH = 2000;
+    private static final int MAX_HEIGHT = 2000;
 
     private static final int bitmap_scale = 2;
 
@@ -249,9 +254,48 @@ public class CiscoLocationDAO implements LocationDAO {
     }
 
     public void getFloorPlanImage(Context context, String imageName){
-        String url = USER_PASSWORD_PREFIX + GET_FLOOR_PLAN + imageName;
-        GetImageTask task = new GetImageTask(context, url, httpClient);
-        task.execute();
+//        String url = USER_PASSWORD_PREFIX + GET_FLOOR_PLAN + imageName;
+//        GetImageTask task = new GetImageTask(context, url, httpClient);
+//        task.execute();
+        Bitmap map = decodeScaledResource(context.getResources(), R.drawable.tf4, MAX_WIDTH, MAX_HEIGHT);
+        LocationController.startActivity(context, map);
+    }
+
+    private Bitmap decodeScaledResource(Resources res, int resId, int reqWidth, int reqHeight){
+        // First decode just checking dimensions
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+
+        // Calculate the inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+
+        // Decode bitmap with the inSampleSize set now
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeResource(res, resId, options);
+    }
+
+    private int calculateInSampleSize(
+            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) >= reqHeight
+                    && (halfWidth / inSampleSize) >= reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        return inSampleSize;
     }
 
     private static class GetImageTask extends AsyncTask<Void, Void, Bitmap> {
