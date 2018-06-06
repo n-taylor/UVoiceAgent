@@ -1,10 +1,17 @@
 package ute.webservice.voiceagent.activities;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.settings.SettingsManager;

@@ -25,6 +25,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -503,4 +504,32 @@ class MapImageView extends AppCompatImageView {
         canvas.drawCircle(posX, posY, radius, paint);
     }
 }
+
+    File files = new File("/data/data/ute.webservice.voiceagent/files/map1");
+
+        if (!files.exists())
+                {
+                Bitmap newbit = new Bitmap();
+
+                FileOutputStream out = null;
+                try {
+                out = new FileOutputStream(files);
+                newbit.compress(Bitmap.CompressFormat.PNG, 100, out);
+                } catch (Exception e) {
+                e.printStackTrace();
+                } finally {
+                try {
+                if (out != null) {
+                out.close();
+                }
+                } catch (IOException e) {
+                e.printStackTrace();
+                }
+                }
+                }
+                else {
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+                Bitmap newbit = BitmapFactory.decodeFile(files.getName());
+                }
 
