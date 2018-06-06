@@ -35,6 +35,7 @@ import java.util.TimerTask;
 import ai.api.android.AIConfiguration;
 import ai.api.model.AIError;
 import ai.api.model.AIResponse;
+import ai.api.model.Location;
 import ai.api.ui.AIButton;
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.location.ClientLocation;
@@ -71,6 +72,11 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
     private float mScaleFactor = 1.0f;
     private ImageView mImageView;
 
+    private Timer timer;
+    private TimerTask repeatedTask;
+    private final long timerDelay = 5000L;
+    private final long timerPeriod = 5000L;
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,7 +94,7 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
         initializeButtons();
         initializeSharedData();
 
-        TimerTask repeatedTask = new TimerTask() {
+        repeatedTask = new TimerTask() {
             public void run() {
                 redrawTask();
                 runOnUiThread(new Runnable() {
@@ -101,12 +107,7 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
             }
 
         };
-        Timer timer = new Timer("Timer");
-
-        long delay  = 5000L;
-        long period = 5000L;
-        timer.scheduleAtFixedRate(repeatedTask, delay, period);
-
+        timer = new Timer("Timer");
     }
 
     private void redrawTask()
@@ -187,6 +188,9 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
     protected void onPause() {
         super.onPause();
 
+        // stop the timer
+        timer.cancel();
+
         // use this method to disconnect from speech recognition service
         // Not destroying the SpeechRecognition object in onPause method would block other apps from using SpeechRecognition service
         aiButton.pause();
@@ -195,6 +199,10 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
     @Override
     protected void onResume() {
         super.onResume();
+
+        // Start the timer again
+
+        timer.scheduleAtFixedRate(repeatedTask, timerDelay, timerPeriod);
 
         // use this method to reinit connection to recognition service
         aiButton.resume();
@@ -464,7 +472,7 @@ class MapImageView extends AppCompatImageView {
             HashMap<String, TagLocation> tags = LocationController.getInstance().getTagLocations();
             for (String key : tags.keySet()){
                 TagLocation loc = tags.get(key);
-                if (loc != null){
+                if (loc != null && LocationController.getInstance().getImageName().equals(loc.getImageName())){
                     MapCoordinate coordinate = loc.getMapCoordinate();
                     drawScaledCircle(canvas, B, coordinate.getX(), coordinate.getY(), 20.0f, tagPaint);
                 }
