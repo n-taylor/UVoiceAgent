@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -22,6 +23,7 @@ import org.apache.http.impl.client.HttpClients;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.exceptions.AccessDeniedException;
@@ -52,16 +54,23 @@ public class CiscoLocationDAO implements LocationDAO {
     private static final String GET_FLOOR_PLAN = "mse-park.net.utah.edu/api/contextaware/v1/maps/imagesource/";
     private static final String RETURN_TYPE = ".json";
 
+    private static final String UNKNOWN_FLOOR = "The area you are located in is not currently supported";
+
     private static final int MAX_WIDTH = 2000;
     private static final int MAX_HEIGHT = 2000;
 
+    private static HashMap<String, Integer> floorMaps;
 
     private static final int bitmap_scale = 2;
 
     private CloseableHttpClient httpClient;
 
     public CiscoLocationDAO(){
+        if (floorMaps == null) {
+            floorMaps = new HashMap<>();
 
+            floorMaps.put("UofU-FtDouglas>0482-102Tower>Level 4", R.drawable.tower_level_4);
+        }
     }
 
     private CloseableHttpClient getHttpClient(Context context, int campus){
@@ -273,8 +282,14 @@ public class CiscoLocationDAO implements LocationDAO {
 //        String url = USER_PASSWORD_PREFIX + GET_FLOOR_PLAN + imageName;
 //        GetImageTask task = new GetImageTask(context, url, httpClient);
 //        task.execute();
-        Bitmap map = decodeScaledResource(context.getResources(), R.drawable.tf4, MAX_WIDTH, MAX_HEIGHT);
-        LocationController.startActivity(context, map);
+
+        if (floorMaps.containsKey(imageName)) {
+            Bitmap map = decodeScaledResource(context.getResources(), floorMaps.get(imageName), MAX_WIDTH, MAX_HEIGHT);
+            LocationController.startActivity(context, map);
+        }
+        else {
+            Toast.makeText(context, UNKNOWN_FLOOR, Toast.LENGTH_LONG).show();
+        }
     }
 
     private Bitmap decodeScaledResource(Resources res, int resId, int reqWidth, int reqHeight){

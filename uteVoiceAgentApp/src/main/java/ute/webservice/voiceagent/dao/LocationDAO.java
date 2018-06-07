@@ -2,6 +2,8 @@ package ute.webservice.voiceagent.dao;
 
 import android.content.Context;
 
+import java.util.HashMap;
+
 import ute.webservice.voiceagent.exceptions.AccessDeniedException;
 import ute.webservice.voiceagent.exceptions.InvalidResponseException;
 import ute.webservice.voiceagent.location.ClientLocation;
@@ -16,6 +18,7 @@ public interface LocationDAO {
 
     public static final int PARK = 0;
     public static final int EBC = 1;
+
 
     /**
      * Gets the client location info for a given client.

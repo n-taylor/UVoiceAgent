@@ -417,7 +417,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                     System.out.println(message);
 
                     Toast.makeText(context, message, Toast.LENGTH_LONG).show();
-                    getLocationDAO().getFloorPlanImage(context, location.getImageName());
+                    getLocationDAO().getFloorPlanImage(context, location.getMapHierarchy());
                     LocationController.getInstance().setClientLocation(location);
                 }
                 else {
