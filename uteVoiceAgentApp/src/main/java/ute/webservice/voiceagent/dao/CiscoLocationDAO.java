@@ -45,13 +45,16 @@ import ute.webservice.voiceagent.util.Constants;
 public class CiscoLocationDAO implements LocationDAO {
 
     private static final String USER_PASSWORD_PREFIX = "https://ITS-Innovation-VoiceApp:K75wz9PBp1AaCqeNfGMKVI5R@";
-    private static final String GET_CLIENT_LOCATION = "mse-park.net.utah.edu/api/contextaware/v1/location/clients/";
-    private static final String GET_TAG_LOCATION = "mse-park.net.utah.edu/api/contextaware/v1/location/tags/";
+    private static final String GET_CLIENT_LOCATION_PARK = "mse-park.net.utah.edu/api/contextaware/v1/location/clients/";
+    private static final String GET_CLIENT_LOCATION_EBC = "mse-ebc.net.utah.edu/api/contextaware/v1/location/clients/";
+    private static final String GET_TAG_LOCATION_PARK = "mse-park.net.utah.edu/api/contextaware/v1/location/tags/";
+    private static final String GET_TAG_LOCATION_EBC = "mse-ebc.net.utah.edu/api/contextaware/v1/location/tags/";
     private static final String GET_FLOOR_PLAN = "mse-park.net.utah.edu/api/contextaware/v1/maps/imagesource/";
     private static final String RETURN_TYPE = ".json";
 
     private static final int MAX_WIDTH = 2000;
     private static final int MAX_HEIGHT = 2000;
+
 
     private static final int bitmap_scale = 2;
 
@@ -61,14 +64,26 @@ public class CiscoLocationDAO implements LocationDAO {
 
     }
 
-    private CloseableHttpClient getHttpClient(Context context){
-        if (httpClient == null){
-            BasicCookieStore cookieStore = new BasicCookieStore();
-            httpClient = HttpClients.custom()
-                    .setDefaultCookieStore(cookieStore)
-                    .setSslcontext(CertificateManager.getSSlContext(context, "mse-parknetutahedu.crt"))
-                    .build();
-        }
+    private CloseableHttpClient getHttpClient(Context context, int campus){
+        BasicCookieStore cookieStore = new BasicCookieStore();
+//        if (campus == PARK) {
+//            httpClient = HttpClients.custom()
+//                    .setDefaultCookieStore(cookieStore)
+//                    .setSslcontext(CertificateManager.getSSlContext(context, "mse-parknetutahedu.crt"))
+//                    .build();
+//        }
+//        else {
+//            httpClient = HttpClients.custom()
+//                    .setDefaultCookieStore(cookieStore)
+//                    .setSslcontext(CertificateManager.getSSlContext(context, "mse-ebcnetutahedu.crt"))
+//                    .build();
+//        }
+
+        httpClient = HttpClients.custom()
+                .setDefaultCookieStore(cookieStore)
+                .setSslcontext(CertificateManager.getSSlContext(context, "mse-parknetutahedu.crt"))
+                .build();
+
         return httpClient;
     }
 
@@ -77,17 +92,19 @@ public class CiscoLocationDAO implements LocationDAO {
      * Gets the client location info for a given client.
      *
      * @param ID A mac address, IP address or username.
-     * @return the location information of the client
+     * @param campus Either Park or EBC, depending on the supposed location of the client
+     * @return the location information of the client, or null if an error occurs.
      */
     @Override
-    public ClientLocation getClientLocation(String ID , Context context) throws InvalidResponseException, AccessDeniedException {
-        String request = USER_PASSWORD_PREFIX + GET_CLIENT_LOCATION + ID.trim() + RETURN_TYPE;
+    public ClientLocation getClientLocation(String ID , Context context, int campus) throws InvalidResponseException, AccessDeniedException {
+        String url = (campus == PARK) ? GET_CLIENT_LOCATION_PARK : GET_CLIENT_LOCATION_EBC;
+        String request = USER_PASSWORD_PREFIX + url + ID.trim() + RETURN_TYPE;
         String response = "";
 
         try {
             HttpGetHC4 getRequest = new HttpGetHC4(request);
 
-            CloseableHttpResponse httpResponse = getHttpClient(context).execute(getRequest);
+            CloseableHttpResponse httpResponse = getHttpClient(context, campus).execute(getRequest);
             HttpEntity entity = httpResponse.getEntity();
 
             if (entity != null){
@@ -109,23 +126,23 @@ public class CiscoLocationDAO implements LocationDAO {
                 }
             }
         }
-        catch (AccessDeniedException e){ throw e;}
         catch (Exception e) {
             e.printStackTrace();
-            throw new InvalidResponseException();
+            return null;
         }
 
         return null;
     }
 
-    public TagLocation getTagLocation(String ID, Context context) throws AccessDeniedException, InvalidResponseException{
-        String request = USER_PASSWORD_PREFIX + GET_TAG_LOCATION + ID.trim() + RETURN_TYPE;
+    public TagLocation getTagLocation(String ID, Context context, int campus) throws AccessDeniedException, InvalidResponseException{
+        String url = (campus == PARK) ? GET_TAG_LOCATION_PARK : GET_TAG_LOCATION_EBC;
+        String request = USER_PASSWORD_PREFIX + url + ID.trim() + RETURN_TYPE;
         StringBuilder response = new StringBuilder();
 
         try{
             HttpGetHC4 getRequest = new HttpGetHC4(request);
 
-            CloseableHttpResponse httpResponse = getHttpClient(context).execute(getRequest);
+            CloseableHttpResponse httpResponse = getHttpClient(context, campus).execute(getRequest);
             HttpEntity entity = httpResponse.getEntity();
 
             if (entity != null){
@@ -147,10 +164,9 @@ public class CiscoLocationDAO implements LocationDAO {
                 }
             }
         }
-        catch (AccessDeniedException e) { throw e; }
         catch (Exception e){
             e.printStackTrace();
-            throw new InvalidResponseException();
+            return null;
         }
 
         return null;

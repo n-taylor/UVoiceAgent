@@ -396,7 +396,11 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
             protected ClientLocation doInBackground(String... strings) {
                 ClientLocation location = null;
                 try {
-                    location = getLocationDAO().getClientLocation(strings[0],context);
+                    // Try finding the client at the hospital. If it's not there, check research park
+                    location = getLocationDAO().getClientLocation(strings[0], context, LocationDAO.EBC);
+                    if (location == null) {
+                        location = getLocationDAO().getClientLocation(strings[0], context, LocationDAO.PARK);
+                    }
                 }
                 catch (Exception e){
                     e.printStackTrace();
