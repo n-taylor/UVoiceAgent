@@ -7,6 +7,8 @@ import android.os.AsyncTask;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 import ute.webservice.voiceagent.activities.EquipmentFindActivity;
 import ute.webservice.voiceagent.exceptions.AccessDeniedException;
@@ -26,18 +28,19 @@ public class LocationController extends Controller {
     private ClientLocation clientLocation;
     private HashMap<String, TagLocation> tagLocations;
     private HashMap<String, Device> Devices;
-    private HashMap<String, String> Types;
 
     private static LocationController instance;
 
     private LocationController(){}
 
+
     public static LocationController getInstance(){
         if (instance == null){
             instance = new LocationController();
         }
+
         return instance;
-    }
+        }
 
     public static void startActivity(Context context, Bitmap bitmap){
         LocationController.getInstance().bitmap = bitmap;
@@ -89,10 +92,20 @@ public class LocationController extends Controller {
         // Make sure not to add any duplicates
         Devices.remove(device.getMAC());
         Devices.put(device.getMAC(), device);
+    }
 
-        Types.remove(device.getMAC());
-        Types.put(device.getMAC(), device.getType());
 
+    private ArrayList<String> deviceSearchType(String typeToFind){
+
+        ArrayList<String> results = new ArrayList<String>();
+
+        for (Map.Entry<String, Device> entry : Devices.entrySet()) {
+            if (Objects.equals(typeToFind, entry.getValue().getType())) {
+                results.add(entry.getKey());
+            }
+        }
+
+        return results;
 
     }
 
@@ -107,12 +120,6 @@ public class LocationController extends Controller {
         if (Devices == null)
             Devices = new HashMap<>();
         return Devices;
-    }
-
-    public HashMap<String, String> getDeviceTypes(){
-        if (Types == null)
-            Types = new HashMap<>();
-        return Types;
     }
 
     private static class GetTagLocationTask extends AsyncTask<Void, Void, TagLocation> {
