@@ -11,6 +11,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.AppCompatImageView;
@@ -512,32 +513,4 @@ class MapImageView extends AppCompatImageView {
         canvas.drawCircle(posX, posY, radius, paint);
     }
 }
-
-    File files = new File("/data/data/ute.webservice.voiceagent/files/map1");
-
-        if (!files.exists())
-                {
-                Bitmap newbit = new Bitmap();
-
-                FileOutputStream out = null;
-                try {
-                out = new FileOutputStream(files);
-                newbit.compress(Bitmap.CompressFormat.PNG, 100, out);
-                } catch (Exception e) {
-                e.printStackTrace();
-                } finally {
-                try {
-                if (out != null) {
-                out.close();
-                }
-                } catch (IOException e) {
-                e.printStackTrace();
-                }
-                }
-                }
-                else {
-                BitmapFactory.Options options = new BitmapFactory.Options();
-                options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-                Bitmap newbit = BitmapFactory.decodeFile(files.getName());
-                }
 

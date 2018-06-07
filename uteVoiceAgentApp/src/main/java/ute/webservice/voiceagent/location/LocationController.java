@@ -25,6 +25,8 @@ public class LocationController extends Controller {
 
     private ClientLocation clientLocation;
     private HashMap<String, TagLocation> tagLocations;
+    private HashMap<String, Device> Devices;
+    private HashMap<String, String> Types;
 
     private static LocationController instance;
 
@@ -66,6 +68,11 @@ public class LocationController extends Controller {
         task.execute();
     }
 
+    public void findDeviceInfo(String id, Context context){
+       // GetDeviceInfoTask task = new GetDeviceInfoTask(id, context);
+      //  task.execute();
+    }
+
     private void addTagLocation(TagLocation location){
         if (this.tagLocations == null)
             tagLocations = new HashMap<>();
@@ -75,10 +82,37 @@ public class LocationController extends Controller {
         tagLocations.put(location.getMacAddress(), location);
     }
 
+    private void addDevice(Device device){
+        if (this.Devices == null)
+            Devices = new HashMap<>();
+
+        // Make sure not to add any duplicates
+        Devices.remove(device.getMAC());
+        Devices.put(device.getMAC(), device);
+
+        Types.remove(device.getMAC());
+        Types.put(device.getMAC(), device.getType());
+
+
+    }
+
     public HashMap<String, TagLocation> getTagLocations(){
         if (tagLocations == null)
             tagLocations = new HashMap<>();
         return tagLocations;
+    }
+
+    //---
+    public HashMap<String, Device> getDevices(){
+        if (Devices == null)
+            Devices = new HashMap<>();
+        return Devices;
+    }
+
+    public HashMap<String, String> getDeviceTypes(){
+        if (Types == null)
+            Types = new HashMap<>();
+        return Types;
     }
 
     private static class GetTagLocationTask extends AsyncTask<Void, Void, TagLocation> {
@@ -106,6 +140,56 @@ public class LocationController extends Controller {
         protected void onPostExecute(TagLocation location){
             LocationController.getInstance().addTagLocation(location);
         }
+    }
+
+    /*private static class GetDeviceTask extends AsyncTask<Void, Void, Device> {
+
+        String id;
+        Context context;
+
+        GetDeviceTask(String id, Context context){
+            this.id = id;
+            this.context = context;
+        }
+
+
+        @Override
+        protected Device doInBackground(Void... voids) {
+           try {
+                return Controller.getLocationDAO().getDevice(id, context);
+            }
+            catch (AccessDeniedException | InvalidResponseException ex) {
+                ex.printStackTrace();
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Device device){
+            LocationController.getInstance().addDevice(device);
+        }
+    }*/
+
+
+    private class Device{
+
+        private String MAC;
+        private String type;
+        private TagLocation location;
+
+        public Device(String MACAddress, String deviceType, TagLocation deviceLocation){
+            MAC = MACAddress;
+            type = deviceType;
+            location = deviceLocation;
+        }
+
+        public TagLocation getLocation(){return location;}
+        public String getType(){return type;}
+        public String getMAC(){return MAC;}
+
+        public void setMAC(String newMAC){MAC = newMAC;}
+        public void setType(String newType){type = newType;}
+        public void setLocation(TagLocation newLocation){location = newLocation;}
     }
 
 }
