@@ -109,6 +109,23 @@ public class LocationController extends Controller {
 
     }
 
+
+    private ArrayList<TagLocation> deviceSearchLocations(ArrayList<String>  macList){
+
+        ArrayList<TagLocation> results = new ArrayList<TagLocation>();
+
+        for (String entry : macList) {
+            {
+                TagLocation location = Devices.get(entry).getLocation();
+
+                results.add(location);
+            }
+        }
+        return results;
+    }
+
+
+    
     public HashMap<String, TagLocation> getTagLocations(){
         if (tagLocations == null)
             tagLocations = new HashMap<>();
