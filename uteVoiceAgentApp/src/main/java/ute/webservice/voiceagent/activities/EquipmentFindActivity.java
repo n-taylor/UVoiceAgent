@@ -1,5 +1,6 @@
 package ute.webservice.voiceagent.activities;
 
+import android.bluetooth.BluetoothClass;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -27,6 +28,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -470,9 +472,13 @@ class MapImageView extends AppCompatImageView {
                 drawScaledCircle(canvas, B, userLoc.getX(), userLoc.getY(), 20.0f, clientPaint);
             }
 
-            HashMap<String, TagLocation> tags = LocationController.getInstance().getTagLocations();
-            for (String key : tags.keySet()){
-                TagLocation loc = tags.get(key);
+
+            LocationController.getInstance().findDeviceInfo("test", getContext());
+            ArrayList<String> deviceTypeMAC = LocationController.getInstance().deviceSearchType("testTag");
+
+
+            ArrayList<TagLocation> tags = LocationController.getInstance().deviceSearchLocations(deviceTypeMAC);
+            for (TagLocation loc : tags ){
                 if (loc != null && LocationController.getInstance().getImageName().equals(loc.getImageName())){
                     MapCoordinate coordinate = loc.getMapCoordinate();
                     drawScaledCircle(canvas, B, coordinate.getX(), coordinate.getY(), 20.0f, tagPaint);

@@ -72,6 +72,43 @@ public class LocationController extends Controller {
     }
 
     public void findDeviceInfo(String id, Context context){
+
+        Devices = new HashMap<>();
+
+        findTagLocation("00:12:b8:0d:6b:58", context);
+       // findTagLocation("00:12:b8:0d:68:ad", context);
+       // findTagLocation("00:12:b8:0d:68:90", context);
+       // findTagLocation("00:12:b8:0d:6c:07", context);
+       // findTagLocation("00:12:b8:0d:5c:07", context);
+       // findTagLocation("00:12:b8:0d:21:66", context);
+       // findTagLocation("00:12:b8:0d:26:0d", context);
+       // findTagLocation("00:12:b8:0d:68:6b", context);
+       // findTagLocation("00:12:b8:0d:59:5e", context);
+       // findTagLocation("00:12:b8:0d:5b:c8", context);
+
+        Device device1 = new Device("00:12:b8:0d:6b:58",  "testTag", tagLocations.get("00:12:b8:0d:6b:58"));
+      //  Device device2 = new Device("00:12:b8:0d:68:ad",  "testTag", tagLocations.get("00:12:b8:0d:68:ad"));
+      //  Device device3 = new Device("00:12:b8:0d:68:90",  "testTag", tagLocations.get("00:12:b8:0d:68:90"));
+      //  Device device4 = new Device("00:12:b8:0d:6c:07",  "testTag", tagLocations.get("00:12:b8:0d:6c:07"));
+     //   Device device5 = new Device("00:12:b8:0d:5c:07",  "testTag", tagLocations.get("00:12:b8:0d:5c:07"));
+      //  Device device6 = new Device("00:12:b8:0d:21:66",  "testTag", tagLocations.get("00:12:b8:0d:21:66"));
+      //  Device device7 = new Device("00:12:b8:0d:26:0d",  "testTag", tagLocations.get("00:12:b8:0d:26:0d"));
+      //  Device device8 = new Device("00:12:b8:0d:68:6b",  "testTag", tagLocations.get("00:12:b8:0d:68:6b"));
+      //  Device device9 = new Device("00:12:b8:0d:59:5e",  "testTag", tagLocations.get("00:12:b8:0d:59:5e"));
+      //  Device device10 = new Device("00:12:b8:0d:5b:c8",  "testTag", tagLocations.get("00:12:b8:0d:5b:c8"));
+
+        Devices.put("00:12:b8:0d:6b:58", device1);
+       // Devices.put("00:12:b8:0d:68:ad", device2);
+      //  Devices.put("00:12:b8:0d:68:90", device3);
+      //  Devices.put("00:12:b8:0d:6c:07", device4);
+      //  Devices.put("00:12:b8:0d:5c:07", device5);
+      //  Devices.put("00:12:b8:0d:21:66", device6);
+      //  Devices.put("00:12:b8:0d:26:0d", device7);
+     //  Devices.put("00:12:b8:0d:68:6b", device8);
+     //   Devices.put("00:12:b8:0d:59:5e", device9);
+     //   Devices.put("00:12:b8:0d:5b:c8", device10);
+
+
        // GetDeviceInfoTask task = new GetDeviceInfoTask(id, context);
       //  task.execute();
     }
@@ -95,7 +132,7 @@ public class LocationController extends Controller {
     }
 
 
-    private ArrayList<String> deviceSearchType(String typeToFind){
+    public ArrayList<String> deviceSearchType(String typeToFind){
 
         ArrayList<String> results = new ArrayList<String>();
 
@@ -110,14 +147,13 @@ public class LocationController extends Controller {
     }
 
 
-    private ArrayList<TagLocation> deviceSearchLocations(ArrayList<String>  macList){
+    public ArrayList<TagLocation> deviceSearchLocations(ArrayList<String>  macList){
 
         ArrayList<TagLocation> results = new ArrayList<TagLocation>();
 
         for (String entry : macList) {
             {
                 TagLocation location = Devices.get(entry).getLocation();
-
                 results.add(location);
             }
         }
@@ -125,7 +161,7 @@ public class LocationController extends Controller {
     }
 
 
-    
+
     public HashMap<String, TagLocation> getTagLocations(){
         if (tagLocations == null)
             tagLocations = new HashMap<>();
@@ -195,7 +231,7 @@ public class LocationController extends Controller {
     }*/
 
 
-    private class Device{
+    public class Device{
 
         private String MAC;
         private String type;
