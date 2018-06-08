@@ -2,9 +2,11 @@ package ute.webservice.voiceagent.dao;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -21,7 +23,9 @@ import org.apache.http.impl.client.HttpClients;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 
+import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.exceptions.AccessDeniedException;
 import ute.webservice.voiceagent.exceptions.InvalidResponseException;
 import ute.webservice.voiceagent.location.ClientLocation;
@@ -43,27 +47,53 @@ import ute.webservice.voiceagent.util.Constants;
 public class CiscoLocationDAO implements LocationDAO {
 
     private static final String USER_PASSWORD_PREFIX = "https://ITS-Innovation-VoiceApp:K75wz9PBp1AaCqeNfGMKVI5R@";
-    private static final String GET_CLIENT_LOCATION = "mse-park.net.utah.edu/api/contextaware/v1/location/clients/";
-    private static final String GET_TAG_LOCATION = "mse-park.net.utah.edu/api/contextaware/v1/location/tags/";
+    private static final String GET_CLIENT_LOCATION_PARK = "mse-park.net.utah.edu/api/contextaware/v1/location/clients/";
+    private static final String GET_CLIENT_LOCATION_EBC = "mse-ebc.net.utah.edu/api/contextaware/v1/location/clients/";
+    private static final String GET_TAG_LOCATION_PARK = "mse-park.net.utah.edu/api/contextaware/v1/location/tags/";
+    private static final String GET_TAG_LOCATION_EBC = "mse-ebc.net.utah.edu/api/contextaware/v1/location/tags/";
     private static final String GET_FLOOR_PLAN = "mse-park.net.utah.edu/api/contextaware/v1/maps/imagesource/";
     private static final String RETURN_TYPE = ".json";
+
+    private static final String UNKNOWN_FLOOR = "The area you are located in is not currently supported";
+
+    private static final int MAX_WIDTH = 2000;
+    private static final int MAX_HEIGHT = 2000;
+
+    private static HashMap<String, Integer> floorMaps;
 
     private static final int bitmap_scale = 2;
 
     private CloseableHttpClient httpClient;
 
     public CiscoLocationDAO(){
+        if (floorMaps == null) {
+            floorMaps = new HashMap<>();
 
+            floorMaps.put("UofU-FtDouglas>0482-102Tower>Level 4", R.drawable.tower_level_4);
+            floorMaps.put("UofU-Hospital>0525-UHOSP>Level 4", R.drawable.uhosp_level_4);
+        }
     }
 
-    private CloseableHttpClient getHttpClient(Context context){
-        if (httpClient == null){
-            BasicCookieStore cookieStore = new BasicCookieStore();
-            httpClient = HttpClients.custom()
-                    .setDefaultCookieStore(cookieStore)
-                    .setSslcontext(CertificateManager.getSSlContext(context, "mse-parknetutahedu.crt"))
-                    .build();
-        }
+    private CloseableHttpClient getHttpClient(Context context, int campus){
+        BasicCookieStore cookieStore = new BasicCookieStore();
+//        if (campus == PARK) {
+//            httpClient = HttpClients.custom()
+//                    .setDefaultCookieStore(cookieStore)
+//                    .setSslcontext(CertificateManager.getSSlContext(context, "mse-parknetutahedu.crt"))
+//                    .build();
+//        }
+//        else {
+//            httpClient = HttpClients.custom()
+//                    .setDefaultCookieStore(cookieStore)
+//                    .setSslcontext(CertificateManager.getSSlContext(context, "mse-ebcnetutahedu.crt"))
+//                    .build();
+//        }
+
+        httpClient = HttpClients.custom()
+                .setDefaultCookieStore(cookieStore)
+                .setSslcontext(CertificateManager.getSSlContext(context, "mse-parknetutahedu.crt"))
+                .build();
+
         return httpClient;
     }
 
@@ -72,17 +102,19 @@ public class CiscoLocationDAO implements LocationDAO {
      * Gets the client location info for a given client.
      *
      * @param ID A mac address, IP address or username.
-     * @return the location information of the client
+     * @param campus Either Park or EBC, depending on the supposed location of the client
+     * @return the location information of the client, or null if an error occurs.
      */
     @Override
-    public ClientLocation getClientLocation(String ID , Context context) throws InvalidResponseException, AccessDeniedException {
-        String request = USER_PASSWORD_PREFIX + GET_CLIENT_LOCATION + ID.trim() + RETURN_TYPE;
+    public ClientLocation getClientLocation(String ID , Context context, int campus) throws InvalidResponseException, AccessDeniedException {
+        String url = (campus == PARK) ? GET_CLIENT_LOCATION_PARK : GET_CLIENT_LOCATION_EBC;
+        String request = USER_PASSWORD_PREFIX + url + ID.trim() + RETURN_TYPE;
         String response = "";
 
         try {
             HttpGetHC4 getRequest = new HttpGetHC4(request);
 
-            CloseableHttpResponse httpResponse = getHttpClient(context).execute(getRequest);
+            CloseableHttpResponse httpResponse = getHttpClient(context, campus).execute(getRequest);
             HttpEntity entity = httpResponse.getEntity();
 
             if (entity != null){
@@ -104,23 +136,23 @@ public class CiscoLocationDAO implements LocationDAO {
                 }
             }
         }
-        catch (AccessDeniedException e){ throw e;}
         catch (Exception e) {
             e.printStackTrace();
-            throw new InvalidResponseException();
+            return null;
         }
 
         return null;
     }
 
-    public TagLocation getTagLocation(String ID, Context context) throws AccessDeniedException, InvalidResponseException{
-        String request = USER_PASSWORD_PREFIX + GET_TAG_LOCATION + ID.trim() + RETURN_TYPE;
+    public TagLocation getTagLocation(String ID, Context context, int campus) throws AccessDeniedException, InvalidResponseException{
+        String url = (campus == PARK) ? GET_TAG_LOCATION_PARK : GET_TAG_LOCATION_EBC;
+        String request = USER_PASSWORD_PREFIX + url + ID.trim() + RETURN_TYPE;
         StringBuilder response = new StringBuilder();
 
         try{
             HttpGetHC4 getRequest = new HttpGetHC4(request);
 
-            CloseableHttpResponse httpResponse = getHttpClient(context).execute(getRequest);
+            CloseableHttpResponse httpResponse = getHttpClient(context, campus).execute(getRequest);
             HttpEntity entity = httpResponse.getEntity();
 
             if (entity != null){
@@ -142,10 +174,9 @@ public class CiscoLocationDAO implements LocationDAO {
                 }
             }
         }
-        catch (AccessDeniedException e) { throw e; }
         catch (Exception e){
             e.printStackTrace();
-            throw new InvalidResponseException();
+            return null;
         }
 
         return null;
@@ -249,9 +280,54 @@ public class CiscoLocationDAO implements LocationDAO {
     }
 
     public void getFloorPlanImage(Context context, String imageName){
-        String url = USER_PASSWORD_PREFIX + GET_FLOOR_PLAN + imageName;
-        GetImageTask task = new GetImageTask(context, url, httpClient);
-        task.execute();
+//        String url = USER_PASSWORD_PREFIX + GET_FLOOR_PLAN + imageName;
+//        GetImageTask task = new GetImageTask(context, url, httpClient);
+//        task.execute();
+
+        if (floorMaps.containsKey(imageName)) {
+            Bitmap map = decodeScaledResource(context.getResources(), floorMaps.get(imageName), MAX_WIDTH, MAX_HEIGHT);
+            LocationController.startActivity(context, map);
+        }
+        else {
+            Toast.makeText(context, UNKNOWN_FLOOR, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private Bitmap decodeScaledResource(Resources res, int resId, int reqWidth, int reqHeight){
+        // First decode just checking dimensions
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+
+        // Calculate the inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+
+        // Decode bitmap with the inSampleSize set now
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeResource(res, resId, options);
+    }
+
+    private int calculateInSampleSize(
+            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) >= reqHeight
+                    && (halfWidth / inSampleSize) >= reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        return inSampleSize;
     }
 
     private static class GetImageTask extends AsyncTask<Void, Void, Bitmap> {

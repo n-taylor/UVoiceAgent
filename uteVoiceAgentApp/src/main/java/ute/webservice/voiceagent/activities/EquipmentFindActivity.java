@@ -39,6 +39,7 @@ import ai.api.model.AIResponse;
 import ai.api.model.Location;
 import ai.api.ui.AIButton;
 import ute.webservice.voiceagent.R;
+import ute.webservice.voiceagent.dao.LocationDAO;
 import ute.webservice.voiceagent.location.ClientLocation;
 import ute.webservice.voiceagent.location.LocationController;
 import ute.webservice.voiceagent.location.MapCoordinate;
@@ -109,6 +110,8 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
 
         };
         timer = new Timer("Timer");
+
+        timer.scheduleAtFixedRate(repeatedTask, timerDelay, timerPeriod);
     }
 
     private void redrawTask()
@@ -116,7 +119,7 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
         ClientLocation location = null;
         try {
 //            location = getLocationDAO().getClientLocation("f8:34:41:bf:ab:ee",this);
-            location = getLocationDAO().getClientLocation(Controller.getMacAddr().toLowerCase(Locale.US), context);
+            location = getLocationDAO().getClientLocation(Controller.getMacAddr().toLowerCase(Locale.US), context, LocationDAO.PARK);
 
         }
         catch (Exception e){
@@ -125,7 +128,6 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
         }
         LocationController.getInstance().setClientLocation(location);
         LocationController.getInstance().findTagLocation("00:12:b8:0d:0a:2b", context);
-
     }
 
 
@@ -202,6 +204,20 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
         super.onResume();
 
         // Start the timer again
+        repeatedTask = new TimerTask() {
+            public void run() {
+                redrawTask();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mImageView.invalidate();
+                    }
+                });
+                // mImageView.invalidate();
+            }
+
+        };
+        timer = new Timer("Timer");
 
         timer.scheduleAtFixedRate(repeatedTask, timerDelay, timerPeriod);
 
@@ -285,7 +301,9 @@ class MapImageView extends AppCompatImageView {
 
     private Bitmap B;
     private Paint clientPaint;
+    private Paint clientHalo;
     private Paint tagPaint;
+    private Paint tagHalo;
 
     public MapImageView(Context context) {
         super(context);
@@ -304,6 +322,10 @@ class MapImageView extends AppCompatImageView {
 
     private static float MIN_ZOOM = 0.1f;
     private static float MAX_ZOOM = 5f;
+
+    private static float DOT_SIZE = 20.0f;
+    private static float HALO_SIZE = 150.0f;
+    private static final int ALPHA = 90;
 
     private float scaleFactor = 1.f;
     private ScaleGestureDetector detector = new ScaleGestureDetector(getContext(), new ScaleListener());
@@ -331,9 +353,19 @@ class MapImageView extends AppCompatImageView {
         clientPaint.setStyle(Paint.Style.FILL);
         clientPaint.setColor(Color.RED);
 
+        clientHalo = new Paint();
+        clientHalo.setStyle(Paint.Style.FILL);
+        clientHalo.setColor(clientPaint.getColor());
+        clientHalo.setAlpha(ALPHA);
+
         tagPaint = new Paint();
         tagPaint.setStyle(Paint.Style.FILL);
         tagPaint.setColor(Color.BLUE);
+
+        tagHalo = new Paint();
+        tagHalo.setStyle(Paint.Style.FILL);
+        tagHalo.setColor(tagPaint.getColor());
+        tagHalo.setAlpha(ALPHA);
     }
 
     @Override
@@ -394,8 +426,8 @@ class MapImageView extends AppCompatImageView {
         float scaledWidth = B.getWidth() *scaleFactor;
         float scaledHeight= B.getHeight() *scaleFactor;
 
-        System.out.println("TX: "+translateX);
-        System.out.println("TX2: "+scaledWidth);
+//        System.out.println("TX: "+translateX);
+//        System.out.println("TX2: "+scaledWidth);
 
         // TEST ------------------------------------------------------------
 
@@ -467,7 +499,8 @@ class MapImageView extends AppCompatImageView {
 
             MapCoordinate userLoc = LocationController.getInstance().getUserLocation();
             if (userLoc != null){
-                drawScaledCircle(canvas, B, userLoc.getX(), userLoc.getY(), 20.0f, clientPaint);
+                drawScaledCircle(canvas, B, userLoc.getX(), userLoc.getY(), DOT_SIZE, clientPaint);
+                //drawScaledCircle(canvas, B, userLoc.getX(), userLoc.getY(), HALO_SIZE, clientHalo);
             }
 
             HashMap<String, TagLocation> tags = LocationController.getInstance().getTagLocations();
@@ -475,7 +508,8 @@ class MapImageView extends AppCompatImageView {
                 TagLocation loc = tags.get(key);
                 if (loc != null && LocationController.getInstance().getImageName().equals(loc.getImageName())){
                     MapCoordinate coordinate = loc.getMapCoordinate();
-                    drawScaledCircle(canvas, B, coordinate.getX(), coordinate.getY(), 20.0f, tagPaint);
+                    drawScaledCircle(canvas, B, coordinate.getX(), coordinate.getY(), DOT_SIZE, tagPaint);
+                    //drawScaledCircle(canvas, B, coordinate.getX(), coordinate.getY(), HALO_SIZE, tagHalo);
                 }
             }
             //canvas.drawCircle(500.0f, 500.0f, 20.0f, paint);

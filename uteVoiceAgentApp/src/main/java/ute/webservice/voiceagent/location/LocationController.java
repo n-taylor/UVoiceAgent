@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import ute.webservice.voiceagent.activities.EquipmentFindActivity;
+import ute.webservice.voiceagent.dao.LocationDAO;
 import ute.webservice.voiceagent.exceptions.AccessDeniedException;
 import ute.webservice.voiceagent.exceptions.InvalidResponseException;
 import ute.webservice.voiceagent.util.Controller;
@@ -140,7 +141,12 @@ public class LocationController extends Controller {
         @Override
         protected TagLocation doInBackground(Void... voids) {
             try {
-                return Controller.getLocationDAO().getTagLocation(id, context);
+                TagLocation location = Controller.getLocationDAO().getTagLocation(id, context, LocationDAO.EBC);
+                if (location != null){
+                    return location;
+                }
+                else
+                    return Controller.getLocationDAO().getTagLocation(id, context, LocationDAO.PARK);
             }
             catch (AccessDeniedException | InvalidResponseException ex) {
                 ex.printStackTrace();
@@ -150,7 +156,8 @@ public class LocationController extends Controller {
 
         @Override
         protected void onPostExecute(TagLocation location){
-            LocationController.getInstance().addTagLocation(location);
+            if (location != null)
+                LocationController.getInstance().addTagLocation(location);
         }
     }
 
