@@ -70,7 +70,7 @@ public class CiscoLocationDAO implements LocationDAO {
             floorMaps = new HashMap<>();
 
             floorMaps.put("UofU-FtDouglas>0482-102Tower>Level 4", R.drawable.tower_level_4);
-            floorMaps.put("UofU-Hospitals>0525-UHOSP>Level 4", R.drawable.uhosp_level_4);
+            floorMaps.put("UofU-Hospital>0525-UHOSP>Level 4", R.drawable.uhosp_level_4);
         }
     }
 

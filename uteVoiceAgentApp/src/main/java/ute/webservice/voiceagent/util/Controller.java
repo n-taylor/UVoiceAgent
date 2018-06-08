@@ -71,6 +71,8 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
     public static final String NOT_A_CURRENT_ASSIGNMENT = "The area requested has no current assignments";
     public static final String PARTIAL_QUERY_MESSAGE = "What do you want to know about ";
     public static final String ON_CALL_LIST_MESSAGE = "For which area are you looking?";
+    private static final String CLIENT_LOCATION_ERROR = "An error occurred while retrieving the device location";
+
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -421,7 +423,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                     LocationController.getInstance().setClientLocation(location);
                 }
                 else {
-                    Toast.makeText(context, getMacAddr(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, CLIENT_LOCATION_ERROR, Toast.LENGTH_SHORT).show();
                 }
             }
         };
