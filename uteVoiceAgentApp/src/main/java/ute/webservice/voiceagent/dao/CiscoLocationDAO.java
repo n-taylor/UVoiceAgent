@@ -334,6 +334,7 @@ public class CiscoLocationDAO implements LocationDAO {
         return inSampleSize;
     }
 
+    /*
     private static class GetImageTask extends AsyncTask<Void, Void, Bitmap> {
 
         private String url;
@@ -390,5 +391,6 @@ public class CiscoLocationDAO implements LocationDAO {
             LocationController.startActivity(context, result);
         }
     }
+    */
 }
 

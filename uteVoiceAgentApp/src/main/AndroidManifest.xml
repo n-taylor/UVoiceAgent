@@ -86,6 +86,7 @@
             android:theme="@style/My_theme" />
         <activity
             android:name=".activities.EquipmentFindActivity"
+            android:noHistory="true"
             android:label="@string/title_activity_equipmentfind"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"

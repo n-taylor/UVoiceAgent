@@ -30,13 +30,45 @@ public class LocationController extends Controller {
 
     private Bitmap bitmap;
 
+    private String currentCategory;
+
     private ClientLocation clientLocation;
     private HashMap<String, TagLocation> tagLocations;
     private HashMap<String, Device> Devices;
 
+    /**
+     * Maps Category Name to a list of MAC addresses of tags belonging to that category.
+     * Each category name much match the name in the EquipmentCategories entity in Dialog Flow.
+     */
+    private static HashMap<String, ArrayList<String>> categories;
+
     private static LocationController instance;
 
-    private LocationController(){}
+    private LocationController(){
+        if (categories == null){
+            categories = new HashMap<>();
+
+            // Create the categories
+            categories.put("Misc", new ArrayList<String>());
+            categories.put("IV Pump", new ArrayList<String>());
+            categories.put("X Ray", new ArrayList<String>());
+            categories.put("MRI", new ArrayList<String>());
+            categories.put("Infusion Pump", new ArrayList<String>());
+            categories.put("CT Scanner", new ArrayList<String>());
+
+            // Populate the categories
+            categories.get("Misc").add("00:12:B8:0D:6B:58");
+            categories.get("IV Pump").add("00:12:B8:0D:68:AD");
+            categories.get("X Ray").add("00:12:B8:0D:68:90");
+            categories.get("X Ray").add("00:12:B8:0D:6C:07");
+            categories.get("MRI").add("00:12:B8:0D:5C:07");
+            categories.get("MRI").add("00:12:B8:0D:21:66");
+            categories.get("Infusion Pump").add("00:12:B8:0D:26:0D");
+            categories.get("Infusion Pump").add("00:12:B8:0D:68:6B");
+            categories.get("Infusion Pump").add("00:12:B8:0D:59:5E");
+            categories.get("CT Scanner").add("00:12:B8:0D:5D:C8");
+        }
+    }
 
 
     public static LocationController getInstance(){
@@ -75,9 +107,10 @@ public class LocationController extends Controller {
      * Updates the location of the tag associated with the given ID.
      * @param id
      * @param context
+     * @param category May be null. Otherwise, the category of the device the tag is attached to
      */
-    public void findTagLocation(String id, Context context){
-        GetTagLocationTask task = new GetTagLocationTask(id, context);
+    public void findTagLocation(String id, Context context, String category){
+        GetTagLocationTask task = new GetTagLocationTask(id, context, category);
         task.execute();
     }
 
@@ -109,13 +142,45 @@ public class LocationController extends Controller {
      * of all the tags associated with the given tag category and displays them if they
      * are located on the same floor as the client.
      *
+     * Assumes that the category exists. If it does not, no tags will be displayed.
+     *
      * @param context used to start a new activity to display the client and tags
      * @param clientMac The mac address of the user (client)
      * @param tagCategory The category of device/tag to retrieve and display
      */
     public void findTags(Context context, String clientMac, String tagCategory){
         clientMac = clientMac.toLowerCase();
+        tagLocations = new HashMap<>(); // clear the tags to display
 
+        // Find the tags
+        if (categoryExists(tagCategory)){
+            currentCategory = tagCategory;
+            for (String tagId : categories.get(tagCategory)){
+                findTagLocation(tagId.toLowerCase(), context, tagCategory);
+            }
+        }
+
+        // Display the client location
+        displayClientLocation(clientMac, context);
+    }
+
+    /**
+     * Updates the locations of all the tags currently in the tagLocations hashmap
+     */
+    public void refreshTagLocations(Context context){
+        for (String tagId : tagLocations.keySet()){
+            findTagLocation(tagId.toLowerCase(), context, currentCategory);
+        }
+    }
+
+    /**
+     * Checks if the given category is a valid tag category.
+     *
+     * @param category The general category of tag (e.g 'IV Pump' or 'X Ray')
+     * @return True if the category exists.
+     */
+    public boolean categoryExists(String category){
+        return categories != null && categories.containsKey(category);
     }
 
     private ArrayList<String> deviceSearchType(String typeToFind){
@@ -198,21 +263,27 @@ public class LocationController extends Controller {
 
         String id;
         Context context;
+        String category;
 
-        GetTagLocationTask(String id, Context context){
+        GetTagLocationTask(String id, Context context, String category){
             this.id = id;
             this.context = context;
+            this.category = category;
         }
 
         @Override
         protected TagLocation doInBackground(Void... voids) {
             try {
                 TagLocation location = Controller.getLocationDAO().getTagLocation(id, context, LocationDAO.EBC);
-                if (location != null){
-                    return location;
+                if (location == null){
+                    location = Controller.getLocationDAO().getTagLocation(id, context, LocationDAO.PARK);
                 }
-                else
-                    return Controller.getLocationDAO().getTagLocation(id, context, LocationDAO.PARK);
+
+                if (location != null){
+                    location.setCategory(category);
+                }
+                return location;
+
             }
             catch (AccessDeniedException | InvalidResponseException ex) {
                 ex.printStackTrace();
