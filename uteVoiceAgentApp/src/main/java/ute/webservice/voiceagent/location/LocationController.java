@@ -1,9 +1,11 @@
 package ute.webservice.voiceagent.location;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,6 +25,8 @@ import ute.webservice.voiceagent.util.Controller;
  */
 
 public class LocationController extends Controller {
+
+    private static final String CLIENT_LOCATION_ERROR = "An error occurred while retrieving the device location";
 
     private Bitmap bitmap;
 
@@ -100,6 +104,19 @@ public class LocationController extends Controller {
         Devices.put(device.getMAC(), device);
     }
 
+    /**
+     * Displays the location of the user on the floor they are located. Also gets the locations
+     * of all the tags associated with the given tag category and displays them if they
+     * are located on the same floor as the client.
+     *
+     * @param context used to start a new activity to display the client and tags
+     * @param clientMac The mac address of the user (client)
+     * @param tagCategory The category of device/tag to retrieve and display
+     */
+    public void findTags(Context context, String clientMac, String tagCategory){
+        clientMac = clientMac.toLowerCase();
+
+    }
 
     private ArrayList<String> deviceSearchType(String typeToFind){
 
@@ -126,6 +143,55 @@ public class LocationController extends Controller {
         if (Devices == null)
             Devices = new HashMap<>();
         return Devices;
+    }
+
+
+    /**
+     * Retrieves the location of the client with the given ID, and displays it in the Equipment find activity
+     * with a map of the floor plan.
+     *
+     * @param id The mac address of the client
+     * @param context used to start a new activity
+     */
+    public static void displayClientLocation(String id, final Context context){
+        @SuppressLint("StaticFieldLeak")
+        AsyncTask<String, Void, ClientLocation> task = new AsyncTask<String, Void, ClientLocation>() {
+            @Override
+            protected ClientLocation doInBackground(String... strings) {
+                ClientLocation location = null;
+                try {
+                    // Try finding the client at the hospital. If it's not there, check research park
+                    location = getLocationDAO().getClientLocation(strings[0], context, LocationDAO.EBC);
+                    if (location == null) {
+                        location = getLocationDAO().getClientLocation(strings[0], context, LocationDAO.PARK);
+                    }
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+                return location;
+            }
+
+            @Override
+            protected void onPostExecute(ClientLocation location){
+                if (location != null) {
+                    float x = location.getMapCoordinate().getX();
+                    float y = location.getMapCoordinate().getY();
+                    String message = "Coordinates: (" + x + ", " + y + ")";
+                    System.out.println(message);
+
+                    Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                    getLocationDAO().displayFloorMap(context, location.getMapHierarchy());
+                    LocationController.getInstance().setClientLocation(location);
+                }
+                else {
+                    Toast.makeText(context, CLIENT_LOCATION_ERROR, Toast.LENGTH_SHORT).show();
+                }
+            }
+        };
+        task.execute(id);
+
+        //openNewActivity(context, EquipmentFindActivity.class);
     }
 
     private static class GetTagLocationTask extends AsyncTask<Void, Void, TagLocation> {

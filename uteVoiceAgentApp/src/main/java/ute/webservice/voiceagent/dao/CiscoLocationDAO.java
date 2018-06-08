@@ -63,8 +63,6 @@ public class CiscoLocationDAO implements LocationDAO {
 
     private static final int bitmap_scale = 2;
 
-    private CloseableHttpClient httpClient;
-
     public CiscoLocationDAO(){
         if (floorMaps == null) {
             floorMaps = new HashMap<>();
@@ -76,23 +74,24 @@ public class CiscoLocationDAO implements LocationDAO {
 
     private CloseableHttpClient getHttpClient(Context context, int campus){
         BasicCookieStore cookieStore = new BasicCookieStore();
-//        if (campus == PARK) {
-//            httpClient = HttpClients.custom()
-//                    .setDefaultCookieStore(cookieStore)
-//                    .setSslcontext(CertificateManager.getSSlContext(context, "mse-parknetutahedu.crt"))
-//                    .build();
-//        }
-//        else {
-//            httpClient = HttpClients.custom()
-//                    .setDefaultCookieStore(cookieStore)
-//                    .setSslcontext(CertificateManager.getSSlContext(context, "mse-ebcnetutahedu.crt"))
-//                    .build();
-//        }
-
-        httpClient = HttpClients.custom()
-                .setDefaultCookieStore(cookieStore)
-                .setSslcontext(CertificateManager.getSSlContext(context, "mse-parknetutahedu.crt"))
-                .build();
+        CloseableHttpClient httpClient;
+        if (campus == PARK) {
+            httpClient = HttpClients.custom()
+                    .setDefaultCookieStore(cookieStore)
+                    .setSslcontext(CertificateManager.getSSlContextByCampus(context, "mse-parknetutahedu.crt", campus))
+                    .build();
+        }
+        else {
+            httpClient = HttpClients.custom()
+                    .setDefaultCookieStore(cookieStore)
+                    .setSslcontext(CertificateManager.getSSlContextByCampus(context, "mse-ebcnetutahedu.crt", campus))
+                    .build();
+        }
+//
+//        httpClient = HttpClients.custom()
+//                .setDefaultCookieStore(cookieStore)
+//                .setSslcontext(CertificateManager.getSSlContext(context, "mse-parknetutahedu.crt"))
+//                .build();
 
         return httpClient;
     }
@@ -279,7 +278,7 @@ public class CiscoLocationDAO implements LocationDAO {
         }
     }
 
-    public void getFloorPlanImage(Context context, String imageName){
+    public void displayFloorMap(Context context, String imageName){
 //        String url = USER_PASSWORD_PREFIX + GET_FLOOR_PLAN + imageName;
 //        GetImageTask task = new GetImageTask(context, url, httpClient);
 //        task.execute();
