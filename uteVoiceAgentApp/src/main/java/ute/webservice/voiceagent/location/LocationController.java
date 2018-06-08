@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 
 import ute.webservice.voiceagent.activities.EquipmentFindActivity;
 import ute.webservice.voiceagent.dao.LocationDAO;
@@ -74,7 +75,18 @@ public class LocationController extends Controller {
      */
     public void findTagLocation(String id, Context context){
         GetTagLocationTask task = new GetTagLocationTask(id, context);
-        task.execute();
+        try {
+            task.execute();
+            task.get();
+        }
+        catch(InterruptedException ie)
+        {
+
+        }
+        catch(ExecutionException ee)
+        {
+
+        }
     }
 
     public void findDeviceInfo(String id, Context context){
@@ -82,7 +94,7 @@ public class LocationController extends Controller {
         Devices = new HashMap<>();
 
         findTagLocation("00:12:b8:0d:6b:58", context);
-       // findTagLocation("00:12:b8:0d:68:ad", context);
+        // findTagLocation("00:12:b8:0d:68:ad", context);
        // findTagLocation("00:12:b8:0d:68:90", context);
        // findTagLocation("00:12:b8:0d:6c:07", context);
        // findTagLocation("00:12:b8:0d:5c:07", context);
@@ -196,10 +208,14 @@ public class LocationController extends Controller {
             try {
                 TagLocation location = Controller.getLocationDAO().getTagLocation(id, context, LocationDAO.EBC);
                 if (location != null){
+                    LocationController.getInstance().addTagLocation(location);
                     return location;
                 }
-                else
-                    return Controller.getLocationDAO().getTagLocation(id, context, LocationDAO.PARK);
+                else{
+                    TagLocation tag = Controller.getLocationDAO().getTagLocation(id, context, LocationDAO.PARK);
+                    LocationController.getInstance().addTagLocation(tag);
+                    return tag;
+                }
             }
             catch (AccessDeniedException | InvalidResponseException ex) {
                 ex.printStackTrace();
@@ -209,8 +225,8 @@ public class LocationController extends Controller {
 
         @Override
         protected void onPostExecute(TagLocation location){
-            if (location != null)
-                LocationController.getInstance().addTagLocation(location);
+            if (location != null){}
+
         }
     }
 
