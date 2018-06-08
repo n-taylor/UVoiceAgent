@@ -71,6 +71,8 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
     public static final String NOT_A_CURRENT_ASSIGNMENT = "The area requested has no current assignments";
     public static final String PARTIAL_QUERY_MESSAGE = "What do you want to know about ";
     public static final String ON_CALL_LIST_MESSAGE = "For which area are you looking?";
+    private static final String CLIENT_LOCATION_ERROR = "An error occurred while retrieving the device location";
+
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -373,7 +375,6 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
 
     /**
      * Call when the equipment finder button gets pressed.
-     * Currently displays the location of Nathan's laptop
      */
     public void onEquipmentFinderButtonPressed(Activity activity, Context context) {
 //        verifyStoragePermissions(activity);
@@ -383,6 +384,13 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         LocationController.getInstance().findTagLocation("00:12:b8:0d:0a:2b", context);
     }
 
+    /**
+     * Retrieves the location of the client with the given ID, and displays it in the Equipment find activity
+     * with a map of the floor plan.
+     *
+     * @param id The mac address of the client
+     * @param context used to start a new activity
+     */
     public static void displayClientLocation(String id, final Context context){
         @SuppressLint("StaticFieldLeak")
         AsyncTask<String, Void, ClientLocation> task = new AsyncTask<String, Void, ClientLocation>() {
@@ -390,7 +398,11 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
             protected ClientLocation doInBackground(String... strings) {
                 ClientLocation location = null;
                 try {
-                    location = getLocationDAO().getClientLocation(strings[0],context);
+                    // Try finding the client at the hospital. If it's not there, check research park
+                    location = getLocationDAO().getClientLocation(strings[0], context, LocationDAO.EBC);
+                    if (location == null) {
+                        location = getLocationDAO().getClientLocation(strings[0], context, LocationDAO.PARK);
+                    }
                 }
                 catch (Exception e){
                     e.printStackTrace();
@@ -407,11 +419,11 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                     System.out.println(message);
 
                     Toast.makeText(context, message, Toast.LENGTH_LONG).show();
-                    getLocationDAO().getFloorPlanImage(context, location.getImageName());
+                    getLocationDAO().getFloorPlanImage(context, location.getMapHierarchy());
                     LocationController.getInstance().setClientLocation(location);
                 }
                 else {
-                    Toast.makeText(context, getMacAddr(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, CLIENT_LOCATION_ERROR, Toast.LENGTH_SHORT).show();
                 }
             }
         };
@@ -431,6 +443,10 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         context.getApplicationContext().startActivity(intent);
     }
 
+    /**
+     *
+     * @return the mac address of the current device. An emulator returns 02:00:00:00:00:00.
+     */
     public static String getMacAddr() {
         try {
             List<NetworkInterface> all = Collections.list(NetworkInterface.getNetworkInterfaces());
