@@ -7,7 +7,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
 import android.widget.ExpandableListView;
@@ -23,9 +22,9 @@ import java.util.List;
 import java.util.Locale;
 
 import ai.api.model.AIResponse;
+import ai.api.model.Location;
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.activities.BaseActivity;
-import ute.webservice.voiceagent.activities.EquipmentFindActivity;
 import ute.webservice.voiceagent.activities.OnCallActivity;
 import ute.webservice.voiceagent.activities.OnCallListActivity;
 import ute.webservice.voiceagent.activities.OpenBedsActivity;
@@ -71,7 +70,6 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
     public static final String NOT_A_CURRENT_ASSIGNMENT = "The area requested has no current assignments";
     public static final String PARTIAL_QUERY_MESSAGE = "What do you want to know about ";
     public static final String ON_CALL_LIST_MESSAGE = "For which area are you looking?";
-    private static final String CLIENT_LOCATION_ERROR = "An error occurred while retrieving the device location";
 
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
@@ -123,6 +121,11 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
             else if (action.equals(Constants.GET_ONCALL)){
                 String OCMID = ParseResult.extractOCMID(reply);
                 displayPhoneNumbers(context, OCMID, query);
+            }
+            else if (action.equals(Constants.FIND_EQUIPMENT)){
+                // Display the client location and location of the tags associated with the category
+                // received from Dialog Flow
+                LocationController.getInstance().findTags(context, getMacAddr(), reply);
             }
             else if (action.equals(Constants.ACTION_UNKNOWN)){
                 String message = "Sorry, '" + query + "' is not a known command";
@@ -380,68 +383,11 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
 //        verifyStoragePermissions(activity);
 
 //        displayClientLocation("f8:34:41:bf:ab:ee", context); // Hardcoded mac address for testing with an emulator
-        displayClientLocation(getMacAddr().toLowerCase(Locale.US), context); // This line for use without an emulator
-        LocationController.getInstance().findTagLocation("00:12:b8:0d:0a:2b", context);
+        LocationController.displayClientLocation(getMacAddr().toLowerCase(Locale.US), context); // This line for use without an emulator
+//        LocationController.getInstance().findTagLocation("00:12:b8:0d:0a:2b", context);
+        LocationController.getInstance().findTagLocation("00:12:b8:0d:68:ad", context);
     }
 
-    /**
-     * Retrieves the location of the client with the given ID, and displays it in the Equipment find activity
-     * with a map of the floor plan.
-     *
-     * @param id The mac address of the client
-     * @param context used to start a new activity
-     */
-    public static void displayClientLocation(String id, final Context context){
-        @SuppressLint("StaticFieldLeak")
-        AsyncTask<String, Void, ClientLocation> task = new AsyncTask<String, Void, ClientLocation>() {
-            @Override
-            protected ClientLocation doInBackground(String... strings) {
-                ClientLocation location = null;
-                try {
-                    // Try finding the client at the hospital. If it's not there, check research park
-                    location = getLocationDAO().getClientLocation(strings[0], context, LocationDAO.EBC);
-                    if (location == null) {
-                        location = getLocationDAO().getClientLocation(strings[0], context, LocationDAO.PARK);
-                    }
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-                }
-                return location;
-            }
-
-            @Override
-            protected void onPostExecute(ClientLocation location){
-                if (location != null) {
-                    float x = location.getMapCoordinate().getX();
-                    float y = location.getMapCoordinate().getY();
-                    String message = "Coordinates: (" + x + ", " + y + ")";
-                    System.out.println(message);
-
-                    Toast.makeText(context, message, Toast.LENGTH_LONG).show();
-                    getLocationDAO().getFloorPlanImage(context, location.getMapHierarchy());
-                    LocationController.getInstance().setClientLocation(location);
-                }
-                else {
-                    Toast.makeText(context, CLIENT_LOCATION_ERROR, Toast.LENGTH_SHORT).show();
-                }
-            }
-        };
-        task.execute(id);
-
-        //openNewActivity(context, EquipmentFindActivity.class);
-    }
-
-    /**
-     * Displays an image in the EquipmentFindActivity
-     * @param context used to open a new activity
-     * @param bitmap the image to display
-     */
-    public static void displayFloorMap(Context context, Bitmap bitmap){
-        Intent intent = new Intent(context, EquipmentFindActivity.class);
-        intent.putExtra(EquipmentFindActivity.BITMAP_KEY, bitmap);
-        context.getApplicationContext().startActivity(intent);
-    }
 
     /**
      *

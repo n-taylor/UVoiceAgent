@@ -38,6 +38,6 @@ public interface LocationDAO {
      */
     TagLocation getTagLocation(String id, Context context, int campus) throws InvalidResponseException, AccessDeniedException;
 
-    void getFloorPlanImage(Context context, String imageName);
+    void displayFloorMap(Context context, String imageName);
 
 }
