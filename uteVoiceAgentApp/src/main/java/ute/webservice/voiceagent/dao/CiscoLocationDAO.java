@@ -284,13 +284,18 @@ public class CiscoLocationDAO implements LocationDAO {
 //        GetImageTask task = new GetImageTask(context, url, httpClient);
 //        task.execute();
 
-        if (floorMaps.containsKey(imageName)) {
-            Bitmap map = decodeScaledResource(context.getResources(), floorMaps.get(imageName), MAX_WIDTH, MAX_HEIGHT);
-            LocationController.startActivity(context, map);
-        }
-        else {
-            Toast.makeText(context, UNKNOWN_FLOOR, Toast.LENGTH_LONG).show();
-        }
+//        if (floorMaps.containsKey(imageName)) {
+//            Bitmap map = decodeScaledResource(context.getResources(), floorMaps.get(imageName), MAX_WIDTH, MAX_HEIGHT);
+//            LocationController.startActivity(context, map);
+//        }
+//        else {
+//            Toast.makeText(context, UNKNOWN_FLOOR, Toast.LENGTH_LONG).show();
+//        }
+
+        // For testing purposes, just load the U Hospital Map
+        Bitmap map = decodeScaledResource(context.getResources(), R.drawable.uhosp_level_4, MAX_WIDTH, MAX_HEIGHT);
+        LocationController.startActivity(context, map);
+
     }
 
     private Bitmap decodeScaledResource(Resources res, int resId, int reqWidth, int reqHeight){

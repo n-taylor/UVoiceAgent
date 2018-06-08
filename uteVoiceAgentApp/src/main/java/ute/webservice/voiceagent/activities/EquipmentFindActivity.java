@@ -61,8 +61,6 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
 
     private static final String TAG = EquipmentFindActivity.class.toString();
 
-    public static final String BITMAP_KEY = "bitmap";
-
     private AIButton aiButton;
     private String accountID;
 
