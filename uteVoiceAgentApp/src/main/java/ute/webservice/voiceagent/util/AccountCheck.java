@@ -130,7 +130,6 @@ public class AccountCheck {
             JSON_STRING+= Constants.USER +":\""+param[0]+"\",";
             JSON_STRING+= Constants.PASSWORD +":\""+param[1]+"\"}";
             StringEntity params= new StringEntity(JSON_STRING);
-            Log.d(TAG,JSON_STRING);
 
             httpPost.setEntity(params);
             httpPost.setHeader("Accept", "application/json");
