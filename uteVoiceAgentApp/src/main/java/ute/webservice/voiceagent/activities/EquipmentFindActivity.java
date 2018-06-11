@@ -330,8 +330,8 @@ class MapImageView extends AppCompatImageView {
     private static float MIN_ZOOM = 0.1f;
     private static float MAX_ZOOM = 5f;
 
-    private static final int TAG_HEIGHT = 120;
-    private static final int TAG_WIDTH = 360;
+    private static final int TAG_HEIGHT = 80;
+    private static final int TAG_WIDTH = 240;
     private static final int TAG_x_OFFSET = 30;
     private static final int TAG_Y_OFFSET = 10;
 
@@ -514,12 +514,12 @@ class MapImageView extends AppCompatImageView {
             MapCoordinate userLoc = LocationController.getInstance().getUserLocation();
             MapDimension dimension = LocationController.getInstance().getDimensions();
 
-            if (userLoc != null){
-                float posX = getScaledPosX(userLoc.getX(), dimension.getWidth(), B);
-                float posY = getScaledPosY(userLoc.getY(), dimension.getLength(), B);
-                drawScaledCircle(canvas, B, posX, posY, DOT_SIZE, clientPaint);
-                drawScaledCircle(canvas, B, posX, posY, HALO_SIZE, clientHalo);
-            }
+//            if (userLoc != null){
+//                float posX = getScaledPosX(userLoc.getX(), dimension.getWidth(), B);
+//                float posY = getScaledPosY(userLoc.getY(), dimension.getLength(), B);
+//                drawScaledCircle(canvas, B, posX, posY, DOT_SIZE, clientPaint);
+//                drawScaledCircle(canvas, B, posX, posY, HALO_SIZE, clientHalo);
+//            }
 
             HashMap<String, TagLocation> tags = LocationController.getInstance().getTagLocations();
             for (String key : tags.keySet()){

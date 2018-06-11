@@ -292,9 +292,17 @@ public class CiscoLocationDAO implements LocationDAO {
 //        }
 
         // For testing purposes, just load the U Hospital Map
+//        try {
+//            Bitmap map = decodeScaledResource(context.getResources(), R.drawable.uhosp_level_4, MAX_WIDTH, MAX_HEIGHT);
+//            LocationController.startActivity(context, map);
+//        }
+//        catch(Exception e){
+//            e.printStackTrace();
+//            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+//        }
+
         try {
-            Bitmap map = decodeScaledResource(context.getResources(), R.drawable.uhosp_level_4, MAX_WIDTH, MAX_HEIGHT);
-            LocationController.startActivity(context, map);
+            LocationController.startActivity(context, imageName);
         }
         catch(Exception e){
             e.printStackTrace();
