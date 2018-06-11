@@ -193,7 +193,10 @@ public class LocationController extends Controller {
      */
     public Bitmap getImage(){
         // For testing purposes, right not just show the burn unit
-        return floorMaps.get("UofU-Hospital>0525-UHOSP>Level 4");
+
+        currentMapName="UofU-Hospital>0525-UHOSP>Level 4";
+
+        return floorMaps.get(currentMapName);
 
         //return floorMaps.get(currentMapName);
     }
@@ -211,6 +214,8 @@ public class LocationController extends Controller {
     public MapDimension getDimensions(){
         return clientLocation.getMapDimension();
     }
+
+    public String getCurrentMapName() {return  currentMapName;}
 
     public Bitmap getTagImage(Context context){
         if (tagBitmap == null){

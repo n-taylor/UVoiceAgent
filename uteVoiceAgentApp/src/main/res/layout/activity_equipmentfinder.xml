@@ -40,7 +40,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:paddingBottom="10dp"
-        tools:ignore="RtlHardcoded">
+        tools:ignore="RtlHardcoded"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="20dp">
 
         <ai.api.ui.AIButton
             android:id="@+id/micButton"
@@ -50,6 +53,21 @@
 
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/BuildingLabel"
+            android:text="Hospital"
+            android:textSize="20dp"
+            android:layout_alignParentLeft="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/FloorLabel"
+            android:text="Floor 4"
+            android:textSize="20dp"
+            android:layout_alignParentRight="true"/>
 
         <Button
             android:id="@+id/cancelButton"
