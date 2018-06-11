@@ -24,6 +24,8 @@ public class TagLocation {
         private boolean currentlyTracked;
         private String macAddress;
 
+        private String category;
+
         /**
          * It is recommended that a ClientLocation be set using a ClientLocationBuilder object.
          */
@@ -75,4 +77,12 @@ public class TagLocation {
         public String getMacAddress() {
             return macAddress;
         }
+
+        public void setCategory(String category) { this.category = category; }
+
+    /**
+     * May be null.
+     * @return Returns the category of the device the tag is attached to, if it has one
+     */
+    public String getCategory() { return this.category; }
     }

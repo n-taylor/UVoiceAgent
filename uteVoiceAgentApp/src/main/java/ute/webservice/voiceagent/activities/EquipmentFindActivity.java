@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.wifi.WifiInfo;
@@ -127,7 +128,7 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
 
         }
         LocationController.getInstance().setClientLocation(location);
-        LocationController.getInstance().findTagLocation("00:12:b8:0d:0a:2b", context);
+//        LocationController.getInstance().findTagLocation("00:12:b8:0d:0a:2b", context);
     }
 
 
@@ -297,6 +298,9 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
 
 class MapImageView extends AppCompatImageView {
 
+    private static final String  DEFAULT_TAG_LABEL = "Tag";
+    private static final int TAG_ID = R.drawable.tag_2;
+
     private boolean beginning = true;
 
     private Bitmap B;
@@ -323,9 +327,15 @@ class MapImageView extends AppCompatImageView {
     private static float MIN_ZOOM = 0.1f;
     private static float MAX_ZOOM = 5f;
 
+    private static final int TAG_HEIGHT = 120;
+    private static final int TAG_WIDTH = 360;
+    private static final int TAG_x_OFFSET = 30;
+    private static final int TAG_Y_OFFSET = 10;
+
     private static float DOT_SIZE = 20.0f;
     private static float HALO_SIZE = 150.0f;
     private static final int ALPHA = 90;
+    private static final float TEXT_SIZE = 40f;
 
     private float scaleFactor = 1.f;
     private ScaleGestureDetector detector = new ScaleGestureDetector(getContext(), new ScaleListener());
@@ -351,7 +361,7 @@ class MapImageView extends AppCompatImageView {
 
         clientPaint = new Paint();
         clientPaint.setStyle(Paint.Style.FILL);
-        clientPaint.setColor(Color.RED);
+        clientPaint.setColor(Color.BLUE);
 
         clientHalo = new Paint();
         clientHalo.setStyle(Paint.Style.FILL);
@@ -360,7 +370,8 @@ class MapImageView extends AppCompatImageView {
 
         tagPaint = new Paint();
         tagPaint.setStyle(Paint.Style.FILL);
-        tagPaint.setColor(Color.BLUE);
+        tagPaint.setColor(Color.BLACK);
+        tagPaint.setTextSize(TEXT_SIZE);
 
         tagHalo = new Paint();
         tagHalo.setStyle(Paint.Style.FILL);
@@ -498,9 +509,13 @@ class MapImageView extends AppCompatImageView {
             canvas.drawBitmap(B, 0, 0, null);
 
             MapCoordinate userLoc = LocationController.getInstance().getUserLocation();
+            MapDimension dimension = LocationController.getInstance().getDimensions();
+
             if (userLoc != null){
-                drawScaledCircle(canvas, B, userLoc.getX(), userLoc.getY(), DOT_SIZE, clientPaint);
-                //drawScaledCircle(canvas, B, userLoc.getX(), userLoc.getY(), HALO_SIZE, clientHalo);
+                float posX = getScaledPosX(userLoc.getX(), dimension.getWidth(), B);
+                float posY = getScaledPosY(userLoc.getY(), dimension.getLength(), B);
+                drawScaledCircle(canvas, B, posX, posY, DOT_SIZE, clientPaint);
+                drawScaledCircle(canvas, B, posX, posY, HALO_SIZE, clientHalo);
             }
 
 
@@ -512,7 +527,18 @@ class MapImageView extends AppCompatImageView {
             for (TagLocation loc : tags ){
                 if (loc != null){// && LocationController.getInstance().getImageName().equals(loc.getImageName())){
                     MapCoordinate coordinate = loc.getMapCoordinate();
-                    drawScaledCircle(canvas, B, coordinate.getX(), coordinate.getY(), DOT_SIZE, tagPaint);
+                    float posX = getScaledPosX(coordinate.getX(), 455.0f, B); // Use the dimensions of burn unit floor for testing
+                    float posY = getScaledPosY(coordinate.getY(), 324.1f, B); // testing hard-coded floor dimensions
+//                    float posX = getScaledPosX(coordinate.getX(), dimension.getWidth(), B);
+//                    float posY = getScaledPosY(coordinate.getY(), dimension.getLength(), B);
+
+                    String label = loc.getCategory();
+                    if (label == null)
+                        label = DEFAULT_TAG_LABEL;
+
+                    drawTag(canvas, posX, posY, label, tagPaint);
+
+//                    drawScaledCircle(canvas, B, coordinate.getX(), coordinate.getY(), DOT_SIZE, tagPaint);
                     //drawScaledCircle(canvas, B, coordinate.getX(), coordinate.getY(), HALO_SIZE, tagHalo);
                 }
             }
@@ -533,22 +559,30 @@ class MapImageView extends AppCompatImageView {
         }
     }
 
+    private float getScaledPosY(float posY, float floorHeight, Bitmap image){
+        float ratio = posY / floorHeight;
+        return image.getHeight() * ratio;
+    }
+
+    private float getScaledPosX(float posX, float floorWidth, Bitmap image){
+        float ratio = posX / floorWidth;
+        return image.getWidth() * ratio;
+    }
+
     private void drawScaledCircle(Canvas canvas, Bitmap image, float x, float y, float radius, Paint paint){
-        // Get the dimensions of the floor map
-        MapDimension dimension = LocationController.getInstance().getDimensions();
-        float mapWidth = dimension.getWidth();
-        float mapHeight = dimension.getLength();
-
-        // Determine position ratios
-        float ratX = x / mapWidth;
-        float ratY = y / mapHeight;
-
-        // Convert to position relative to the view size
-        float posX = image.getWidth() * ratX;
-        float posY = image.getHeight() * ratY;
 
         // Draw the dot
-        canvas.drawCircle(posX, posY, radius, paint);
+        canvas.drawCircle(x, y, radius, paint);
+    }
+
+    private void drawTag(Canvas canvas, float x, float y, String label, Paint paint){
+        // Determine the rectangle in which to draw the bitmap
+        Rect rect = new Rect((int)x, (int)(y - (TAG_HEIGHT/2)), (int)(x + TAG_WIDTH), (int)(y + (TAG_HEIGHT/2)));
+        // Create the bitmap
+        Bitmap tag = BitmapFactory.decodeResource(getResources(), TAG_ID);
+        // Draw the image
+        canvas.drawBitmap(tag, null, rect, null);
+        canvas.drawText(label, x + (TAG_WIDTH/4), y + TAG_Y_OFFSET, paint);
     }
 }
 
