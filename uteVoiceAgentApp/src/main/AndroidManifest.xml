@@ -32,16 +32,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.AISettingsActivity"
-            android:label="@string/action_settings"
-            android:parentActivityName=".activities.LoginActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/My_theme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="ute.webservice.voiceagent.activities.LoginActivity" />
-        </activity>
-        <activity
             android:name=".activities.WelcomeActivity"
             android:label="@string/title_welcome_activity"
             android:parentActivityName=".activities.LoginActivity"
