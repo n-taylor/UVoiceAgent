@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -12,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.activities.EquipmentFindActivity;
 import ute.webservice.voiceagent.dao.LocationDAO;
 import ute.webservice.voiceagent.exceptions.AccessDeniedException;
@@ -28,7 +30,10 @@ public class LocationController extends Controller {
 
     private static final String CLIENT_LOCATION_ERROR = "An error occurred while retrieving the device location";
 
+    private static final int TAG_ID = R.drawable.tag_2;
+
     private Bitmap bitmap;
+    private Bitmap tagBitmap;
 
     private String currentCategory;
 
@@ -53,7 +58,7 @@ public class LocationController extends Controller {
             categories.put("IV Pump", new ArrayList<String>());
             categories.put("X Ray", new ArrayList<String>());
             categories.put("MRI", new ArrayList<String>());
-            categories.put("Infusion Pump", new ArrayList<String>());
+            categories.put("Dialysis", new ArrayList<String>());
             categories.put("CT Scanner", new ArrayList<String>());
 
             // Populate the categories
@@ -63,9 +68,9 @@ public class LocationController extends Controller {
             categories.get("X Ray").add("00:12:B8:0D:6C:07");
             categories.get("MRI").add("00:12:B8:0D:5C:07");
             categories.get("MRI").add("00:12:B8:0D:21:66");
-            categories.get("Infusion Pump").add("00:12:B8:0D:26:0D");
-            categories.get("Infusion Pump").add("00:12:B8:0D:68:6B");
-            categories.get("Infusion Pump").add("00:12:B8:0D:59:5E");
+            categories.get("Dialysis").add("00:12:B8:0D:26:0D");
+            categories.get("Dialysis").add("00:12:B8:0D:68:6B");
+            categories.get("Dialysis").add("00:12:B8:0D:59:5E");
             categories.get("CT Scanner").add("00:12:B8:0D:5D:C8");
         }
     }
@@ -101,6 +106,25 @@ public class LocationController extends Controller {
 
     public MapDimension getDimensions(){
         return clientLocation.getMapDimension();
+    }
+
+    public Bitmap getTagImage(Context context){
+        if (tagBitmap == null){
+            tagBitmap = BitmapFactory.decodeResource(context.getResources(), TAG_ID);
+        }
+        return tagBitmap;
+    }
+
+    public void recycleImages(){
+        if (tagBitmap != null) {
+            tagBitmap.recycle();
+            tagBitmap = null;
+        }
+
+        if (bitmap != null) {
+            bitmap.recycle();
+            bitmap = null;
+        }
     }
 
     /**

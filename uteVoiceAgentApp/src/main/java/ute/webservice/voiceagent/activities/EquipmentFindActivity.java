@@ -276,6 +276,12 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
     }
 
     @Override
+    public void onDestroy(){
+        //LocationController.getInstance().recycleImages();
+        super.onDestroy();
+    }
+
+    @Override
     public boolean onTouchEvent(MotionEvent motionEvent) {
         mScaleGestureDetector.onTouchEvent(motionEvent);
         return true;
@@ -297,7 +303,6 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
 class MapImageView extends AppCompatImageView {
 
     private static final String  DEFAULT_TAG_LABEL = "Tag";
-    private static final int TAG_ID = R.drawable.tag_2;
 
     private boolean beginning = true;
 
@@ -502,7 +507,7 @@ class MapImageView extends AppCompatImageView {
         //Drawable d = getResources().getDrawable(R.drawable.testfloor);
         //Bitmap B = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.testfloor);
 
-        if (B != null) {
+        if (B != null && !B.isRecycled()) {
 
             canvas.drawBitmap(B, 0, 0, null);
 
@@ -574,9 +579,8 @@ class MapImageView extends AppCompatImageView {
         // Determine the rectangle in which to draw the bitmap
         Rect rect = new Rect((int)x, (int)(y - (TAG_HEIGHT/2)), (int)(x + TAG_WIDTH), (int)(y + (TAG_HEIGHT/2)));
         // Create the bitmap
-        Bitmap tag = BitmapFactory.decodeResource(getResources(), TAG_ID);
         // Draw the image
-        canvas.drawBitmap(tag, null, rect, null);
+        canvas.drawBitmap(LocationController.getInstance().getTagImage(getContext()), null, rect, null);
         canvas.drawText(label, x + (TAG_WIDTH/4), y + TAG_Y_OFFSET, paint);
     }
 }
