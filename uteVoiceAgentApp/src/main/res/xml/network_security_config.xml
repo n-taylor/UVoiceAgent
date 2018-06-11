@@ -3,9 +3,5 @@
     <domain-config>
         <domain includeSubdomains="true">mse-ebc.net.utah.edu</domain>
         <domain includeSubdomains="true">mse-park.net.utah.edu</domain>
-        <trust-anchors>
-            <certificates src="@+raw/my_ca"/>
-
-        </trust-anchors>
     </domain-config>
 </network-security-config>
