@@ -510,7 +510,7 @@ class MapImageView extends AppCompatImageView {
 
             ArrayList<TagLocation> tags = LocationController.getInstance().deviceSearchLocations(deviceTypeMAC);
             for (TagLocation loc : tags ){
-                if (loc != null && LocationController.getInstance().getImageName().equals(loc.getImageName())){
+                if (loc != null){// && LocationController.getInstance().getImageName().equals(loc.getImageName())){
                     MapCoordinate coordinate = loc.getMapCoordinate();
                     drawScaledCircle(canvas, B, coordinate.getX(), coordinate.getY(), DOT_SIZE, tagPaint);
                     //drawScaledCircle(canvas, B, coordinate.getX(), coordinate.getY(), HALO_SIZE, tagHalo);
