@@ -26,8 +26,12 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -111,6 +115,21 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
         timer = new Timer("Timer");
 
         timer.scheduleAtFixedRate(repeatedTask, timerDelay, timerPeriod);
+
+
+        String mapLabel = LocationController.getInstance().getCurrentMapName();
+
+        String[] heirchy = mapLabel.split(">");
+
+
+
+        TextView BuildingLabel = (TextView) findViewById(R.id.BuildingLabel);
+
+        TextView FloorLabel = (TextView) findViewById(R.id.FloorLabel);
+
+        BuildingLabel.setText(heirchy[0]);
+        FloorLabel.setText(heirchy[2]);
+
     }
 
     private void redrawTask()
@@ -521,7 +540,12 @@ class MapImageView extends AppCompatImageView {
 //                drawScaledCircle(canvas, B, posX, posY, HALO_SIZE, clientHalo);
 //            }
 
+
+
+
+
             HashMap<String, TagLocation> tags = LocationController.getInstance().getTagLocations();
+
             for (String key : tags.keySet()){
                 TagLocation loc = tags.get(key);
                 if (loc != null) {// && LocationController.getInstance().getImageName().equals(loc.getImageName())){
@@ -531,6 +555,8 @@ class MapImageView extends AppCompatImageView {
                     float posY = getScaledPosY(coordinate.getY(), 324.1f, B); // testing hard-coded floor dimensions
 //                    float posX = getScaledPosX(coordinate.getX(), dimension.getWidth(), B);
 //                    float posY = getScaledPosY(coordinate.getY(), dimension.getLength(), B);
+
+
 
                     String label = loc.getCategory();
                     if (label == null)
