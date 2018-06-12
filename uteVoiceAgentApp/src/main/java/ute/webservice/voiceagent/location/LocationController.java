@@ -39,6 +39,9 @@ public class LocationController extends Controller {
     private static final int MAX_IMAGE_WIDTH = 1200;
     private static final int MAX_IMAGE_HEIGHT = 1200;
 
+    private static final int MAX_TAG_WIDTH = 30;
+    private static final int MAX_TAG_HEIGHT = 20;
+
     private HashMap<String, Bitmap> floorMaps;
 
     private String currentMapName = "";
@@ -219,21 +222,10 @@ public class LocationController extends Controller {
 
     public Bitmap getTagImage(Context context){
         if (tagBitmap == null){
-            tagBitmap = BitmapFactory.decodeResource(context.getResources(), TAG_ID);
+            tagBitmap = decodeScaledResource(context.getResources(), TAG_ID, MAX_TAG_WIDTH, MAX_TAG_HEIGHT);
+//            tagBitmap = BitmapFactory.decodeResource(context.getResources(), TAG_ID);
         }
         return tagBitmap;
-    }
-
-    public void recycleImages(){
-        if (tagBitmap != null) {
-            tagBitmap.recycle();
-            tagBitmap = null;
-        }
-
-        if (bitmap != null) {
-            bitmap.recycle();
-            bitmap = null;
-        }
     }
 
     /**
