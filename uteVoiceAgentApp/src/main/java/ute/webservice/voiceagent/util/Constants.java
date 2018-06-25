@@ -22,20 +22,22 @@ public final class Constants {
 
     public final static String USER="\"username\"";
     public final static String PASSWORD = "\"password\"";
+    public final static String CODE = "\"code\"";
+
     public final static String ACCESS_DENIED = "Access Denied";
     public final static int ACCESS_DENIED_INT = -999;
     public final static String SESSION_EXPIRED_MESSAGE = "Your session has expired. PLease log out and then log in again.";
-    public final static String AUTHENTIC_LINK = "https://clinweb.med.utah.edu/pricing-transparency-api/auth/login";
+    public final static String AUTHENTIC_LINK = "https://10.0.2.2:8042/login";
     public final static String AUTHENTIC_LINK_LOGOUT = "https://clinweb.med.utah.edu/pricing-transparency-api/auth/logout";
 
     public final static String CLINWEB_PRICE_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/pricing/get/";
 
-    public final static String CLINWEB_SURGERY_CATEGORIES_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/pricing/getCategories";
-    public final static String CLINWEB_SURGERY_CODES_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/pricing/getBySearchParams";
-    public final static String CLINWEB_SURGERY_COST_BY_CODE_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/pricing/getCost";
+    public final static String CLINWEB_SURGERY_CATEGORIES_QUERY = "https://10.0.2.2:8042/procedures/allCategories";
+    public final static String CLINWEB_SURGERY_CODES_QUERY = "https://10.0.2.2:8042/procedures/codes";
+    public final static String CLINWEB_SURGERY_COST_BY_CODE_QUERY = "https://10.0.2.2:8042/procedures/cost";
 
-    public final static String CLINWEB_CENSUS_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/census/getCensus";
-    public final static String CLINWEB_CENSUS_SPECFIC_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/census/getCensusByUnit/";
+    public final static String CLINWEB_CENSUS_QUERY = "https://10.0.2.2:8042/bedCensus/all";
+    public final static String CLINWEB_CENSUS_SPECFIC_QUERY = "https://10.0.2.2:8042/bedCensus/unit/";
 
     public final static String GET_SURGERY_COST = "getSurgeryCost";
     public final static String GET_CENSUS = "getCensus";

@@ -86,9 +86,9 @@ public class ProcedureJsonRetrieveTask extends AsyncTask<String, Void, String> {
             String category = (strings.length > 0) ? strings[0] : "";
             String subCategory = (strings.length > 1) ? strings[1] : "";
             String extremity = (strings.length > 2) ? strings[2] : "";
-            String queryString = Constants.CLINWEB_SURGERY_CODES_QUERY + ((!category.isEmpty()) ? "/" + category : "");
-            queryString += ((!subCategory.isEmpty()) ? "/" + subCategory : "");
-            queryString += ((!extremity.isEmpty()) ? "/" + extremity : "");
+            String queryString = Constants.CLINWEB_SURGERY_CODES_QUERY + ((!category.isEmpty()) ? "?category=" + category : "");
+            queryString += ((!subCategory.isEmpty()) ? "&subCategory=" + subCategory : "");
+            queryString += ((!extremity.isEmpty()) ? "&extremity=" + extremity : "");
             queryString = queryString.replace(" ", "%20");
 
             HttpGetHC4 getRequest = new HttpGetHC4(queryString);

@@ -301,59 +301,12 @@ public class DataAsked {
      * @return
      * @throws IOException
      */
-    public String getTestReply() throws IOException {
-
-        String responseString="";
-        try {
-            HttpPostHC4 httpPost = new HttpPostHC4(Constants.CLINWEB_CENSUS_QUERY);
-            //Prepare Parameters
-            //String  JSON_STRING = "{\"questionType\":\"price\",\"surgery\":\"hernia repair surgery\"}";
-            String  JSON_STRING = "{\"unit\":\"2EAST\",\"surgery\":\"hernia repair surgery\"}";
-
-            StringEntity params= new StringEntity(JSON_STRING);
-            Log.d(TAG,JSON_STRING);
-
-            httpPost.setEntity(params);
-            httpPost.setHeader("Accept", "application/json");
-            httpPost.setHeader("Content-Type", "application/json;charset=UTF-8");
-            try {
-                CloseableHttpResponse response3 = AccountCheck.httpclient.execute(httpPost);
-                HttpEntity entity = response3.getEntity();
-                if (entity != null) {
-                    BufferedReader rdSrch = new BufferedReader(
-                            new InputStreamReader(response3.getEntity().getContent()));
-
-                    String  lineSrch;
-                    while ((lineSrch = rdSrch.readLine()) != null) {
-                        Log.d(TAG, lineSrch);
-                        responseString+=lineSrch;
-                    }
-                    if(responseString.equals(Constants.ACCESS_DENIED)){
-                        responseString = "You are not allowed to access.";
-                    }
-                    else{
-                        responseString = "The average cost of hernia repair surgery is $"+responseString+".";
-                    }
-
-                }
-
-            } catch(Exception e){
-                e.printStackTrace();
-            }
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        this.clear_params();
-        return responseString;
-    }
-
 
     public String  getAllBedCensus() throws IOException {
 
         String responseString = "";
 
         try {
-
             HttpGetHC4 getRequest = new HttpGetHC4(Constants.CLINWEB_CENSUS_QUERY);
             CloseableHttpResponse response3 = AccountCheck.httpclient.execute(getRequest);
             HttpEntity entity = response3.getEntity();

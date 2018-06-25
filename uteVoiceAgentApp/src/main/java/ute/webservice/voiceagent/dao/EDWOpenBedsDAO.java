@@ -25,8 +25,8 @@ public class EDWOpenBedsDAO implements OpenBedsDAO {
     public final static String TAG = EDWOpenBedsDAO.class.getName();
 
     // Open Beds constants
-    public final static String CLINWEB_ALL_OPEN_BEDS_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/census/getCensus";
-    public final static String CLINWEB_OPEN_BEDS_SPECFIC_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/census/getCensusByUnit/";
+    public final static String CLINWEB_ALL_OPEN_BEDS_QUERY = "https://10.0.2.2:8042/bedCensus/all";
+    public final static String CLINWEB_OPEN_BEDS_SPECFIC_QUERY = "https://10.0.2.2:8042/bedCensus/unit/";
 
     private static ArrayList<String> unitNames;
     private static HashMap<String, ArrayList<String>> unitCategories;

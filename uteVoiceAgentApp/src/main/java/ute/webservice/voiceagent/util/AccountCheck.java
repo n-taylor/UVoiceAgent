@@ -14,7 +14,15 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 
@@ -118,12 +126,14 @@ public class AccountCheck {
         BasicCookieStore cookieStore = new BasicCookieStore();
          httpclient = HttpClients.custom()
                 .setDefaultCookieStore(cookieStore)
-//                .setSslcontext(CertificateManager.getSSlContext(activity, "ca.cer"))
+               .setSslcontext(CertificateManager.getSSlContext(activity, "emulator.crt"))
                 .build();
         //System.out.println("set SSL ");
         String responseString="";
         boolean loginSucceed = false;
         try {
+
+
             HttpPostHC4 httpPost = new HttpPostHC4(Constants.AUTHENTIC_LINK);
             //Prepare Parameters
             String  JSON_STRING = "{";
@@ -140,9 +150,9 @@ public class AccountCheck {
                 HttpEntity entity = response3.getEntity();
                 String json = EntityUtils.toString(entity, "UTF-8");
                 JSONObject myObject = new JSONObject(json);
-                String s = myObject.get("authenticated").toString();
+             int statusCode  = response3.getStatusLine().getStatusCode();
 
-                    if(s.equals("true")){
+                    if(statusCode == 200){
 
                         loginSucceed = true;
                         setAccountID(param[0]);

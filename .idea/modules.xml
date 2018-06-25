@@ -3,11 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/UVoiceAgent.iml" filepath="$PROJECT_DIR$/UVoiceAgent.iml" />
-      <module fileurl="file://C:\Clone\UVoiceAgent\UVoiceAgent.iml" filepath="C:\Clone\UVoiceAgent\UVoiceAgent.iml" />
       <module fileurl="file://$PROJECT_DIR$/ailib/ailib.iml" filepath="$PROJECT_DIR$/ailib/ailib.iml" />
-      <module fileurl="file://C:\Clone\UVoiceAgent\ailib\ailib.iml" filepath="C:\Clone\UVoiceAgent\ailib\ailib.iml" />
       <module fileurl="file://$PROJECT_DIR$/uteVoiceAgentApp/uteVoiceAgentApp.iml" filepath="$PROJECT_DIR$/uteVoiceAgentApp/uteVoiceAgentApp.iml" />
-      <module fileurl="file://C:\Clone\UVoiceAgent\uteVoiceAgentApp\uteVoiceAgentApp.iml" filepath="C:\Clone\UVoiceAgent\uteVoiceAgentApp\uteVoiceAgentApp.iml" />
     </modules>
   </component>
 </project>

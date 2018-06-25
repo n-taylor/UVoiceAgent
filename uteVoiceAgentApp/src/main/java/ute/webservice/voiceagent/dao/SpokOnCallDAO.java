@@ -1,19 +1,37 @@
 package ute.webservice.voiceagent.dao;
 
 import android.content.Context;
+import android.util.Log;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGetHC4;
+import org.apache.http.client.methods.HttpPostHC4;
+import org.apache.http.cookie.Cookie;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.BasicCookieStore;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringReader;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 import ute.webservice.voiceagent.oncall.util.SpokParser;
+import ute.webservice.voiceagent.openbeds.RoomStatus;
+import ute.webservice.voiceagent.util.AccountCheck;
+import ute.webservice.voiceagent.util.CertificateManager;
+import ute.webservice.voiceagent.util.Constants;
 import ute.webservice.voiceagent.util.ParseResult;
 
 /**
@@ -76,36 +94,58 @@ public class SpokOnCallDAO implements OnCallDAO {
 
             for (String mid : mids.keySet()) {
 
-                Socket socket = new Socket(IPAddress, 9720);
+                HttpPostHC4 postRequest = new HttpPostHC4("https://10.0.2.2:8042/onCall/getNumbers");
 
-                socket.setSoTimeout(timeout);
+                String  JSON_STRING = "{";
+                JSON_STRING+= Constants.CODE +":\""+mid+"\"}";
+                StringEntity params= new StringEntity(JSON_STRING);
 
-                // Create the XML string to send
-                String toRead = ParseResult.getPhoneNumberCall(mid);
-                BufferedReader reader = new BufferedReader(new StringReader(toRead));
-                String line;
-                StringBuilder stringBuilder = new StringBuilder();
-                while ((line = reader.readLine()) != null) {
-                    stringBuilder.append(line);
+                postRequest.setEntity(params);
+                postRequest.setHeader("Accept", "application/json");
+                postRequest.setHeader("Content-Type", "application/json;charset=UTF-8");
+
+
+
+                CloseableHttpResponse response3 = AccountCheck.httpclient.execute(postRequest);
+                HttpEntity entity = response3.getEntity();
+
+                String json = EntityUtils.toString(entity, "UTF-8");
+                JSONObject myObject = new JSONObject(json);
+                String responseString = "";
+
+                String myObjectString = myObject.getString("numbers");
+
+                String arrays[] = myObjectString.split("\\|");
+
+                ArrayList<String> phoneNumbers = new ArrayList<>();
+
+                for (String number : arrays)
+                {
+                    number = number.substring(1);
+                    String topics[] = number.split("\\]\\[");
+
+
+
+                    if (topics[1].equals("SEE NOTE BELOW")){
+                            break;
                 }
 
-                // Send xml data to server
+                    String phoneNumber = topics[1]+": "+topics[0];
 
-                PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
-                writer.println(stringBuilder.toString());
 
-                ArrayList<String> phoneNumbers = PR.parsePhoneNumbers(socket.getInputStream());
+                    if (!phoneNumbers.contains(phoneNumber)) {
+
+                        phoneNumbers.add(phoneNumber);
+                    }
+                }
+
                 phoneNumbers = appendPagers(phoneNumbers, mid);
                 numbers.put(mids.get(mid), phoneNumbers);
-
-                writer.close();
-                if (!socket.isClosed())
-                    socket.close();
             }
 
             return numbers;
 
-        } catch (XmlPullParserException | IOException ex) {
+        } catch (Exception e) {
             return null;
         }
     }
@@ -147,33 +187,49 @@ public class SpokOnCallDAO implements OnCallDAO {
     }
 
     private HashMap<String, String> getMIDs(String OCMID){
+        //SSLConnectionSocketFactory factory = new SSLConnectionSocketFactory(sslContext);
+        BasicCookieStore cookieStore = new BasicCookieStore();
+        HashMap<String,String> toSend = new HashMap<>();
         try {
-            Socket socket = new Socket(IPAddress, 9720);
-            socket.setSoTimeout(timeout);
-            String toRead = ParseResult.getCurrentAssignmentsCall(OCMID);
-            BufferedReader reader = new BufferedReader(new StringReader(toRead));
-            String line;
-            StringBuilder  stringBuilder = new StringBuilder();
-            while((line = reader.readLine() ) != null) {
-                stringBuilder.append(line);
-            }
+            HttpPostHC4 postRequest = new HttpPostHC4("https://10.0.2.2:8042/onCall/getMID");
 
-            // Send xml data to server
+            String  JSON_STRING = "{";
+            JSON_STRING+= Constants.CODE +":\""+OCMID+"\"}";
+            StringEntity params= new StringEntity(JSON_STRING);
 
-            PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
-            writer.println(stringBuilder.toString());
 
-            // Wait for server response
-            HashMap<String, String> assignments = PR.parseCurrentAssignments(socket.getInputStream());
-            if (!socket.isClosed())
-                socket.close();
-            writer.close();
+            postRequest.setEntity(params);
+            postRequest.setHeader("Accept", "application/json");
+            postRequest.setHeader("Content-Type", "application/json;charset=UTF-8");
 
-            return assignments;
 
-        } catch (XmlPullParserException | IOException ex)
-        {
-            return null;
+
+            CloseableHttpResponse response3 = AccountCheck.httpclient.execute(postRequest);
+            HttpEntity entity = response3.getEntity();
+
+            String json = EntityUtils.toString(entity, "UTF-8");
+            JSONObject myObject = new JSONObject(json);
+            String responseString = "";
+
+            Iterator<?> keys = myObject.keys();
+
+
+
+            if (entity != null) {
+                while( keys.hasNext() ) {
+                    String key = (String)keys.next();
+                    if ( myObject.get(key) instanceof JSONObject ) {
+                        JSONObject thisKey = (JSONObject) myObject.get(key);
+                        toSend.put(thisKey.getString("mid"),thisKey.getString("name"));
+                    }
+                }
+                }
+
+
+        } catch (Exception e) {
+            System.out.println(e);
         }
+
+        return toSend;
     }
 }

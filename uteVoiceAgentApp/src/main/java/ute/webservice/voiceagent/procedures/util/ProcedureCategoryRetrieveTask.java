@@ -95,10 +95,11 @@ public class ProcedureCategoryRetrieveTask extends AsyncTask<Void, Void, String>
             map = PR.parseCategories(result);
         }
 
-        for (ProcedureCategoryRetrievalListener listener : listeners){
+        for (ProcedureCategoryRetrievalListener listener : listeners) {
             //listener.onCategoryRetrieval(map.getCategories(), map.getSubcategories(), map.getSurgeries());
             listener.onCategoryRetrieval(map.getCategories());
         }
+
     }
 
     /**
@@ -108,6 +109,5 @@ public class ProcedureCategoryRetrieveTask extends AsyncTask<Void, Void, String>
     public void addListener(ProcedureCategoryRetrievalListener listener){
         listeners.add(listener);
     }
-
-}
+ }
 

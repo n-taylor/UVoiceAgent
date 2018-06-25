@@ -185,7 +185,7 @@ public class LoginActivity extends BaseActivity {
         private AccountCheck acnt;
         private String idString;
         private ProgressDialog progress;
-      /*  @Override
+       @Override
         protected void onPreExecute() {
             super.onPreExecute();
             progress = new ProgressDialog(LoginActivity.this);
@@ -195,84 +195,32 @@ public class LoginActivity extends BaseActivity {
             //progress.setProgress(0);
             progress.show();
         }
-*/
+
         @Override
         protected Boolean doInBackground(String... strings) {
-
-            try {
-                String url = "http://10.0.2.2:8042/login";
-                URL obj = new URL(url);
-
-
-                String reqParam = URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode("u0450254", "UTF-8");
-                reqParam += "&" + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode("Uousum2013", "UTF-8");
-                HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-
-                    // optional default is GET
-                    con.setRequestMethod("POST");
-
-                con.setDoOutput(true);
-                DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-                wr.writeBytes(reqParam);
-                wr.flush();
-                wr.close();
-
-                int responseCode = con.getResponseCode();
-
-                BufferedReader in = new BufferedReader(
-                        new InputStreamReader(con.getInputStream()));
-                String inputLine;
-                StringBuffer response = new StringBuffer();
-
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
-                in.close();
-
-                //print result
-                System.out.println(response.toString());
-                if(responseCode == 200) {
-
-
-                    return true;
-                }
-            }
-                catch(MalformedURLException me){
-
-                }
-                catch(UnsupportedEncodingException ue)
-                {
-
-                }
-                catch(IOException ie){
-
-                }
-
-           /* acnt= new AccountCheck();
+            acnt = new AccountCheck();
             idString = strings[0];
             //pwString = strings[0][1];
-            boolean authentication=false;
+            boolean authentication = false;
             //authentication = acnt.isAccountCorrect(strings);
 
             try {
                 authentication = acnt.isAuthenticated(strings, LoginActivity.this);
-            }
-            catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
-            for (int i=0; i<2; i++){
-                    publishProgress(i);
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }*/
+            for (int i = 0; i < 2; i++) {
+                publishProgress(i);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
 
-          return false;
+            return authentication;
         }
-
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
