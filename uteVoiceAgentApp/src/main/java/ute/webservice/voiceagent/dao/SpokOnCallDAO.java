@@ -157,32 +157,34 @@ public class SpokOnCallDAO implements OnCallDAO {
      * @return an empty ArrayList<String> if an error occurs
      */
     private ArrayList<String> appendPagers(ArrayList<String> numbers, String mid){
-        try {
+            try {
+                    HttpPostHC4 postRequest = new HttpPostHC4("https://10.0.2.2:8042/onCall/getPagers");
 
-            Socket socket = new Socket(IPAddress, 9720);
+                    String  JSON_STRING = "{";
+                    JSON_STRING+= Constants.CODE +":\""+mid+"\"}";
+                    StringEntity params= new StringEntity(JSON_STRING);
 
-            socket.setSoTimeout(timeout);
+                    postRequest.setEntity(params);
+                    postRequest.setHeader("Accept", "application/json");
+                    postRequest.setHeader("Content-Type", "application/json;charset=UTF-8");
 
-            // Create the XML string to send
-            String toRead = SpokParser.getPagerIdCall(mid);
-            BufferedReader reader = new BufferedReader(new StringReader(toRead));
-            String line;
-            StringBuilder stringBuilder = new StringBuilder();
-            while ((line = reader.readLine()) != null) {
-                stringBuilder.append(line);
+                    CloseableHttpResponse response3 = AccountCheck.httpclient.execute(postRequest);
+                    HttpEntity entity = response3.getEntity();
+
+                    String json = EntityUtils.toString(entity, "UTF-8");
+                    JSONObject myObject = new JSONObject(json);
+                    String responseString = "";
+
+                    String myObjectString = myObject.getString("numbers");
+
+                    myObjectString = "PAGER: "+ myObjectString.replaceAll("[^\\d.]", "");
+
+                    numbers.add(myObjectString);
+
+            } catch (Exception e) {
+                return null;
             }
 
-            // Send xml data to server
-            PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
-            writer.println(stringBuilder.toString());
-
-            ArrayList<String> pagerIds = SpokParser.parsePagerIdResponse(socket.getInputStream());
-            numbers.addAll(pagerIds);
-        }
-        catch (IOException | XmlPullParserException ex){
-            ex.printStackTrace();
-            return numbers;
-        }
         return numbers;
     }
 
