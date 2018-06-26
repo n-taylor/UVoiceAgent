@@ -133,7 +133,6 @@ public class AccountCheck {
         boolean loginSucceed = false;
         try {
 
-
             HttpPostHC4 httpPost = new HttpPostHC4(Constants.AUTHENTIC_LINK);
             //Prepare Parameters
             String  JSON_STRING = "{";
