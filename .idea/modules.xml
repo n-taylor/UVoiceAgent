@@ -4,9 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/UVoiceAgent.iml" filepath="$PROJECT_DIR$/UVoiceAgent.iml" />
       <module fileurl="file://$PROJECT_DIR$/ailib/ailib.iml" filepath="$PROJECT_DIR$/ailib/ailib.iml" />
-      <module fileurl="file://C:\Users\u0971108\Sudo\UVoiceAgent\ailib\ailib.iml" filepath="C:\Users\u0971108\Sudo\UVoiceAgent\ailib\ailib.iml" />
       <module fileurl="file://$PROJECT_DIR$/uteVoiceAgentApp/uteVoiceAgentApp.iml" filepath="$PROJECT_DIR$/uteVoiceAgentApp/uteVoiceAgentApp.iml" />
-      <module fileurl="file://C:\Users\u0971108\Sudo\UVoiceAgent\uteVoiceAgentApp\uteVoiceAgentApp.iml" filepath="C:\Users\u0971108\Sudo\UVoiceAgent\uteVoiceAgentApp\uteVoiceAgentApp.iml" />
     </modules>
   </component>
 </project>
