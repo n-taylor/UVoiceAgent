@@ -524,18 +524,19 @@ class MapImageView extends AppCompatImageView {
 //            }
 
 
-            LocationController.getInstance().findDeviceInfo("test", getContext());
-            ArrayList<String> deviceTypeMAC = LocationController.getInstance().deviceSearchType("testTag");
+            HashMap<String, TagLocation> tags = LocationController.getInstance().getTagLocations();
 
+            for (String key : tags.keySet()){
+                TagLocation loc = tags.get(key);
+                if (loc != null) {// && LocationController.getInstance().getImageName().equals(loc.getImageName())){
 
-            ArrayList<TagLocation> tags = LocationController.getInstance().deviceSearchLocations(deviceTypeMAC);
-            for (TagLocation loc : tags ){
-                if (loc != null){// && LocationController.getInstance().getImageName().equals(loc.getImageName())){
                     MapCoordinate coordinate = loc.getMapCoordinate();
                     float posX = getScaledPosX(coordinate.getX(), 455.0f, B); // Use the dimensions of burn unit floor for testing
                     float posY = getScaledPosY(coordinate.getY(), 324.1f, B); // testing hard-coded floor dimensions
 //                    float posX = getScaledPosX(coordinate.getX(), dimension.getWidth(), B);
 //                    float posY = getScaledPosY(coordinate.getY(), dimension.getLength(), B);
+
+
 
                     String label = loc.getCategory();
                     if (label == null)

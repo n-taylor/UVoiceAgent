@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.concurrent.ExecutionException;
 
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.activities.EquipmentFindActivity;
@@ -39,6 +38,9 @@ public class LocationController extends Controller {
 
     private static final int MAX_IMAGE_WIDTH = 1200;
     private static final int MAX_IMAGE_HEIGHT = 1200;
+
+    private static final int MAX_TAG_WIDTH = 30;
+    private static final int MAX_TAG_HEIGHT = 20;
 
     private HashMap<String, Bitmap> floorMaps;
 
@@ -171,7 +173,7 @@ public class LocationController extends Controller {
         }
 
         return instance;
-        }
+    }
 
     public static void startActivity(Context context, Bitmap bitmap){
         LocationController.getInstance().bitmap = bitmap;
@@ -194,7 +196,10 @@ public class LocationController extends Controller {
      */
     public Bitmap getImage(){
         // For testing purposes, right not just show the burn unit
-        return floorMaps.get("UofU-Hospital>0525-UHOSP>Level 4");
+
+        currentMapName="UofU-Hospital>0525-UHOSP>Level 4";
+
+        return floorMaps.get(currentMapName);
 
         //return floorMaps.get(currentMapName);
     }
@@ -213,23 +218,14 @@ public class LocationController extends Controller {
         return clientLocation.getMapDimension();
     }
 
+    public String getCurrentMapName() {return  currentMapName;}
+
     public Bitmap getTagImage(Context context){
         if (tagBitmap == null){
-            tagBitmap = BitmapFactory.decodeResource(context.getResources(), TAG_ID);
+            tagBitmap = decodeScaledResource(context.getResources(), TAG_ID, MAX_TAG_WIDTH, MAX_TAG_HEIGHT);
+//            tagBitmap = BitmapFactory.decodeResource(context.getResources(), TAG_ID);
         }
         return tagBitmap;
-    }
-
-    public void recycleImages(){
-        if (tagBitmap != null) {
-            tagBitmap.recycle();
-            tagBitmap = null;
-        }
-
-        if (bitmap != null) {
-            bitmap.recycle();
-            bitmap = null;
-        }
     }
 
     /**
@@ -244,45 +240,8 @@ public class LocationController extends Controller {
     }
 
     public void findDeviceInfo(String id, Context context){
-
-        Devices = new HashMap<>();
-
-        findTagLocation("00:12:b8:0d:6b:58", context,  "testTag");
-      //   findTagLocation("00:12:b8:0d:68:ad", context);
-      //  findTagLocation("00:12:b8:0d:68:90", context);
-      //  findTagLocation("00:12:b8:0d:6c:07", context);
-      //  findTagLocation("00:12:b8:0d:5c:07", context);
-      //  findTagLocation("00:12:b8:0d:21:66", context);
-      //  findTagLocation("00:12:b8:0d:26:0d", context);
-      //  findTagLocation("00:12:b8:0d:68:6b", context);
-      //  findTagLocation("00:12:b8:0d:59:5e", context);
-      //  findTagLocation("00:12:b8:0d:5b:c8", context);
-
-        Device device1 = new Device("00:12:b8:0d:6b:58",  "testTag", tagLocations.get("00:12:b8:0d:6b:58"));
-      //  Device device2 = new Device("00:12:b8:0d:68:ad",  "testTag", tagLocations.get("00:12:b8:0d:68:ad"));
-      //   Device device3 = new Device("00:12:b8:0d:68:90",  "testTag", tagLocations.get("00:12:b8:0d:68:90"));
-      //  Device device4 = new Device("00:12:b8:0d:6c:07",  "testTag", tagLocations.get("00:12:b8:0d:6c:07"));
-      //  Device device5 = new Device("00:12:b8:0d:5c:07",  "testTag", tagLocations.get("00:12:b8:0d:5c:07"));
-      //  Device device6 = new Device("00:12:b8:0d:21:66",  "testTag", tagLocations.get("00:12:b8:0d:21:66"));
-      //  Device device7 = new Device("00:12:b8:0d:26:0d",  "testTag", tagLocations.get("00:12:b8:0d:26:0d"));
-      //  Device device8 = new Device("00:12:b8:0d:68:6b",  "testTag", tagLocations.get("00:12:b8:0d:68:6b"));
-      //  Device device9 = new Device("00:12:b8:0d:59:5e",  "testTag", tagLocations.get("00:12:b8:0d:59:5e"));
-      //  Device device10 = new Device("00:12:b8:0d:5b:c8",  "testTag", tagLocations.get("00:12:b8:0d:5b:c8"));
-
-        Devices.put("00:12:b8:0d:6b:58", device1);
-      //  Devices.put("00:12:b8:0d:68:ad", device2);
-      //  Devices.put("00:12:b8:0d:68:90", device3);
-      //  Devices.put("00:12:b8:0d:6c:07", device4);
-      // Devices.put("00:12:b8:0d:5c:07", device5);
-      //  Devices.put("00:12:b8:0d:21:66", device6);
-      //  Devices.put("00:12:b8:0d:26:0d", device7);
-      // Devices.put("00:12:b8:0d:68:6b", device8);
-      //  Devices.put("00:12:b8:0d:59:5e", device9);
-      //  Devices.put("00:12:b8:0d:5b:c8", device10);
-
-
-       // GetDeviceInfoTask task = new GetDeviceInfoTask(id, context);
-      //  task.execute();
+        // GetDeviceInfoTask task = new GetDeviceInfoTask(id, context);
+        //  task.execute();
     }
 
     private void addTagLocation(TagLocation location){
@@ -349,7 +308,7 @@ public class LocationController extends Controller {
         return categories != null && categories.containsKey(category);
     }
 
-    public ArrayList<String> deviceSearchType(String typeToFind){
+    private ArrayList<String> deviceSearchType(String typeToFind){
 
         ArrayList<String> results = new ArrayList<String>();
 
@@ -362,22 +321,6 @@ public class LocationController extends Controller {
         return results;
 
     }
-
-
-    public ArrayList<TagLocation> deviceSearchLocations(ArrayList<String>  macList){
-
-        ArrayList<TagLocation> results = new ArrayList<TagLocation>();
-
-        for (String entry : macList) {
-            {
-                TagLocation location = Devices.get(entry).getLocation();
-                results.add(location);
-            }
-        }
-        return results;
-    }
-
-
 
     public HashMap<String, TagLocation> getTagLocations(){
         if (tagLocations == null)
@@ -462,14 +405,10 @@ public class LocationController extends Controller {
                 }
 
                 if (location != null){
-                    LocationController.getInstance().addTagLocation(location);
-                    return location;
+                    location.setCategory(category);
                 }
-                else{
-                    TagLocation tag = Controller.getLocationDAO().getTagLocation(id, context, LocationDAO.PARK);
-                    LocationController.getInstance().addTagLocation(tag);
-                    return tag;
-                }
+                return location;
+
             }
             catch (AccessDeniedException | InvalidResponseException ex) {
                 ex.printStackTrace();
@@ -479,22 +418,18 @@ public class LocationController extends Controller {
 
         @Override
         protected void onPostExecute(TagLocation location){
-            if (location != null){}
-
+            if (location != null)
+                LocationController.getInstance().addTagLocation(location);
         }
     }
 
     /*private static class GetDeviceTask extends AsyncTask<Void, Void, Device> {
-
         String id;
         Context context;
-
         GetDeviceTask(String id, Context context){
             this.id = id;
             this.context = context;
         }
-
-
         @Override
         protected Device doInBackground(Void... voids) {
            try {
@@ -505,7 +440,6 @@ public class LocationController extends Controller {
                 return null;
             }
         }
-
         @Override
         protected void onPostExecute(Device device){
             LocationController.getInstance().addDevice(device);
@@ -513,7 +447,7 @@ public class LocationController extends Controller {
     }*/
 
 
-    public class Device{
+    private class Device{
 
         private String MAC;
         private String type;
