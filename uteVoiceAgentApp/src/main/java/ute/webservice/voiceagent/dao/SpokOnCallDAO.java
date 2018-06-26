@@ -182,7 +182,7 @@ public class SpokOnCallDAO implements OnCallDAO {
                     numbers.add(myObjectString);
 
             } catch (Exception e) {
-                return null;
+                return numbers;
             }
 
         return numbers;

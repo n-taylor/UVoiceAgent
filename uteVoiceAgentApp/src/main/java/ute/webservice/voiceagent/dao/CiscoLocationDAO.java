@@ -36,6 +36,7 @@ import ute.webservice.voiceagent.location.TagLocation;
 import ute.webservice.voiceagent.location.MapDimension;
 import ute.webservice.voiceagent.location.TagLocationBuilder;
 import ute.webservice.voiceagent.location.VendorData;
+import ute.webservice.voiceagent.util.AccountCheck;
 import ute.webservice.voiceagent.util.CertificateManager;
 import ute.webservice.voiceagent.util.Constants;
 
@@ -53,6 +54,9 @@ public class CiscoLocationDAO implements LocationDAO {
     private static final String GET_TAG_LOCATION_EBC = "mse-ebc.net.utah.edu/api/contextaware/v1/location/tags/";
     private static final String GET_FLOOR_PLAN = "mse-park.net.utah.edu/api/contextaware/v1/maps/imagesource/";
     private static final String RETURN_TYPE = ".json";
+
+    private static final String GET_CLIENT_LOCATION = "https://10.0.2.2:8042/cisco/client/location/";
+    private static final String GET_TAG_LOCATION = "https://10.0.2.2:8042/cisco/tag/location/";
 
     private static final String UNKNOWN_FLOOR = "The area you are located in is not currently supported";
 
@@ -106,14 +110,17 @@ public class CiscoLocationDAO implements LocationDAO {
      */
     @Override
     public ClientLocation getClientLocation(String ID , Context context, int campus) throws InvalidResponseException, AccessDeniedException {
-        String url = (campus == PARK) ? GET_CLIENT_LOCATION_PARK : GET_CLIENT_LOCATION_EBC;
-        String request = USER_PASSWORD_PREFIX + url + ID.trim() + RETURN_TYPE;
+//        String url = (campus == PARK) ? GET_CLIENT_LOCATION_PARK : GET_CLIENT_LOCATION_EBC;
+//        String request = USER_PASSWORD_PREFIX + url + ID.trim() + RETURN_TYPE;
+
+        String request = GET_CLIENT_LOCATION + ID.trim();
         String response = "";
 
         try {
             HttpGetHC4 getRequest = new HttpGetHC4(request);
 
-            CloseableHttpResponse httpResponse = getHttpClient(context, campus).execute(getRequest);
+//            CloseableHttpResponse httpResponse = getHttpClient(context, campus).execute(getRequest);
+            CloseableHttpResponse httpResponse = AccountCheck.httpclient.execute(getRequest);
             HttpEntity entity = httpResponse.getEntity();
 
             if (entity != null){
@@ -144,14 +151,16 @@ public class CiscoLocationDAO implements LocationDAO {
     }
 
     public TagLocation getTagLocation(String ID, Context context, int campus) throws AccessDeniedException, InvalidResponseException{
-        String url = (campus == PARK) ? GET_TAG_LOCATION_PARK : GET_TAG_LOCATION_EBC;
-        String request = USER_PASSWORD_PREFIX + url + ID.trim() + RETURN_TYPE;
+//        String url = (campus == PARK) ? GET_TAG_LOCATION_PARK : GET_TAG_LOCATION_EBC;
+//        String request = USER_PASSWORD_PREFIX + url + ID.trim() + RETURN_TYPE;
+        String request = GET_TAG_LOCATION + ID.trim();
         StringBuilder response = new StringBuilder();
 
         try{
             HttpGetHC4 getRequest = new HttpGetHC4(request);
 
-            CloseableHttpResponse httpResponse = getHttpClient(context, campus).execute(getRequest);
+//            CloseableHttpResponse httpResponse = getHttpClient(context, campus).execute(getRequest);
+            CloseableHttpResponse httpResponse = AccountCheck.httpclient.execute(getRequest);
             HttpEntity entity = httpResponse.getEntity();
 
             if (entity != null){
