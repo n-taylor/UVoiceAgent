@@ -439,6 +439,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                 welcomeActivity = (WelcomeActivity)activity;
                 welcomeActivity.enableComponents(false);
                 welcomeActivity.setWelcomeText("Loading...");
+                LocationController.getInstance().loadBitmaps(activity);
                 getProceduresDAO().addListener(this);
                 getProceduresDAO().fetchCategories();
             }

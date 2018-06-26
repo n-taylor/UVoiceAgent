@@ -56,8 +56,8 @@ public class CiscoLocationDAO implements LocationDAO {
 
     private static final String UNKNOWN_FLOOR = "The area you are located in is not currently supported";
 
-    private static final int MAX_WIDTH = 2000;
-    private static final int MAX_HEIGHT = 2000;
+    private static final int MAX_WIDTH = 1800;
+    private static final int MAX_HEIGHT = 1800;
 
     private static HashMap<String, Integer> floorMaps;
 
@@ -292,8 +292,22 @@ public class CiscoLocationDAO implements LocationDAO {
 //        }
 
         // For testing purposes, just load the U Hospital Map
-        Bitmap map = decodeScaledResource(context.getResources(), R.drawable.uhosp_level_4, MAX_WIDTH, MAX_HEIGHT);
-        LocationController.startActivity(context, map);
+//        try {
+//            Bitmap map = decodeScaledResource(context.getResources(), R.drawable.uhosp_level_4, MAX_WIDTH, MAX_HEIGHT);
+//            LocationController.startActivity(context, map);
+//        }
+//        catch(Exception e){
+//            e.printStackTrace();
+//            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+//        }
+
+        try {
+            LocationController.startActivity(context, imageName);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 
     private Bitmap decodeScaledResource(Resources res, int resId, int reqWidth, int reqHeight){

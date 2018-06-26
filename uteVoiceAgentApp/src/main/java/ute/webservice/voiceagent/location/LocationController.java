@@ -3,7 +3,9 @@ package ute.webservice.voiceagent.location;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -13,6 +15,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
+import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.activities.EquipmentFindActivity;
 import ute.webservice.voiceagent.dao.LocationDAO;
 import ute.webservice.voiceagent.exceptions.AccessDeniedException;
@@ -29,8 +32,17 @@ public class LocationController extends Controller {
 
     private static final String CLIENT_LOCATION_ERROR = "An error occurred while retrieving the device location";
 
-    private Bitmap bitmap;
+    private static final int TAG_ID = R.drawable.tag_2;
 
+    private Bitmap bitmap;
+    private Bitmap tagBitmap;
+
+    private static final int MAX_IMAGE_WIDTH = 1200;
+    private static final int MAX_IMAGE_HEIGHT = 1200;
+
+    private HashMap<String, Bitmap> floorMaps;
+
+    private String currentMapName = "";
     private String currentCategory;
 
     private ClientLocation clientLocation;
@@ -54,7 +66,7 @@ public class LocationController extends Controller {
             categories.put("IV Pump", new ArrayList<String>());
             categories.put("X Ray", new ArrayList<String>());
             categories.put("MRI", new ArrayList<String>());
-            categories.put("Infusion Pump", new ArrayList<String>());
+            categories.put("Dialysis", new ArrayList<String>());
             categories.put("CT Scanner", new ArrayList<String>());
 
             // Populate the categories
@@ -64,11 +76,92 @@ public class LocationController extends Controller {
             categories.get("X Ray").add("00:12:B8:0D:6C:07");
             categories.get("MRI").add("00:12:B8:0D:5C:07");
             categories.get("MRI").add("00:12:B8:0D:21:66");
-            categories.get("Infusion Pump").add("00:12:B8:0D:26:0D");
-            categories.get("Infusion Pump").add("00:12:B8:0D:68:6B");
-            categories.get("Infusion Pump").add("00:12:B8:0D:59:5E");
+            categories.get("Dialysis").add("00:12:B8:0D:26:0D");
+            categories.get("Dialysis").add("00:12:B8:0D:68:6B");
+            categories.get("Dialysis").add("00:12:B8:0D:59:5E");
             categories.get("CT Scanner").add("00:12:B8:0D:5D:C8");
         }
+
+        if (floorMaps == null){
+            floorMaps = new HashMap<>();
+        }
+    }
+
+    /**
+     * Checks if the floor map images have been loaded. If they have not, try calling loadBitmaps(Context context);
+     * @return true if all maps have been loaded.
+     */
+    public boolean mapsAreLoaded(){
+        return floorMaps != null && !floorMaps.isEmpty();
+    }
+
+    /**
+     * Retrieves the available floor maps from resources and adds them to the floorMaps hash map.
+     */
+    public void loadBitmaps(Context context){
+        try {
+            floorMaps = new HashMap<>();
+
+            floorMaps.put("UofU-FtDouglas>0482-102Tower>Level 4",
+                    decodeScaledResource(context.getResources(), R.drawable.tower_level_4, MAX_IMAGE_WIDTH, MAX_IMAGE_HEIGHT));
+            floorMaps.put("UofU-Hospital>0525-UHOSP>Level 4",
+                    decodeScaledResource(context.getResources(), R.drawable.uhosp_level_4, MAX_IMAGE_WIDTH, MAX_IMAGE_HEIGHT));
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * Gets the image of the floor map of a given floor. If the floor requested does not exist,
+     * is not included or is misspelled (case-sensitive) or the images have not been loaded yet,
+     * this method will return null.
+     *
+     * @param mapHierarchyString The map hierarchy string associated with the floor.
+     * @return The bitmap of the given floor, or null if there is an issue.
+     */
+    public Bitmap getFloorMap(String mapHierarchyString){
+        if (floorMaps == null)
+            return null;
+
+        return floorMaps.get(mapHierarchyString);
+    }
+
+    private Bitmap decodeScaledResource(Resources res, int resId, int reqWidth, int reqHeight){
+        // First decode just checking dimensions
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+
+        // Calculate the inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+
+        // Decode bitmap with the inSampleSize set now
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeResource(res, resId, options);
+    }
+
+    private int calculateInSampleSize(
+            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) >= reqHeight
+                    && (halfWidth / inSampleSize) >= reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        return inSampleSize;
     }
 
 
@@ -86,8 +179,24 @@ public class LocationController extends Controller {
         context.startActivity(intent);
     }
 
+    /**
+     * Starts the EquipmentFind activity and sets the current image to be displayed as the imageName
+     * specified.
+     */
+    public static void startActivity(Context context, String imageName){
+        LocationController.getInstance().currentMapName = imageName;
+        Intent intent = new Intent(context, EquipmentFindActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * @return the image of the currently specified floor plan.
+     */
     public Bitmap getImage(){
-        return bitmap;
+        // For testing purposes, right not just show the burn unit
+        return floorMaps.get("UofU-Hospital>0525-UHOSP>Level 4");
+
+        //return floorMaps.get(currentMapName);
     }
 
     public String getImageName() { return clientLocation.getImageName(); }
@@ -102,6 +211,25 @@ public class LocationController extends Controller {
 
     public MapDimension getDimensions(){
         return clientLocation.getMapDimension();
+    }
+
+    public Bitmap getTagImage(Context context){
+        if (tagBitmap == null){
+            tagBitmap = BitmapFactory.decodeResource(context.getResources(), TAG_ID);
+        }
+        return tagBitmap;
+    }
+
+    public void recycleImages(){
+        if (tagBitmap != null) {
+            tagBitmap.recycle();
+            tagBitmap = null;
+        }
+
+        if (bitmap != null) {
+            bitmap.recycle();
+            bitmap = null;
+        }
     }
 
     /**

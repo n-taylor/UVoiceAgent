@@ -278,6 +278,12 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
     }
 
     @Override
+    public void onDestroy(){
+        //LocationController.getInstance().recycleImages();
+        super.onDestroy();
+    }
+
+    @Override
     public boolean onTouchEvent(MotionEvent motionEvent) {
         mScaleGestureDetector.onTouchEvent(motionEvent);
         return true;
@@ -299,7 +305,6 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
 class MapImageView extends AppCompatImageView {
 
     private static final String  DEFAULT_TAG_LABEL = "Tag";
-    private static final int TAG_ID = R.drawable.tag_2;
 
     private boolean beginning = true;
 
@@ -327,8 +332,8 @@ class MapImageView extends AppCompatImageView {
     private static float MIN_ZOOM = 0.1f;
     private static float MAX_ZOOM = 5f;
 
-    private static final int TAG_HEIGHT = 120;
-    private static final int TAG_WIDTH = 360;
+    private static final int TAG_HEIGHT = 80;
+    private static final int TAG_WIDTH = 240;
     private static final int TAG_x_OFFSET = 30;
     private static final int TAG_Y_OFFSET = 10;
 
@@ -504,19 +509,19 @@ class MapImageView extends AppCompatImageView {
         //Drawable d = getResources().getDrawable(R.drawable.testfloor);
         //Bitmap B = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.testfloor);
 
-        if (B != null) {
+        if (B != null && !B.isRecycled()) {
 
             canvas.drawBitmap(B, 0, 0, null);
 
             MapCoordinate userLoc = LocationController.getInstance().getUserLocation();
             MapDimension dimension = LocationController.getInstance().getDimensions();
 
-            if (userLoc != null){
-                float posX = getScaledPosX(userLoc.getX(), dimension.getWidth(), B);
-                float posY = getScaledPosY(userLoc.getY(), dimension.getLength(), B);
-                drawScaledCircle(canvas, B, posX, posY, DOT_SIZE, clientPaint);
-                drawScaledCircle(canvas, B, posX, posY, HALO_SIZE, clientHalo);
-            }
+//            if (userLoc != null){
+//                float posX = getScaledPosX(userLoc.getX(), dimension.getWidth(), B);
+//                float posY = getScaledPosY(userLoc.getY(), dimension.getLength(), B);
+//                drawScaledCircle(canvas, B, posX, posY, DOT_SIZE, clientPaint);
+//                drawScaledCircle(canvas, B, posX, posY, HALO_SIZE, clientHalo);
+//            }
 
 
             LocationController.getInstance().findDeviceInfo("test", getContext());
@@ -579,9 +584,8 @@ class MapImageView extends AppCompatImageView {
         // Determine the rectangle in which to draw the bitmap
         Rect rect = new Rect((int)x, (int)(y - (TAG_HEIGHT/2)), (int)(x + TAG_WIDTH), (int)(y + (TAG_HEIGHT/2)));
         // Create the bitmap
-        Bitmap tag = BitmapFactory.decodeResource(getResources(), TAG_ID);
         // Draw the image
-        canvas.drawBitmap(tag, null, rect, null);
+        canvas.drawBitmap(LocationController.getInstance().getTagImage(getContext()), null, rect, null);
         canvas.drawText(label, x + (TAG_WIDTH/4), y + TAG_Y_OFFSET, paint);
     }
 }
