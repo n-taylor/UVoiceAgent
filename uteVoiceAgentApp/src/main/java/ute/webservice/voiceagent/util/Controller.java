@@ -213,7 +213,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
 
             @Override
             protected void onPostExecute(HashMap<String, ArrayList<String>> numbers){
-                if (numbers != null) {
+                if (numbers.size() > 0) {
                     Intent intent = new Intent(context, OnCallActivity.class);
                     intent.putExtra("query", query);
                     intent.putExtra("phoneNumMap", numbers);
