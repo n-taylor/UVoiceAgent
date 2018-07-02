@@ -90,7 +90,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     /**
-     * Check input ID and password, if both are correct, jump to {@link AIButtonActivity}
+     * Check input ID and password, if both are correct, jump to {@link WelcomeActivity}
      * @param view
      */
     public void buttonSampleClick(final View view) {
@@ -224,7 +224,7 @@ public class LoginActivity extends BaseActivity {
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
-            progress.setProgress(values[0]*20);
+            progress.setProgress(values[0]*50);
         }
 
         @Override

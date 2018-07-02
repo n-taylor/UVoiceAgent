@@ -468,6 +468,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
     private void logout(){
         LogoutTask httpTask = new LogoutTask(welcomeActivity);
         httpTask.execute();
+        welcomeActivity.finish();
     }
 
     /**

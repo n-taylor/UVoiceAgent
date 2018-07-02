@@ -124,13 +124,27 @@ public class SpokOnCallDAO implements OnCallDAO {
                     number = number.substring(1);
                     String topics[] = number.split("\\]\\[");
 
+                    if (topics[0].length() == 10) {
+                        StringBuilder sb = new StringBuilder(topics[0]);
+                        sb.insert(6, "-");
+                        sb.insert(3, "-");
+                        topics[0] = sb.toString();
+                    }
+                    else if (topics[0].length() == 7){
 
+                        StringBuilder sb = new StringBuilder(topics[0]);
+                        sb.insert(3, "-");
+                        topics[0] = sb.toString();
+                    }
 
                     if (topics[1].equals("SEE NOTE BELOW")){
                             break;
                 }
 
+
+
                     String phoneNumber = topics[1]+": "+topics[0];
+
 
 
                     if (!phoneNumbers.contains(phoneNumber)) {

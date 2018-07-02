@@ -28,9 +28,11 @@ public final class Constants {
     public final static int ACCESS_DENIED_INT = -999;
     public final static String SESSION_EXPIRED_MESSAGE = "Your session has expired. PLease log out and then log in again.";
     public final static String AUTHENTIC_LINK = "https://10.0.2.2:8042/login";
-    public final static String AUTHENTIC_LINK_LOGOUT = "https://clinweb.med.utah.edu/pricing-transparency-api/auth/logout";
+//    public final static String AUTHENTIC_LINK_LOGOUT = "https://clinweb.med.utah.edu/pricing-transparency-api/auth/logout";
+    public final static String AUTHENTIC_LINK_LOGOUT = "https://10.0.2.2:8042/logout";
 
-    public final static String CLINWEB_PRICE_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/pricing/get/";
+
+//    public final static String CLINWEB_PRICE_QUERY = "https://clinweb.med.utah.edu/pricing-transparency-api/pricing/get/";
 
     public final static String CLINWEB_SURGERY_CATEGORIES_QUERY = "https://10.0.2.2:8042/procedures/allCategories";
     public final static String CLINWEB_SURGERY_CODES_QUERY = "https://10.0.2.2:8042/procedures/codes";

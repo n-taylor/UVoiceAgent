@@ -55,8 +55,10 @@ public class LogoutTask extends AsyncTask<Void,Void,Boolean> {
             //startActivity(LoginActivity.class);
         }
         else{
-            LoginAlertDialog alertd= new LoginAlertDialog();
-            alertd.showAlertDialog(activity,"Log out fail","time out",null);
+//            LoginAlertDialog alertd= new LoginAlertDialog();
+//            alertd.showAlertDialog(activity,"Log out fail","time out",null);
+            final Intent intent = new Intent(activity, LoginActivity.class);
+            activity.startActivity(intent);
             //clearEditText();
         }
     }

@@ -217,84 +217,84 @@ public class DataAsked {
         return null;
     }
 
-    /**
-     * Get data from webservice by CloseableHttpClient.
-     * @return Response to user's query.
-     * @throws IOException
-     */
-    public String getHttpClientReply(SSLContext sslContext) throws IOException {
-
-        if (this.isIncomplete) {
-                return this.currentReply;
-        }
-
-        String responseString = "";
-        String currCPTCODE = "";
-        String newUrlWithCPT = "";
-        boolean surgery = false;
-        if (this.surgeries.containsKey(this.Surgery_type)) {
-            currCPTCODE = this.surgeries.get(this.Surgery_type);
-            newUrlWithCPT = Constants.CLINWEB_PRICE_QUERY + "" + currCPTCODE;//.toUpperCase().replace(" ", "");
-            surgery = true;
-        }
-        else if(this.censusUnit.length() > 0) {
-            if (this.censusUnit.equals("All")) {
-                return this.getAllBedCensus();
-            }
-            else{
-                currCPTCODE = this.censusUnit.toUpperCase().replace(" ", "");
-                newUrlWithCPT = Constants.CLINWEB_CENSUS_SPECFIC_QUERY + "" + currCPTCODE;
-                surgery = false;
-            }
-        }
-        else {
-            return this.currentReply;
-        }
-
-        try {
-            HttpGetHC4 getRequest = new HttpGetHC4(newUrlWithCPT);
-            CloseableHttpResponse response3 = AccountCheck.httpclient.execute(getRequest);
-            HttpEntity entity = response3.getEntity();
-            if (entity != null) {
-                BufferedReader rdSrch = new BufferedReader(
-                        new InputStreamReader(response3.getEntity().getContent()));
-
-                    String lineSrch;
-                    while ((lineSrch = rdSrch.readLine()) != null) {
-                        Log.d(TAG, lineSrch);
-                        responseString += lineSrch;
-                    }
-
-                    if (responseString.equals(Constants.ACCESS_DENIED)) {
-                        responseString = "You are not allowed to access.";
-                    } else {
-                    if (surgery) {
-                        SurgeryInfo si = ParseResult.parseSurgery(responseString);
-
-                        responseString = "\n$" + si.getCost();
-
-                        return "The patient cost of " + this.Surgery_type + " is $" + si.getCost();
-                    }
-                    else {
-                        ArrayList<RoomStatus> rooms = ParseResult.parseRooms(responseString);
-
-                        responseString ="";
-
-                        for(RoomStatus r : rooms) {
-                            int beds =r.getAvailableBeds();
-                            responseString = String.format(Locale.US, "\n%1$s has %2$d bed%3$s available", this.censusUnit, beds, (beds == 1)?"":"s");
-                            //responseString = "\n" + this.censusUnit + " has " + r.getAvailableBeds() + " beds available";
-                        }
-                        return responseString;
-                    }
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return this.currentReply + responseString;
-    }
+//    /**
+//     * Get data from webservice by CloseableHttpClient.
+//     * @return Response to user's query.
+//     * @throws IOException
+//     */
+//    public String getHttpClientReply(SSLContext sslContext) throws IOException {
+//
+//        if (this.isIncomplete) {
+//                return this.currentReply;
+//        }
+//
+//        String responseString = "";
+//        String currCPTCODE = "";
+//        String newUrlWithCPT = "";
+//        boolean surgery = false;
+//        if (this.surgeries.containsKey(this.Surgery_type)) {
+//            currCPTCODE = this.surgeries.get(this.Surgery_type);
+//            newUrlWithCPT = Constants.CLINWEB_PRICE_QUERY + "" + currCPTCODE;//.toUpperCase().replace(" ", "");
+//            surgery = true;
+//        }
+//        else if(this.censusUnit.length() > 0) {
+//            if (this.censusUnit.equals("All")) {
+//                return this.getAllBedCensus();
+//            }
+//            else{
+//                currCPTCODE = this.censusUnit.toUpperCase().replace(" ", "");
+//                newUrlWithCPT = Constants.CLINWEB_CENSUS_SPECFIC_QUERY + "" + currCPTCODE;
+//                surgery = false;
+//            }
+//        }
+//        else {
+//            return this.currentReply;
+//        }
+//
+//        try {
+//            HttpGetHC4 getRequest = new HttpGetHC4(newUrlWithCPT);
+//            CloseableHttpResponse response3 = AccountCheck.httpclient.execute(getRequest);
+//            HttpEntity entity = response3.getEntity();
+//            if (entity != null) {
+//                BufferedReader rdSrch = new BufferedReader(
+//                        new InputStreamReader(response3.getEntity().getContent()));
+//
+//                    String lineSrch;
+//                    while ((lineSrch = rdSrch.readLine()) != null) {
+//                        Log.d(TAG, lineSrch);
+//                        responseString += lineSrch;
+//                    }
+//
+//                    if (responseString.equals(Constants.ACCESS_DENIED)) {
+//                        responseString = "You are not allowed to access.";
+//                    } else {
+//                    if (surgery) {
+//                        SurgeryInfo si = ParseResult.parseSurgery(responseString);
+//
+//                        responseString = "\n$" + si.getCost();
+//
+//                        return "The patient cost of " + this.Surgery_type + " is $" + si.getCost();
+//                    }
+//                    else {
+//                        ArrayList<RoomStatus> rooms = ParseResult.parseRooms(responseString);
+//
+//                        responseString ="";
+//
+//                        for(RoomStatus r : rooms) {
+//                            int beds =r.getAvailableBeds();
+//                            responseString = String.format(Locale.US, "\n%1$s has %2$d bed%3$s available", this.censusUnit, beds, (beds == 1)?"":"s");
+//                            //responseString = "\n" + this.censusUnit + " has " + r.getAvailableBeds() + " beds available";
+//                        }
+//                        return responseString;
+//                    }
+//                }
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return this.currentReply + responseString;
+//    }
 
     /**
      * Create query (Surgery, hernia) for test
