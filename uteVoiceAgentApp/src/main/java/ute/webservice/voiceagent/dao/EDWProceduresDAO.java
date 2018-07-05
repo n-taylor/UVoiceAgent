@@ -268,7 +268,7 @@ public class EDWProceduresDAO implements ProceduresDAO, ProcedureCategoryRetriev
     public void onCodeRetrieval (String jsonResponse){
 
         // If access has been denied, notify the listeners - everything will be null
-        if (jsonResponse.equals(Constants.ACCESS_DENIED)){
+        if (jsonResponse == null || jsonResponse.equals(Constants.ACCESS_DENIED)){
             notifyListeners();
             return;
         }

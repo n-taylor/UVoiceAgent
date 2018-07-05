@@ -211,7 +211,10 @@ public class LocationController extends Controller {
     }
 
     public MapCoordinate getUserLocation(){
-        return clientLocation.getMapCoordinate();
+        if (clientLocation == null)
+            return null;
+        else
+            return clientLocation.getMapCoordinate();
     }
 
     public MapDimension getDimensions(){

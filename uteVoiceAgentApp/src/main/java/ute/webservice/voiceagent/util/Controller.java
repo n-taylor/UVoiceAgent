@@ -70,6 +70,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
     public static final String NOT_A_CURRENT_ASSIGNMENT = "The area requested has no current assignments";
     public static final String PARTIAL_QUERY_MESSAGE = "What do you want to know about ";
     public static final String ON_CALL_LIST_MESSAGE = "For which area are you looking?";
+    public static final String CONNECTION_ERROR = "There was a problem connecting to the server.";
 
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
@@ -213,7 +214,13 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
 
             @Override
             protected void onPostExecute(HashMap<String, ArrayList<String>> numbers){
-                if (numbers.size() > 0) {
+                if (numbers == null){
+                    Intent intent = new Intent(context, ResultsActivity.class);
+                    intent.putExtra("query", query);
+                    intent.putExtra("result", Controller.CONNECTION_ERROR);
+                    context.startActivity(intent);
+                }
+                else if (numbers.size() > 0) {
                     Intent intent = new Intent(context, OnCallActivity.class);
                     intent.putExtra("query", query);
                     intent.putExtra("phoneNumMap", numbers);
@@ -252,20 +259,25 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
 
             @Override
             protected void onPostExecute(HashMap<String, Integer> openBeds){
-                String toShow = "";
-                ArrayList<String> keys = new ArrayList<String>(openBeds.keySet());
-                Collections.sort(keys);
-                for (String unit : keys){
-                    int beds = openBeds.get(unit);
-                    toShow += unit;
-                    toShow += String.format(Locale.US, " has %1$d bed%2$s available\n", beds, (beds == 1)?"":"s");
+                if (openBeds != null) {
+                    String toShow = "";
+                    ArrayList<String> keys = new ArrayList<String>(openBeds.keySet());
+                    Collections.sort(keys);
+                    for (String unit : keys) {
+                        int beds = openBeds.get(unit);
+                        toShow += unit;
+                        toShow += String.format(Locale.US, " has %1$d bed%2$s available\n", beds, (beds == 1) ? "" : "s");
+                    }
+                    progressDialog.dismiss();
+                    // Open a results activity with the information
+                    Intent intent = new Intent(context, ResultsActivity.class);
+                    intent.putExtra("query", query);
+                    intent.putExtra("result", toShow);
+                    context.startActivity(intent);
                 }
-                progressDialog.dismiss();
-                // Open a results activity with the information
-                Intent intent = new Intent(context, ResultsActivity.class);
-                intent.putExtra("query", query);
-                intent.putExtra("result", toShow);
-                context.startActivity(intent);
+                else{
+                    progressDialog.dismiss();
+                }
             }
         };
         task.execute();
@@ -572,7 +584,8 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
             message = Constants.SESSION_EXPIRED_MESSAGE;
         }
         else if (openBeds < 0){
-            message = "The unit '" + unit + "' is not recognized";
+//            message = "The unit '" + unit + "' is not recognized";
+            message = Controller.CONNECTION_ERROR;
         }
         else
             message = String.format(Locale.US, "%1$s has %2$d available bed%3$s", unit, openBeds, (openBeds == 1)?"":"s");
