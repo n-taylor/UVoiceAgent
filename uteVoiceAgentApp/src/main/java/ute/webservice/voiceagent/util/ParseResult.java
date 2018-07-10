@@ -610,24 +610,7 @@ class RoomStatusDeserializer implements JsonDeserializer<RoomStatus> {
                 jobj.get("unit").getAsString(),
                 jobj.get("available").getAsInt()
         );
-        System.out.println("getting here");
         byte data[] = currRoom.getUnit().getBytes();
-
-        File newFile = new File("results.txt");
-        try {
-            FileOutputStream out = new FileOutputStream(newFile, true);
-            out.write(data);
-            out.close();
-
-        }
-        catch(FileNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-        catch(IOException e)
-        {
-            e.printStackTrace();
-        }
 
         return currRoom;
     }

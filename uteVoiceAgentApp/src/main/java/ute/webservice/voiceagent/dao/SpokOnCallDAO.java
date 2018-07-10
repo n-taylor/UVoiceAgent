@@ -38,7 +38,9 @@ import ute.webservice.voiceagent.util.ParseResult;
  * Created by Nathan Taylor on 4/11/2018.
  */
 
-public class SpokOnCallDAO implements OnCallDAO {
+public class  SpokOnCallDAO implements OnCallDAO {
+
+    private static final String NO_NUMBERS = "No phone numbers found";
 
     private ParseResult PR;
 
@@ -112,48 +114,50 @@ public class SpokOnCallDAO implements OnCallDAO {
                 String json = EntityUtils.toString(entity, "UTF-8");
                 JSONObject myObject = new JSONObject(json);
                 String responseString = "";
-
-                String myObjectString = myObject.getString("numbers");
-
-                String arrays[] = myObjectString.split("\\|");
-
                 ArrayList<String> phoneNumbers = new ArrayList<>();
 
-                for (String number : arrays)
-                {
-                    number = number.substring(1);
-                    String topics[] = number.split("\\]\\[");
+                if (entity.getContentType().getValue().equals("200")) {
+                    // If the retrieval was a success
+                    String myObjectString = myObject.getString("numbers");
 
-                    if (topics[0].length() == 10) {
-                        StringBuilder sb = new StringBuilder(topics[0]);
-                        sb.insert(6, "-");
-                        sb.insert(3, "-");
-                        topics[0] = sb.toString();
-                    }
-                    else if (topics[0].length() == 7){
+                    String arrays[] = myObjectString.split("\\|");
 
-                        StringBuilder sb = new StringBuilder(topics[0]);
-                        sb.insert(3, "-");
-                        topics[0] = sb.toString();
-                    }
+                    for (String number : arrays) {
+                        number = number.substring(1);
+                        String topics[] = number.split("\\]\\[");
 
-                    if (topics[1].equals("SEE NOTE BELOW")){
+                        if (topics[0].length() == 10) {
+                            StringBuilder sb = new StringBuilder(topics[0]);
+                            sb.insert(6, "-");
+                            sb.insert(3, "-");
+                            topics[0] = sb.toString();
+                        } else if (topics[0].length() == 7) {
+
+                            StringBuilder sb = new StringBuilder(topics[0]);
+                            sb.insert(3, "-");
+                            topics[0] = sb.toString();
+                        }
+
+                        if (topics[1].equals("SEE NOTE BELOW")) {
                             break;
-                }
+                        }
 
 
-
-                    String phoneNumber = topics[1]+": "+topics[0];
-
+                        String phoneNumber = topics[1] + ": " + topics[0];
 
 
-                    if (!phoneNumbers.contains(phoneNumber)) {
+                        if (!phoneNumbers.contains(phoneNumber)) {
 
-                        phoneNumbers.add(phoneNumber);
+                            phoneNumbers.add(phoneNumber);
+                        }
                     }
                 }
+
 
                 phoneNumbers = appendPagers(phoneNumbers, mid);
+                if (phoneNumbers.size() == 0){
+                    phoneNumbers.add(NO_NUMBERS);
+                }
                 numbers.put(mids.get(mid), phoneNumbers);
             }
 
@@ -202,6 +206,10 @@ public class SpokOnCallDAO implements OnCallDAO {
         return numbers;
     }
 
+    /**
+     * Given an OCMID, returns a mapping of MID to Name for each on-call employee associated with
+     * the OCMID.
+     */
     private HashMap<String, String> getMIDs(String OCMID){
         //SSLConnectionSocketFactory factory = new SSLConnectionSocketFactory(sslContext);
         BasicCookieStore cookieStore = new BasicCookieStore();

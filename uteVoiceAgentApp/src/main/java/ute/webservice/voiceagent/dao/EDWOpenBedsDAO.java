@@ -88,7 +88,10 @@ public class EDWOpenBedsDAO implements OpenBedsDAO {
         try {
 
             HttpGetHC4 getRequest = new HttpGetHC4(CLINWEB_ALL_OPEN_BEDS_QUERY);
+            long start = System.currentTimeMillis();
             CloseableHttpResponse response3 = AccountCheck.httpclient.execute(getRequest);
+            long end = System.currentTimeMillis();
+            long duration = end - start;
             HttpEntity entity = response3.getEntity();
             if (entity != null) {
                 BufferedReader rdSrch = new BufferedReader(
