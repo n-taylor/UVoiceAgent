@@ -112,12 +112,12 @@ public class  SpokOnCallDAO implements OnCallDAO {
                 HttpEntity entity = response3.getEntity();
 
                 String json = EntityUtils.toString(entity, "UTF-8");
-                JSONObject myObject = new JSONObject(json);
-                String responseString = "";
                 ArrayList<String> phoneNumbers = new ArrayList<>();
 
-                if (entity.getContentType().getValue().equals("200")) {
+                if (response3.getStatusLine().getStatusCode() == 200) {
                     // If the retrieval was a success
+                    JSONObject myObject = new JSONObject(json);
+                    String responseString = "";
                     String myObjectString = myObject.getString("numbers");
 
                     String arrays[] = myObjectString.split("\\|");
