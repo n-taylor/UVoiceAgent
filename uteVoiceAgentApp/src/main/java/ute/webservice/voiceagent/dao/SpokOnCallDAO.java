@@ -107,7 +107,6 @@ public class  SpokOnCallDAO implements OnCallDAO {
                 postRequest.setHeader("Content-Type", "application/json;charset=UTF-8");
 
 
-
                 CloseableHttpResponse response3 = AccountCheck.httpclient.execute(postRequest);
                 HttpEntity entity = response3.getEntity();
 

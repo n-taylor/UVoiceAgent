@@ -330,7 +330,7 @@ public class EDWProceduresDAO implements ProceduresDAO, ProcedureCategoryRetriev
      */
     public void printProcedures(){
         if (procedureTreeRoot != null)   {
-            procedureTreeRoot.printTree();
+//            procedureTreeRoot.printTree();
         }
         else
             System.out.println("Procedure data has not been retrieved yet");
