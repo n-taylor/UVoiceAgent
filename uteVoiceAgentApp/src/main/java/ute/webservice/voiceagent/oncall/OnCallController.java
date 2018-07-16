@@ -26,6 +26,7 @@ import ute.webservice.voiceagent.util.Controller;
 
 public class OnCallController extends Controller {
 
+    private static String phone_regex = ":\\s*([\\d-]+)";
     private static ArrayList<String> areas;
 
     public static String NO_NUMBERS_AVAILABLE_LABEL = "No phone numbers available";
@@ -155,7 +156,8 @@ public class OnCallController extends Controller {
         String toDial = "tel:+1";
         // If the number extracted is not a full number, append it as an extension to the base phone number
         if (number.length() < 7){
-            number = hospitalBasePhoneNumber.substring(0, hospitalBasePhoneNumber.length() - number.length()) + number;
+//            number = hospitalBasePhoneNumber.substring(0, hospitalBasePhoneNumber.length() - number.length()) + number;
+            return;
         }
         else if (number.replace("-", "").length() == 7){
             number = "801-" + number;
@@ -168,7 +170,7 @@ public class OnCallController extends Controller {
 
     private static String extractPhoneNumber(String description){
         String number = "";
-        Pattern pattern = Pattern.compile("([\\d-]+)\\s*:");
+        Pattern pattern = Pattern.compile(phone_regex);
         Matcher matcher = pattern.matcher(description);
         if (matcher.find()){
             number = matcher.group(1);
