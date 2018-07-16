@@ -136,6 +136,9 @@ public class  SpokOnCallDAO implements OnCallDAO {
                             sb.insert(3, "-");
                             topics[0] = sb.toString();
                         }
+                        else if (topics[0].trim().length() == 0){
+                            break;
+                        }
 
                         if (topics[1].equals("SEE NOTE BELOW")) {
                             break;
