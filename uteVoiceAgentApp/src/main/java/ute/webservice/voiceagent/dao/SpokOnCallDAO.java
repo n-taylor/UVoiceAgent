@@ -254,6 +254,7 @@ public class  SpokOnCallDAO implements OnCallDAO {
 
         } catch (Exception e) {
             System.out.println(e);
+            return null;
         }
 
         return toSend;

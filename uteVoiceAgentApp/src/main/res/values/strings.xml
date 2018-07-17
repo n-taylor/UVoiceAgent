@@ -31,5 +31,6 @@
     <string name="on_call_list_message">For which area are you looking?</string>
     <string name="search_onCall_label">Search for a specific area</string>
     <string name="search_onCall_button_label">Search</string>
+    <string name="dialog_flow_error">An error occurred. Try again.</string>
 
 </resources>
