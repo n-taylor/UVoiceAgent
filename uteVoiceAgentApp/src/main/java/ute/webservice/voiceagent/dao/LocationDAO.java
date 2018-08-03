@@ -2,11 +2,13 @@ package ute.webservice.voiceagent.dao;
 
 import android.content.Context;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import ute.webservice.voiceagent.exceptions.AccessDeniedException;
 import ute.webservice.voiceagent.exceptions.InvalidResponseException;
 import ute.webservice.voiceagent.location.ClientLocation;
+import ute.webservice.voiceagent.location.TagInfo;
 import ute.webservice.voiceagent.location.TagLocation;
 
 /**
@@ -23,11 +25,10 @@ public interface LocationDAO {
     /**
      * Gets the client location info for a given client.
      *
-     * @param ID A mac address, IP address or username.
-     * @param campus Either Park or EBC, depending on the supposed location of the client
+     * @param mac the MAC address of the client
      * @return the location information of the client
      */
-    ClientLocation getClientLocation(String ID, Context context, int campus) throws InvalidResponseException, AccessDeniedException;
+    ClientLocation getClientLocation(String mac) throws InvalidResponseException, AccessDeniedException;
 
     /**
      * Gets the tag location info for a given tag.
@@ -37,6 +38,15 @@ public interface LocationDAO {
      * @return the location of the tag, or null if there was a problem retrieving its location.
      */
     TagLocation getTagLocation(String id, Context context, int campus) throws InvalidResponseException, AccessDeniedException;
+
+    /**
+     * Requires an asynchronous call to this method.
+     * @param building The building in which to search.
+     * @param floor The floor on which to search.
+     * @param category The category of the tags.
+     * @return A list of TagInfo, or null if there was an error
+     */
+    ArrayList<TagInfo> getTagLocations(String building, String floor, String category);
 
     void displayFloorMap(Context context, String imageName);
 

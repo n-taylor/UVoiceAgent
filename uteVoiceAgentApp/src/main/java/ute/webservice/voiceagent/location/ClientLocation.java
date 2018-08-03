@@ -1,11 +1,16 @@
 package ute.webservice.voiceagent.location;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Stores data about the location of a client.
  * Created by Nathan Taylor on 5/3/2018.
  */
 
 public class ClientLocation {
+
+    private static final String REGEX_BUILDING_FLOOR = "[\\w-]+>([\\w-]+)>([\\w- ]+)";
 
     private MapCoordinate mapCoordinate;
 
@@ -26,6 +31,9 @@ public class ClientLocation {
     private String userName;
     private String ssId;
     private boolean isGuestUser;
+
+    private Pattern pattern;
+    private Matcher matcher;
 
     /**
      * It is recommended that a ClientLocation be set using a ClientLocationBuilder object.
@@ -63,6 +71,10 @@ public class ClientLocation {
         this.userName = userName;
         this.ssId = ssId;
         this.isGuestUser = isGuestUser;
+
+        // Compute the regex
+        pattern = Pattern.compile(REGEX_BUILDING_FLOOR);
+        matcher = pattern.matcher(getMapHierarchy());
     }
 
     public MapCoordinate getMapCoordinate() {
@@ -123,5 +135,29 @@ public class ClientLocation {
 
     public boolean isGuestUser() {
         return isGuestUser;
+    }
+
+    /**
+     * @return The building name, or null if the map hierarchy string is in the wrong format
+     */
+    public String getBuilding() {
+        if (matcher != null){
+            return matcher.group(1);
+        }
+        else {
+            return null;
+        }
+    }
+
+    /**
+     * @return The floor name, or null if the map hierarchy string is in the wrong format
+     */
+    public String getFloor(){
+        if (matcher != null){
+            return matcher.group(2);
+        }
+        else {
+            return null;
+        }
     }
 }

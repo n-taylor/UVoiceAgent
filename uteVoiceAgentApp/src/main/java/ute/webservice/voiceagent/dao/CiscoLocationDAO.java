@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -23,6 +24,7 @@ import org.apache.http.impl.client.HttpClients;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import ute.webservice.voiceagent.R;
@@ -32,6 +34,7 @@ import ute.webservice.voiceagent.location.ClientLocation;
 import ute.webservice.voiceagent.location.ClientLocationBuilder;
 import ute.webservice.voiceagent.location.LocationController;
 import ute.webservice.voiceagent.location.MapCoordinate;
+import ute.webservice.voiceagent.location.TagInfo;
 import ute.webservice.voiceagent.location.TagLocation;
 import ute.webservice.voiceagent.location.MapDimension;
 import ute.webservice.voiceagent.location.TagLocationBuilder;
@@ -57,6 +60,12 @@ public class CiscoLocationDAO implements LocationDAO {
 
     private static final String GET_CLIENT_LOCATION = "https://10.0.2.2:8042/cisco/client/location/";
     private static final String GET_TAG_LOCATION = "https://10.0.2.2:8042/cisco/tag/location/";
+
+    /**
+     * Append [building]/[floor]/[category]
+     */
+    private static final String GET_TAG_CATEGORY_LOCATIONS = "https://10.0.2.2:8042/tag/location/category/";
+
 
     private static final String UNKNOWN_FLOOR = "The area you are located in is not currently supported";
 
@@ -104,16 +113,15 @@ public class CiscoLocationDAO implements LocationDAO {
     /**
      * Gets the client location info for a given client.
      *
-     * @param ID A mac address, IP address or username.
-     * @param campus Either Park or EBC, depending on the supposed location of the client
+     * @param mac The mac address of the client
      * @return the location information of the client, or null if an error occurs.
      */
     @Override
-    public ClientLocation getClientLocation(String ID , Context context, int campus) throws InvalidResponseException, AccessDeniedException {
+    public ClientLocation getClientLocation(String mac) throws InvalidResponseException, AccessDeniedException {
 //        String url = (campus == PARK) ? GET_CLIENT_LOCATION_PARK : GET_CLIENT_LOCATION_EBC;
 //        String request = USER_PASSWORD_PREFIX + url + ID.trim() + RETURN_TYPE;
 
-        String request = GET_CLIENT_LOCATION + ID.trim();
+        String request = GET_CLIENT_LOCATION + mac.trim();
         String response = "";
 
         try {
@@ -148,6 +156,73 @@ public class CiscoLocationDAO implements LocationDAO {
         }
 
         return null;
+    }
+
+    /**
+     * Requires an asynchronous call to this method.
+     * @param building The building in which to search.
+     * @param floor The floor on which to search.
+     * @param category The category of the tags.
+     * @return A list of TagInfo, or null if there was an error
+     */
+    public ArrayList<TagInfo> getTagLocations(String building, String floor, String category){
+        String request = GET_TAG_CATEGORY_LOCATIONS + building + "/" + floor + "/" + category;
+        request = request.replace(" ", "%20");
+        StringBuilder responseBuilder = new StringBuilder();
+
+        try{
+            HttpGetHC4 getRequest = new HttpGetHC4(request);
+            CloseableHttpResponse httpResponse = AccountCheck.httpclient.execute(getRequest);
+            HttpEntity entity = httpResponse.getEntity();
+
+            if (entity != null) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(entity.getContent()));
+                String line = "";
+
+                while ((line = reader.readLine()) != null) {
+                    responseBuilder.append(line);
+                }
+
+                return parseTagInfo(responseBuilder.toString());
+            }
+        }
+        catch (IOException ex){
+            ex.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+
+    /**
+     * Parses the JSON response into a list of TagInfo.
+     * @param json
+     * @return The list of tag info, or null if there was an error
+     */
+    private ArrayList<TagInfo> parseTagInfo(String json){
+        ArrayList<TagInfo> info = new ArrayList<>();
+
+        try {
+            // Convert the string into a JsonObject
+            JsonElement jsonElement = new JsonParser().parse(json);
+            JsonArray top = jsonElement.getAsJsonObject().getAsJsonArray("tagLocations");
+
+            // Process each object in the array
+            for (JsonElement element : top){
+                JsonObject tag = element.getAsJsonObject();
+                String mac = tag.get("mac_address").getAsString();
+                String category = tag.get("category").getAsString();
+                String building = tag.get("building").getAsString();
+                String floor = tag.get("floor").getAsString();
+                float x = tag.get("x").getAsFloat();
+                float y = tag.get("y").getAsFloat();
+                info.add(new TagInfo(mac, category, building, floor, x, y));
+            }
+
+        } catch(Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
+        return info;
     }
 
     public TagLocation getTagLocation(String ID, Context context, int campus) throws AccessDeniedException, InvalidResponseException{

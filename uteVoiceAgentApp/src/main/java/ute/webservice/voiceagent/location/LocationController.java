@@ -11,8 +11,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.List;
 
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.activities.EquipmentFindActivity;
@@ -49,6 +48,7 @@ public class LocationController extends Controller {
 
     private ClientLocation clientLocation;
     private HashMap<String, TagLocation> tagLocations;
+    private List<TagInfo> tagInfo;
     private HashMap<String, Device> Devices;
 
     /**
@@ -276,8 +276,29 @@ public class LocationController extends Controller {
      * @param clientMac The mac address of the user (client)
      * @param tagCategory The category of device/tag to retrieve and display
      */
-    public void findTags(Context context, String clientMac, String tagCategory){
-        clientMac = clientMac.toLowerCase();
+    public void findTags(final Context context, final String clientMac, final String tagCategory){
+        // Set the current tag category
+        this.currentCategory = tagCategory;
+
+        // Get the client location
+        GetClientLocationTask task = new GetClientLocationTask(clientMac);
+        task.setListener(new ClientLocationListener() {
+            @Override
+            public void onLocationReceived(ClientLocation location) {
+                // Set the client location
+                setClientLocation(location);
+
+                // Get the tags' locations
+                retrieveTagInfo(location.getBuilding(), location.getFloor(), currentCategory); // Use this for actual location/floor
+                // TODO: TEST ON TAGS IN THE BURN UNIT
+
+                // Display the map with client and tag locations
+                displayClientLocation(clientMac, context);
+            }
+        });
+        task.execute();
+
+        /*clientMac = clientMac.toLowerCase();
         tagLocations = new HashMap<>(); // clear the tags to display
 
         // Find the tags
@@ -289,7 +310,24 @@ public class LocationController extends Controller {
         }
 
         // Display the client location
-        displayClientLocation(clientMac, context);
+        displayClientLocation(clientMac, context);*/
+    }
+
+    /**
+     * Gets the info of the tags that are of the category specified and stores them
+     * @param building The building in which the client is located
+     * @param floor The floor on which the client is located
+     * @param category The tag category the user is requesting
+     */
+    private void retrieveTagInfo(String building, String floor, String category){
+        GetTagCategoryLocationsTask task = new GetTagCategoryLocationsTask(building, floor, category);
+        task.setListener(new TagInfoListener() {
+            @Override
+            public void onInfoReceived(List<TagInfo> tags) {
+                tagInfo = tags;
+            }
+        });
+        task.execute();
     }
 
     /**
@@ -311,43 +349,48 @@ public class LocationController extends Controller {
         return categories != null && categories.containsKey(category);
     }
 
-    private ArrayList<String> deviceSearchType(String typeToFind){
-
-        ArrayList<String> results = new ArrayList<String>();
-
-        for (Map.Entry<String, Device> entry : Devices.entrySet()) {
-            if (Objects.equals(typeToFind, entry.getValue().getType())) {
-                results.add(entry.getKey());
-            }
-        }
-
-        return results;
-
-    }
-
     public HashMap<String, TagLocation> getTagLocations(){
         if (tagLocations == null)
             tagLocations = new HashMap<>();
         return tagLocations;
     }
 
-    //---
-    public HashMap<String, Device> getDevices(){
-        if (Devices == null)
-            Devices = new HashMap<>();
-        return Devices;
+    /**
+     * Gets the current list of tag info. May be empty.
+     */
+    public List<TagInfo> getTagInfo(){
+        if (tagInfo == null){
+            tagInfo = new ArrayList<>();
+        }
+        return tagInfo;
     }
 
 
     /**
-     * Retrieves the location of the client with the given ID, and displays it in the Equipment find activity
+     * Retrieves the client location if necessary and displays it in the Equipment find activity
      * with a map of the floor plan.
      *
      * @param id The mac address of the client
      * @param context used to start a new activity
      */
-    public static void displayClientLocation(String id, final Context context){
-        @SuppressLint("StaticFieldLeak")
+    public void displayClientLocation(String id, final Context context){
+
+        if (clientLocation == null){
+            GetClientLocationTask task = new GetClientLocationTask(id);
+            task.setListener(new ClientLocationListener() {
+                @Override
+                public void onLocationReceived(ClientLocation location) {
+                    setClientLocation(location);
+                    getLocationDAO().displayFloorMap(context, location.getMapHierarchy());
+                }
+            });
+            task.execute();
+        }
+        else {
+            getLocationDAO().displayFloorMap(context, clientLocation.getMapHierarchy());
+        }
+
+        /*@SuppressLint("StaticFieldLeak")
         AsyncTask<String, Void, ClientLocation> task = new AsyncTask<String, Void, ClientLocation>() {
             @Override
             protected ClientLocation doInBackground(String... strings) {
@@ -382,9 +425,88 @@ public class LocationController extends Controller {
                 }
             }
         };
-        task.execute(id);
+        task.execute(id);*/
 
         //openNewActivity(context, EquipmentFindActivity.class);
+    }
+
+    /**
+     * Gets the
+     */
+    private static class GetTagCategoryLocationsTask extends AsyncTask<Void, Void, List<TagInfo>>{
+
+        private String building;
+        private String floor;
+        private String category;
+
+        private TagInfoListener listener;
+
+        public GetTagCategoryLocationsTask(String building, String floor, String category){
+            this.building = building;
+            this.floor = floor;
+            this.category = category;
+        }
+
+        public void setListener(TagInfoListener listener){
+            this.listener = listener;
+        }
+
+        @Override
+        protected List<TagInfo> doInBackground(Void... voids) {
+            return getLocationDAO().getTagLocations(building, floor, category);
+        }
+
+        @Override
+        public void onPostExecute(List<TagInfo> tags){
+            listener.onInfoReceived(tags);
+        }
+    }
+
+    /**
+     * To be used in conjunction with GetTagCategoryLocationsTask
+     */
+    private interface TagInfoListener {
+        void onInfoReceived(List<TagInfo> tags);
+    }
+
+    private static class GetClientLocationTask extends AsyncTask<Void, Void, ClientLocation> {
+
+        private String macAddress;
+        private ClientLocationListener listener;
+
+        GetClientLocationTask(String macAddress){
+            this.macAddress = macAddress;
+        }
+
+        void setListener(ClientLocationListener listener){
+            this.listener = listener;
+        }
+
+        @Override
+        protected ClientLocation doInBackground(Void... voids) {
+            ClientLocation location = null;
+            try {
+                // Get the location of the client
+                location = getLocationDAO().getClientLocation(macAddress);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+            return location;
+        }
+
+        @Override
+        protected void onPostExecute(ClientLocation location){
+            listener.onLocationReceived(location);
+        }
+    }
+
+    private interface ClientLocationListener {
+        /**
+         * Called when the location of a client has been processed in the GetClientLocationTask class.
+         * @param location The location of the client requested, or null if there was a problem.
+         */
+        void onLocationReceived(ClientLocation location);
     }
 
     private static class GetTagLocationTask extends AsyncTask<Void, Void, TagLocation> {

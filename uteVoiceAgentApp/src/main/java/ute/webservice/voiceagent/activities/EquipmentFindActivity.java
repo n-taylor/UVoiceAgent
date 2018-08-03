@@ -32,6 +32,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -47,6 +48,7 @@ import ute.webservice.voiceagent.location.ClientLocation;
 import ute.webservice.voiceagent.location.LocationController;
 import ute.webservice.voiceagent.location.MapCoordinate;
 import ute.webservice.voiceagent.location.MapDimension;
+import ute.webservice.voiceagent.location.TagInfo;
 import ute.webservice.voiceagent.location.TagLocation;
 import ute.webservice.voiceagent.util.Config;
 import ute.webservice.voiceagent.util.Controller;
@@ -120,7 +122,7 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
         ClientLocation location = null;
         try {
 //            location = getLocationDAO().getClientLocation("f8:34:41:bf:ab:ee",this);
-            location = getLocationDAO().getClientLocation(Controller.getMacAddr().toLowerCase(Locale.US), context, LocationDAO.PARK);
+            location = getLocationDAO().getClientLocation(Controller.getMacAddr().toLowerCase(Locale.US));
 
         }
         catch (Exception e){
@@ -523,8 +525,29 @@ class MapImageView extends AppCompatImageView {
 //                drawScaledCircle(canvas, B, posX, posY, HALO_SIZE, clientHalo);
 //            }
 
+            List<TagInfo> tags = LocationController.getInstance().getTagInfo();
+            for (TagInfo tag : tags){
+                if (tag != null){ // && LocationController.getInstance().getCurrentMapName().equalsIgnoreCase(tag.getMapHierarchy())){
 
-            HashMap<String, TagLocation> tags = LocationController.getInstance().getTagLocations();
+                    float posX = getScaledPosX(tag.getX(), 455.0f, B); // Use the dimensions of burn unit floor for testing
+                    float posY = getScaledPosY(tag.getY(), 324.1f, B); // testing hard-coded floor dimensions
+//                    float posX = getScaledPosX(tag.getX(), dimension.getWidth(), B);
+//                    float posY = getScaledPosY(tag.getY(), dimension.getLength(), B);
+
+
+
+                    String label = tag.getCategory();
+                    if (label == null)
+                        label = DEFAULT_TAG_LABEL;
+
+                    drawTag(canvas, posX, posY, label, tagPaint);
+
+//                    drawScaledCircle(canvas, B, coordinate.getX(), coordinate.getY(), DOT_SIZE, tagPaint);
+                    //drawScaledCircle(canvas, B, coordinate.getX(), coordinate.getY(), HALO_SIZE, tagHalo);
+                }
+            }
+
+            /*HashMap<String, TagLocation> tags = LocationController.getInstance().getTagLocations();
 
             for (String key : tags.keySet()){
                 TagLocation loc = tags.get(key);
@@ -547,7 +570,7 @@ class MapImageView extends AppCompatImageView {
 //                    drawScaledCircle(canvas, B, coordinate.getX(), coordinate.getY(), DOT_SIZE, tagPaint);
                     //drawScaledCircle(canvas, B, coordinate.getX(), coordinate.getY(), HALO_SIZE, tagHalo);
                 }
-            }
+            }*/
             //canvas.drawCircle(500.0f, 500.0f, 20.0f, paint);
 
             canvas.restore();
