@@ -1,19 +1,11 @@
 package ute.webservice.voiceagent.activities;
 
-import android.bluetooth.BluetoothClass;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Point;
 import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.AppCompatImageView;
@@ -27,11 +19,8 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
@@ -43,19 +32,16 @@ import ai.api.model.AIResponse;
 import ai.api.model.Location;
 import ai.api.ui.AIButton;
 import ute.webservice.voiceagent.R;
-import ute.webservice.voiceagent.dao.LocationDAO;
 import ute.webservice.voiceagent.location.ClientLocation;
 import ute.webservice.voiceagent.location.LocationController;
 import ute.webservice.voiceagent.location.MapCoordinate;
 import ute.webservice.voiceagent.location.MapDimension;
 import ute.webservice.voiceagent.location.TagInfo;
-import ute.webservice.voiceagent.location.TagLocation;
 import ute.webservice.voiceagent.util.Config;
 import ute.webservice.voiceagent.util.Controller;
 import ute.webservice.voiceagent.util.DataAsked;
 import ute.webservice.voiceagent.util.SharedData;
 
-import static android.net.wifi.WifiConfiguration.Status.strings;
 import static ute.webservice.voiceagent.util.Controller.getLocationDAO;
 
 /**
@@ -63,6 +49,9 @@ import static ute.webservice.voiceagent.util.Controller.getLocationDAO;
  */
 
 public class EquipmentFindActivity extends BaseActivity implements AIButton.AIButtonListener {
+
+    private static final String UNSURE_LOCATION_MESSAGE = "Location not found";
+    private static final String NO_DEVICE = "No device selected";
 
     private static final String TAG = EquipmentFindActivity.class.toString();
 
@@ -76,6 +65,8 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
     private ScaleGestureDetector mScaleGestureDetector;
     private float mScaleFactor = 1.0f;
     private ImageView mImageView;
+    private TextView locationLabel;
+    private TextView deviceLabel;
 
     private Timer timer;
     private TimerTask repeatedTask;
@@ -99,6 +90,8 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
         initializeButtons();
         initializeSharedData();
 
+        initializeTextViews();
+
         /*repeatedTask = new TimerTask() {
             public void run() {
                 redrawTask();
@@ -115,6 +108,30 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
         timer = new Timer("Timer");
 
         timer.scheduleAtFixedRate(repeatedTask, timerDelay, timerPeriod);*/
+    }
+
+    /**
+     * Sets the values of the location and device labels to the appropriate values
+     */
+    private void initializeTextViews(){
+        locationLabel = (TextView)findViewById(R.id.location_label);
+        deviceLabel = (TextView)findViewById(R.id.device_label);
+        ClientLocation userLocation = LocationController.getInstance().getClientLocation();
+        if (userLocation == null){
+            locationLabel.setText(UNSURE_LOCATION_MESSAGE);
+        }
+        else {
+            String message = userLocation.getBuilding() + " : " + userLocation.getFloor();
+            locationLabel.setText(message);
+        }
+
+        String deviceName = LocationController.getInstance().getCurrentCategory();
+        if (deviceName == null){
+            deviceLabel.setText(NO_DEVICE);
+        }
+        else{
+            deviceLabel.setText(deviceName);
+        }
     }
 
     private void redrawTask()
@@ -336,8 +353,8 @@ class MapImageView extends AppCompatImageView {
     private static float MIN_ZOOM = 0.1f;
     private static float MAX_ZOOM = 5f;
 
-    private static final int TAG_HEIGHT = 80;
-    private static final int TAG_WIDTH = 240;
+    private static final int TAG_HEIGHT = 100;
+    private static final int TAG_WIDTH = 80;
     private static final int TAG_x_OFFSET = 30;
     private static final int TAG_Y_OFFSET = 10;
 
@@ -517,7 +534,7 @@ class MapImageView extends AppCompatImageView {
 
             canvas.drawBitmap(B, 0, 0, null);
 
-            MapCoordinate userLoc = LocationController.getInstance().getUserLocation();
+            MapCoordinate userLoc = LocationController.getInstance().getUserCoordinates();
             MapDimension dimension = LocationController.getInstance().getDimensions();
 
 //            if (userLoc != null){
@@ -608,11 +625,12 @@ class MapImageView extends AppCompatImageView {
 
     private void drawTag(Canvas canvas, float x, float y, String label, Paint paint){
         // Determine the rectangle in which to draw the bitmap
-        Rect rect = new Rect((int)x, (int)(y - (TAG_HEIGHT/2)), (int)(x + TAG_WIDTH), (int)(y + (TAG_HEIGHT/2)));
+//        Rect rect = new Rect((int)x, (int)(y - (TAG_HEIGHT/2)), (int)(x + TAG_WIDTH), (int)(y + (TAG_HEIGHT/2)));
+        Rect rect = new Rect((int)(x - TAG_WIDTH/2), (int)(y - TAG_HEIGHT), (int)(x + TAG_WIDTH/2), (int)y);
         // Create the bitmap
         // Draw the image
         canvas.drawBitmap(LocationController.getInstance().getTagImage(getContext()), null, rect, null);
-        canvas.drawText(label, x + (TAG_WIDTH/4), y + TAG_Y_OFFSET, paint);
+//        canvas.drawText(label, x + (TAG_WIDTH/4), y + TAG_Y_OFFSET, paint);
     }
 }
 

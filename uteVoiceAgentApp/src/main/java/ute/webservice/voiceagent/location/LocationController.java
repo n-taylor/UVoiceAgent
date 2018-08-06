@@ -30,7 +30,7 @@ public class LocationController extends Controller {
 
     private static final String CLIENT_LOCATION_ERROR = "An error occurred while retrieving the device location";
 
-    private static final int TAG_ID = R.drawable.tag_2;
+    private static final int TAG_ID = R.drawable.pin_red;
 
     private Bitmap bitmap;
     private Bitmap tagBitmap;
@@ -204,13 +204,24 @@ public class LocationController extends Controller {
         //return floorMaps.get(currentMapName);
     }
 
+    /**
+     * @return The current category name or null if there is no category specified
+     */
+    public String getCurrentCategory(){
+        return currentCategory;
+    }
+
     public String getImageName() { return clientLocation.getImageName(); }
 
     public void setClientLocation(ClientLocation location){
         clientLocation = location;
     }
 
-    public MapCoordinate getUserLocation(){
+    public ClientLocation getClientLocation(){
+        return this.clientLocation;
+    }
+
+    public MapCoordinate getUserCoordinates(){
         if (clientLocation == null)
             return null;
         else
