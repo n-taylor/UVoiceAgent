@@ -125,7 +125,7 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
             locationLabel.setText(message);
         }
 
-        String deviceName = LocationController.getInstance().getCurrentCategory();
+        String deviceName = LocationController.getInstance().getCurrentCategory().replace("%20", " ");
         if (deviceName == null){
             deviceLabel.setText(NO_DEVICE);
         }
