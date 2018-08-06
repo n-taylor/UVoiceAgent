@@ -79,8 +79,8 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
 
     private Timer timer;
     private TimerTask repeatedTask;
-    private final long timerDelay = 5000L;
-    private final long timerPeriod = 5000L;
+    private final long timerDelay = 10000L;
+    private final long timerPeriod = 10000L;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -99,7 +99,7 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
         initializeButtons();
         initializeSharedData();
 
-        repeatedTask = new TimerTask() {
+        /*repeatedTask = new TimerTask() {
             public void run() {
                 redrawTask();
                 runOnUiThread(new Runnable() {
@@ -114,7 +114,7 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
         };
         timer = new Timer("Timer");
 
-        timer.scheduleAtFixedRate(repeatedTask, timerDelay, timerPeriod);
+        timer.scheduleAtFixedRate(repeatedTask, timerDelay, timerPeriod);*/
     }
 
     private void redrawTask()
@@ -127,9 +127,11 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
         }
         catch (Exception e){
             e.printStackTrace();
-
+            return;
         }
-        LocationController.getInstance().setClientLocation(location);
+        if (location != null) {
+            LocationController.getInstance().setClientLocation(location);
+        }
 //        LocationController.getInstance().findTagLocation("00:12:b8:0d:0a:2b", context);
     }
 

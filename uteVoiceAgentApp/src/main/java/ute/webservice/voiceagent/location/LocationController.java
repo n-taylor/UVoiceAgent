@@ -285,15 +285,20 @@ public class LocationController extends Controller {
         task.setListener(new ClientLocationListener() {
             @Override
             public void onLocationReceived(ClientLocation location) {
-                // Set the client location
-                setClientLocation(location);
+                if (location == null) {
+                    Toast.makeText(context, CLIENT_LOCATION_ERROR, Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    // Set the client location
+                    setClientLocation(location);
 
-                // Get the tags' locations
-                retrieveTagInfo(location.getBuilding(), location.getFloor(), currentCategory); // Use this for actual location/floor
-                // TODO: TEST ON TAGS IN THE BURN UNIT
+                    // Get the tags' locations
+                    retrieveTagInfo(location.getBuilding(), location.getFloor(), currentCategory); // Use this for actual location/floor
+                    // TODO: TEST ON TAGS IN THE BURN UNIT
 
-                // Display the map with client and tag locations
-                displayClientLocation(clientMac, context);
+                    // Display the map with client and tag locations
+                    displayClientLocation(clientMac, context);
+                }
             }
         });
         task.execute();
@@ -380,8 +385,13 @@ public class LocationController extends Controller {
             task.setListener(new ClientLocationListener() {
                 @Override
                 public void onLocationReceived(ClientLocation location) {
-                    setClientLocation(location);
-                    getLocationDAO().displayFloorMap(context, location.getMapHierarchy());
+                    if (location == null){
+                        Toast.makeText(context, CLIENT_LOCATION_ERROR, Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        setClientLocation(location);
+                        getLocationDAO().displayFloorMap(context, location.getMapHierarchy());
+                    }
                 }
             });
             task.execute();

@@ -74,7 +74,9 @@ public class ClientLocation {
 
         // Compute the regex
         pattern = Pattern.compile(REGEX_BUILDING_FLOOR);
-        matcher = pattern.matcher(getMapHierarchy());
+
+        // For testing purposes, use Level 4 of the hospital
+        this.mapHierarchy = "UofU-FtDouglas>0525-UHOSP>Level 4";
     }
 
     public MapCoordinate getMapCoordinate() {
@@ -141,7 +143,8 @@ public class ClientLocation {
      * @return The building name, or null if the map hierarchy string is in the wrong format
      */
     public String getBuilding() {
-        if (matcher != null){
+        matcher = pattern.matcher(mapHierarchy);
+        if (matcher.find()){
             return matcher.group(1);
         }
         else {
@@ -153,7 +156,8 @@ public class ClientLocation {
      * @return The floor name, or null if the map hierarchy string is in the wrong format
      */
     public String getFloor(){
-        if (matcher != null){
+        matcher = pattern.matcher(mapHierarchy);
+        if (matcher.find()){
             return matcher.group(2);
         }
         else {
