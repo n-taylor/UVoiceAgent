@@ -150,6 +150,9 @@ public class CiscoLocationDAO implements LocationDAO {
                 }
             }
         }
+        catch(AccessDeniedException | InvalidResponseException ex){
+            throw ex;
+        }
         catch (Exception e) {
             e.printStackTrace();
             return null;
