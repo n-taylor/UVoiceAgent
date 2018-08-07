@@ -91,6 +91,8 @@ public class ParseResult {
         gson = gBuilder.create();
     }
 
+
+
     /**
      * Get replied sentences from API.AI.
      * @return replied sentences
@@ -193,6 +195,18 @@ public class ParseResult {
             return param_json;
         }
         return "";
+    }
+
+    /**
+     * Gets the value associated with the specified value if it exists.
+     * @param param The parameter to extract (e.g. censusUnit, EquipmentCategory, OnCall, etc)
+     * @return The value associated with the parameter, or null if it doesn't exist
+     */
+    public String getParam(String param){
+        if (params != null && params.containsKey(param)){
+            return params.get(param).getAsString();
+        }
+        return null;
     }
 
     /**

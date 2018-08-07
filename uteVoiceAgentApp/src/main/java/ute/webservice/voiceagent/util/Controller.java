@@ -71,6 +71,8 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
     public static final String PARTIAL_QUERY_MESSAGE = "What do you want to know about ";
     public static final String ON_CALL_LIST_MESSAGE = "For which area are you looking?";
     public static final String CONNECTION_ERROR = "There was a problem connecting to the server.";
+    private static final String UNKNOWN_CATEGORY = "Sorry, the category in \"%s\" is not supported";
+    private static final String UNKNOWN_ACTION = "Sorry, the command \"%s\" is not supported";
 
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
@@ -104,8 +106,16 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                 openNewActivity(context, OnCallActivity.class);
             else if (action.equals(Constants.GET_SURGERY_COST))
                 openNewActivity(context, ProceduresListActivity.class);
-            else
+            else if (action.equals(Constants.GET_CENSUS))
                 openNewActivity(context, OpenBedsActivity.class);
+            else if (action.equals(Constants.FIND_EQUIPMENT)){
+                String message = String.format(Locale.US, UNKNOWN_CATEGORY, query);
+                getController().welcomeActivity.setWelcomeText(message);
+            }
+            else {
+                String message = String.format(Locale.US, UNKNOWN_ACTION, query);
+                Controller.getController().welcomeActivity.setWelcomeText(message);
+            }
         }
         // Otherwise, retrieve the necessary information and display it to the user
         else {

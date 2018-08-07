@@ -211,6 +211,13 @@ public class LocationController extends Controller {
         return currentCategory;
     }
 
+    /**
+     * @param category Null if no category or the category name
+     */
+    public void setCurrentCategory(String category){
+        this.currentCategory = category;
+    }
+
     public String getImageName() { return clientLocation.getImageName(); }
 
     public void setClientLocation(ClientLocation location){

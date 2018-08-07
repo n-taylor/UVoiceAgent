@@ -48,6 +48,14 @@ public final class Constants {
     public final static String ACTION_UNKNOWN = "input.unknown";
     public final static String PARTIAL_ACTION = "partialReceived";
 
+    /**
+     * The category name that is received from Dialog Flow as a parameter value.
+     * DF stands for Dialog Flow.
+     */
+    public final static String DF_PARAM_EQUIPMENT_CATEGORY = "EquipmentCategory";
+    public final static String DF_PARAM_CENSUS_UNIT = "censusUnit";
+    public final static String DF_PARAM_PROCEDURE_CATEGORY = "SurgeryCategory";
+
     public HashMap<String, String> units = new HashMap<String, String>();
 
     public Constants(){
