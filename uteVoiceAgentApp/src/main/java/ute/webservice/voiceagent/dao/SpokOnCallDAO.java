@@ -50,6 +50,7 @@ public class  SpokOnCallDAO implements OnCallDAO {
 
     private final int timeout = 5000;
     private static String IPAddress = "155.100.69.40";
+    private static final String HOST = "https://" + Constants.SERVER_IP + ":" + Constants.PORT;
 
 
     /**
@@ -96,7 +97,7 @@ public class  SpokOnCallDAO implements OnCallDAO {
 
             for (String mid : mids.keySet()) {
 
-                HttpPostHC4 postRequest = new HttpPostHC4("https://10.0.2.2:8042/onCall/getNumbers");
+                HttpPostHC4 postRequest = new HttpPostHC4(HOST + "/onCall/getNumbers");
 
                 String  JSON_STRING = "{";
                 JSON_STRING+= Constants.CODE +":\""+mid+"\"}";
@@ -178,7 +179,7 @@ public class  SpokOnCallDAO implements OnCallDAO {
      */
     private ArrayList<String> appendPagers(ArrayList<String> numbers, String mid){
             try {
-                    HttpPostHC4 postRequest = new HttpPostHC4("https://10.0.2.2:8042/onCall/getPagers");
+                    HttpPostHC4 postRequest = new HttpPostHC4(HOST + "/onCall/getPagers");
 
                     String  JSON_STRING = "{";
                     JSON_STRING+= Constants.CODE +":\""+mid+"\"}";
@@ -217,7 +218,7 @@ public class  SpokOnCallDAO implements OnCallDAO {
         BasicCookieStore cookieStore = new BasicCookieStore();
         HashMap<String,String> toSend = new HashMap<>();
         try {
-            HttpPostHC4 postRequest = new HttpPostHC4("https://10.0.2.2:8042/onCall/getMID");
+            HttpPostHC4 postRequest = new HttpPostHC4(HOST + "/onCall/getMID");
 
             String  JSON_STRING = "{";
             JSON_STRING+= Constants.CODE +":\""+OCMID+"\"}";

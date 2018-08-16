@@ -87,7 +87,7 @@ public class AccountCheck {
         cookieStore = new BasicCookieStore();
         httpclient = HttpClients.custom()
                 .setDefaultCookieStore(cookieStore)
-                .setSslcontext(CertificateManager.getSSlContext(activity, "emulator.crt"))
+                .setSslcontext(CertificateManager.getSSlContext(activity, "server.crt"))
                 .setDefaultRequestConfig(config)
                 .build();
     }

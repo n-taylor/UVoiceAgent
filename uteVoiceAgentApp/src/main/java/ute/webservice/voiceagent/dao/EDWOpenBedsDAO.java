@@ -25,8 +25,9 @@ public class EDWOpenBedsDAO implements OpenBedsDAO {
     public final static String TAG = EDWOpenBedsDAO.class.getName();
 
     // Open Beds constants
-    public final static String CLINWEB_ALL_OPEN_BEDS_QUERY = "https://10.0.2.2:8042/bedCensus/all";
-    public final static String CLINWEB_OPEN_BEDS_SPECFIC_QUERY = "https://10.0.2.2:8042/bedCensus/unit/";
+    private final static String HOST = "https://" + Constants.SERVER_IP + ":" + Constants.PORT;
+    public final static String ALL_BEDS_QUERY = HOST + "/bedCensus/all";
+    public final static String UNIT_BEDS_QUERY = HOST + "/bedCensus/unit/";
 
     private static ArrayList<String> unitNames;
     private static HashMap<String, ArrayList<String>> unitCategories;
@@ -40,7 +41,7 @@ public class EDWOpenBedsDAO implements OpenBedsDAO {
     public int getOpenBedCount(String unit) {
         int openBeds = -1;
         String trimmedUnit = unit.replace(" ", "").toUpperCase();
-        String url = CLINWEB_OPEN_BEDS_SPECFIC_QUERY + trimmedUnit;
+        String url = UNIT_BEDS_QUERY + trimmedUnit;
 
         try {
             HttpGetHC4 getRequest = new HttpGetHC4(url);
@@ -87,7 +88,7 @@ public class EDWOpenBedsDAO implements OpenBedsDAO {
 
         try {
 
-            HttpGetHC4 getRequest = new HttpGetHC4(CLINWEB_ALL_OPEN_BEDS_QUERY);
+            HttpGetHC4 getRequest = new HttpGetHC4(ALL_BEDS_QUERY);
             long start = System.currentTimeMillis();
             CloseableHttpResponse response3 = AccountCheck.httpclient.execute(getRequest);
             long end = System.currentTimeMillis();
