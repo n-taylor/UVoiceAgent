@@ -28,6 +28,7 @@ public final class Constants {
     public final static String SERVER_DEV = "172.20.150.205";
     public final static String SERVER_IP = SERVER_DEV;
     public final static int PORT = 8042;
+    public final static String HOST = "https://" + SERVER_IP + ":" + PORT;
 
     public final static String ACCESS_DENIED = "Access Denied";
     public final static int ACCESS_DENIED_INT = -999;

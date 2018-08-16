@@ -58,13 +58,13 @@ public class CiscoLocationDAO implements LocationDAO {
     private static final String GET_FLOOR_PLAN = "mse-park.net.utah.edu/api/contextaware/v1/maps/imagesource/";
     private static final String RETURN_TYPE = ".json";
 
-    private static final String GET_CLIENT_LOCATION = "https://10.0.2.2:8042/cisco/client/location/";
-    private static final String GET_TAG_LOCATION = "https://10.0.2.2:8042/cisco/tag/location/";
+    private static final String GET_CLIENT_LOCATION = Constants.HOST + "/cisco/client/location/";
+    private static final String GET_TAG_LOCATION = Constants.HOST + "/cisco/tag/location/";
 
     /**
      * Append [building]/[floor]/[category]
      */
-    private static final String GET_TAG_CATEGORY_LOCATIONS = "https://10.0.2.2:8042/tag/location/category/";
+    private static final String GET_TAG_CATEGORY_LOCATIONS = Constants.HOST + "/tag/location/category/";
 
 
     private static final String UNKNOWN_FLOOR = "The area you are located in is not currently supported";
