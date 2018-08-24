@@ -89,12 +89,12 @@ public class LocationController extends Controller {
             floorMaps = new HashMap<>();
 
             floorMaps.put("UofU-FtDouglas>0482-102Tower>Level 4", R.drawable.tower_level_4);
-            floorMaps.put("UofU-Hospital>0525-UHOSP>Level 4", R.drawable.uhosp_level_4);
 
 
             floorMaps.put("UofU-Hospital>0525-UHOSP>Level 1", R.drawable.uhosp_level_1);
             floorMaps.put("UofU-Hospital>0525-UHOSP>Level 2", R.drawable.uhosp_level_2);
             floorMaps.put("UofU-Hospital>0525-UHOSP>Level 3", R.drawable.uhosp_level_3);
+            floorMaps.put("UofU-Hospital>0525-UHOSP>Level 4", R.drawable.uhosp_level_4);
             floorMaps.put("UofU-Hospital>0525-UHOSP>Level 5", R.drawable.uhosp_level_5);
             floorMaps.put("UofU-Hospital>0525-UHOSP>Level 6", R.drawable.uhosp_level_6);
             floorMaps.put("UofU-Hospital>0525-UHOSP>Level 7", R.drawable.uhosp_level_7);
@@ -196,7 +196,7 @@ public class LocationController extends Controller {
     public void setImage(Context context, String imageName){
         // For testing purposes, set an invalid image name to wpav floor 5
         if (!floorMaps.containsKey(imageName)){
-            imageName = "UofU-Hospital>0522-WPAV>Floor 5";
+            imageName = "UofU-FtDouglas>0482-102Tower>Level 4";
         }
 
         if (floorMaps.containsKey(imageName)){

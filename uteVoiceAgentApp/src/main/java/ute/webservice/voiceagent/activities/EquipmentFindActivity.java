@@ -540,21 +540,21 @@ class MapImageView extends AppCompatImageView {
             MapCoordinate userLoc = LocationController.getInstance().getUserCoordinates();
             MapDimension dimension = LocationController.getInstance().getDimensions();
 
-//            if (userLoc != null){
-//                float posX = getScaledPosX(userLoc.getX(), dimension.getWidth(), image);
-//                float posY = getScaledPosY(userLoc.getY(), dimension.getLength(), image);
-//                drawScaledCircle(canvas, image, posX, posY, DOT_SIZE, clientPaint);
-//                drawScaledCircle(canvas, image, posX, posY, HALO_SIZE, clientHalo);
-//            }
+            if (userLoc != null){
+                float posX = getScaledPosX(userLoc.getX(), dimension.getWidth(), image);
+                float posY = getScaledPosY(userLoc.getY(), dimension.getLength(), image);
+                drawScaledCircle(canvas, image, posX, posY, DOT_SIZE, clientPaint);
+                drawScaledCircle(canvas, image, posX, posY, HALO_SIZE, clientHalo);
+            }
 
             List<TagInfo> tags = LocationController.getInstance().getTagInfo();
             for (TagInfo tag : tags){
                 if (tag != null){ // && LocationController.getInstance().getCurrentMapName().equalsIgnoreCase(tag.getMapHierarchy())){
 
-                    float posX = getScaledPosX(tag.getX(), 455.0f, image); // Use the dimensions of burn unit floor for testing
-                    float posY = getScaledPosY(tag.getY(), 324.1f, image); // testing hard-coded floor dimensions
-//                    float posX = getScaledPosX(tag.getX(), dimension.getWidth(), image);
-//                    float posY = getScaledPosY(tag.getY(), dimension.getLength(), image);
+//                    float posX = getScaledPosX(tag.getX(), 455.0f, image); // Use the dimensions of burn unit floor for testing
+//                    float posY = getScaledPosY(tag.getY(), 324.1f, image); // testing hard-coded floor dimensions
+                    float posX = getScaledPosX(tag.getX(), dimension.getWidth(), image);
+                    float posY = getScaledPosY(tag.getY(), dimension.getLength(), image);
 
 
 
