@@ -76,7 +76,7 @@ public class ClientLocation {
         pattern = Pattern.compile(REGEX_BUILDING_FLOOR);
 
         // For testing a specific floor, uncomment the line below
-        this.mapHierarchy = "UofU-Hospital>0482-102Tower>Level 5";
+//        this.mapHierarchy = "UofU-Hospital>0482-102Tower>Level 5";
     }
 
     public MapCoordinate getMapCoordinate() {

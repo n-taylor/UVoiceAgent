@@ -136,7 +136,8 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
             else if (action.equals(Constants.FIND_EQUIPMENT)){
                 // Display the client location and location of the tags associated with the category
                 // received from Dialog Flow
-                LocationController.getInstance().findTags(context, getMacAddr(), reply);
+                String mac = getMacAddr();
+                LocationController.getInstance().findTags(context, mac, reply);
             }
             else if (action.equals(Constants.ACTION_UNKNOWN)){
                 String message = "Sorry, '" + query + "' is not a known command";
@@ -438,8 +439,8 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                 if (res1.length() > 0) {
                     res1.deleteCharAt(res1.length() - 1);
                 }
-//                return res1.toString();
-              return "f8:34:41:bf:ab:ee";
+                return res1.toString();
+//              return "f8:34:41:bf:ab:ee"; // laptop
             }
         } catch (Exception ex) {
         }

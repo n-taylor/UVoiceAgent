@@ -72,50 +72,10 @@ public class CiscoLocationDAO implements LocationDAO {
     private static final int MAX_WIDTH = 1800;
     private static final int MAX_HEIGHT = 1800;
 
-    private static HashMap<String, Integer> floorMaps;
 
     private static final int bitmap_scale = 2;
 
     public CiscoLocationDAO(){
-        if (floorMaps == null) {
-            floorMaps = new HashMap<>();
-
-            floorMaps.put("UofU-FtDouglas>0482-102Tower>Level 4", R.drawable.tower_level_4);
-            floorMaps.put("UofU-Hospital>0525-UHOSP>Level 4", R.drawable.uhosp_level_4);
-
-            /*
-            floorMaps.put("UofU-Hospital>0525-UHOSP>Level 1", R.drawable.uhosp_level_1);
-            floorMaps.put("UofU-Hospital>0525-UHOSP>Level 2", R.drawable.uhosp_level_2);
-            floorMaps.put("UofU-Hospital>0525-UHOSP>Level 3", R.drawable.uhosp_level_3);
-            floorMaps.put("UofU-Hospital>0525-UHOSP>Level 5", R.drawable.uhosp_level_5);
-            floorMaps.put("UofU-Hospital>0525-UHOSP>Level 6", R.drawable.uhosp_level_6);
-            floorMaps.put("UofU-Hospital>0525-UHOSP>Level 7", R.drawable.uhosp_level_7);
-
-            floorMaps.put("UofU-Hospital>0550-CNC>Floor 1", R.drawable.cnc_floor_1);
-            floorMaps.put("UofU-Hospital>0550-CNC>Floor 2", R.drawable.cnc_floor_2);
-            floorMaps.put("UofU-Hospital>0550-CNC>Floor 3", R.drawable.cnc_floor_3);
-            floorMaps.put("UofU-Hospital>0550-CNC>Floor 4", R.drawable.cnc_floor_4);
-            floorMaps.put("UofU-Hospital>0550-CNC>Floor 5", R.drawable.cnc_floor_5);
-            floorMaps.put("UofU-Hospital>0550-CNC>Floor R", R.drawable.cnc_floor_r);
-
-            floorMaps.put("UofU-Hospital>0529-ECCP>Floor 1", R.drawable.eccp_floor_1);
-            floorMaps.put("UofU-Hospital>0529-ECCP>Floor 2", R.drawable.eccp_floor_2);
-            floorMaps.put("UofU-Hospital>0529-ECCP>Floor 3", R.drawable.eccp_floor_3);
-            floorMaps.put("UofU-Hospital>0529-ECCP>Floor 4", R.drawable.eccp_floor_4);
-            floorMaps.put("UofU-Hospital>0529-ECCP>Floor 5", R.drawable.eccp_floor_5);
-            floorMaps.put("UofU-Hospital>0529-ECCP>Floor 6", R.drawable.eccp_floor_6);
-            floorMaps.put("UofU-Hospital>0529-ECCP>Level A", R.drawable.eccp_level_a);
-
-            floorMaps.put("UofU-Hospital>0522-WPAV>Floor 1", R.drawable.wpav_floor_1);
-            floorMaps.put("UofU-Hospital>0522-WPAV>Floor 2", R.drawable.wpav_floor_2);
-            floorMaps.put("UofU-Hospital>0522-WPAV>Floor 3", R.drawable.wpav_floor_3);
-            floorMaps.put("UofU-Hospital>0522-WPAV>Floor 4", R.drawable.wpav_floor_4);
-            floorMaps.put("UofU-Hospital>0522-WPAV>Floor 5", R.drawable.wpav_floor_5);
-            floorMaps.put("UofU-Hospital>0522-WPAV>Floor 6", R.drawable.wpav_floor_6);
-            floorMaps.put("UofU-Hospital>0522-WPAV>Level A", R.drawable.wpav_level_a);
-            floorMaps.put("UofU-Hospital>0522-WPAV>Level B", R.drawable.wpav_level_b);
-            floorMaps.put("UofU-Hospital>0522-WPAV>Basement-Mezz", R.drawable.wpav_basement_mezz);*/
-        }
     }
 
     private CloseableHttpClient getHttpClient(Context context, int campus){

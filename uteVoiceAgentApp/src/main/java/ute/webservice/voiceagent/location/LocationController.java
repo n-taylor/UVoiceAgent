@@ -409,7 +409,6 @@ public class LocationController extends Controller {
      * @param context used to start a new activity
      */
     public void displayClientLocation(String id, final Context context){
-
         if (clientLocation == null){
             GetClientLocationTask task = new GetClientLocationTask(id);
             task.setListener(new ClientLocationListener() {
