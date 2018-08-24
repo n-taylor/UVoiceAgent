@@ -40,8 +40,8 @@ public class LocationController extends Controller {
 
     private static final int MAX_TAG_WIDTH = 30;
     private static final int MAX_TAG_HEIGHT = 20;
-
-    private HashMap<String, Bitmap> floorMaps;
+    private static final int MAX_WIDTH = 1800;
+    private static final int MAX_HEIGHT = 1800;
 
     private String currentMapName = "";
     private String currentCategory;
@@ -50,6 +50,7 @@ public class LocationController extends Controller {
     private HashMap<String, TagLocation> tagLocations;
     private List<TagInfo> tagInfo;
     private HashMap<String, Device> Devices;
+    private HashMap<String, Integer> floorMaps;
 
     /**
      * Maps Category Name to a list of MAC addresses of tags belonging to that category.
@@ -84,49 +85,46 @@ public class LocationController extends Controller {
             categories.get("CT Scanner").add("00:12:B8:0D:5D:C8");
         }
 
-        if (floorMaps == null){
-            floorMaps = new HashMap<>();
-        }
-    }
-
-    /**
-     * Checks if the floor map images have been loaded. If they have not, try calling loadBitmaps(Context context);
-     * @return true if all maps have been loaded.
-     */
-    public boolean mapsAreLoaded(){
-        return floorMaps != null && !floorMaps.isEmpty();
-    }
-
-    /**
-     * Retrieves the available floor maps from resources and adds them to the floorMaps hash map.
-     */
-    public void loadBitmaps(Context context){
-        try {
+        if (floorMaps == null) {
             floorMaps = new HashMap<>();
 
-            floorMaps.put("UofU-FtDouglas>0482-102Tower>Level 4",
-                    decodeScaledResource(context.getResources(), R.drawable.tower_level_4, MAX_IMAGE_WIDTH, MAX_IMAGE_HEIGHT));
-            floorMaps.put("UofU-Hospital>0525-UHOSP>Level 4",
-                    decodeScaledResource(context.getResources(), R.drawable.uhosp_level_4, MAX_IMAGE_WIDTH, MAX_IMAGE_HEIGHT));
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-        }
-    }
+            floorMaps.put("UofU-FtDouglas>0482-102Tower>Level 4", R.drawable.tower_level_4);
+            floorMaps.put("UofU-Hospital>0525-UHOSP>Level 4", R.drawable.uhosp_level_4);
 
-    /**
-     * Gets the image of the floor map of a given floor. If the floor requested does not exist,
-     * is not included or is misspelled (case-sensitive) or the images have not been loaded yet,
-     * this method will return null.
-     *
-     * @param mapHierarchyString The map hierarchy string associated with the floor.
-     * @return The bitmap of the given floor, or null if there is an issue.
-     */
-    public Bitmap getFloorMap(String mapHierarchyString){
-        if (floorMaps == null)
-            return null;
 
-        return floorMaps.get(mapHierarchyString);
+            floorMaps.put("UofU-Hospital>0525-UHOSP>Level 1", R.drawable.uhosp_level_1);
+            floorMaps.put("UofU-Hospital>0525-UHOSP>Level 2", R.drawable.uhosp_level_2);
+            floorMaps.put("UofU-Hospital>0525-UHOSP>Level 3", R.drawable.uhosp_level_3);
+            floorMaps.put("UofU-Hospital>0525-UHOSP>Level 5", R.drawable.uhosp_level_5);
+            floorMaps.put("UofU-Hospital>0525-UHOSP>Level 6", R.drawable.uhosp_level_6);
+            floorMaps.put("UofU-Hospital>0525-UHOSP>Level 7", R.drawable.uhosp_level_7);
+
+
+            floorMaps.put("UofU-Hospital>0550-CNC>Floor 1", R.drawable.cnc_floor_1);
+            floorMaps.put("UofU-Hospital>0550-CNC>Floor 2", R.drawable.cnc_floor_2);
+            floorMaps.put("UofU-Hospital>0550-CNC>Floor 3", R.drawable.cnc_floor_3);
+            floorMaps.put("UofU-Hospital>0550-CNC>Floor 4", R.drawable.cnc_floor_4);
+            floorMaps.put("UofU-Hospital>0550-CNC>Floor 5", R.drawable.cnc_floor_5);
+            floorMaps.put("UofU-Hospital>0550-CNC>Floor R", R.drawable.cnc_floor_r);
+
+            floorMaps.put("UofU-Hospital>0529-ECCP>Floor 1", R.drawable.eccp_floor_1);
+            floorMaps.put("UofU-Hospital>0529-ECCP>Floor 2", R.drawable.eccp_floor_2);
+            floorMaps.put("UofU-Hospital>0529-ECCP>Floor 3", R.drawable.eccp_floor_3);
+            floorMaps.put("UofU-Hospital>0529-ECCP>Floor 4", R.drawable.eccp_floor_4);
+            floorMaps.put("UofU-Hospital>0529-ECCP>Floor 5", R.drawable.eccp_floor_5);
+            floorMaps.put("UofU-Hospital>0529-ECCP>Floor 6", R.drawable.eccp_floor_6);
+            floorMaps.put("UofU-Hospital>0529-ECCP>Level A", R.drawable.eccp_level_a);
+
+            floorMaps.put("UofU-Hospital>0522-WPAV>Floor 1", R.drawable.wpav_floor_1);
+            floorMaps.put("UofU-Hospital>0522-WPAV>Floor 2", R.drawable.wpav_floor_2);
+            floorMaps.put("UofU-Hospital>0522-WPAV>Floor 3", R.drawable.wpav_floor_3);
+            floorMaps.put("UofU-Hospital>0522-WPAV>Floor 4", R.drawable.wpav_floor_4);
+            floorMaps.put("UofU-Hospital>0522-WPAV>Floor 5", R.drawable.wpav_floor_5);
+            floorMaps.put("UofU-Hospital>0522-WPAV>Floor 6", R.drawable.wpav_floor_6);
+            floorMaps.put("UofU-Hospital>0522-WPAV>Level A", R.drawable.wpav_level_a);
+            floorMaps.put("UofU-Hospital>0522-WPAV>Level B", R.drawable.wpav_level_b);
+            floorMaps.put("UofU-Hospital>0522-WPAV>Basement-Mezz", R.drawable.wpav_basement_mezz);
+        }
     }
 
     private Bitmap decodeScaledResource(Resources res, int resId, int reqWidth, int reqHeight){
@@ -186,22 +184,31 @@ public class LocationController extends Controller {
      * specified.
      */
     public static void startActivity(Context context, String imageName){
-        LocationController.getInstance().currentMapName = imageName;
+        LocationController.getInstance().setImage(context, imageName);
         Intent intent = new Intent(context, EquipmentFindActivity.class);
         context.startActivity(intent);
+    }
+
+    /**
+     * Sets the image to display. If the image name is invalid, does nothing.
+     * @param imageName The map hierarchy of the user/floor to display
+     */
+    public void setImage(Context context, String imageName){
+        // For testing purposes, set an invalid image name to wpav floor 5
+        if (!floorMaps.containsKey(imageName)){
+            imageName = "UofU-Hospital>0522-WPAV>Floor 5";
+        }
+
+        if (floorMaps.containsKey(imageName)){
+            bitmap = decodeScaledResource(context.getResources(), floorMaps.get(imageName), MAX_WIDTH, MAX_HEIGHT);
+        }
     }
 
     /**
      * @return the image of the currently specified floor plan.
      */
     public Bitmap getImage(){
-        // For testing purposes, right not just show the burn unit
-
-        currentMapName="UofU-Hospital>0525-UHOSP>Level 4";
-
-        return floorMaps.get(currentMapName);
-
-        //return floorMaps.get(currentMapName);
+        return bitmap;
     }
 
     /**
@@ -311,11 +318,10 @@ public class LocationController extends Controller {
                     setClientLocation(location);
 
                     // Get the tags' locations
-                    retrieveTagInfo(location.getBuilding(), location.getFloor(), currentCategory); // Use this for actual location/floor
-                    // TODO: TEST ON TAGS IN THE BURN UNIT
+                    retrieveTagInfo(context, location.getBuilding(), location.getFloor(), currentCategory); // Use this for actual location/floor
 
                     // Display the map with client and tag locations
-                    displayClientLocation(clientMac, context);
+//                    displayClientLocation(clientMac, context);
                 }
             }
         });
@@ -342,12 +348,13 @@ public class LocationController extends Controller {
      * @param floor The floor on which the client is located
      * @param category The tag category the user is requesting
      */
-    private void retrieveTagInfo(String building, String floor, String category){
+    private void retrieveTagInfo(final Context context, String building, String floor, String category){
         GetTagCategoryLocationsTask task = new GetTagCategoryLocationsTask(building, floor, category);
         task.setListener(new TagInfoListener() {
             @Override
             public void onInfoReceived(List<TagInfo> tags) {
                 tagInfo = tags;
+                displayFloorMap(context);
             }
         });
         task.execute();
@@ -386,6 +393,11 @@ public class LocationController extends Controller {
             tagInfo = new ArrayList<>();
         }
         return tagInfo;
+    }
+
+
+    public void displayFloorMap(Context context){
+        getLocationDAO().displayFloorMap(context, clientLocation.getMapHierarchy());
     }
 
 

@@ -438,8 +438,8 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                 if (res1.length() > 0) {
                     res1.deleteCharAt(res1.length() - 1);
                 }
-                return res1.toString();
-//              return "f8:34:41:bf:ab:ee";
+//                return res1.toString();
+              return "f8:34:41:bf:ab:ee";
             }
         } catch (Exception ex) {
         }
@@ -465,7 +465,6 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                 welcomeActivity = (WelcomeActivity)activity;
                 welcomeActivity.enableComponents(false);
                 welcomeActivity.setWelcomeText("Loading...");
-                LocationController.getInstance().loadBitmaps(activity);
                 getProceduresDAO().addListener(this);
                 getProceduresDAO().fetchCategories();
             }

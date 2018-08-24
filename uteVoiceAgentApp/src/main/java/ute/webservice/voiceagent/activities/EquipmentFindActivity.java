@@ -29,7 +29,6 @@ import java.util.TimerTask;
 import ai.api.android.AIConfiguration;
 import ai.api.model.AIError;
 import ai.api.model.AIResponse;
-import ai.api.model.Location;
 import ai.api.ui.AIButton;
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.location.ClientLocation;
@@ -329,7 +328,7 @@ class MapImageView extends AppCompatImageView {
 
     private boolean beginning = true;
 
-    private Bitmap B;
+    private Bitmap image;
     private Paint clientPaint;
     private Paint clientHalo;
     private Paint tagPaint;
@@ -383,7 +382,7 @@ class MapImageView extends AppCompatImageView {
     private boolean dragged = false;
 
     private void initializeValues(){
-        B = LocationController.getInstance().getImage();
+        image = LocationController.getInstance().getImage();
 
         clientPaint = new Paint();
         clientPaint.setStyle(Paint.Style.FILL);
@@ -452,16 +451,20 @@ class MapImageView extends AppCompatImageView {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        if (image == null){
+            return;
+        }
+
         if (beginning){
-            scaleFactor = (float)canvas.getWidth() / (float)B.getWidth();
+            scaleFactor = (float)canvas.getWidth() / (float) image.getWidth();
             beginning = false;
         }
 
         canvas.save();
         canvas.scale(scaleFactor, scaleFactor);
 
-        float scaledWidth = B.getWidth() *scaleFactor;
-        float scaledHeight= B.getHeight() *scaleFactor;
+        float scaledWidth = image.getWidth() *scaleFactor;
+        float scaledHeight= image.getHeight() *scaleFactor;
 
 //        System.out.println("TX: "+translateX);
 //        System.out.println("TX2: "+scaledWidth);
@@ -528,30 +531,30 @@ class MapImageView extends AppCompatImageView {
         canvas.translate(translateX / scaleFactor, translateY / scaleFactor);
 
         //Drawable d = getResources().getDrawable(R.drawable.testfloor);
-        //Bitmap B = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.testfloor);
+        //Bitmap image = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.testfloor);
 
-        if (B != null && !B.isRecycled()) {
+        if (image != null && !image.isRecycled()) {
 
-            canvas.drawBitmap(B, 0, 0, null);
+            canvas.drawBitmap(image, 0, 0, null);
 
             MapCoordinate userLoc = LocationController.getInstance().getUserCoordinates();
             MapDimension dimension = LocationController.getInstance().getDimensions();
 
 //            if (userLoc != null){
-//                float posX = getScaledPosX(userLoc.getX(), dimension.getWidth(), B);
-//                float posY = getScaledPosY(userLoc.getY(), dimension.getLength(), B);
-//                drawScaledCircle(canvas, B, posX, posY, DOT_SIZE, clientPaint);
-//                drawScaledCircle(canvas, B, posX, posY, HALO_SIZE, clientHalo);
+//                float posX = getScaledPosX(userLoc.getX(), dimension.getWidth(), image);
+//                float posY = getScaledPosY(userLoc.getY(), dimension.getLength(), image);
+//                drawScaledCircle(canvas, image, posX, posY, DOT_SIZE, clientPaint);
+//                drawScaledCircle(canvas, image, posX, posY, HALO_SIZE, clientHalo);
 //            }
 
             List<TagInfo> tags = LocationController.getInstance().getTagInfo();
             for (TagInfo tag : tags){
                 if (tag != null){ // && LocationController.getInstance().getCurrentMapName().equalsIgnoreCase(tag.getMapHierarchy())){
 
-                    float posX = getScaledPosX(tag.getX(), 455.0f, B); // Use the dimensions of burn unit floor for testing
-                    float posY = getScaledPosY(tag.getY(), 324.1f, B); // testing hard-coded floor dimensions
-//                    float posX = getScaledPosX(tag.getX(), dimension.getWidth(), B);
-//                    float posY = getScaledPosY(tag.getY(), dimension.getLength(), B);
+                    float posX = getScaledPosX(tag.getX(), 455.0f, image); // Use the dimensions of burn unit floor for testing
+                    float posY = getScaledPosY(tag.getY(), 324.1f, image); // testing hard-coded floor dimensions
+//                    float posX = getScaledPosX(tag.getX(), dimension.getWidth(), image);
+//                    float posY = getScaledPosY(tag.getY(), dimension.getLength(), image);
 
 
 
@@ -561,8 +564,8 @@ class MapImageView extends AppCompatImageView {
 
                     drawTag(canvas, posX, posY, label, tagPaint);
 
-//                    drawScaledCircle(canvas, B, coordinate.getX(), coordinate.getY(), DOT_SIZE, tagPaint);
-                    //drawScaledCircle(canvas, B, coordinate.getX(), coordinate.getY(), HALO_SIZE, tagHalo);
+//                    drawScaledCircle(canvas, image, coordinate.getX(), coordinate.getY(), DOT_SIZE, tagPaint);
+                    //drawScaledCircle(canvas, image, coordinate.getX(), coordinate.getY(), HALO_SIZE, tagHalo);
                 }
             }
 
@@ -573,10 +576,10 @@ class MapImageView extends AppCompatImageView {
                 if (loc != null) {// && LocationController.getInstance().getImageName().equals(loc.getImageName())){
 
                     MapCoordinate coordinate = loc.getMapCoordinate();
-                    float posX = getScaledPosX(coordinate.getX(), 455.0f, B); // Use the dimensions of burn unit floor for testing
-                    float posY = getScaledPosY(coordinate.getY(), 324.1f, B); // testing hard-coded floor dimensions
-//                    float posX = getScaledPosX(coordinate.getX(), dimension.getWidth(), B);
-//                    float posY = getScaledPosY(coordinate.getY(), dimension.getLength(), B);
+                    float posX = getScaledPosX(coordinate.getX(), 455.0f, image); // Use the dimensions of burn unit floor for testing
+                    float posY = getScaledPosY(coordinate.getY(), 324.1f, image); // testing hard-coded floor dimensions
+//                    float posX = getScaledPosX(coordinate.getX(), dimension.getWidth(), image);
+//                    float posY = getScaledPosY(coordinate.getY(), dimension.getLength(), image);
 
 
 
@@ -586,8 +589,8 @@ class MapImageView extends AppCompatImageView {
 
                     drawTag(canvas, posX, posY, label, tagPaint);
 
-//                    drawScaledCircle(canvas, B, coordinate.getX(), coordinate.getY(), DOT_SIZE, tagPaint);
-                    //drawScaledCircle(canvas, B, coordinate.getX(), coordinate.getY(), HALO_SIZE, tagHalo);
+//                    drawScaledCircle(canvas, image, coordinate.getX(), coordinate.getY(), DOT_SIZE, tagPaint);
+                    //drawScaledCircle(canvas, image, coordinate.getX(), coordinate.getY(), HALO_SIZE, tagHalo);
                 }
             }*/
             //canvas.drawCircle(500.0f, 500.0f, 20.0f, paint);
