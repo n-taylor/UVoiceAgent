@@ -51,7 +51,7 @@ public class AccountCheck {
     //SharedData sessiondata = new SharedData(getApplicationContext());
     public static CloseableHttpClient httpclient = null;
     public static BasicCookieStore cookieStore;
-    private static final int timeout = 5000;
+    private static final int timeout = 10000; // 10 seconds
 
     private static final String TAG = "AccountCheck";
 

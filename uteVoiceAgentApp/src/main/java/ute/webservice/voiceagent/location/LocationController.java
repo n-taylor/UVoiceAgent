@@ -88,7 +88,13 @@ public class LocationController extends Controller {
         if (floorMaps == null) {
             floorMaps = new HashMap<>();
 
+            floorMaps.put("UofU-FtDouglas>0482-102Tower>Basement", R.drawable.tower_basement);
+            floorMaps.put("UofU-FtDouglas>0482-102Tower>Level 2", R.drawable.tower_level_2);
+            floorMaps.put("UofU-FtDouglas>0482-102Tower>Level 3", R.drawable.tower_level_3);
             floorMaps.put("UofU-FtDouglas>0482-102Tower>Level 4", R.drawable.tower_level_4);
+            floorMaps.put("UofU-FtDouglas>0482-102Tower>Level 5", R.drawable.tower_level_5);
+            floorMaps.put("UofU-FtDouglas>0482-102Tower>Level 6", R.drawable.tower_level_6);
+            floorMaps.put("UofU-FtDouglas>0482-102Tower>Level 7", R.drawable.tower_level_7);
 
 
             floorMaps.put("UofU-Hospital>0525-UHOSP>Level 1", R.drawable.uhosp_level_1);
@@ -195,9 +201,9 @@ public class LocationController extends Controller {
      */
     public void setImage(Context context, String imageName){
         // For testing purposes, set an invalid image name to wpav floor 5
-        if (!floorMaps.containsKey(imageName)){
-            imageName = "UofU-FtDouglas>0482-102Tower>Level 4";
-        }
+//        if (!floorMaps.containsKey(imageName)){
+//            imageName = "UofU-FtDouglas>0482-102Tower>Level 4";
+//        }
 
         if (floorMaps.containsKey(imageName)){
             bitmap = decodeScaledResource(context.getResources(), floorMaps.get(imageName), MAX_WIDTH, MAX_HEIGHT);
@@ -225,7 +231,7 @@ public class LocationController extends Controller {
         this.currentCategory = category;
     }
 
-    public String getImageName() { return clientLocation.getImageName(); }
+//    public String getImageName() { return clientLocation.getImageName(); }
 
     public void setClientLocation(ClientLocation location){
         clientLocation = location;
@@ -314,14 +320,20 @@ public class LocationController extends Controller {
                     Toast.makeText(context, CLIENT_LOCATION_ERROR, Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    // Set the client location
-                    setClientLocation(location);
+                    if (!floorMaps.keySet().contains(location.getMapHierarchy())){
+                        Toast.makeText(context, "Sorry, the floor \"" + location.getMapHierarchy() + "\" is not supported",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        // Set the client location
+                        setClientLocation(location);
 
-                    // Get the tags' locations
-                    retrieveTagInfo(context, location.getBuilding(), location.getFloor(), currentCategory); // Use this for actual location/floor
+                        // Get the tags' locations
+                        retrieveTagInfo(context, location.getBuilding(), location.getFloor(), currentCategory); // Use this for actual location/floor
 
-                    // Display the map with client and tag locations
+                        // Display the map with client and tag locations
 //                    displayClientLocation(clientMac, context);
+                    }
                 }
             }
         });

@@ -341,7 +341,7 @@ public class CiscoLocationDAO implements LocationDAO {
             locationBuilder.setMapDimension(mapDimension);
 
             child = current.getAsJsonObject("Image");
-            locationBuilder.setImageName(child.get("imageName").getAsString());
+//            locationBuilder.setImageName(child.get("imageName").getAsString());
 
             // Add Map Coordinate data
             current = top.getAsJsonObject("MapCoordinate");
