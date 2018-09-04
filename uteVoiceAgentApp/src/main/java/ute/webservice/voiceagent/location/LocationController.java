@@ -28,7 +28,7 @@ import ute.webservice.voiceagent.util.Controller;
 
 public class LocationController extends Controller {
 
-    private static final String CLIENT_LOCATION_ERROR = "An error occurred while retrieving the device location";
+    private static final String CLIENT_LOCATION_ERROR = "Location not found";
 
     private static final int TAG_ID = R.drawable.pin_red;
 
