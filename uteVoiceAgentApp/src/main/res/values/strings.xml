@@ -34,5 +34,16 @@
     <string name="dialog_flow_error">An error occurred. Try again.</string>
     <string name="device_label">No Device Selected</string>
     <string name="location_label">UHOSP - Level 4</string>
+    <string name="open_bed_guide">Dialog options On Call
+        On Call "Department"
+    On Call Attending "Department"
+    Who is On Call as the "Specialist"
+    Who is the "Specialist"
+        Attending "Department"
+        Who is on Call for "Department"
+    </string>
+    <string name="open_bed_Departments">
+
+    </string>
 
 </resources>

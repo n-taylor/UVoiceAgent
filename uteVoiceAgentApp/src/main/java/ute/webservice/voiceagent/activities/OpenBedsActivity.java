@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import android.widget.ExpandableListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import ai.api.android.AIConfiguration;
@@ -113,6 +114,24 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
         cancelButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Controller.getController().onCancelPressed();
+            }
+        });
+        Button helpButton = (Button) findViewById(R.id.helpButton);
+        helpButton.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                RelativeLayout hiddenView = (RelativeLayout) findViewById(R.id.helpView);
+                hiddenView.bringToFront();
+            }
+        });
+        Button returnButton = (Button) findViewById(R.id.returnButton);
+        returnButton.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                RelativeLayout hiddenView = (RelativeLayout) findViewById(R.id.mainView);
+                RelativeLayout bottomView = (RelativeLayout) findViewById(R.id.bottom_container);
+                hiddenView.bringToFront();
+                bottomView.bringToFront();
             }
         });
     }

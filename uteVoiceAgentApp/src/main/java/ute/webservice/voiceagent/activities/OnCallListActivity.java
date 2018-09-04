@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import ai.api.android.AIConfiguration;
@@ -145,6 +146,24 @@ public class OnCallListActivity extends BaseActivity implements AIButton.AIButto
             @Override
             public void onClick(View view) {
                 controller.populateListView(OnCallListActivity.this, getListView(), getSearchText());
+            }
+        });
+        Button helpButton = (Button) findViewById(R.id.helpButton);
+        helpButton.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+               RelativeLayout hiddenView = (RelativeLayout) findViewById(R.id.helpView);
+               hiddenView.bringToFront();
+            }
+        });
+        Button returnButton = (Button) findViewById(R.id.returnButton);
+        returnButton.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                RelativeLayout hiddenView = (RelativeLayout) findViewById(R.id.mainView);
+                RelativeLayout bottomView = (RelativeLayout) findViewById(R.id.bottom_container);
+                hiddenView.bringToFront();
+                bottomView.bringToFront();
             }
         });
 

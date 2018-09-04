@@ -33,64 +33,107 @@
 
     </android.support.v7.widget.Toolbar>
 
-
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/bottom_container"
-        android:layout_alignParentStart="true"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
         android:layout_below="@+id/setting_toolbar"
-        android:gravity="bottom"
-        android:padding="16dp"
-        android:paddingBottom="16dp"
-        android:paddingEnd="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingStart="16dp"
-        android:paddingTop="16dp">
+        android:id="@+id/helpView">
 
-        <TextView
-            android:id="@+id/query_text"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/color_slategrey"
-            android:textSize="24sp"
 
-            android:text="@string/on_call_list_message" />
+            android:gravity="bottom"
+            android:padding="16dp"
+            android:paddingBottom="16dp"
+            android:paddingEnd="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingStart="16dp"
+            android:paddingTop="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/color_slategrey"
+                android:textSize="24sp"
+                android:text="Hidden View" />
+
+        </ScrollView>
 
         <Button
-            android:id="@+id/search_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/query_text"
-            android:text="@string/search_onCall_button_label" />
-
-        <EditText
-            android:id="@+id/searchOnCall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/query_text"
-            android:layout_toEndOf="@+id/search_button"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="@string/search_onCall_label" />
-
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/searchOnCall"
-            android:id="@+id/search_list_view" />
-
-
+            android:layout_alignParentBottom="true"
+            android:text="Return"
+            android:id="@+id/returnButton"/>
     </RelativeLayout>
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/bottom_container"
+    android:layout_alignParentStart="true"
+    android:layout_below="@+id/setting_toolbar"
+    android:gravity="bottom"
+    android:padding="16dp"
+    android:paddingBottom="16dp"
+    android:paddingEnd="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingStart="16dp"
+    android:paddingTop="16dp"
+        android:background="#FFFFFF"
+        android:id="@+id/mainView">
+
+    <TextView
+        android:id="@+id/query_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/color_slategrey"
+        android:textSize="24sp"
+
+        android:text="@string/on_call_list_message" />
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/query_text"
+        android:text="@string/search_onCall_button_label" />
+
+    <EditText
+        android:id="@+id/searchOnCall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/query_text"
+        android:layout_toEndOf="@+id/search_button"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/search_onCall_label" />
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/searchOnCall"
+        android:id="@+id/search_list_view" />
+
+
+</RelativeLayout>
+
 
     <RelativeLayout
         android:id="@+id/bottom_container"
@@ -100,14 +143,14 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:paddingBottom="10dp"
-        tools:ignore="RtlHardcoded">
+        tools:ignore="RtlHardcoded"
+        android:background="#FFFFFF">
 
         <ai.api.ui.AIButton
             android:id="@+id/micButton"
             style="@style/ApiAi.Microphone"
             android:layout_height="150dp"
             android:layout_width="150dp"
-
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true" />
 
@@ -118,6 +161,12 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:text="@string/cancel" />
+        <Button
+            android:id="@+id/helpButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="Help" />
 
     </RelativeLayout>
 
