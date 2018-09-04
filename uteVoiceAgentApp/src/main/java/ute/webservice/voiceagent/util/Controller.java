@@ -103,7 +103,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         // If there is more information needed to display a result, take the user to the appropriate activity
         if(!complete || (action.equals(Constants.GET_CENSUS) && (unit == null || unit.isEmpty()))){
             if (action.equals(Constants.GET_ONCALL))
-                openNewActivity(context, OnCallActivity.class);
+                openNewActivity(context, OnCallListActivity.class);
             else if (action.equals(Constants.GET_SURGERY_COST))
                 openNewActivity(context, ProceduresListActivity.class);
             else if (action.equals(Constants.GET_CENSUS))

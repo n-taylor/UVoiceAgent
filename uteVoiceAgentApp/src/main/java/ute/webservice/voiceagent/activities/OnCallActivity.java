@@ -125,14 +125,16 @@ public class OnCallActivity extends BaseActivity implements AIButton.AIButtonLis
                 intent.putExtra("query", "Error");
                 intent.putExtra("result", "Not connected to Clinical Wifi");
                 this.startActivity(intent);
-            return false;
+                return false;
             }
 
             names = new ArrayList<>();
             names.addAll(phoneNumMap.keySet());
             phoneNumbers = phoneNumMap;
+
+            return true;
         }
-        return true;
+        return false;
     }
 
     private void initializeListView() {
