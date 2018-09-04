@@ -102,12 +102,18 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
 
         // If there is more information needed to display a result, take the user to the appropriate activity
         if(!complete || (action.equals(Constants.GET_CENSUS) && (unit == null || unit.isEmpty()))){
-            if (action.equals(Constants.GET_ONCALL))
+            if (action.equals(Constants.GET_ONCALL)) {
+                Toast.makeText(context, "Sorry, that on-call assignment was not recognized.", Toast.LENGTH_SHORT).show();
                 openNewActivity(context, OnCallListActivity.class);
-            else if (action.equals(Constants.GET_SURGERY_COST))
+            }
+            else if (action.equals(Constants.GET_SURGERY_COST)) {
+                Toast.makeText(context, "Sorry, that procedure was not recognized.", Toast.LENGTH_SHORT).show();
                 openNewActivity(context, ProceduresListActivity.class);
-            else if (action.equals(Constants.GET_CENSUS))
+            }
+            else if (action.equals(Constants.GET_CENSUS)) {
+                Toast.makeText(context, "Sorry, that unit was not recognized.", Toast.LENGTH_SHORT).show();
                 openNewActivity(context, OpenBedsActivity.class);
+            }
             else if (action.equals(Constants.FIND_EQUIPMENT)){
                 String message = String.format(Locale.US, UNKNOWN_CATEGORY, query);
                 getController().welcomeActivity.setWelcomeText(message);
