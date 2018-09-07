@@ -124,7 +124,7 @@ public class AccountCheck {
                 JSONObject myObject = new JSONObject(json);
              int statusCode  = response3.getStatusLine().getStatusCode();
 
-                    if(statusCode == 200){
+                    if(statusCode == 200&&myObject.get("authenticated").toString().equals("true")){
 
                         loginSucceed = true;
                         setAccountID(param[0]);
