@@ -121,10 +121,10 @@ public class AccountCheck {
                 CloseableHttpResponse response3 = httpclient.execute(httpPost);
                 HttpEntity entity = response3.getEntity();
                 String json = EntityUtils.toString(entity, "UTF-8");
-                JSONObject myObject = new JSONObject(json);
+                Object myObject = new JSONObject(json).get("authenticated");
              int statusCode  = response3.getStatusLine().getStatusCode();
 
-                    if(statusCode == 200){
+                    if(statusCode == 200 && myObject!=null && myObject.toString().equals("true")){
 
                         loginSucceed = true;
                         setAccountID(param[0]);
