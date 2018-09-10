@@ -1,6 +1,7 @@
 package ute.webservice.voiceagent.location;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -308,6 +309,11 @@ public class LocationController extends Controller {
      * @param tagCategory The category of device/tag to retrieve and display
      */
     public void findTags(final Context context, final String clientMac, final String tagCategory){
+        // Create a progress dialog
+        final ProgressDialog dialog = new ProgressDialog(context, ProgressDialog.STYLE_SPINNER);
+        dialog.setTitle("Loading");
+        dialog.show();
+
         // Set the current tag category
         this.currentCategory = tagCategory;
 
@@ -335,6 +341,7 @@ public class LocationController extends Controller {
 //                    displayClientLocation(clientMac, context);
                     }
                 }
+                dialog.dismiss();
             }
         });
         task.execute();
