@@ -99,6 +99,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         String unit = parseResult.getCensusUnit();
         String query = parseResult.get_ResolvedQuery();
         String reply = parseResult.get_reply();
+        String sessionId = response.getSessionId();
 
         // If there is more information needed to display a result, take the user to the appropriate activity
         if(!complete || (action.equals(Constants.GET_CENSUS) && (unit == null || unit.isEmpty()))){
@@ -122,6 +123,10 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                 String message = String.format(Locale.US, UNKNOWN_ACTION, query);
                 Controller.getController().welcomeActivity.setWelcomeText(message);
             }
+
+            // Delete all contexts
+            DeleteContextsTask task = new DeleteContextsTask(sessionId);
+            task.execute();
         }
         // Otherwise, retrieve the necessary information and display it to the user
         else {
