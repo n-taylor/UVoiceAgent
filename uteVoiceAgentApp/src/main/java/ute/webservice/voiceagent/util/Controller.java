@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.Locale;
 
 import ai.api.model.AIResponse;
-import ai.api.model.Location;
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.activities.BaseActivity;
 import ute.webservice.voiceagent.activities.OnCallActivity;
@@ -39,7 +38,6 @@ import ute.webservice.voiceagent.dao.OnCallDAO;
 import ute.webservice.voiceagent.dao.OpenBedsDAO;
 import ute.webservice.voiceagent.dao.ProceduresDAO;
 import ute.webservice.voiceagent.dao.SpokDAOFactory;
-import ute.webservice.voiceagent.location.ClientLocation;
 import ute.webservice.voiceagent.location.LocationController;
 import ute.webservice.voiceagent.procedures.ProcedureInfoListener;
 import ute.webservice.voiceagent.procedures.ProceduresParentListAdapter;

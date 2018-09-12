@@ -199,7 +199,7 @@ public class OpenBedsActivity extends BaseActivity implements AIButton.AIButtonL
         UH.add("WP5");
 
         List<String> HC = new ArrayList<String>();
-        HC.add("HCBMT ");
+        HC.add("HCBMT");
         HC.add("HCH4");
         HC.add("HCH5");
         HC.add("HCICU");
