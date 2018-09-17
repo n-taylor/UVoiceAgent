@@ -401,7 +401,7 @@ class MapImageView extends AppCompatImageView {
     private boolean dragged = false;
 
     private void initializeValues(){
-        image = LocationController.getInstance().getImage(this.getContext());
+        image = LocationController.getInstance().getImage();
 
         clientPaint = new Paint();
         clientPaint.setStyle(Paint.Style.FILL);

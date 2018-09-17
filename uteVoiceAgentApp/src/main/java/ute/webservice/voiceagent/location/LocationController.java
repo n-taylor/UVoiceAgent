@@ -214,8 +214,7 @@ public class LocationController extends Controller {
     /**
      * @return the image of the currently specified floor plan.
      */
-    public Bitmap getImage(Context context){
-        setImage(context, clientLocation.getMapHierarchy());
+    public Bitmap getImage(){
         return bitmap;
     }
 
