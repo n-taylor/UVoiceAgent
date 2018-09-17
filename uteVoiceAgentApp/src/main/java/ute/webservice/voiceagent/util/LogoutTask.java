@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 
 import ute.webservice.voiceagent.activities.BaseActivity;
 import ute.webservice.voiceagent.activities.LoginActivity;
-import ute.webservice.voiceagent.login.LoginAlertDialog;
 
 /**
  * Build one thread to log out.
