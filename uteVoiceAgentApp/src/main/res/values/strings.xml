@@ -34,17 +34,19 @@
     <string name="dialog_flow_error">An error occurred. Try again.</string>
     <string name="device_label">No Device Selected</string>
     <string name="location_label">UHOSP - Level 4</string>
-    <string name="oncall_guide">Dialog options:\n\n
-        On Call \"Department\"\n
-        On Call Attending \"Department\"\n
-        Who is On Call as the \"Specialist\"\n
-        Who is the \"Specialist\"\n
-        Attending \"Department\"\n
-        Who is on Call for \"Department\"\n
+    <string name="oncall_guide">
+        To see information about on-call personnel, say \"On call\" and then the desired position. \n\n
+        Example: \"On call dermatology\" \n
     </string>
     <string name="oncall_Departments">
-        Departments:\n\n
-        Burn Unit\n
+        \n
+        Example positions: \n
+        - Plastic Surgery \n
+        - Genetics \n
+        - Body Donation \n
+        - VAMC Cardiothoracic \n
+        - Oncology Fellow \n
+        - Lung Transplant Coordinator
     </string>
     <string name="procedures_instructions">Dialog options:\n\n
         Cost of \"surgery\"\n
@@ -53,8 +55,10 @@
         Surgerys:\n\n
         Brain MRI\n
     </string>
-    <string name="open_bed_instructions">Dialog options:\n\n
-        Open Beds: \"Building\"\n
+    <string name="open_bed_instructions">
+        To get the open bed availability of a unit, say \"open beds\" and then the desired unit. \n\n
+        Example: \"open beds five west\" \n\n
+        To get the open bed availability of all units, say \"open beds all units\"
     </string>
     <string name="open_bed_types">
         Buildings:\n\n
