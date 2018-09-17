@@ -455,8 +455,8 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                 if (res1.length() > 0) {
                     res1.deleteCharAt(res1.length() - 1);
                 }
-                return res1.toString();
-//                return "f8:34:41:bf:ab:ee"; // laptop
+//                return res1.toString();
+                return "f8:34:41:bf:ab:ee"; // laptop
             }
         } catch (Exception ex) {
         }

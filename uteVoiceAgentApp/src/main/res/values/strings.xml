@@ -69,12 +69,18 @@
         Buildings:\n\n
         5 West\n
     </string>
-    <string name="equipment_instructions">Dialog options:\n\n
-        Find \"Equipment"\n
+    <string name="equipment_instructions">
+        To find equipment on your floor, say \"Locate\" and then the desired category of equipment. \n\n
+        Example: \"Locate infusion pumps\" \n
     </string>
     <string name="equipment_types">
-        Equipment:\n\n
-        Infusion Pump\n
+        \n
+        Example categories: \n
+        - Infusion pumps \n
+        - Ventilators \n
+        - Defibrillators \n
+        - Vitals Monitors \n
+        - Cardiac Output Monitors
     </string>
 
 </resources>
