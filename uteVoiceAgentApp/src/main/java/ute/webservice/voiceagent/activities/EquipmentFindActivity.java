@@ -19,6 +19,7 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -204,6 +205,24 @@ public class EquipmentFindActivity extends BaseActivity implements AIButton.AIBu
             @Override
             public void onClick(View view) {
                 Controller.getController().onCancelPressed();
+            }
+        });
+        Button helpButton = (Button) findViewById(R.id.helpButton);
+        helpButton.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                RelativeLayout hiddenView = (RelativeLayout) findViewById(R.id.helpView);
+                hiddenView.bringToFront();
+            }
+        });
+        Button returnButton = (Button) findViewById(R.id.returnButton);
+        returnButton.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                RelativeLayout hiddenView = (RelativeLayout) findViewById(R.id.top_container_equipment);
+                RelativeLayout bottomView = (RelativeLayout) findViewById(R.id.bottom_container);
+                hiddenView.bringToFront();
+                bottomView.bringToFront();
             }
         });
     }

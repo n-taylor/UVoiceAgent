@@ -30,6 +30,66 @@
             android:layout_gravity="right"/>
 
     </android.support.v7.widget.Toolbar>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:layout_below="@+id/setting_toolbar"
+        android:id="@+id/helpView">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:gravity="bottom"
+            android:padding="16dp"
+            android:paddingBottom="16dp"
+            android:paddingEnd="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingStart="16dp"
+            android:paddingTop="16dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/color_slategrey"
+                    android:textSize="24sp"
+                    android:text="@string/open_bed_instructions" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#000000"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/color_slategrey"
+                    android:textSize="24sp"
+                    android:text="@string/open_bed_types" />
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="Return"
+            android:id="@+id/returnButton"/>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -42,7 +102,9 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:paddingStart="16dp"
-        android:paddingTop="16dp">
+        android:paddingTop="16dp"
+        android:background="#FFFFFF"
+        android:id="@+id/mainView">
 
         <TextView
             android:id="@+id/querytextView"
@@ -78,7 +140,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:paddingBottom="10dp"
-        tools:ignore="RtlHardcoded">
+        tools:ignore="RtlHardcoded"
+        android:background="#FFFFFF">>
 
         <ai.api.ui.AIButton
             android:id="@+id/micButton"
@@ -96,6 +159,13 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:text="@string/cancel" />
+
+        <Button
+            android:id="@+id/helpButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="Help" />
 
     </RelativeLayout>
 

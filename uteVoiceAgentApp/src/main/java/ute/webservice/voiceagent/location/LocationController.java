@@ -1,5 +1,6 @@
 package ute.webservice.voiceagent.location;
-
+import android.annotation.SuppressLint;
+import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -40,8 +41,8 @@ public class LocationController extends Controller {
 
     private static final int MAX_TAG_WIDTH = 30;
     private static final int MAX_TAG_HEIGHT = 20;
-    private static final int MAX_WIDTH = 1800;
-    private static final int MAX_HEIGHT = 1800;
+    private static final int MAX_WIDTH = 1200;
+    private static final int MAX_HEIGHT = 1200;
 
     private String currentMapName = "";
     private String currentCategory;

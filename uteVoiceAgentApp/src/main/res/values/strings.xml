@@ -34,5 +34,38 @@
     <string name="dialog_flow_error">An error occurred. Try again.</string>
     <string name="device_label">No Device Selected</string>
     <string name="location_label">UHOSP - Level 4</string>
+    <string name="oncall_guide">Dialog options:\n\n
+        On Call \"Department\"\n
+        On Call Attending \"Department\"\n
+        Who is On Call as the \"Specialist\"\n
+        Who is the \"Specialist\"\n
+        Attending \"Department\"\n
+        Who is on Call for \"Department\"\n
+    </string>
+    <string name="oncall_Departments">
+        Departments:\n\n
+        Burn Unit\n
+    </string>
+    <string name="procedures_instructions">Dialog options:\n\n
+        Cost of \"surgery\"\n
+    </string>
+    <string name="procedures_types">
+        Surgerys:\n\n
+        Brain MRI\n
+    </string>
+    <string name="open_bed_instructions">Dialog options:\n\n
+        Open Beds: \"Building\"\n
+    </string>
+    <string name="open_bed_types">
+        Buildings:\n\n
+        5 West\n
+    </string>
+    <string name="equipment_instructions">Dialog options:\n\n
+        Find \"Equipment"\n
+    </string>
+    <string name="equipment_types">
+        Equipment:\n\n
+        Infusion Pump\n
+    </string>
 
 </resources>
