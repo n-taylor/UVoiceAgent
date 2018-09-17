@@ -48,12 +48,17 @@
         - Oncology Fellow \n
         - Lung Transplant Coordinator
     </string>
-    <string name="procedures_instructions">Dialog options:\n\n
-        Cost of \"surgery\"\n
+    <string name="procedures_instructions">
+        To see the cost of a procedure, say \"cost of\" and then the desired procedure. \n\n
+        Example: \"Cost of an abdomen MRI\" \n
     </string>
     <string name="procedures_types">
-        Surgerys:\n\n
-        Brain MRI\n
+        \n
+        Example procedures: \n
+        - C Spine MRI \n
+        - Neck CT \n
+        - Skin lesion biopsy \n
+        - Eye evaluation
     </string>
     <string name="open_bed_instructions">
         To get the open bed availability of a unit, say \"open beds\" and then the desired unit. \n\n
