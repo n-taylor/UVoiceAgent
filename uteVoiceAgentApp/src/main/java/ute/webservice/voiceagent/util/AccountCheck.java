@@ -2,42 +2,23 @@ package ute.webservice.voiceagent.util;
 
 import android.util.Log;
 
-import org.apache.http.HttpClientConnection;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGetHC4;
 import org.apache.http.client.methods.HttpPostHC4;
-import org.apache.http.config.ConnectionConfig;
-import org.apache.http.conn.ConnectionRequest;
-import org.apache.http.conn.HttpClientConnectionManager;
-import org.apache.http.conn.routing.HttpRoute;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import ute.webservice.voiceagent.activities.BaseActivity;
-import ute.webservice.voiceagent.util.Constants;
 
 //import static ai.api.android.AIDataService.TAG;
 
@@ -121,10 +102,10 @@ public class AccountCheck {
                 CloseableHttpResponse response3 = httpclient.execute(httpPost);
                 HttpEntity entity = response3.getEntity();
                 String json = EntityUtils.toString(entity, "UTF-8");
-                JSONObject myObject = new JSONObject(json);
+                Object myObject = new JSONObject(json).get("authenticated");
              int statusCode  = response3.getStatusLine().getStatusCode();
 
-                    if(statusCode == 200){
+                    if(statusCode == 200 && myObject!=null && myObject.toString().equals("true")){
 
                         loginSucceed = true;
                         setAccountID(param[0]);
