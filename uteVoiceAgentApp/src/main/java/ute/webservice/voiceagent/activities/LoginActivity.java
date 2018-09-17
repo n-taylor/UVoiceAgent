@@ -12,27 +12,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
-
-import javax.net.ssl.HttpsURLConnection;
-
 import ute.webservice.voiceagent.login.LoginAlertDialog;
 import ute.webservice.voiceagent.util.AccountCheck;
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.util.TTS;
 import ute.webservice.voiceagent.util.SharedData;
-
-import static java.sql.DriverManager.println;
 
 /**
  * Login screen, after click login button, it will verify authentication.

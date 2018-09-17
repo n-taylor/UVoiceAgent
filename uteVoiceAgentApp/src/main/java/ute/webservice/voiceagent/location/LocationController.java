@@ -1,7 +1,7 @@
 package ute.webservice.voiceagent.location;
-
 import android.annotation.SuppressLint;
 import android.app.Application;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -29,7 +29,7 @@ import ute.webservice.voiceagent.util.Controller;
 
 public class LocationController extends Controller {
 
-    private static final String CLIENT_LOCATION_ERROR = "An error occurred while retrieving the device location";
+    private static final String CLIENT_LOCATION_ERROR = "Location not found";
 
     private static final int TAG_ID = R.drawable.pin_red;
 
@@ -310,6 +310,11 @@ public class LocationController extends Controller {
      * @param tagCategory The category of device/tag to retrieve and display
      */
     public void findTags(final Context context, final String clientMac, final String tagCategory){
+        // Create a progress dialog
+        final ProgressDialog dialog = new ProgressDialog(context, ProgressDialog.STYLE_SPINNER);
+        dialog.setTitle("Loading");
+        dialog.show();
+
         // Set the current tag category
         this.currentCategory = tagCategory;
 
@@ -337,6 +342,7 @@ public class LocationController extends Controller {
 //                    displayClientLocation(clientMac, context);
                     }
                 }
+                dialog.dismiss();
             }
         });
         task.execute();

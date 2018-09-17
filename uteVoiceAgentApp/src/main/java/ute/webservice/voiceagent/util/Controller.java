@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.Locale;
 
 import ai.api.model.AIResponse;
-import ai.api.model.Location;
 import ute.webservice.voiceagent.R;
 import ute.webservice.voiceagent.activities.BaseActivity;
 import ute.webservice.voiceagent.activities.OnCallActivity;
@@ -39,7 +38,6 @@ import ute.webservice.voiceagent.dao.OnCallDAO;
 import ute.webservice.voiceagent.dao.OpenBedsDAO;
 import ute.webservice.voiceagent.dao.ProceduresDAO;
 import ute.webservice.voiceagent.dao.SpokDAOFactory;
-import ute.webservice.voiceagent.location.ClientLocation;
 import ute.webservice.voiceagent.location.LocationController;
 import ute.webservice.voiceagent.procedures.ProcedureInfoListener;
 import ute.webservice.voiceagent.procedures.ProceduresParentListAdapter;
@@ -99,6 +97,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
         String unit = parseResult.getCensusUnit();
         String query = parseResult.get_ResolvedQuery();
         String reply = parseResult.get_reply();
+        String sessionId = response.getSessionId();
 
         // If there is more information needed to display a result, take the user to the appropriate activity
         if(!complete || (action.equals(Constants.GET_CENSUS) && (unit == null || unit.isEmpty()))){
@@ -122,6 +121,10 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
                 String message = String.format(Locale.US, UNKNOWN_ACTION, query);
                 Controller.getController().welcomeActivity.setWelcomeText(message);
             }
+
+            // Delete all contexts
+            DeleteContextsTask task = new DeleteContextsTask(sessionId);
+            task.execute();
         }
         // Otherwise, retrieve the necessary information and display it to the user
         else {
@@ -221,6 +224,12 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
      * @param query The user's query (e.g. "Who is on call in the burn unit?")
      */
     public static void displayPhoneNumbers(final Context context, final String OCMID, final String query){
+
+        // Create a progress dialog
+        final ProgressDialog dialog = new ProgressDialog(context, ProgressDialog.STYLE_SPINNER);
+        dialog.setTitle("Loading");
+        dialog.show();
+
         @SuppressLint("StaticFieldLeak")
         AsyncTask<Void, Void, HashMap<String, ArrayList<String>>> task = new AsyncTask<Void, Void, HashMap<String, ArrayList<String>>>() {
             @Override
@@ -231,6 +240,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
 
             @Override
             protected void onPostExecute(HashMap<String, ArrayList<String>> numbers){
+                dialog.dismiss();
                 if (numbers == null){
                     Intent intent = new Intent(context, ResultsActivity.class);
                     intent.putExtra("query", query);
