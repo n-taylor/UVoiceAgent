@@ -224,6 +224,12 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
      * @param query The user's query (e.g. "Who is on call in the burn unit?")
      */
     public static void displayPhoneNumbers(final Context context, final String OCMID, final String query){
+
+        // Create a progress dialog
+        final ProgressDialog dialog = new ProgressDialog(context, ProgressDialog.STYLE_SPINNER);
+        dialog.setTitle("Loading");
+        dialog.show();
+
         @SuppressLint("StaticFieldLeak")
         AsyncTask<Void, Void, HashMap<String, ArrayList<String>>> task = new AsyncTask<Void, Void, HashMap<String, ArrayList<String>>>() {
             @Override
@@ -234,6 +240,7 @@ public class Controller implements ProcedureInfoListener, ProcedureCostRetrieval
 
             @Override
             protected void onPostExecute(HashMap<String, ArrayList<String>> numbers){
+                dialog.dismiss();
                 if (numbers == null){
                     Intent intent = new Intent(context, ResultsActivity.class);
                     intent.putExtra("query", query);
